@@ -1,0 +1,6 @@
+[submodule "smart-contracts/libs/forge-std"]
+	path = smart-contracts/libs/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "smart-contracts/libs/ds-test"]
+	path = smart-contracts/libs/ds-test
+	url = https://github.com/dapphub/ds-test

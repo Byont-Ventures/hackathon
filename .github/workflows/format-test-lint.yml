@@ -1,0 +1,29 @@
+name: Format, Test & Lint
+
+on:
+  workflow_call:
+    secrets:
+      FONTAWESOME_NPM_AUTH_TOKEN:
+        required: true
+
+env:
+  FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+
+jobs:
+  format-test-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run Jest
+        run: yarn fe:test
+
+      - name: Run Prettier
+        run: yarn format
+
+      - name: Run ESLint
+        run: yarn fe:lint

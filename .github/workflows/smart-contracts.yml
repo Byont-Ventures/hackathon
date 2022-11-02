@@ -1,0 +1,64 @@
+name: Smart-contracts
+
+on:
+  push:
+    branches:
+      - '**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: bahmutov/npm-install@v1
+      - run: yarn install
+
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: run tests
+        run: FOUNDRY_PROFILE=ci forge test -vvv
+
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: bahmutov/npm-install@v1
+      - run: yarn install
+
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Setup LCOV
+        uses: Byont-Ventures/setup-lcov@main
+
+      - name: run coverage
+        working-directory: .
+        env:
+          NODE_URL: ${{ secrets.NODE_URL }}
+        run: |
+          forge coverage --report lcov --use 0.8.13
+          lcov --remove lcov.info -o lcov.info '**/**/tests/**' '**/**/mocks/**'
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          base-path: ./
+          path-to-lcov: ./lcov.info
