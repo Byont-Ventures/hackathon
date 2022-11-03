@@ -14,7 +14,7 @@ contract Challenge3 is Test {
 
   /// @notice Tests that a message can be successfully added to the existing message
   /*
-   * Some test functionality is yet do be added!
+   * Some test functionality is yet to be added!
    */
   // function testHelloWorld() public {
   //   /// @dev Get the initial message

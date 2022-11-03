@@ -74,13 +74,19 @@ Take a look at the `smart-contracts` folder. Here, the important sub-folders are
 
 For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message`, and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry, this is ran before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
 
-Whew, we did a lot of stuff, but yet so little! Take a sip of your coffee. Breathe in, breathe out. When you're ready, go ahead and run your first test by typing `forge test --match-contract Challenge1` (--match-contract is a flag that enables you to run a specific test contract). Sit back, and enjoy the dopamine of that green checkmark. 
+Whew, we did a lot of stuff, but yet so little! Take a sip of your coffee. Breathe in, breathe out. When you're ready, go ahead and run your first test by typing `forge test --match-contract Challenge1` (--match-contract is a flag that enables you to run a specific test contract). Sit back, and enjoy the dopamine of that green checkmark.
 
 ## Challenge 2 - Hello???
 
 First things first - to make testing easier, from now on, stuff has been commented out. Otherwise the compiler is going to complain about incomplete functions and the like. So take a look at the test files and the contracts, and uncomment it!
 
-The message in the contract ```Challenge_2.sol``` has not been initialized yet. The goal give it the value 'Hello World' using a setter function! Well... The function is not built yet, but don't worry, there are some useful hints in the contract and test files to help you build.
+The message in the contract `Challenge_2.sol` has not been initialized yet. The goal give it the value 'Hello World' using a setter function! Well... The function is not built yet, but don't worry, there are some useful hints in the contract and test files to help you build.
+
+## Challenge 3 - Hello + World
+
+Once again, don't forget to uncomment the challenge code. You can leave the previous challenge code uncommented - provided everything works, of course.
+
+Let's add a tiny bit of spice. This time around, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the foundry books to see how it's done.
 
 # Web3 template
 
