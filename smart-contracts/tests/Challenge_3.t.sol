@@ -16,16 +16,16 @@ contract Challenge3 is Test {
   /*
    * Some test functionality is yet do be added!
    */
-  function testHelloWorld() public {
-    /// @dev Get the initial message
-    string memory initMessage = c.getMessage();
-    /// @dev TODO: Initial message should be equal to 'Hello'
+  // function testHelloWorld() public {
+  //   /// @dev Get the initial message
+  //   string memory initMessage = c.getMessage();
+  //   /// @dev TODO: Initial message should be equal to 'Hello'
 
-    /// @dev TODO: Add ' World!' to the message
+  //   /// @dev TODO: Add ' World!' to the message
 
-    /// @dev Get the new message
-    string memory newMessage = c.getMessage();
-    /// @dev The message should now be 'Hello World!'
-    assertEq(newMessage, 'Hello World!');
-  }
+  //   /// @dev Get the new message
+  //   string memory newMessage = c.getMessage();
+  //   /// @dev The message should now be 'Hello World!'
+  //   assertEq(newMessage, 'Hello World!');
+  // }
 }
