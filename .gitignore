@@ -55,3 +55,5 @@ lcov.info
 **/**/flattened
 **/**/generated
 **/**/solc-out
+package-lock.json
+package.json
