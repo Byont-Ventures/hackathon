@@ -9,7 +9,7 @@ contract Contract {
   string message = 'Hello World!';
 
   /// @return message:string; the message stored in the contract.
-  function showMessage() public view returns (string memory) {
+  function getMessage() public view returns (string memory) {
     return message;
   }
 }

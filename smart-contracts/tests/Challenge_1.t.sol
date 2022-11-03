@@ -15,8 +15,8 @@ contract Challenge1 is Test {
   /// @notice Tests that the message returned from the contract is equal to "Hello World!"
   /// @dev Functions that begin with the word 'test' are, well... tests!
   function testHelloWorld() public {
-    /// @dev store the message of the smart contract in a variable in memory
-    string memory message = c.showMessage();
+    /// @dev get the message of the smart contract and store it in a variable in memory
+    string memory message = c.getMessage();
     /// @dev assertEq(a, b) returns true if a === b
     assertEq(message, 'Hello World!');
   }
