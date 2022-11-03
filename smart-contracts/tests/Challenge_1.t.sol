@@ -11,6 +11,4 @@ contract TestContract is Test {
   function setUp() public {
     c = new Contract();
   }
-
-  
 }
