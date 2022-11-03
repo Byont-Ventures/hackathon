@@ -1,22 +1,22 @@
 # Hackathon preparation
 
 ## 1. Get a test wallet
+
 For the hackathon, we recommend using Metamask. This is a crypto wallet that can be added as a [browser extension.] (https://metamask.io/)
 
 You can use this wallet for testing during the hackathon. Do not store real funds on this wallet!
 
 ### Wallet password
+
 At some point, the wallet will ask you to configure a password. This is to unlock your wallet in your browser, but this is **not** the real key to your wallet!
 
 ### Seed phrase
+
 Metamask will generate a seed phrase for you. Write down this seed phrase and keep it secure. If someone has access to your seed phrase, they will be able to access your wallet, all the accounts within the wallet, and therefore all the funds! It is therefore best to get rid of this wallet after the hackathon, and create a new wallet in a more secure environment if you wish. Only use this one for testing purposes.
 
 ### Private key
-Metamask holds your private key in the browser's data store. A private key is  a string of letters and numbers and provides access to an account. In a wallet with multiple accounts, every account has a different private key. Never share your private key with anyone as they will be able to access your account and all the funds!
 
-
-
-
+Metamask holds your private key in the browser's data store. A private key is a string of letters and numbers and provides access to an account. In a wallet with multiple accounts, every account has a different private key. Never share your private key with anyone as they will be able to access your account and all the funds!
 
 # Web3 template
 
