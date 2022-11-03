@@ -57,3 +57,4 @@ lcov.info
 **/**/solc-out
 package-lock.json
 package.json
+smart-contracts/libs

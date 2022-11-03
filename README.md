@@ -1,5 +1,11 @@
 # Hackathon preparation
 
+- [Frontend Setup](#frontend-setup)
+- [Backend Setup](#backend-setup)
+- [Coding Challenges](#coding-challenges)
+
+# Frontend Setup
+
 ## 1. Get a test wallet
 
 For the hackathon, we recommend using Metamask. This is a crypto wallet that can be added as a [browser extension.] (https://metamask.io/)
@@ -17,6 +23,58 @@ Metamask will generate a seed phrase for you. Write down this seed phrase and ke
 ### Private key
 
 Metamask holds your private key in the browser's data store. A private key is a string of letters and numbers and provides access to an account. In a wallet with multiple accounts, every account has a different private key. Never share your private key with anyone as they will be able to access your account and all the funds!
+
+## 2. Clone this repo
+
+Clone this repo, and install the packages. Then, you're all set to start building your first Web3 Dapp!
+If you are having any issues or if you have any questions, please don't hesitate to contact us!
+
+# Backend Setup
+
+## 1. Clone this repo
+
+Clone this repo, and install the packages, and install Foundry. Then, you're all set to start building your first Web3 Dapp!
+If you are having any issues or if you have any questions, please don't hesitate to contact us!
+
+## 2. Install Foundry
+
+Foundry is a smart contract development toolchain. Foundry manages your dependencies, compiles your project, runs tests, deploys, and lets you interact with the chain from the command-line and via Solidity scripts.
+
+### Why Foundry?
+
+There are other frameworks like Hardhat and Truffle if you wish to use them the main drawbacks here are that you will have to write your tests in Javascript, and you will have to communicate with your smart contracts using libraries. Using Foundry, you can write tests directly in Solidity. Furthermore, you can easily implement fuzz testing and traces that will give you exact information on what happens during a function call.
+
+### How to set up Foundry
+
+Foundry has excellent [documentation](https://book.getfoundry.sh/getting-started/installation) available on how to get started, should you want to explore for yourself.
+
+**Note:** To see if Foundry has been installed correctly, type `forge` in your terminal. If the command is not recognized, try it in a new terminal.
+
+# Coding Challenges
+
+This is a collection of coding challenges to get you warmed up. The end goal is to eventually build an NFT! The coding challenges will help you get a bit of an understanding of things. Remember that sometimes there are multiple ways to get to a solution, and do not feel ashamed to look things up online or ask questions if you are lost.
+
+The challenges will be divided into three categories:
+
+- [Backend](#backend) => Solidity, testing with Foundry
+- [Frontend](#frontend) => Build components around given web3 hooks
+- [Stretch](#stretch) => More advanced
+
+# Backend
+
+These challenges provide a way to get started with foundry, solidity and NFT's. Usually the goal is to fix an error / write a new function in a test file, solidity file, or both. Simultaneously, the challenges will be examples of how things work in Solidity, how NFT smart contracts are structured, how to test your files, and how smart contracts are deployed.
+
+## Challenge 1 - Hello World!
+
+Take a look at the `smart-contracts` folder. Here, the important sub-folders are
+
+- `scripts` => Has a file that contains the logic that is called when you run tests with `forge test` (this will run all the files)
+- `src` => Contains all the actual smart contracts.
+- `tests` => In here, you can write your test files.
+
+For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message`, and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry, this is ran before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
+
+Whew, we did a lot of stuff, but yet so little! Take a sip of your coffee. Breathe in, breathe out. When you're ready, go ahead and run your first test by typing `forge test --match-contract Challenge_1` (--match-contract is a flag that enables you to run a specific test file).
 
 # Web3 template
 
