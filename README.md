@@ -90,13 +90,11 @@ Let's add a tiny bit of spice. This time around, the goal is to write a function
 
 ## Challenge 4 - Solidity versions
 
-The goal of the challenge is the same. But what's going on here? If you run the test, Foundry will complain about compiler versions. Take a look at ```foundry.toml``` in the root folder. In the ```profile.default``` section, you will see that the solidity compiler is specified to be 0.8.17 - but the contracts in this challenge require a different compiler version! 
+The goal of the challenge is the same. But what's going on here? If you run the test, Foundry will complain about compiler versions. Take a look at `foundry.toml` in the root folder. In the `profile.default` section, you will see that the solidity compiler is specified to be 0.8.17 - but the contracts in this challenge require a different compiler version!
 
-Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says ```solc = ">=0.8.17"```. Below, we have added a new line that auto detects the compiler version. Uncomment that and save the file. Now, whenever you run a test, Foundry will auto-detect your compiler version. 
+Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says `solc = ">=0.8.17"`. Below, we have added a new line that auto detects the compiler version. Uncomment that and save the file. Now, whenever you run a test, Foundry will auto-detect your compiler version.
 
-But there is another problem. Why does ```string.concat()``` not work? Perhaps it has something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions, and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of different compiler versions in the wild, and it is therefore good to know where to check certain behaviors.** 
-
-
+But there is another problem. Why does `string.concat()` not work? Perhaps it has something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions, and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of different compiler versions in the wild, and it is therefore good to know where to check certain behaviors.**
 
 # Web3 template
 
