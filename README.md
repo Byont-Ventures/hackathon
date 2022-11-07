@@ -1,12 +1,10 @@
 # Hackathon preparation
 
-- [Frontend Setup](#frontend-setup)
-- [Backend Setup](#backend-setup)
-- [Coding Challenges](#coding-challenges)
+This readme file is a WIP and the coding challenges will be updated regularly up until the hackathon.
+ 
+During the hackathon you will get started on developing your (first) NFT! But before that, we ask you to do perform some initial steps so we can get started to developing right away!
 
-# Frontend Setup
-
-## 1. Get a test wallet
+## 1. Get a test crypto wallet
 
 For the hackathon, we recommend using Metamask. This is a crypto wallet that can be added as a [browser extension.] (https://metamask.io/)
 
@@ -25,18 +23,8 @@ Metamask will generate a seed phrase for you. Write down this seed phrase and ke
 Metamask holds your private key in the browser's data store. A private key is a string of letters and numbers and provides access to an account. In a wallet with multiple accounts, every account has a different private key. Never share your private key with anyone as they will be able to access your account and all the funds!
 
 ## 2. Clone this repo
-
-Clone this repo, and install the packages. Then, you're all set to start building your first Web3 Dapp!
-If you are having any issues or if you have any questions, please don't hesitate to contact us!
-
-# Backend Setup
-
-## 1. Clone this repo
-
-Clone this repo, and install the packages, and install Foundry. Then, you're all set to start building your first Web3 Dapp!
-If you are having any issues or if you have any questions, please don't hesitate to contact us!
-
-## 2. Install Foundry
+ 
+## 3. Install Foundry
 
 Foundry is a smart contract development toolchain. Foundry manages your dependencies, compiles your project, runs tests, deploys, and lets you interact with the chain from the command-line and via Solidity scripts.
 
@@ -49,6 +37,12 @@ There are other frameworks like Hardhat and Truffle if you wish to use them the 
 Foundry has excellent [documentation](https://book.getfoundry.sh/getting-started/installation) available on how to get started, should you want to explore for yourself.
 
 **Note:** To see if Foundry has been installed correctly, type `forge` in your terminal. If the command is not recognized, try it in a new terminal.
+
+## 4. Install other packages
+Run ```yarn install``` and wait for the process to complete.
+Then, you're all set to start building your first Web3 Dapp during the hackathon!
+
+If you are having any issues or if you have any questions, please don't hesitate to contact us!
 
 # Coding Challenges
 
@@ -97,6 +91,8 @@ Luckily, you can tell Foundry which compiler version to use. You can even have i
 But there is another problem. Why does `string.concat()` not work? Perhaps it has something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions, and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of different compiler versions in the wild, and it is therefore good to know where to check certain behaviors.**
 
 # Web3 template
+
+If you are here for the hackathon, you won't have to do anything below this point - all set!
 
 - [Web3 template](#web3-template)
 - [Smart contract](#smart-contract)
