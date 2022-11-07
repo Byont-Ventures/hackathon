@@ -17,9 +17,7 @@
     "lint": "yarn fe:lint && yarn sc:lint",
     "format": "prettier --loglevel warn --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "postbuild": "next-sitemap",
-    "postinstall": "husky install",
-    "prepare": "husky install"
+    "postbuild": "next-sitemap"
   },
   "browserslist": [
     ">0.3%",

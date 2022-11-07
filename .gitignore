@@ -57,3 +57,5 @@ lcov.info
 **/**/solc-out
 package-lock.json
 smart-contracts/libs
+smart-contracts/libs/ds-test
+smart-contracts/libs/forge-std
