@@ -2,7 +2,7 @@
 
 This readme file is a WIP and the coding challenges will be updated regularly up until the hackathon.
 
-During the hackathon you will get started on developing your (first) NFT! But before that, we ask you to do perform some initial steps so we can get started to developing right away!
+During the hackathon you will get started on developing your (first) NFT! But before that, we ask you to do perform some initial steps so we can get developing right away! We are going to make use of Byont's web3 template, this has about everything you need to get started.
 
 ## 1. Get a test crypto wallet
 
@@ -40,7 +40,8 @@ Foundry has excellent [documentation](https://book.getfoundry.sh/getting-started
 
 ## 4. Install other packages
 Run ```yarn install``` and wait for the process to complete.
-Then, you're all set to start building your first Web3 Dapp during the hackathon!
+
+Then, you're all set to start building your first Web3 Dapp during the hackathon! 
 
 If the following commands are working for you, you won't have to do anything else!
 
@@ -49,6 +50,10 @@ If the following commands are working for you, you won't have to do anything els
 ```yarn run fe:dev``` (This will give you an error in the browser if you don't have anvil running simultaneously in a separate terminal but that's ok)
 
 If you are having any issues or if you have any questions, please don't hesitate to contact us!
+
+### Why NextJS (React)?
+
+This is simply by far the most used framework used in developing front-end applications in web3. It has the largest community and a lot of different web3 frameworks available, with a lot of solutions to any problems you might encounter.
 
 # Coding Challenges
 
