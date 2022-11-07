@@ -1,14 +1,5 @@
 name: Format, Test & Lint
 
-on:
-  workflow_call:
-    secrets:
-      FONTAWESOME_NPM_AUTH_TOKEN:
-        required: true
-
-env:
-  FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
-
 jobs:
   format-test-lint:
     runs-on: ubuntu-latest
