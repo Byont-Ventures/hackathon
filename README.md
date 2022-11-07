@@ -1,7 +1,7 @@
 # Hackathon preparation
 
 This readme file is a WIP and the coding challenges will be updated regularly up until the hackathon.
- 
+
 During the hackathon you will get started on developing your (first) NFT! But before that, we ask you to do perform some initial steps so we can get started to developing right away!
 
 ## 1. Get a test crypto wallet
@@ -41,6 +41,12 @@ Foundry has excellent [documentation](https://book.getfoundry.sh/getting-started
 ## 4. Install other packages
 Run ```yarn install``` and wait for the process to complete.
 Then, you're all set to start building your first Web3 Dapp during the hackathon!
+
+If the following commands are working for you, you won't have to do anything else!
+
+```forge```
+```anvil```
+```yarn run fe:dev``` (This will give you an error in the browser if you don't have anvil running simultaneously in a separate terminal but that's ok)
 
 If you are having any issues or if you have any questions, please don't hesitate to contact us!
 
