@@ -5,7 +5,9 @@
     out = 'dist/smart-contracts/'
     cache_path = 'cache/'
     libs = ['smart-contracts/libs', 'node_modules']
-    solc = "0.8.17"
+    solc = ">=0.8.17"
+    # auto_detect_solc = true
+
 
 [profile.ci]
     src = 'smart-contracts/src'

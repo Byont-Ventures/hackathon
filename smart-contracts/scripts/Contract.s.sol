@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+pragma solidity >=0.6.0 <0.9.0;
 
 import {Script} from 'forge-std/Script.sol';
 import {Contract} from '@smart-contracts/Contract.sol';
