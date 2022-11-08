@@ -6,11 +6,11 @@ import 'forge-std/Test.sol';
 import '@smart-contracts/Challenge_4.sol';
 
 contract Challenge4 is Test {
-  Contract c;
+  // Contract c;
 
-  function setUp() public {
-    c = new Contract();
-  }
+  // function setUp() public {
+  //   c = new Contract();
+  // }
 
   /// @notice Tests that a message can be successfully added to the existing message
   /*
