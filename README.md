@@ -6,7 +6,7 @@ During the hackathon you will get started on developing your (first) NFT! But be
 
 ## 1. Get a test crypto wallet
 
-For the hackathon, we recommend using Metamask. This is a crypto wallet that can be added as a [browser extension.] (https://metamask.io/)
+For the hackathon, we recommend using Metamask. This is a crypto wallet that can be added as a [browser extension.](https://metamask.io/)
 
 You can use this wallet for testing during the hackathon. Do not store real funds on this wallet!
 
@@ -58,7 +58,7 @@ This is simply by far the most used framework used in developing front-end appli
 
 # Coding Challenges
 
-This is a collection of coding challenges to get you warmed up. The end goal is to eventually build an NFT! The coding challenges will help you get a bit of an understanding of things. Remember that sometimes there are multiple ways to get to a solution, and do not feel ashamed to look things up online or ask questions if you are lost.
+This is a collection of coding challenges to get you warmed up. The end goal is to eventually build an NFT! The coding challenges will help you get a bit of an understanding of things. Remember that sometimes there are multiple ways to get to a solution, and do not feel ashamed to look things up online or ask questions if you are lost. The hackathon is not a complete solidity tutorial - we will show you things, but if you want a deeper understanding, there are tons of good guides and videos out there for you to review later on or during the hackathon if there is time.
 
 The challenges will be divided into three categories:
 
@@ -101,6 +101,34 @@ The goal of the challenge is the same. But what's going on here? If you run the 
 Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says `solc = ">=0.8.17"`. Below, we have added a new line that auto detects the compiler version. Uncomment that and save the file. Now, whenever you run a test, Foundry will auto-detect your compiler version.
 
 But there is another problem. Why does `string.concat()` not work? Perhaps it has something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions, and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of different compiler versions in the wild, and it is therefore good to know where to check certain behaviors.**
+
+## Challenge 5 - NFT Contract
+
+From here on outward it might feel you are being thrown into the deep end a bit - but that's ok. Don't be intimidated by the somewhat larger contracts and tests. They contain some new things, but they are documented for you to review at your own pace, with some useful links. You don't have to immediately understand everything. The goal here is to get your hands dirty with the main functionalities of an NFT smart contract.
+
+We will be listing the NFT challenges first. Below them are useful pieces of information that will help you better understand NFT smart contracts, IPFS and solidity.
+
+Take a look at `Challenge_5.sol`. Roughly speaking, you can make out the following components:
+
+- [imports](#solidity libraries and openzeppelin)
+- [constructor](#constructors)
+- variables / constants / mappings to keep track of things
+- [tokenURI](#tokenURI)
+- [mint](#mint functions)
+
+Once you have skimmed through the contract and gotten a general idea for yourself, let's continue on to the test file. Go ahead and open up `Challenge_5.t.sol`
+
+Generally, the structure here is as follows:
+
+- setup
+- specific tests with some new cool things like cheat codes
+- fuzz tests
+
+Once you've wrapped your head around the structure, let's go ahead and run the test to see what happens.
+
+`forge test --match-contract Challenge5 -vv`
+
+You might have noticed the console.log() statements appearing, this has to do with the -vv flag (for verbosity). If you'd like, try decreasing / increasing the amount of v's and see what happens.
 
 # Web3 template
 
