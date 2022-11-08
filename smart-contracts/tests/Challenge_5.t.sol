@@ -5,7 +5,6 @@ import 'forge-std/Test.sol';
 
 import '@smart-contracts/Challenge_5.sol';
 
-/// @dev TODO: add documentation
 contract Challenge5 is Test {
   using Strings for uint256;
   Contract c;
@@ -16,18 +15,25 @@ contract Challenge5 is Test {
     c.setBaseURI(baseURI);
   }
 
-  function testBaseUri(uint _id) public {
+  /// @notice Checks that the tokenURI is properly constructed
+  /// @param _id The token id
+  function testTokenUri(uint _id) public {
     assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString()));
   }
 
+  /// @notice Test minting 1 from Contract Account (CA)
+  /// @dev vm.expectRevert() expects the line below to revert with the message params
   function testMintCA() public {
     vm.expectRevert('No minting from contract allowed');
-    c.mint(100);
+    c.mint(1);
   }
 
+  /// @notice Test minting 1 from Externally Owned Account (EOA)
+  /// @dev vm.startPrank() and the like are Foundry cheat codes
+  /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
   function testMintEOA() public {
     uint initialSupply = c.totalSupply();
-    uint amount = 10;
+    uint amount = 1;
     vm.startPrank(msg.sender);
     vm.expectRevert();
     c.ownerOf(0);
@@ -38,6 +44,9 @@ contract Challenge5 is Test {
     vm.stopPrank();
   }
 
+  /// @notice Fuzz test (within vm assumption constraints) minting max amount allowed
+  /// @param amount The amount to mint
+  /// @dev More about fuzz testing: https://book.getfoundry.sh/forge/fuzz-testing?highlight=fuzz%20testing#fuzz-testing
   function testMintMax(uint amount) public {
     uint maxSupply = c.maxSupply();
     vm.assume(amount > 0);
@@ -48,6 +57,8 @@ contract Challenge5 is Test {
     vm.stopPrank();
   }
 
+  /// @notice Fuzz test minting over max amount allowed
+  /// @param amount The amount to mint
   function testMintOverMax(uint amount) public {
     uint maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
@@ -57,6 +68,7 @@ contract Challenge5 is Test {
     vm.stopPrank();
   }
 
+  /// @notice Test minting 0 NFT's
   function testMintZero() public {
     vm.startPrank(msg.sender);
     vm.expectRevert('Amount cannot be zero');
