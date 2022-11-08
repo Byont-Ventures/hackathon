@@ -23,7 +23,7 @@ Metamask will generate a seed phrase for you. Write down this seed phrase and ke
 Metamask holds your private key in the browser's data store. A private key is a string of letters and numbers and provides access to an account. In a wallet with multiple accounts, every account has a different private key. Never share your private key with anyone as they will be able to access your account and all the funds!
 
 ## 2. Clone this repo
- 
+
 ## 3. Install Foundry
 
 Foundry is a smart contract development toolchain. Foundry manages your dependencies, compiles your project, runs tests, deploys, and lets you interact with the chain from the command-line and via Solidity scripts.
@@ -39,15 +39,16 @@ Foundry has excellent [documentation](https://book.getfoundry.sh/getting-started
 **Note:** To see if Foundry has been installed correctly, type `forge` in your terminal. If the command is not recognized, try it in a new terminal.
 
 ## 4. Install other packages
-Run ```yarn install``` and wait for the process to complete.
 
-Then, you're all set to start building your first Web3 Dapp during the hackathon! 
+Run `yarn install` and wait for the process to complete.
+
+Then, you're all set to start building your first Web3 Dapp during the hackathon!
 
 If the following commands are working for you, you won't have to do anything else!
 
-```forge```
-```anvil```
-```yarn run fe:dev``` (This will give you an error in the browser if you don't have anvil running simultaneously in a separate terminal but that's ok)
+`forge`
+`anvil`
+`yarn run fe:dev` (This will give you an error in the browser if you don't have anvil running simultaneously in a separate terminal but that's ok)
 
 If you are having any issues or if you have any questions, please don't hesitate to contact us!
 

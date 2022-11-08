@@ -17,7 +17,7 @@ contract Challenge5 is Test {
 
   /// @notice Checks that the tokenURI is properly constructed
   /// @param _id The token id
-  function testTokenUri(uint _id) public {
+  function testTokenUri(uint256 _id) public {
     assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString()));
   }
 
@@ -32,8 +32,8 @@ contract Challenge5 is Test {
   /// @dev vm.startPrank() and the like are Foundry cheat codes
   /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
   function testMintEOA() public {
-    uint initialSupply = c.totalSupply();
-    uint amount = 1;
+    uint256 initialSupply = c.totalSupply();
+    uint256 amount = 1;
     vm.startPrank(msg.sender);
     vm.expectRevert();
     c.ownerOf(0);
@@ -47,8 +47,8 @@ contract Challenge5 is Test {
   /// @notice Fuzz test (within vm assumption constraints) minting max amount allowed
   /// @param amount The amount to mint
   /// @dev More about fuzz testing: https://book.getfoundry.sh/forge/fuzz-testing?highlight=fuzz%20testing#fuzz-testing
-  function testMintMax(uint amount) public {
-    uint maxSupply = c.maxSupply();
+  function testMintMax(uint256 amount) public {
+    uint256 maxSupply = c.maxSupply();
     vm.assume(amount > 0);
     vm.assume(amount < maxSupply);
     vm.startPrank(msg.sender);
@@ -59,8 +59,8 @@ contract Challenge5 is Test {
 
   /// @notice Fuzz test minting over max amount allowed
   /// @param amount The amount to mint
-  function testMintOverMax(uint amount) public {
-    uint maxSupply = c.maxSupply();
+  function testMintOverMax(uint256 amount) public {
+    uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
     vm.startPrank(msg.sender);
     vm.expectRevert('Amount exceeds max supply');
@@ -75,5 +75,4 @@ contract Challenge5 is Test {
     c.mint(0);
     vm.stopPrank();
   }
-
 }
