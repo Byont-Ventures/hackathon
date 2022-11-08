@@ -24,6 +24,7 @@ contract Challenge5 is Test {
   /// @notice Test minting 1 from Contract Account (CA)
   /// @dev vm.expectRevert() expects the line below to revert with the message params
   function testMintCA() public {
+    console.log('Minting from contract...');
     vm.expectRevert('No minting from contract allowed');
     c.mint(1);
   }
@@ -32,6 +33,7 @@ contract Challenge5 is Test {
   /// @dev vm.startPrank() and the like are Foundry cheat codes
   /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
   function testMintEOA() public {
+    console.log('Minting from EOA...');
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
     vm.startPrank(msg.sender);
