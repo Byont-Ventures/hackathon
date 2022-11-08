@@ -2,7 +2,7 @@
 
 This readme file is a WIP and the coding challenges will be updated regularly up until the hackathon.
 
-During the hackathon you will get started on developing your (first) NFT! But before that, we ask you to do perform some initial steps so we can get developing right away! We are going to make use of Byont's web3 template, this has about everything you need to get started.
+During the hackathon you will get started on developing your (first) NFT! But before that, we ask you to do perform some initial steps so we can get developing right away! We are also going to make use of Byont's web3 template, this has about everything you need to get started.
 
 ## 1. Get a test crypto wallet
 
@@ -22,9 +22,54 @@ Metamask will generate a seed phrase for you. Write down this seed phrase and ke
 
 Metamask holds your private key in the browser's data store. A private key is a string of letters and numbers and provides access to an account. In a wallet with multiple accounts, every account has a different private key. Never share your private key with anyone as they will be able to access your account and all the funds!
 
-## 2. Clone this repo
+## 2. Get some test ETH
 
-## 3. Install Foundry
+It would be cool to eventually deploy some NFT's to the test network so you can see them for yourself!
+
+Ethereum has several testing networks that use fake ETH. We will be using the Goerli test network since that is being used by [Opensea](https://opensea.io/), an NFT marketplace.
+
+**Important: It is recommended you get at least 0.3 test ETH!** The network is congested and that means transaction fees are higher at this time.
+
+There are generally two ways to get test ETH:
+
+- Regular faucets
+- Mining yourself using POW (proof of work) faucets
+
+### Regular faucet
+
+1. Go to https://goerlifaucet.com/, and create an alchemy account. It doesn't matter what you put in there, you just need an alchemy account to claim the test ETH and it's free.
+
+2. Open up metamask, type your password and copy and paste your wallet address into the input field. This tells the faucet "Hey, send the funds over to my address!".
+
+3. Click "Send me ETH". In a short while, the funds should appear in your wallet. You will have to swap to the Goerli testnet in Metamask, though
+
+4. In Metamask, click on Settings > Advanced > Show test networks. Then, click on Goerli. Your funds should appear soon!
+
+### POW faucet
+
+1. Go to https://goerli-faucet.pk910.de/ (or search for Goerli POW faucet)
+2. Enter your wallet address, and start mining! **Note:** You need to mine for a certain amount of time because there is a minimum claim amount. Make sure you have the minimum claim amount before you claim your funds.
+3. When you've had enough, click "Stop mining and claim rewards"
+4. Verify that you are a human, and then your funds should appear shortly.
+
+**Tip**: If you have the resources, you can mine faster by increasing the amount of workers. You can increase this beyond what is initially shown as the max i.e. if it says 5/5 you can still increase the max workers if your machine allows it.
+
+Also, feel free to try out other faucets that might be faster.
+
+## 2. Install Brave Browser
+
+[Brave Browser](https://brave.com/) is a privacy-focused browser, but the main reason we are using this is because it is the easiest way to view files on [IPFS](https://docs.ipfs.tech/concepts/what-is-ipfs/).
+
+A small test:
+
+1. Open up Brave Browser
+2. Paste the following link => `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
+3. Choose gateway (not local node)
+4. If all went well, you should now be viewing the image of a [Bored Ape NFT](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369)
+
+## 3. Clone this repo
+
+## 4. Install Foundry
 
 Foundry is a smart contract development toolchain. Foundry manages your dependencies, compiles your project, runs tests, deploys, and lets you interact with the chain from the command-line and via Solidity scripts.
 
@@ -38,7 +83,7 @@ Foundry has excellent [documentation](https://book.getfoundry.sh/getting-started
 
 **Note:** To see if Foundry has been installed correctly, type `forge` in your terminal. If the command is not recognized, try it in a new terminal.
 
-## 4. Install other packages
+## 5. Install other packages
 
 Run `yarn install` and wait for the process to complete.
 
