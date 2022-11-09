@@ -82,3 +82,50 @@ Your smart contract provides a way to tell Opensea which image belongs to which 
 
 ### Mint Functions
 Minting is the core of getting tokens out there on the blockchain. NFT's are Non Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A.
+
+As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the token ID starts at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT. 
+
+### IPFS, Opensea and Metadata
+Previously, as a test, we pasted an IPFS link to an NFT image of a Bored Ape into our browser. We know that IPFS is used for decentralized storage, and that we can store metadata and images on IPFS. Then, we can construct the IPFS token URIs in our smart contracts. When Opensea looks at your NFT smart contract, it will retrieve the data using ```tokenUri()```. Usually, the first thing returned is the metadata.
+
+For example, paste this link into your browser: ```ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2369```
+
+You will see a JSON object with some values. This is the NFT metadata. It contains:
+
+- image => the ipfs uri to the actual NFT image
+- attributes => array containing a list of objects with key-value pairs that correspond to the trait-type and the values.
+
+Feel free to compare it to the [metadata displayed on Opensea](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369).
+
+For more information on how to structure your metadata, check out the [Opensea metadata standards](https://docs.opensea.io/docs/metadata-standards).
+
+### Etherscan
+
+So how did we get the metadata link? We could, just like Opensea, call the ```tokenURI()``` function on the contract. But then, how do we know the contract address of an NFT? There are multiple ways to go about this. Let's try to get the contract address of [Bored Ape Yacht Club](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369) first. There are two ways to get the contract address:
+
+- Through the URL => ```opensea.io/ethereum/contractAddress/tokenId```
+- Through "Details" => Dropdown on the left side, below the metadata and "About Bored Ape Yacht Club" sections.
+
+Let's click on the [contract address](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d).
+
+It appears we have landed on a website with a lot of data. Welcome to Etherscan. Etherscan is a block explorer for the Ethereum blockchain. It allows users to easily search and browse transactions and blocks. It also provides information about each transaction and block, such as the hash and timestamp.
+
+The average person doesn't have the time to read through an entire blockchain to find out what's going on. 
+A block explorer solves this problem by making it easy for people to search and browse the blockchain. They can see all the transactions that have taken place and how much crypto is owned by specific wallet addresses.
+
+Additionally, most explorers will display the addresses of both the sender and receiver as well as the amount of “gas” used in each transaction. Gas is simply the amount of ETH used to pay for a transaction.
+
+You can think of Etherscan as the Google of Ethereum. Just as you would use Google to search the internet, you can use Etherscan to search the Ethereum blockchain.
+
+If you paste a contract address in the top right search bar, you will land on the smart contract page and you will be able to see all kinds of data, and even interact with the smart contract by connecting your wallet. So don't be fooled if your front enders create some "security" measures that would prevent people from minting NFTs on the front end. When there is a will, there is a way. Either by using their own contracts or by simply going to Etherscan. 
+
+Now, go ahead and click on the "Contract" tab. Below that, you will see three tabs called "Code", "Read Contract" and "Write Contract".
+
+- Code => All the smart contract code. In here, you can also get an idea of how NFT's were made back in the day.
+- Read Contract => Interact with all the read only functions of the smart contract, for example ```tokenUri()```.
+- Write Contract => Interact with all the write functions of the smart contract (Requires wallet connection), for example minting.
+
+
+
+
+
