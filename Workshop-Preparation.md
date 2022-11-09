@@ -1,88 +1,115 @@
-# Backend Challenges
+# Workshop preparation
 
-These challenges provide a way to get started with Foundry, Solidity, and NFTs. Usually, the goal is to fix an error / write a new function in a test file, solidity file, or both. Simultaneously, the challenges will be examples of how things work in Solidity, what the structure of an NFT smart contract looks like, how to test your files, and how to deploy smart contracts.
+During the workshop, you will start creating your (first) NFT! But before that, we ask you to perform some initial steps so you can start developing straight away as the workshop starts! We will also use Byont's web3 template; this has just about everything you need to get started.
 
-## Challenge 1 - Hello World!
+## 1. Install Brave Browser
 
-Take a look at the `smart-contracts` folder. Here, the important sub-folders are
+[Brave Browser](https://brave.com/) is a privacy-focused browser, but the main reason we are using this is that it is the easiest way to view files on [IPFS](https://docs.ipfs.tech/concepts/what-is-ipfs/).
 
-- `scripts` => Has a file that contains the logic that is called when you run tests with `forge test` (this will run all the files)
-- `src` => Contains all the actual smart contracts.
-- `tests` => You can write your test files here.
+A small test:
 
-For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message` and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry; this is run before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
+1. Open up Brave Browser
+2. Paste the following link => `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
+3. Choose "gateway" (not "local node")
+4. If all went well, you should now be viewing the image of a [Bored Ape NFT](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369)
 
-All right! Are you ready to get started? Take a sip of your coffee. Breathe in, breathe out. When you're ready, go ahead and run your first test by typing `forge test --match-contract Challenge1` (--match-contract is a flag that enables you to run a specific test contract). Sit back, and enjoy the dopamine of that green checkmark.
+## 2. Get a test crypto wallet
 
-## Challenge 2 - Hello???
+For the workshop, we recommend using Metamask, a crypto wallet that can you can add as a [browser extension.](https://metamask.io/)
 
-First things first - to make testing easier, from now on, code has been commented out. Otherwise, the compiler will complain about incomplete functions and the like. So please take a look at the test file(s) and contracts of this challenge, and uncomment them!
+You can use this wallet for testing during the workshop. We recommend you keep your development and personal wallet separate; in other words, we recommend you not store real funds on it.
 
-The message in the contract `Challenge_2.sol` has not been initialized yet. The goal is to give it the value 'Hello World' using a setter function! Well, the function is not built yet, but don't worry; there are some valuable hints in the contract and test files to help you build.
+### Wallet password
 
-## Challenge 3 - Hello + World
+At some point, the wallet will ask you to configure a password to unlock your wallet in your browser. Your password, however, is **not** the real key to your wallet!
 
-Once again, remember to uncomment the challenge code. You can leave the previous challenge code uncommented - provided everything works.
+### Seed phrase
 
-Let's add a tiny bit of spice. This time, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the foundry books to see how it's done.
+Metamask will generate a seed phrase for you. Please write down this seed phrase and keep it secure. If someone has access to your seed phrase, they will be able to access your wallet, all the accounts within it, and, therefore, all the funds! Consequently, it is best to get rid of this wallet after the workshop and create a new one in a more secure environment. Only use this one for testing purposes.
 
-## Challenge 4 - Solidity versions
+### Private key
 
-The goal of the challenge is the same. But what's going on here? If you run the test, Foundry will complain about compiler versions. Take a look at `foundry.toml` in the root folder. In the `profile.default` section, you will see that the solidity compiler is specified to be 0.8.17 - but the contracts in this challenge require a different compiler version!
+Metamask holds your private key in the browser's data store. A private key is a randomly-generated number that gives a user control over all data and funds linked with the corresponding Ethereum address, which is generated from the Keccak-256 hash of the public key. This includes access to contracts that authorize the address. The private key is used to create signatures proving data or funds' ownership in a transaction. Therefore, never share your private key with anyone, as they will be able to access your account and all the funds!
 
-Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says `solc = ">=0.8.17"`. Below, we have added a new line that auto-detects the compiler version. Uncomment that and save the file. Now, Foundry will auto-detect your compiler version whenever you run a test.
+## 3. Get some test ETH
 
-But there is another problem. Why does `string.concat()` not work? It may have something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of different compiler versions in the wild, and it is, therefore good to know where to check certain behaviors.**
+This step is recommended but optional because as you develop your NFT contract, it would also be nice to experience the deployment and interact with it on a real (test) network.
 
-## Challenge 5 - NFT Contract
+Ethereum has several testing networks where you can get free ETH. This ETH (unfortunately) is not transferable to the mainnet, so it is solely for development purposes. We will use the Goerli test network since, at the time of writing, [Opensea](https://opensea.io/), an NFT marketplace, currently uses that.
 
-From here on outward, it might feel you are being thrown into the deep end a bit - but that's ok. Don't be intimidated by the somewhat larger contracts and tests. They contain some new things, but they are documented for you to review at your own pace, with some useful links. You don't have to understand everything immediately. The goal here is to get your hands dirty with the main functionalities of an NFT smart contract.
+To check which testnets Opensea supports, or to check testnet NFT's on Opensea, go [here](https://testnets.opensea.io/).
 
-Below is useful information that will help you better understand NFT smart contracts, IPFS and Solidity. Read this at your own leisure; then, we can start coding again.
+There are generally two ways to get test ETH:
 
-Take a look at `Challenge_5.sol`. Roughly speaking, you can make out the following components:
+- Regular faucets
+- Mining yourself using POW (proof of work) faucets
 
-- [imports](#solidity-libraries-and-openzeppelin)
-- [constructor](#constructors)
-- variables/constants/mappings to keep track of things
-- [tokenURI](#tokenURI)
-- [mint](#mint-functions)
+**Important: We recommend that you get at least 0.3 test ETH!** The network is congested, which means transaction fees are high now.
 
-Once you have skimmed through the contract and gotten a general idea for yourself, let's continue on to the test file. Go ahead and open up `Challenge_5.t.sol`
+### Regular faucet
 
-Generally, the structure here is as follows:
+1. Go to https://goerlifaucet.com/, and create an alchemy account. It doesn't matter what you put in there, the reason you need an alchemy account, for now, is to claim the test ETH, and it's free.
 
-- setup
-- specific tests with some new cool things like cheat codes
-- fuzz tests
+2. Open up metamask, type your password and copy and paste your wallet address into the input field. That tells the faucet, "Hey, send the funds to my address!".
 
-Once you've wrapped your head around the structure, let's go ahead and run the test to see what happens.
+3. Click "Send me ETH." In a short while, the funds should appear in your wallet. You will have to swap to the Goerli testnet in Metamask, though
 
-`forge test --match-contract Challenge5 -vv`
+4. In Metamask, click on Settings > Advanced > Show test networks. Then, click on "Goerli." Your funds should appear soon!
 
-You might have noticed the console.log() statements appearing; this has to do with the -vv flag (for verbosity). If you'd like, try decreasing/increasing the number of v's and see what happens.
+### POW faucet
 
-# Solidity libraries and openzeppelin
+1. Go to https://goerli-faucet.pk910.de/ (or search for Goerli POW faucet)
+2. Enter your wallet address, and start mining! **Note:** You need to mine for a certain amount of time because there is a minimum claim amount. Make sure you have the minimum claim amount before you claim your funds.
+3. When you've had enough, click "Stop mining and claim rewards."
+4. Verify that you are a human, and then your funds should appear shortly.
 
-In Solidity, you can import libraries that will make life easier. OpenZeppelin is a company that provides free standardized contract libraries to use, such as ERC721. These contracts are firmly audited, meaning they are generally secure to implement in your contracts.
+**Tip**: If you have the resources, you can mine faster by increasing the number of workers. You can increase this beyond what is initially shown as the max, i.e., if it says 5/5, you can still increase the max workers if your machine allows it.
 
-ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its functionalities. For the workshop, ERC721 will suffice.
+## Other faucets links
+We recommend (but it is optional) that you try out other faucets as well, [this site](https://faucetlink.to/goerli) has plenty of faucets you can try out. Some might be down; others might require some verification method, such as a tweet.
 
-- https://docs.openzeppelin.com/contracts/3.x/
-- https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
+## 3. Clone this repo and install VSCode extensions
 
-# Constructors
+```git clone https://github.com/Byont-Ventures/rtl-talpa-template```
 
-A constructor is a special function that is used to initialize state variables. An ERC721 contract, for example, requires two constructor parameters called "Name" and "Symbol," i.e., "Ethereum" and "ETH." Also, in this case, we set our max allowed supply of NFTs via the constructor.
+**Note:** We use [VSCode](https://code.visualstudio.com/) for development. There are other free-to-use tools, but we can only provide limited support if you decide to use those.
 
-When you deploy a smart contract, you pass these arguments to the constructor.
+If you open this repo in VSCode, you should get a suggestion to install a set of extensions; we recommend you do so.
 
-# TokenURI
+## 4. Setting up your development environment
 
-If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how on earth do they get the NFT images and metadata? These images are often stored on-chain, on IPFS, or even in the cloud. As on-chain storage is expensive, images are often stored off-chain.
+### Why NextJS (React)?
 
-Your smart contract provides a way to tell Opensea which image belongs to which NFT by telling it where the files/images are stored through a function called `tokenURI()`. Opensea looks for this function in your smart contract and parses the return value.
+NextJS and React are simply by far the most used frameworks used in developing front-end applications in Web3. React has the largest community and a lot of different web3 frameworks available, with many solutions to any problems you might encounter.
 
-# Mint Functions
+### Why Foundry?
 
-Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A.
+There are other frameworks like Hardhat and Truffle if you wish to use them. The main drawbacks here are that you will have to write your tests in Javascript, and you will have to communicate with your smart contracts using libraries. Using Foundry, you can write tests directly in Solidity. Furthermore, you can easily implement fuzz testing and traces that will give you exact information on what happens during a function call.
+
+### Install Foundry
+
+Foundry is a smart contract development toolchain. Foundry manages your dependencies, compiles your project, runs tests, deploys, and lets you interact with the chain from the command line and via Solidity scripts.
+
+To install Foundry, please refer to their excellent [documentation](https://book.getfoundry.sh/getting-started/installation) on how to get started.
+
+**Note:** To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
+
+### Install other packages using yarn (includes NextJS)
+
+We recommend installing the packages using the yarn package manager version ```1.22.19```.
+
+```
+npm install --global yarn@1.22.19
+```
+
+Run `yarn install` and wait for the process to complete.
+
+Then, you're all set to start building your first Web3 Dapp during the workshop!
+
+If the following commands work for you, you won't have to do anything else!
+
+`forge`
+`anvil`
+`yarn run fe:dev` (This will give you an error in the browser if you don't have anvil running simultaneously in a separate terminal, but that's ok)
+
+If you are having any issues or if you have any questions, please don't hesitate to contact us!
