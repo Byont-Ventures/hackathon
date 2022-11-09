@@ -1,6 +1,6 @@
 # Backend Challenges
 
-These challenges provide a way to get started with foundry, solidity and NFT's. Usually the goal is to fix an error / write a new function in a test file, solidity file, or both. Simultaneously, the challenges will be examples of how things work in Solidity, how NFT smart contracts are structured, how to test your files, and how smart contracts are deployed.
+These challenges provide a way to get started with Foundry, Solidity, and NFTs. Usually, the goal is to fix an error / write a new function in a test file, solidity file, or both. Simultaneously, the challenges will be examples of how things work in Solidity, how NFT smart contracts are structured, how to test your files, and how smart contracts are deployed.
 
 ## Challenge 1 - Hello World!
 
@@ -10,19 +10,19 @@ Take a look at the `smart-contracts` folder. Here, the important sub-folders are
 - `src` => Contains all the actual smart contracts.
 - `tests` => In here, you can write your test files.
 
-For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message`, and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry, this is ran before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
+For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message` and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry; this is run before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
 
 Whew, we did a lot of stuff, but yet so little! Take a sip of your coffee. Breathe in, breathe out. When you're ready, go ahead and run your first test by typing `forge test --match-contract Challenge1` (--match-contract is a flag that enables you to run a specific test contract). Sit back, and enjoy the dopamine of that green checkmark.
 
 ## Challenge 2 - Hello???
 
-First things first - to make testing easier, from now on, stuff has been commented out. Otherwise the compiler is going to complain about incomplete functions and the like. So take a look at the test files and the contracts, and uncomment it!
+First things first - to make testing easier, from now on, stuff has been commented out. Otherwise, the compiler is going to complain about incomplete functions and the like. So take a look at the test files and the contracts, and uncomment them for this challenge!
 
-The message in the contract `Challenge_2.sol` has not been initialized yet. The goal give it the value 'Hello World' using a setter function! Well... The function is not built yet, but don't worry, there are some useful hints in the contract and test files to help you build.
+The message in the contract `Challenge_2.sol` has not been initialized yet. The goal is to give it the value 'Hello World' using a setter function! Well, the function is not built yet, but don't worry; there are some valuable hints in the contract and test files to help you build.
 
 ## Challenge 3 - Hello + World
 
-Once again, don't forget to uncomment the challenge code. You can leave the previous challenge code uncommented - provided everything works, of course.
+Once again, remember to uncomment the challenge code. You can leave the previous challenge code uncommented - provided everything works.
 
 Let's add a tiny bit of spice. This time around, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the foundry books to see how it's done.
 
@@ -30,25 +30,25 @@ Let's add a tiny bit of spice. This time around, the goal is to write a function
 
 The goal of the challenge is the same. But what's going on here? If you run the test, Foundry will complain about compiler versions. Take a look at `foundry.toml` in the root folder. In the `profile.default` section, you will see that the solidity compiler is specified to be 0.8.17 - but the contracts in this challenge require a different compiler version!
 
-Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says `solc = ">=0.8.17"`. Below, we have added a new line that auto detects the compiler version. Uncomment that and save the file. Now, whenever you run a test, Foundry will auto-detect your compiler version.
+Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says `solc = ">=0.8.17"`. Below, we have added a new line that auto-detects the compiler version. Uncomment that and save the file. Now, Foundry will auto-detect your compiler version whenever you run a test.
 
-But there is another problem. Why does `string.concat()` not work? Perhaps it has something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions, and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of different compiler versions in the wild, and it is therefore good to know where to check certain behaviors.**
+But there is another problem. Why does `string.concat()` not work? It may have something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of different compiler versions in the wild, and it is, therefore, good to know where to check certain behaviors.**
 
 ## Challenge 5 - NFT Contract
 
-From here on outward it might feel you are being thrown into the deep end a bit - but that's ok. Don't be intimidated by the somewhat larger contracts and tests. They contain some new things, but they are documented for you to review at your own pace, with some useful links. You don't have to immediately understand everything. The goal here is to get your hands dirty with the main functionalities of an NFT smart contract.
+From here on outward, it might feel you are being thrown into the deep end a bit - but that's ok. Don't be intimidated by the somewhat larger contracts and tests. They contain some new things, but they are documented for you to review at your own pace, with some useful links. You don't have to understand everything immediately. The goal here is to get your hands dirty with the main functionalities of an NFT smart contract.
 
-We will be listing the NFT challenges first. Below them are useful pieces of information that will help you better understand NFT smart contracts, IPFS and solidity.
+We will be listing the NFT challenges first. Below them are useful pieces of information that will help you better understand NFT smart contracts, IPFS and Solidity.
 
 Take a look at `Challenge_5.sol`. Roughly speaking, you can make out the following components:
 
 - [imports](#solidity-libraries-and-openzeppelin)
 - [constructor](#constructors)
-- variables / constants / mappings to keep track of things
+- variables/constants/mappings to keep track of things
 - [tokenURI](#tokenURI)
 - [mint](#mint-functions)
 
-Once you have skimmed through the contract and gotten a general idea for yourself, let's continue on to the test file. Go ahead and open up `Challenge_5.t.sol`
+Once you have skimmed through the contract and gotten a general idea for yourself, let's continue to the test file. Go ahead and open up `Challenge_5.t.sol`
 
 Generally, the structure here is as follows:
 
@@ -60,40 +60,45 @@ Once you've wrapped your head around the structure, let's go ahead and run the t
 
 `forge test --match-contract Challenge5 -vv`
 
-You might have noticed the console.log() statements appearing, this has to do with the -vv flag (for verbosity). If you'd like, try decreasing / increasing the amount of v's and see what happens.
+You might have noticed the console.log() statements appearing; this has to do with the -vv flag (for verbosity). If you'd like, try decreasing/increasing the number of v's and see what happens.
 
 ### Solidity libraries and openzeppelin
-In solidity, you can import libraries that will make life easier. OpenZeppelin is a company that provides free standardized contract libraries to use, such as ERC721. These contracts are firmly audited, meaning they are generally secure to implement in your contracts.
 
-ERC721 a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin, and ERC721A by Azuki, each with their own set of functionalities. For the workshop, ERC721 NFT's will suffice.
+In Solidity, you can import libraries that will make life easier. OpenZeppelin is a company that provides free standardized contract libraries to use, such as ERC721. These contracts are firmly audited, meaning they are generally secure to implement in your contracts.
 
-* https://docs.openzeppelin.com/contracts/3.x/
-* https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
+ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its own set of functionalities. For the workshop, ERC721 NFTs will suffice.
+
+- https://docs.openzeppelin.com/contracts/3.x/
+- https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
 
 ### Constructors
-A constructor is a special function that is used to initialize state variables. An ERC721 contract, for example, requires two constructor parameters called "Name" and "Symbol", i.e. "Ethereum" and "ETH". Also, in this case, we set our max allowed supply of NFT's via the constructor. 
+
+A constructor is a special function that is used to initialize state variables. An ERC721 contract, for example, requires two constructor parameters called "Name" and "Symbol," i.e., "Ethereum" and "ETH." Also, in this case, we set our max allowed supply of NFTs via the constructor.
 
 When you deploy a smart contract, you will pass these arguments to the constructor.
 
 ### TokenURI
-If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how on earth do they get the NFT images and metadata? Well, often times these images are stored on chain, on IPFS, or even in the cloud. As on-chain storage is expensive, images are more often than not stored off chain. 
 
-Your smart contract provides a way to tell Opensea which image belongs to which NFT, and where the files are stored through a function called ```tokenURI()```. Opensea simply looks for this function in your smart contract, and parses the return value.
+If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how on earth do they get the NFT images and metadata? Well, often times these images are stored on chain, on IPFS, or even in the cloud. As on-chain storage is expensive, images are more often than not stored off-chain.
+
+Your smart contract provides a way to tell Opensea which image belongs to which NFT and where the files are stored through a function called `tokenURI()`. Opensea simply looks for this function in your smart contract and parses the return value.
 
 ### Mint Functions
-Minting is the core of getting tokens out there on the blockchain. NFT's are Non Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A.
 
-As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the token ID starts at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT. 
+Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A.
 
-### IPFS, Opensea and Metadata
-Previously, as a test, we pasted an IPFS link to an NFT image of a Bored Ape into our browser. We know that IPFS is used for decentralized storage, and that we can store metadata and images on IPFS. Then, we can construct the IPFS token URIs in our smart contracts. When Opensea looks at your NFT smart contract, it will retrieve the data using ```tokenUri()```. Usually, the first thing returned is the metadata.
+As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the token ID starts at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT.
 
-For example, paste this link into your browser: ```ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2369```
+### IPFS, Opensea, and Metadata
+
+Previously, as a test, we pasted an IPFS link to an NFT image of a Bored Ape into our browser. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. Then, we can construct the IPFS token URIs in our smart contracts. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenUri()`. Usually, the first thing returned is the metadata.
+
+For example, paste this link into your browser: `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2369`
 
 You will see a JSON object with some values. This is the NFT metadata. It contains:
 
-- image => the ipfs uri to the actual NFT image
-- attributes => array containing a list of objects with key-value pairs that correspond to the trait-type and the values.
+- image => the IPFS URI to the actual NFT image
+- attributes => array containing a list of objects with key-value pairs corresponding to the trait type and the values.
 
 Feel free to compare it to the [metadata displayed on Opensea](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369).
 
@@ -101,31 +106,26 @@ For more information on how to structure your metadata, check out the [Opensea m
 
 ### Etherscan
 
-So how did we get the metadata link? We could, just like Opensea, call the ```tokenURI()``` function on the contract. But then, how do we know the contract address of an NFT? There are multiple ways to go about this. Let's try to get the contract address of [Bored Ape Yacht Club](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369) first. There are two ways to get the contract address:
+So how did we get the metadata link? We could, just like Opensea, call the `tokenURI()` function on the contract. But then, how do we know the contract address of an NFT? There are multiple ways to go about this. Let's try to get the contract address of [Bored Ape Yacht Club](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369) first. There are two ways to get the contract address:
 
-- Through the URL => ```opensea.io/ethereum/contractAddress/tokenId```
+- Through the URL => `opensea.io/ethereum/contractAddress/tokenId`
 - Through "Details" => Dropdown on the left side, below the metadata and "About Bored Ape Yacht Club" sections.
 
 Let's click on the [contract address](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d).
 
-It appears we have landed on a website with a lot of data. Welcome to Etherscan. Etherscan is a block explorer for the Ethereum blockchain. It allows users to easily search and browse transactions and blocks. It also provides information about each transaction and block, such as the hash and timestamp.
+We have landed on a website with a lot of data. Welcome to Etherscan. Etherscan is a block explorer for the Ethereum blockchain. It allows users to search and browse transactions and blocks easily. It also provides information about each transaction and block, such as the hash and timestamp.
 
-The average person doesn't have the time to read through an entire blockchain to find out what's going on. 
+The average person doesn't have the time to read through an entire blockchain to find out what's going on.
 A block explorer solves this problem by making it easy for people to search and browse the blockchain. They can see all the transactions that have taken place and how much crypto is owned by specific wallet addresses.
 
-Additionally, most explorers will display the addresses of both the sender and receiver as well as the amount of “gas” used in each transaction. Gas is simply the amount of ETH used to pay for a transaction.
+Additionally, most explorers will display the addresses of both the sender and receiver and the amount of “gas” used in each transaction. Gas is simply the amount of ETH used to pay for a transaction.
 
 You can think of Etherscan as the Google of Ethereum. Just as you would use Google to search the internet, you can use Etherscan to search the Ethereum blockchain.
 
-If you paste a contract address in the top right search bar, you will land on the smart contract page and you will be able to see all kinds of data, and even interact with the smart contract by connecting your wallet. So don't be fooled if your front enders create some "security" measures that would prevent people from minting NFTs on the front end. When there is a will, there is a way. Either by using their own contracts or by simply going to Etherscan. 
+If you paste a contract address in the top right search bar, you will land on the smart contract page, and you will be able to see all kinds of data and even interact with the smart contract by connecting your wallet. So don't be fooled if your front enders create some "security" measures that would prevent people from minting NFTs on the front end. When there is a will, there is a way. Either by using their own contracts or by simply going to Etherscan.
 
-Now, go ahead and click on the "Contract" tab. Below that, you will see three tabs called "Code", "Read Contract" and "Write Contract".
+Now, go ahead and click on the "Contract" tab. Below that, you will see three tabs called "Code," "Read Contract," and "Write Contract."
 
-- Code => All the smart contract code. In here, you can also get an idea of how NFT's were made back in the day.
-- Read Contract => Interact with all the read only functions of the smart contract, for example ```tokenUri()```.
-- Write Contract => Interact with all the write functions of the smart contract (Requires wallet connection), for example minting.
-
-
-
-
-
+- Code => All the smart contract code. Here, you can also get an idea of how NFTs were made back in the day.
+- Read Contract => Interact with all the read-only functions of the smart contract, for example, `tokenUri()`.
+- Write Contract => Interact with all the write functions of the smart contract (Requires wallet connection), for example, minting.

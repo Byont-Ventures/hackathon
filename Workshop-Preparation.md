@@ -66,11 +66,12 @@ There are generally two ways to get test ETH:
 **Tip**: If you have the resources, you can mine faster by increasing the number of workers. You can increase this beyond what is initially shown as the max, i.e., if it says 5/5, you can still increase the max workers if your machine allows it.
 
 ## Other faucets links
+
 We recommend (but it is optional) that you try out other faucets as well, [this site](https://faucetlink.to/goerli) has plenty of faucets you can try out. Some might be down; others might require some verification method, such as a tweet.
 
 ## 3. Clone this repo and install VSCode extensions
 
-```git clone https://github.com/Byont-Ventures/rtl-talpa-template```
+`git clone https://github.com/Byont-Ventures/rtl-talpa-template`
 
 **Note:** We use [VSCode](https://code.visualstudio.com/) for development. There are other free-to-use tools, but we can only provide limited support if you decide to use those.
 
@@ -96,7 +97,7 @@ To install Foundry, please refer to their excellent [documentation](https://book
 
 ### Install other packages using yarn (includes NextJS)
 
-We recommend installing the packages using the yarn package manager version ```1.22.19```.
+We recommend installing the packages using the yarn package manager version `1.22.19`.
 
 ```
 npm install --global yarn@1.22.19
