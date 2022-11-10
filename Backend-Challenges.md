@@ -36,11 +36,9 @@ But there is another problem. Why does `string.concat()` not work? It may have s
 
 ## Challenge 5 - NFT Contract
 
-From here on outward, it might feel you are being thrown into the deep end a bit - but that's ok. Don't be intimidated by the somewhat larger contracts and tests. They contain some new things, but they are documented for you to review at your own pace, with some useful links. You don't have to understand everything immediately. The goal here is to get your hands dirty with the main functionalities of an NFT smart contract.
+From here on out, we will be building the NFT contract by adding a piece of functionality in every challenge!
 
-We will be listing the NFT challenges first. Below them are useful pieces of information that will help you better understand NFT smart contracts, IPFS and Solidity.
-
-Take a look at `Challenge_5.sol`. Roughly speaking, you can make out the following components:
+Generally speaking, an NFT consists of following components:
 
 - [imports](#solidity-libraries-and-openzeppelin)
 - [constructor](#constructors)
@@ -48,19 +46,7 @@ Take a look at `Challenge_5.sol`. Roughly speaking, you can make out the followi
 - [tokenURI](#tokenURI)
 - [mint](#mint-functions)
 
-Once you have skimmed through the contract and gotten a general idea for yourself, let's continue to the test file. Go ahead and open up `Challenge_5.t.sol`
-
-Generally, the structure here is as follows:
-
-- setup
-- specific tests with some new cool things like cheat codes
-- fuzz tests
-
-Once you've wrapped your head around the structure, let's go ahead and run the test to see what happens.
-
-`forge test --match-contract Challenge5 -vv`
-
-You might have noticed the console.log() statements appearing; this has to do with the -vv flag (for verbosity). If you'd like, try decreasing/increasing the number of v's and see what happens.
+The goal of this challenge is to flesh out the constructor, have it accept the arguments passed in the test, and make it set the max supply inside the constructor to what was passed as an argument.
 
 ### Solidity libraries and openzeppelin
 
