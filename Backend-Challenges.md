@@ -112,6 +112,52 @@ Minting is the core of getting tokens out there on the blockchain. NFTs are Non-
 
 As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT.
 
+## Challenge 8 - Adding some checks
+
+The goal of this challenge is to add a couple of checks to the mint function. Right now, even though we have set a max supply, it doesn't actually do anything; we can easily mint more than the max supply. So let's fix that.
+
+A way to do this, is to add an if-statement within the mint function that checks if the total supply + mint amount exceeds the max supply. If so, we revert the transaction and maybe we send out a little message so the user will know why the transaction reverted.
+
+An easier way to do this though, is by adding a `require()` statement within the function. You can read more about `require()` [here](https://www.alchemy.com/overviews/solidity-require).
+
+Take a look at `Challenge_8.t.sol`. As per usual, we have added some tests, and we need to pass those tests.
+
+- `testMintOverMax()` => A fuzz test that tries to mint over the max allowed supply
+- `testMintZero()` => A test that mints... zero NFTs
+- `testMintCA()` => A test that simulates a CA (Contract Account) minting instead of a human (EOA or Externally Owned Account)
+
+So, now let's improve the mint function to pass these checks. Our function should:
+
+- `require()` that the mint amount > 0
+- `require()` that the mints do not exceed the max allowed supply
+- `require()` that the user minting is a human and not a contract
+
+**HINT:** For the third `require()`, you can make use of `msg.sender` and `tx.origin`
+
+### Msg.sender and tx.origin
+
+We have come across `msg.sender` a couple of times already. As mentioned in this [Stackoverflow article](https://ethereum.stackexchange.com/questions/113962/what-does-msg-sender-tx-origin-actually-do-why), `msg.sender` is the address of the account of which the current call is coming from, and `tx.origin` is the very first address in the calling chain.
+
+An example:
+
+1. You -> Contract mint
+
+- `tx.origin` == you
+- `msg.sender` == you
+
+2. You -> Contract A (calls contract B mint function) -> Contract B mint
+
+- `tx.origin` == you
+- `msg.sender` == Contract A
+
+So, what can we conclude from this? If a caller is a contract, the `tx.origin` is always different from `msg.sender`!
+
+### Why are all these checks needed?
+
+Besides the obvious ones such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (smart contracts) owned by people with a lot of money to blow (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price, or sell them for a large profit if the NFTs are deemed valuable.
+
+This is just one of the many use cases, and security in the NFT space and crypto in general is a huge rabbit hole mostly beyond the scope of this workshop.
+
 ### IPFS, Opensea, and Metadata
 
 Previously, as a test, we pasted an IPFS link to an NFT image of a Bored Ape into our browser. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. Then, we can construct the IPFS token URIs in our smart contracts. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenUri()`. Usually, the first thing returned is the metadata.
