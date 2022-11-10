@@ -158,6 +158,23 @@ Besides the obvious ones such as not exceeding set mint amounts, these checks ha
 
 This is just one of the many use cases, and security in the NFT space and crypto in general is a huge rabbit hole mostly beyond the scope of this workshop.
 
+## Challenge 9 - Modifiers and Ownable
+
+If you noticed below the mint function of the contract `Challenge_9.sol`, the require statements have been moved over there into something called a `modifier`. Modifiers are code snippets that you can add to a function. When the function is called, these code snippets will run beforehand. Therefore, it makes sense to move your `require()` statements to a modifier. This makes your code a bit more reusable as well, since you now just need to put the modifier on any function you wish to apply the same logic to.
+
+Click [here](https://medium.com/coinmonks/solidity-tutorial-all-about-modifiers-a86cf81c14cb) to read more about modifiers.
+
+A nice example of modifiers is the [Ownable](https://docs.openzeppelin.com/contracts/3.x/access-control) library by Openzeppelin. After importing this library, you will have access to the `onlyOwner` modifier. By default, the deployer of the contract will initially be the owner of the contract. Therefore, `onlyOwner` is a great modifier to use on functions that need administrative privileges such as withdrawing funds or setting important variables such as base URI.
+
+Take a look at `Challenge_9.t.sol`. Two tests have been added:
+
+- `testFailSetBaseURI()` => Using Foundry's `testFail`, for the test to succeed, the function must fail. Not everyone should be allowed to just set the base URI! However, right now, this is not yet the case.
+- `testSetBaseURI()` => The owner should still be able to set the base URI
+
+So, the goal of this challenge is to add the appropriate modifiers to the contract so that only the owner can perform certain actions. And of course, your contract has to compile.
+
+**HINT:** You can make use of the Ownable library from Openzeppelin
+
 ### IPFS, Opensea, and Metadata
 
 Previously, as a test, we pasted an IPFS link to an NFT image of a Bored Ape into our browser. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. Then, we can construct the IPFS token URIs in our smart contracts. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenUri()`. Usually, the first thing returned is the metadata.
