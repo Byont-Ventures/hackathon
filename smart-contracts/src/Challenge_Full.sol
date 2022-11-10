@@ -8,7 +8,7 @@ pragma solidity >=0.6.0 <0.9.0;
  * https://docs.openzeppelin.com/contracts/3.x/access-control
  */
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
-import "@openzeppelin/contracts/access/Ownable.sol";
+import '@openzeppelin/contracts/access/Ownable.sol';
 
 /// @title Challenge 5
 /// @author Byont Labs

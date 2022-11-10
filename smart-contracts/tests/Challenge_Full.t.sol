@@ -32,7 +32,7 @@ contract ChallengeFull is Test {
 
   ///@notice Owners should be able to set the base URI
   function testSetBaseURI() public payable {
-    uint id = 69;
+    uint256 id = 69;
     string memory newURI = '1337';
     c.setBaseURI(newURI);
     assertEq(c.tokenURI(id), string.concat(newURI, id.toString()));
@@ -96,16 +96,16 @@ contract ChallengeFull is Test {
   ///@notice Test mint counter of users
   function testUserMint() public {
     address user1 = address(69);
-    uint user1MintAmount = 10;
-    uint user1InitMints = c.userMints(user1);
+    uint256 user1MintAmount = 10;
+    uint256 user1InitMints = c.userMints(user1);
     address user2 = address(1337);
-    uint user2MintAmount = 6;
-    uint user2InitMints = c.userMints(user2);
+    uint256 user2MintAmount = 6;
+    uint256 user2InitMints = c.userMints(user2);
     /// @dev user1 mints, tx.origin equal to msg.sender
     vm.prank(user1, user1);
     c.mint(user1MintAmount);
     assertEq(c.userMints(user1), user1InitMints + user1MintAmount);
-    /// @dev user 2 mints, tx.origin equal to msg.sender 
+    /// @dev user 2 mints, tx.origin equal to msg.sender
     vm.prank(user2, user2);
     c.mint(user2MintAmount);
     assertEq(c.userMints(user2), user2InitMints + user2MintAmount);
