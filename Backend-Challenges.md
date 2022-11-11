@@ -54,16 +54,20 @@ Since `_baseURIextended` is private, we have implemented a getter function calle
 
 In `Challenge_6.t.sol`, we want to get the token URI from the contract given a certain token ID. Your job is to:
 
-- Implement a function `setBaseURI()` that sets the base URI given a certain string
+- Implement a function `setBaseURI()` in `Challenge_6.sol` that sets the base URI given a certain string
   - The function should take a string parameter
   - The function should set \_baseUriExtended to that string
-- Implement a function `tokenURI()` that constructs a token URI and returns it given a certain token ID
+- Implement `setBaseURI()` in the `setUp()` function body of `Challenge_6.t.sol`
+- Implement a function `tokenURI()` in `Challenge_6.sol` that constructs a token URI and returns it given a certain token ID
   - The function should take a uint parameter (this is the token ID)
   - The function should `override` the default ERC721 `tokenURI()`
   - The function should concatenate \_baseUriExtended and the passed token ID parameter
   - The function should return the token URI as a string
 
-**HINT**: Solidity will not accept string and uint concatenation. You can use the provided Strings library to turn uint into a string.
+<details>
+    <summary>HINT</summary>
+    Solidity will not accept string and uint concatenation. You can use the provided Strings library to turn uint into a string.
+</details>
 
 ### Solidity libraries and openzeppelin
 
@@ -71,6 +75,7 @@ In Solidity, you can import libraries that will make life easier. OpenZeppelin i
 
 ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its own set of functionalities. For the workshop, ERC721 NFTs will suffice.
 
+- https://eips.ethereum.org/EIPS/eip-721
 - https://docs.openzeppelin.com/contracts/3.x/
 - https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
 
