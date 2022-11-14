@@ -194,6 +194,7 @@ In this challenge, we will be uploading images to IPFS. Then, write a test that 
 1. For convenience, we will be using [Pinata](https://www.pinata.cloud/). They will take care of pinning your data on IPFS (if you upload something to IPFS it won't stay on there forever unless it is pinned to a local node or a node that a third party such as Pinata is running)
 2. Create an account on [Pinata](https://app.pinata.cloud/register) and log in
 3. When logged in, select Upload > Upload Folder, select the [images](./metadata/images/) folder.
+4. 
 
 ### IPFS, Opensea, and Metadata
 
