@@ -34,8 +34,6 @@ contract Contract is ERC721, Ownable {
 
   /// TODO: Add mapping here!
 
-  
-
   /// @notice Sets the max mint per user
   /// @param _amount The max allowed amount
   function setUserMaxMint(uint _amount) public onlyOwner {
@@ -73,7 +71,6 @@ contract Contract is ERC721, Ownable {
     totalSupply += _amount;
     /// TODO: Increase mint count of user here!
 
-
     for (uint256 i = 0; i < _amount; i++) {
       _mint(msg.sender, startId + i);
     }
@@ -85,7 +82,6 @@ contract Contract is ERC721, Ownable {
     require(totalSupply + _amount <= maxSupply, 'Amount exceeds max supply');
     require(_amount > 0, 'Amount cannot be zero');
     /// TODO: Add require statement here!
-
 
     _;
   }

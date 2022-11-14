@@ -189,7 +189,7 @@ In `Challenge_10.t.sol`, we have set up scenarios where users will try to eventu
 
 ## Challenge 11 - Upload data to IPFS
 
-In this challenge, we will be uploading images to IPFS. Then, write a test that updates your ```baseURI``` so that it points to the image folder on IPFS. 
+In this challenge, we will be uploading images to IPFS. Then, write a test that updates your `baseURI` so that it points to the image folder on IPFS.
 
 1. For convenience, we will be using [Pinata](https://www.pinata.cloud/). They will take care of pinning your data on IPFS (if you upload something to IPFS it won't stay on there forever unless it is pinned to a local node or a node that a third party such as Pinata is running)
 2. Create an account on [Pinata](https://app.pinata.cloud/register) and log in
