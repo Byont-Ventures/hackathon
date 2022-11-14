@@ -2,24 +2,16 @@
 
 During the workshop, you will start creating your (first) NFT! But before that, we ask you to perform some initial steps so you can start developing straight away as the workshop starts! We will also use Byont's web3 template; this has just about everything you need to get started.
 
-## 1. Install Brave Browser (Optional)
+## 1 View files on IPFS
 
-[Brave Browser](https://brave.com/) is a privacy-focused browser, but the main reason we are using this is that it is the easiest way to view files on [IPFS](https://docs.ipfs.tech/concepts/what-is-ipfs/).
-
-A small test:
-
-1. Open up Brave Browser
-2. Paste the following link => `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
-3. Choose "gateway" (not "local node")
+1. Go to [IPFS browser](https://ipfsbrowser.com/)
+2. Paste the following into the input field => `bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
+3. Click `Open raw file`
 4. If all went well, you should now be viewing the image of a [Bored Ape NFT](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369)
 
-## 1.5 Brave browser alternative for IPFS
+Alternatively, you can follow the steps [here](https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/)
 
-If you do not wish to install Brave, you can still view IPFS files [here](https://ipfsbrowser.com/)
-
-1. Paste the IPFS hash (So without the "ipfs://" part) into the input field => `bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
-2. Click `Open raw file`
-3. If all went well, you should now be viewing the image of a [Bored Ape NFT](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369)
+If you are using Brave browser, you can paste the IPFS URL directly into the browser: `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
 
 ## 2. Get a test crypto wallet
 
