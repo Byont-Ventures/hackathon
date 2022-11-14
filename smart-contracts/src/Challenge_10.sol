@@ -33,7 +33,8 @@ contract Contract is ERC721, Ownable {
   uint256 public maxPerUser = 5;
 
   /// TODO: Add mapping here!
-  mapping(address => uint256) public userMintCount;
+
+  
 
   /// @notice Sets the max mint per user
   /// @param _amount The max allowed amount
@@ -70,7 +71,9 @@ contract Contract is ERC721, Ownable {
     ///@dev usage of tx.origin is fine here but do your own research (dyor) on why tx.origin can be dangerous
     uint256 startId = totalSupply;
     totalSupply += _amount;
-    userMintCount[msg.sender] += _amount;
+    /// TODO: Increase mint count of user here!
+
+
     for (uint256 i = 0; i < _amount; i++) {
       _mint(msg.sender, startId + i);
     }
@@ -81,10 +84,9 @@ contract Contract is ERC721, Ownable {
     require(msg.sender == tx.origin, 'No minting from contract allowed');
     require(totalSupply + _amount <= maxSupply, 'Amount exceeds max supply');
     require(_amount > 0, 'Amount cannot be zero');
-    require(
-      userMintCount[msg.sender] + _amount <= maxPerUser,
-      'Not allowed to mint this many'
-    );
+    /// TODO: Add require statement here!
+
+
     _;
   }
 }
