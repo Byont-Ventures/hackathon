@@ -187,6 +187,14 @@ The goal of this challenge is to:
 
 In `Challenge_10.t.sol`, we have set up scenarios where users will try to eventually mint more than they are allowed.
 
+## Challenge 11 - Upload data to IPFS
+
+In this challenge, we will be uploading images to IPFS. Then, write a test that updates your ```baseURI``` so that it points to the image folder on IPFS. 
+
+1. For convenience, we will be using [Pinata](https://www.pinata.cloud/). They will take care of pinning your data on IPFS (if you upload something to IPFS it won't stay on there forever unless it is pinned to a local node or a node that a third party such as Pinata is running)
+2. Create an account on [Pinata](https://app.pinata.cloud/register) and log in
+3. When logged in, select Upload > Upload Folder, select the [images](./metadata/images/) folder.
+
 ### IPFS, Opensea, and Metadata
 
 Previously, as a test, we pasted an IPFS link to an NFT image of a Bored Ape into our browser. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. Then, we can construct the IPFS token URIs in our smart contracts. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenUri()`. Usually, the first thing returned is the metadata.
