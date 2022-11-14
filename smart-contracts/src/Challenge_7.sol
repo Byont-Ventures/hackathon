@@ -5,7 +5,7 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
 /// @title Challenge 7
 /// @author Byont Labs
-/// @notice A barebones NFT contract example with overkill documentation for learning purposes
+/// @notice A barebones NFT contract example with documentation for learning purposes
 // contract Contract is ERC721 {
 //   /// @dev Library that can convert uint256 to string. (by the way, uint is short for uint256)
 //   using Strings for uint256;

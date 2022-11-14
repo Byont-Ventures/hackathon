@@ -3,16 +3,16 @@ pragma solidity >=0.6.0 <0.9.0;
 
 /**
  * Reference links (what is openzeppelin, how does erc721 work, ownable)
- * https://docs.openzeppelin.com/contracts/3.x/
- * https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
- * https://docs.openzeppelin.com/contracts/3.x/access-control
+ * https://docs.openzeppelin.com/contracts/4.x/
+ * https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
+ * https://docs.openzeppelin.com/contracts/4.x/access-control
  */
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 
 /// @title Challenge 5
 /// @author Byont Labs
-/// @notice A barebones NFT contract example with overkill documentation for learning purposes
+/// @notice A barebones NFT contract example with documentation for learning purposes
 contract Contract is ERC721, Ownable {
   /// @dev Library that can convert uint256 to string. (by the way, uint is short for uint256)
   using Strings for uint256;
@@ -57,13 +57,9 @@ contract Contract is ERC721, Ownable {
   /// @dev Overrides the standard tokenURI() functionality of the ERC721 standard to fit our needs
   /// @param _id The token id
   /// @return => The token uri
-  function tokenURI(uint256 _id)
-    public
-    view
-    virtual
-    override
-    returns (string memory)
-  {
+  function tokenURI(
+    uint256 _id
+  ) public view virtual override returns (string memory) {
     return string.concat(_baseURI(), _id.toString());
   }
 

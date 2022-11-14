@@ -5,7 +5,7 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
 /// @title Challenge 6
 /// @author Byont Labs
-/// @notice A barebones NFT contract example with overkill documentation for learning purposes
+/// @notice A barebones NFT contract example with documentation for learning purposes
 /**
   TODO: Implement a function called setBaseUri() that sets _baseURIextended. 
         The function should take a string.
