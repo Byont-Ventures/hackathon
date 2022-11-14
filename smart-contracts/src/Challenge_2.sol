@@ -13,10 +13,10 @@ pragma solidity ^0.8.13;
  */
 
 contract Contract {
-  // string message;
-  // /// @return message:string; the message stored in the contract.
-  // function getMessage() public view returns (string memory) {
-  //   return message;
-  // }
+  string message;
+  /// @return message:string; the message stored in the contract.
+  function getMessage() public view returns (string memory) {
+    return message;
+  }
   // /// @dev TODO: add setMessage() here!
 }

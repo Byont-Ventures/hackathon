@@ -18,12 +18,12 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
  */
 contract Contract {
   // /// @dev Library that can convert uint256 to string, no import required (by the way, uint is short for uint256)
-  // using Strings for uint256;
-  // /// @dev Constructor arguments are passed to the contract on contract creation, see Challenge_5.t.sol
-  // /// @dev TODO: Create constructor here!
-  // constructor() ERC721() {
-  //   // set max supply here!
-  // }
-  // /// @notice The max amount of allowed NFT mints
-  // uint256 public maxSupply;
+  using Strings for uint256;
+  /// @dev Constructor arguments are passed to the contract on contract creation, see Challenge_5.t.sol
+  /// @dev TODO: Create constructor here!
+  constructor() ERC721() {
+    // set max supply here!
+  }
+  /// @notice The max amount of allowed NFT mints
+  uint256 public maxSupply;
 }
