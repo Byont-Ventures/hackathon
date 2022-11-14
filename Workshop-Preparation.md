@@ -69,7 +69,7 @@ There are generally two ways to get test ETH:
 
 We recommend (but it is optional) that you try out other faucets as well, [this site](https://faucetlink.to/goerli) has plenty of faucets you can try out. Some might be down; others might require some verification method, such as a tweet.
 
-## 3. Clone this repo and install VSCode extensions
+## 4. Clone this repo and install VSCode extensions
 
 `git clone https://github.com/Byont-Ventures/rtl-talpa-template`
 
@@ -77,7 +77,7 @@ We recommend (but it is optional) that you try out other faucets as well, [this 
 
 If you open this repo in VSCode, you should get a suggestion to install a set of extensions; we recommend you do so.
 
-## 4. Setting up your development environment
+## 5. Setting up your development environment
 
 ### Why NextJS (React)?
 
