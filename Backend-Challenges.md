@@ -175,6 +175,18 @@ So, the goal of this challenge is to add the appropriate modifiers to the contra
 
 **HINT:** You can make use of the Ownable library from Openzeppelin
 
+## Challenge 10 - Keeping track of mints using mappings
+
+Another method to restrict minting out the entire supply by one person is to restrict mint amounts per person. Of course, you could circumvent this mechanism by minting with another wallet once you've reached your maximum mint amount on one wallet. There are ways to semi-prevent this, such as whitelisting, but we won't go into that now.
+
+The goal of this challenge is to:
+
+- Create a mapping `userMintCount` that tracks how many mints a user has made.
+- Then, add a `require()` statement to the `mintCompliance()` modifier so that if the user is trying to mint more than allowed `maxPerUser`, the mint will revert.
+- Of course, also do not forget to update the `userMintCount` for a user within the `mint()` function.
+
+In `Challenge_10.t.sol`, we have set up scenarios where users will try to eventually mint more than they are allowed.
+
 ### IPFS, Opensea, and Metadata
 
 Previously, as a test, we pasted an IPFS link to an NFT image of a Bored Ape into our browser. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. Then, we can construct the IPFS token URIs in our smart contracts. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenUri()`. Usually, the first thing returned is the metadata.
