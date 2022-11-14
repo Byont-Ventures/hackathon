@@ -48,12 +48,34 @@ Generally speaking, an NFT consists of following components:
 
 The goal of this challenge is to flesh out the constructor, have it accept the arguments passed in the test, and make it set the max supply inside the constructor to what was passed as an argument.
 
+## Challenge 6 - BaseURI, TokenURI
+
+Since `_baseURIextended` is private, we have implemented a getter function called `_baseURI()`. The ERC721 standard already has this function implementation, but we want it to behave differently for our use case so we have overridden it. Notice the `override` keyword added to the function.
+
+In `Challenge_6.t.sol`, we want to get the token URI from the contract given a certain token ID. Your job is to:
+
+- Implement a function `setBaseURI()` in `Challenge_6.sol` that sets the base URI given a certain string
+  - The function should take a string parameter
+  - The function should set \_baseUriExtended to that string
+- Implement `setBaseURI()` in the `setUp()` function body of `Challenge_6.t.sol`
+- Implement a function `tokenURI()` in `Challenge_6.sol` that constructs a token URI and returns it given a certain token ID
+  - The function should take a uint parameter (this is the token ID)
+  - The function should `override` the default ERC721 `tokenURI()`
+  - The function should concatenate \_baseUriExtended and the passed token ID parameter
+  - The function should return the token URI as a string
+
+<details>
+    <summary>HINT</summary>
+    Solidity will not accept string and uint concatenation. You can use the provided Strings library to turn uint into a string.
+</details>
+
 ### Solidity libraries and openzeppelin
 
 In Solidity, you can import libraries that will make life easier. OpenZeppelin is a company that provides free standardized contract libraries to use, such as ERC721. These contracts are firmly audited, meaning they are generally secure to implement in your contracts.
 
 ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its own set of functionalities. For the workshop, ERC721 NFTs will suffice.
 
+- https://eips.ethereum.org/EIPS/eip-721
 - https://docs.openzeppelin.com/contracts/3.x/
 - https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
 
