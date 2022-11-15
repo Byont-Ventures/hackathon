@@ -77,7 +77,8 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a c
 
 ### Solidity libraries and openzeppelin
 
-In Solidity, you can import libraries. Because upgradeability is hard. In the unforgiving environment for bugs plus time pressure for software development, libraries will make your life easier. OpenZeppelin is a company that provides free standardized contract libraries to use, such as ERC721. These contracts are firmly audited, meaning they are generally secure to implement in your contracts.
+Solidity offers support to import libraries, both internal and external. More so than other languages, libraries play a key part in the development of smart contracts. This is because upgradability is quite a bit trickier, the environment is unforgiving for bugs, and then there's the all too common time pressure for software development. Put simply, libraries will make your life easier.
+Openzeppelin is a company that provides free, standardized, and thoroughly tested/audited smart contract libraries to use, such as ERC721.
 
 ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its own set of functionalities. For the workshop, ERC721 NFTs will suffice.
 
@@ -106,18 +107,6 @@ The goal of this challenge is to create a minting function in `Challenge_7.sol`,
 - Accept a uint parameter for the mint amount
 - Increase the `totalSupply` by the mint amount
 - Mint the NFTs to `msg.sender` by using ERC721's `_mint()` function.
-
-Some clarification on the new things you will encounter in the test file:
-
-- `testMintEOA()` mints a token from an EOA (Externally Owned Account.) That means it simulates an off-chain user (human or program) is calling the mint function, not a contract or anything operating directly onchain, but more on this later
-
-- `testMintMax(uint256 amount)` is a special type of test called a fuzz test. It will try every possible value for that data type, constrained by the configuration specified in [foundry.toml](foundry.toml) and by the `vm.assume()` statements in the test function. So in this case, it will try all possible mint amounts 1 < x < `maxSupply`. More on fuzz testing [here](https://book.getfoundry.sh/forge/fuzz-testing).
-
-`vm.expectRevert()` => Expects the line below to revert. Reverting in Solidity means that an exception is thrown, with an optional message, and the amount of gas spent on the transaction is returned. Then, the contract reverts to its original state.
-
-`vm.startPrank()` => A Foundry [cheat code](https://book.getfoundry.sh/cheatcodes/) that simulates the `msg.sender` to be the address specified. More on `msg.sender` later.
-
-`console.log()` => The print statement of Foundry. You can also use this to log variables. Initially, you won't see the output. For that, you need to supply the `-vv` or `--watch` flag to the test. Try running the test using `forge test --match-contract Challenge7 -vv`. Also, try adding / removing v's and see what happens.
 
 ### Mint Functions
 
