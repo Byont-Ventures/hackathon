@@ -17,8 +17,10 @@ contract Contract is ERC721 {
     uint256 _maxSupply
   ) ERC721(_name, _symbol) {
     maxSupply = _maxSupply;
+    owner = msg.sender;
   }
 
+  address public owner;
   /// @notice The base uri for NFT metadata, should become something like ipfs://somestring/
   /// @dev Private strings are NOT hidden for humans, just for other smart contracts
   string private _baseURIextended;
@@ -46,17 +48,20 @@ contract Contract is ERC721 {
   /// @dev Overrides the standard tokenURI() functionality of the ERC721 standard to fit our needs
   /// @param _id The token id
   /// @return => The token uri
-  function tokenURI(uint256 _id)
-    public
-    view
-    virtual
-    override
-    returns (string memory)
-  {
+  function tokenURI(
+    uint256 _id
+  ) public view virtual override returns (string memory) {
     return string.concat(_baseURI(), _id.toString());
   }
 
   /// @notice Mints NFT's. Minting in this case means creating the NFT and assigning the minter as owner
   /// @param _amount The amount of tokens that will be minted
   /// TODO: Add mint function here!
+  function mint(uint _amount) public payable {
+    uint startId = totalSupply;
+    totalSupply += _amount;
+    for (uint i = 0; i < _amount; i++) {
+      _mint(msg.sender, startId + i);
+    }
+  }
 }
