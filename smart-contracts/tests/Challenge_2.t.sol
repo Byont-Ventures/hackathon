@@ -7,9 +7,11 @@ import '@smart-contracts/Challenge_2.sol';
 
 contract Challenge2Test is Test {
   Challenge2 c;
+
   function setUp() public {
     c = new Challenge2();
   }
+
   // @notice Tests that the message returned from the contract is equal to "Hello World!"
   function testHelloWorld() public {
     /// @dev Sets the message to 'Hello World!' in Challenge_2.sol

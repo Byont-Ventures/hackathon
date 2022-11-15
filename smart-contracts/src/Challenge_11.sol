@@ -33,7 +33,7 @@ contract Challenge11 is ERC721, Ownable {
   uint256 public maxPerUser = 5;
 
   /// @notice Keeps track of user mints
-  mapping (address => uint) public userMintCount;
+  mapping(address => uint) public userMintCount;
 
   /// @notice Sets the max mint per user
   /// @param _amount The max allowed amount
@@ -82,7 +82,10 @@ contract Challenge11 is ERC721, Ownable {
     require(msg.sender == tx.origin, 'No minting from contract allowed');
     require(totalSupply + _amount <= maxSupply, 'Amount exceeds max supply');
     require(_amount > 0, 'Amount cannot be zero');
-    require(userMintCount[msg.sender] + _amount <= maxPerUser, 'Not allowed to mint this many');
+    require(
+      userMintCount[msg.sender] + _amount <= maxPerUser,
+      'Not allowed to mint this many'
+    );
     _;
   }
 }
