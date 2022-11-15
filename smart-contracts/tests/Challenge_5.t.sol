@@ -8,7 +8,8 @@ import '@smart-contracts/Challenge_5.sol';
 contract Challenge5 is Test {
   using Strings for uint256;
   Contract c;
+
   function setUp() public {
-    c = new Contract('NFT Example', 'NFTEX', 100);
+    // c = new Contract('NFT Example', 'NFTEX', 100);
   }
 }
