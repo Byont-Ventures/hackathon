@@ -5,11 +5,11 @@ import 'forge-std/Test.sol';
 
 import '@smart-contracts/Challenge_3.sol';
 
-contract Challenge3 is Test {
-  Contract c;
+contract Challenge3Test is Test {
+  Challenge3 c;
 
   function setUp() public {
-    c = new Contract();
+    c = new Challenge3();
   }
 
   /// @notice Tests that a message can be successfully added to the existing message

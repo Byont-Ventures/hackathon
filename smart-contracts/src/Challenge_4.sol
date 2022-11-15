@@ -4,7 +4,7 @@ pragma solidity >=0.6.0 <0.8.12;
 /// @title Challenge 4
 /// @author Byont Labs
 /// @notice addToMessage() should add a string to the message! (concatenation)
-contract Contract {
+contract Challenge4 {
   string message = 'Hello';
 
   /// @return message:string; the message stored in the contract.

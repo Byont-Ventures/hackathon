@@ -6,7 +6,7 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 /// @title Challenge 8
 /// @author Byont Labs
 /// @notice A barebones NFT contract example with overkill documentation for learning purposes
-contract Contract is ERC721 {
+contract Challenge8 is ERC721 {
   using Strings for uint256;
 
   constructor(

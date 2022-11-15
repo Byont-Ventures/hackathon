@@ -5,14 +5,14 @@ import 'forge-std/Test.sol';
 
 import '@smart-contracts/Challenge_6.sol';
 
-contract Challenge6 is Test {
+contract Challenge6Test is Test {
   using Strings for uint256;
-  Contract c;
+  Challenge6 c;
   string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
 
   function setUp() public {
-    c = new Contract('NFT Example', 'NFTEX', 100);
-    // c.setBaseURI(baseURI);
+    c = new Challenge6('NFT Example', 'NFTEX', 100);
+    c.setBaseURI(baseURI);
   }
 
   /// @notice Checks that the tokenURI is properly constructed

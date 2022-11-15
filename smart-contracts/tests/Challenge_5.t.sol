@@ -5,11 +5,11 @@ import 'forge-std/Test.sol';
 
 import '@smart-contracts/Challenge_5.sol';
 
-contract Challenge5 is Test {
+contract Challenge5Test is Test {
   using Strings for uint256;
-  Contract c;
+  Challenge5 c;
 
   function setUp() public {
-    // c = new Contract('NFT Example', 'NFTEX', 100);
+    c = new Challenge5('NFT Example', 'NFTEX', 100);
   }
 }

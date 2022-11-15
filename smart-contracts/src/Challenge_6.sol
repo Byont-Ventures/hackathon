@@ -15,7 +15,7 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
         The function should construct the token URI by concatenating the baseURI with the given token ID
         The function should return the token ID
  */
-contract Contract is ERC721 {
+contract Challenge6 is ERC721 {
 using Strings for uint256;
 
 constructor(

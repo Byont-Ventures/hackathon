@@ -5,11 +5,11 @@ import 'forge-std/Test.sol';
 
 import '@smart-contracts/Challenge_4.sol';
 
-contract Challenge4 is Test {
-  Contract c;
+contract Challenge4Test is Test {
+  Challenge4 c;
 
   function setUp() public {
-    c = new Contract();
+    c = new Challenge4();
   }
 
   /// @notice Tests that a message can be successfully added to the existing message
@@ -22,7 +22,7 @@ contract Challenge4 is Test {
     /// @dev TODO: Initial message should be equal to 'Hello'
     assertEq(initMessage, 'Hello');
     /// @dev TODO: Add ' World!' to the message
-    // c.addToMessage(' World!');
+    c.addToMessage(' World!');
     /// @dev Get the new message
     string memory newMessage = c.getMessage();
     /// @dev The message should now be 'Hello World!'

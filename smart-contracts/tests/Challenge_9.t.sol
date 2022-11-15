@@ -5,13 +5,13 @@ import 'forge-std/Test.sol';
 
 import '@smart-contracts/Challenge_9.sol';
 
-contract Challenge9 is Test {
+contract Challenge9Test is Test {
   using Strings for uint256;
-  Contract c;
+  Challenge9 c;
   string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
 
   function setUp() public {
-    c = new Contract('NFT Example', 'NFTEX', 100);
+    c = new Challenge9('NFT Example', 'NFTEX', 100);
     c.setBaseURI(baseURI);
   }
 
