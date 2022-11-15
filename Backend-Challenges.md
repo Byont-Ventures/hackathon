@@ -295,5 +295,4 @@ We will need an Etherscan API key for that, though - so let's get one!
 
 Now that we have an API key, we can deploy our contract.
 
-1. Run tests and verify that they pass
-2. 
+1. 
