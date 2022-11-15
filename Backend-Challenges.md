@@ -248,9 +248,15 @@ So, now we have our metadata in place. It's now up to you to update the smart co
 - Update `tokenURI()` in ```Challenge_11.sol``` so that it returns the correct token URI corresponding to the images you uploaded to IPFS
 - Now, some tests won't pass anymore. Update the tests in `Challenge_11.t.sol` so that they now pass.
 
+## Challenge 12 - Deploying, verifying smart contracts and Etherscan
+
+We have done a lot of things so far! We have created our own basic NFT contract, with a dynamic token URI based on a token ID that is generated when users mint NFTs! We have also uploaded metadata and images to IPFS. All that is left, is to deploy our contract, set things up through Etherscan, and we will be able to view our NFT collection on Opensea! Let's get started.
+
+For the complete reference on how to deploy and verify smart contracts on Foundry, go [here](https://book.getfoundry.sh/forge/deploying)
+
 ### Etherscan
 
-So how did we get the metadata link? We could, just like Opensea, call the `tokenURI()` function on the contract. But then, how do we know the contract address of an NFT? There are multiple ways to go about this. Let's try to get the contract address of [Bored Ape Yacht Club](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369) first. There are two ways to get the contract address:
+You might recall that, earlier on, we supplied you with the metadata link of a Bored Ape. But how did we get this metadata link? We could, just like Opensea, call the `tokenURI()` function on the contract. But then, how do we know the contract address of an NFT? There are multiple ways to go about this. Let's try to get the contract address of [Bored Ape Yacht Club](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369) first. There are two ways to get the contract address:
 
 - Through the URL => `opensea.io/ethereum/contractAddress/tokenId`
 - Through "Details" => Dropdown on the left side, below the metadata and "About Bored Ape Yacht Club" sections.
@@ -266,10 +272,28 @@ Additionally, most explorers will display the addresses of both the sender and r
 
 You can think of Etherscan as the Google of Ethereum. Just as you would use Google to search the internet, you can use Etherscan to search the Ethereum blockchain.
 
-If you paste a contract address in the top right search bar, you will land on the smart contract page, and you will be able to see all kinds of data and even interact with the smart contract by connecting your wallet. So don't be fooled if your front enders create some "security" measures that would prevent people from minting NFTs on the front end. When there is a will, there is a way. Either by using their own contracts or by simply going to Etherscan.
+If you paste a contract address in the top right search bar, you will land on the smart contract page, and you will be able to see all kinds of data and even interact with the smart contract by connecting your wallet.
 
-Now, go ahead and click on the "Contract" tab. Below that, you will see three tabs called "Code," "Read Contract," and "Write Contract."
+Now, go ahead and click on the `Contract` tab. Below that, you will see three tabs called `Code,` `Read Contract,` and `Write Contract.`
 
-- Code => All the smart contract code. Here, you can also get an idea of how NFTs were made back in the day.
+- Code => All the smart contract code. Here, you can also get an idea of how NFTs were made back in the day if you look at old contracts such as Bored Ape Yacht Club.
 - Read Contract => Interact with all the read-only functions of the smart contract, for example, `tokenUri()`.
 - Write Contract => Interact with all the write functions of the smart contract (Requires wallet connection), for example, minting.
+
+### Deploying the contract 
+
+Now that you know what Etherscan is, it is time to deploy and verify our smart contract. If a smart contract is not verified, you cannot click on the functions to interact with them, nor see them directly. An unverified smart contract [will look like this](https://etherscan.io/address/0x6c830acd0b1610f547f568abd9500012cffd5208#code).
+
+As per the [Foundry documentation](https://book.getfoundry.sh/forge/deploying#deploying), we can verify and deploy our contracts at the same time!
+
+We will need an Etherscan API key for that, though - so let's get one!
+
+1. Head over to https://etherscan.io/register and, and create and account.
+2. Login and go to `API keys`.
+3. Click `Add`
+4. Give your app a name
+
+Now that we have an API key, we can deploy our contract.
+
+1. Run tests and verify that they pass
+2. 
