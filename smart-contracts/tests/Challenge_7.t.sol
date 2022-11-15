@@ -34,7 +34,7 @@ contract Challenge7 is Test {
     /// @dev Initial supply should be 0
     assertEq(initialSupply, 0);
     /// @dev Mint token
-    c.mint(amount);
+    // c.mint(amount);
     /// @dev Total supply should now equal the amount we minted
     assertEq(c.totalSupply(), amount);
     /// @dev Use ERC721 ownerOf() to check that the owner of token 0 is the msg.sender
@@ -50,7 +50,7 @@ contract Challenge7 is Test {
     vm.assume(amount > 0);
     vm.assume(amount < maxSupply);
     vm.startPrank(msg.sender);
-    c.mint(amount);
+    // c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
   }

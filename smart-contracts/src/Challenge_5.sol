@@ -22,9 +22,9 @@ contract Contract {
 
   /// @dev Constructor arguments are passed to the contract on contract creation, see Challenge_5.t.sol
   /// @dev TODO: Create constructor here!
-  constructor() ERC721() {
+  // constructor() ERC721() {
     // set max supply here!
-  }
+  // }
 
   /// @notice The max amount of allowed NFT mints
   uint256 public maxSupply;

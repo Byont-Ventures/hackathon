@@ -22,7 +22,7 @@ contract Challenge4 is Test {
     /// @dev TODO: Initial message should be equal to 'Hello'
     assertEq(initMessage, 'Hello');
     /// @dev TODO: Add ' World!' to the message
-    c.addToMessage(' World!');
+    // c.addToMessage(' World!');
     /// @dev Get the new message
     string memory newMessage = c.getMessage();
     /// @dev The message should now be 'Hello World!'

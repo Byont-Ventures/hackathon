@@ -10,6 +10,6 @@ contract Challenge5 is Test {
   Contract c;
 
   function setUp() public {
-    c = new Contract('NFT Example', 'NFTEX', 100);
+    // c = new Contract('NFT Example', 'NFTEX', 100);
   }
 }
