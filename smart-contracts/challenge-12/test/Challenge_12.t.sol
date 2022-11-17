@@ -77,7 +77,7 @@ contract Challenge12Test is Test {
     c.setUserMaxMint(2 ** 256 - 1);
     vm.assume(amount > 0);
     vm.assume(amount <= maxSupply);
-    vm.startPrank(msg.sender);
+    vm.startPrank();
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
@@ -90,7 +90,7 @@ contract Challenge12Test is Test {
     c.setUserMaxMint(2 ** 256 - 1);
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
-    vm.startPrank(msg.sender);
+    vm.startPrank();
     vm.expectRevert('Amount exceeds max supply');
     c.mint(amount);
     vm.stopPrank();
@@ -98,7 +98,7 @@ contract Challenge12Test is Test {
 
   /// @notice Test minting 0 NFT's
   function testMintZero() public {
-    vm.startPrank(msg.sender);
+    vm.startPrank();
     vm.expectRevert('Amount cannot be zero');
     c.mint(0);
     vm.stopPrank();

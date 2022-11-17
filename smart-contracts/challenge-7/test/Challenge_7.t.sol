@@ -57,7 +57,7 @@ contract Challenge7Test is Test {
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > 0);
     vm.assume(amount < maxSupply);
-    vm.startPrank(msg.sender);
+    vm.startPrank(Alice);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
