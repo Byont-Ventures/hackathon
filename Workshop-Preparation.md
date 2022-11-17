@@ -71,7 +71,7 @@ We recommend (but it is optional) that you try out other faucets as well, [this 
 
 ## 4. Clone this repo and install VSCode extensions
 
-`git clone https://github.com/Byont-Ventures/rtl-talpa-template`
+`git clone https://github.com/Byont-Ventures/Hackathon.git`
 
 **Note:** We use [VSCode](https://code.visualstudio.com/) for development. There are other free-to-use tools, but we can only provide limited support if you decide to use those.
 
