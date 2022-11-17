@@ -1,4 +1,4 @@
-# Byont x RTL Talpa workshop
+# Web3 Workshop
 
 **This repository is under construction; the coding challenges are expected to be updated regularly**
 
