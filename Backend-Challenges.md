@@ -42,7 +42,7 @@ Generally speaking, an NFT consists of following components:
 
 - [imports](#solidity-libraries-and-openzeppelin)
 - [constructor](#constructors)
-- variables/constants/mappings to keep track of things
+- [variables/constants/mappings to keep track of things](#challenge-10---keeping-track-of-mints-using-mappings)
 - [tokenURI](#tokenURI)
 - [mint](#mint-functions)
 
