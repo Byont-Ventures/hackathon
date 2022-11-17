@@ -48,15 +48,6 @@ Generally speaking, an NFT consists of following components:
 
 The goal of this challenge is to flesh out the constructor, have it accept the arguments passed in the test, and make it set the max supply inside the constructor to what was passed as an argument.
 
-### Solidity libraries and openzeppelin
-
-In Solidity, you can import libraries that will make life easier. OpenZeppelin is a company that provides free standardized contract libraries to use, such as ERC721. These contracts are firmly audited, meaning they are generally secure to implement in your contracts.
-
-ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its own set of functionalities. For the workshop, ERC721 NFTs will suffice.
-
-- https://docs.openzeppelin.com/contracts/3.x/
-- https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
-
 ### Constructors
 
 A constructor is a special function that is used to initialize state variables. An ERC721 contract, for example, requires two constructor parameters called "Name" and "Symbol," i.e., "Ethereum" and "ETH." Also, in this case, we set our max allowed supply of NFTs via the constructor.
@@ -69,20 +60,43 @@ Since `_baseURIextended` is private, we have implemented a getter function calle
 
 In `Challenge_6.t.sol`, we want to get the token URI from the contract given a certain token ID. Your job is to:
 
-- Implement a function `setBaseURI()` that sets the base URI given a certain string
+- Implement a function `setBaseURI()` in `Challenge_6.sol` that sets the base URI given a certain string
   - The function should take a string parameter
   - The function should set \_baseUriExtended to that string
-- Implement a function `tokenURI()` that constructs a token URI and returns it given a certain token ID
+- Implement `setBaseURI()` in the `setUp()` function body of `Challenge_6.t.sol`
+- Implement a function `tokenURI()` in `Challenge_6.sol` that constructs a token URI and returns it given a certain token ID
   - The function should take a uint parameter (this is the token ID)
   - The function should `override` the default ERC721 `tokenURI()`
   - The function should concatenate \_baseUriExtended and the passed token ID parameter
   - The function should return the token URI as a string
 
-**HINT**: Solidity will not accept string and uint concatenation. You can use the provided Strings library to turn uint into a string.
+<details>
+    <summary>HINT</summary>
+    Solidity will not accept string and uint concatenation. You can use the provided Strings library to turn uint into a string.
+</details>
+
+### Solidity libraries and openzeppelin
+
+Solidity offers support to import libraries, both internal and external. More so than other languages, libraries play a key part in the development of smart contracts. This is because upgradability is quite a bit trickier, the environment is unforgiving for bugs, and then there's the all too common time pressure for software development. Put simply, libraries will make your life easier.
+Openzeppelin is a company that provides free, standardized, and thoroughly tested/audited smart contract libraries to use, such as ERC721.
+
+ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its own set of functionalities. For the workshop, ERC721 NFTs will suffice.
+
+- https://eips.ethereum.org/EIPS/eip-721
+- https://docs.openzeppelin.com/contracts/4.x/
+- https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
+
+### Constructors
+
+A constructor is a special function that is used to initialize state variables. An ERC721 contract, for example, requires two constructor parameters called "Name" and "Symbol," i.e., "Ethereum" and "ETH." Also, in this case, we set our max allowed supply of NFTs via the constructor.
+
+When you deploy a smart contract, you will pass these arguments to the constructor.
 
 ### TokenURI
 
-If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how on earth do they get the NFT images and metadata? Well, often times these images are stored on chain, on IPFS, or even in the cloud. As on-chain storage is expensive, images are more often than not stored off-chain.
+As on-chain storage is expensive, images are more often than not stored off-chain.
+
+If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how do they get the NFT images and metadata?
 
 Your smart contract provides a way to tell Opensea which image belongs to which NFT and where the files are stored through a function called `tokenURI()`. Opensea simply looks for this function in your smart contract and parses the return value.
 
@@ -93,18 +107,6 @@ The goal of this challenge is to create a minting function in `Challenge_7.sol`,
 - Accept a uint parameter for the mint amount
 - Increase the `totalSupply` by the mint amount
 - Mint the NFTs to `msg.sender` by using ERC721's `_mint()` function.
-
-Some clarification on the new things you will encounter in the test file:
-
-- `testMintEOA()` mints a token from an EOA (Externally Owned Account.) That means it simulates a human is calling the mint function, not a contract, but more on this later.
-
-- `testMintMax(uint256 amount)` is a special type of test called a fuzz test. It will try every possible value for that data type, constrained by the configuration specified in [foundry.toml](foundry.toml) and by the `vm.assume()` statements in the test function. So in this case, it will try all possible mint amounts 1 < x < `maxSupply`. More on fuzz testing [here](https://book.getfoundry.sh/forge/fuzz-testing).
-
-`vm.expectRevert()` => Expects the line below to revert. Reverting in Solidity means that an exception is thrown, with an optional message, and the amount of gas spent on the transaction is returned. Then, the contract reverts to its original state.
-
-`vm.startPrank()` => A Foundry [cheat code](https://book.getfoundry.sh/cheatcodes/) that simulates the `msg.sender` to be the address specified. More on `msg.sender` later.
-
-`console.log()` => The print statement of Foundry. You can also use this to log variables. Initially, you won't see the output. For that, you need to supply the `-vv` flag to the test. Try running the test using `forge test --match-contract Challenge7 -vv`. Also, try adding / removing v's and see what happens.
 
 ### Mint Functions
 

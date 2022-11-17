@@ -3,14 +3,14 @@ pragma solidity >=0.6.0 <0.9.0;
 
 /**
  * Reference links (what is openzeppelin, how does erc721 work)
- * https://docs.openzeppelin.com/contracts/3.x/
- * https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
+ * https://docs.openzeppelin.com/contracts/4.x/
+ * https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
  */
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
 /// @title Challenge 5
 /// @author Byont Labs
-/// @notice A barebones NFT contract example with overkill documentation for learning purposes
+/// @notice A barebones NFT contract example with documentation for learning purposes
 /**
   TODO: Make the contract ERC721
   TODO: Pass arguments to the constructor (See test file)
