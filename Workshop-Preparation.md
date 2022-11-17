@@ -2,16 +2,16 @@
 
 During the workshop, you will start creating your (first) NFT! But before that, we ask you to perform some initial steps so you can start developing straight away as the workshop starts! We will also use Byont's web3 template; this has just about everything you need to get started.
 
-## 1. Install Brave Browser
+## 1 View files on IPFS
 
-[Brave Browser](https://brave.com/) is a privacy-focused browser, but the main reason we are using this is that it is the easiest way to view files on [IPFS](https://docs.ipfs.tech/concepts/what-is-ipfs/).
-
-A small test:
-
-1. Open up Brave Browser
-2. Paste the following link => `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
-3. Choose "gateway" (not "local node")
+1. Go to [IPFS browser](https://ipfsbrowser.com/)
+2. Paste the following into the input field => `bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
+3. Click `Open raw file`
 4. If all went well, you should now be viewing the image of a [Bored Ape NFT](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369)
+
+Alternatively, you can follow the steps [here](https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/)
+
+If you are using Brave browser, you can paste the IPFS URL directly into the browser: `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
 
 ## 2. Get a test crypto wallet
 
@@ -69,7 +69,7 @@ There are generally two ways to get test ETH:
 
 We recommend (but it is optional) that you try out other faucets as well, [this site](https://faucetlink.to/goerli) has plenty of faucets you can try out. Some might be down; others might require some verification method, such as a tweet.
 
-## 3. Clone this repo and install VSCode extensions
+## 4. Clone this repo and install VSCode extensions
 
 `git clone https://github.com/Byont-Ventures/rtl-talpa-template`
 
@@ -77,7 +77,7 @@ We recommend (but it is optional) that you try out other faucets as well, [this 
 
 If you open this repo in VSCode, you should get a suggestion to install a set of extensions; we recommend you do so.
 
-## 4. Setting up your development environment
+## 5. Setting up your development environment
 
 ### Why NextJS (React)?
 
