@@ -58,4 +58,3 @@ lcov.info
 smart-contracts/libs
 smart-contracts/libs/ds-test
 smart-contracts/libs/forge-std
-.husky
