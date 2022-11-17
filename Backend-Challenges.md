@@ -304,6 +304,10 @@ Here is a format you can copy and paste into your terminal to deploy and verify 
 
 `forge create --rpc-url <alchemy_api_key> --private-key <wallet_private_key> smart-contracts/src/Challenge_12.sol:Challenge12 --constructor-args "NFT Example" "NFTEX" 100 --etherscan-api-key <etherscan_api_key> --verify`
 
+**Note:** Make sure you have enough test ETH in your wallet! 0.1 should be enough, but just to be on the safe side we recommend about 0.3 test ETH. Smart contract deployment can be expensive sometimes => [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
+
+For a reminder on how to get test ETH, please refer to [this section in the preparation guide(./Workshop-Preparation.md#3-get-some-test-eth).
+
 Below are the steps to acquire the necessary API keys:
 
 1. Head over to [Etherscan](https://etherscan.io/register) and create an account.
@@ -362,3 +366,5 @@ Once you have minted your NFTs, you should be able to view them on Opensea!
 If you have managed to make it this far, **give yourself a pat on the back, you've earned it!** Of course, these challenges were just the tip of the iceberg. The NFTs can be extended with loads of functionalities, you can create an Opensea account and edit your collection, you can optimize your smart contracts so the gas fees are less and there are a lot of security measures you could take to make your contract safer, and the list goes on and on.
 
 🎉🎉🎉 **You have completed the Backend Coding Challenges!!!** 🎉🎉🎉
+
+**Next up:** Stretch challenges. During the workshop, we will be supplying you with a non-exhaustive list of stretch-challenges that you can work on to refine your skills from here on, or work on an idea of your own.
