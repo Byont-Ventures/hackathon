@@ -114,7 +114,6 @@ Minting is the core of getting tokens out there on the blockchain. NFTs are Non-
 
 As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT.
 
-
 ### Msg.sender and tx.origin
 
 You may have come across `msg.sender` a couple of times already. As mentioned in this [Stackoverflow article](https://ethereum.stackexchange.com/questions/113962/what-does-msg-sender-tx-origin-actually-do-why), `msg.sender` is the address of the account of which the current call is coming from, and `tx.origin` is the very first address in the calling chain.
@@ -135,7 +134,7 @@ So, what can we conclude from this? If a caller is a contract, the `tx.origin` i
 
 Keeping track of `msg.sender` and `tx.origin` is a good idea when testing in Foundry. In our tests, for example:
 
-Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.t.sol` (deploys) => Challenge contract `Challenge_7.sol`. 
+Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.t.sol` (deploys) => Challenge contract `Challenge_7.sol`.
 
 ## Challenge 8 - Adding some checks
 
