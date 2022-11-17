@@ -2,9 +2,10 @@
 pragma solidity >=0.6.0 <0.9.0;
 
 /**
- * Reference links (what is openzeppelin, how does erc721 work)
+ * Reference links (what is openzeppelin, how does ERC721 work)
  * https://docs.openzeppelin.com/contracts/4.x/
  * https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
+ * https://eips.ethereum.org/EIPS/eip-721
  */
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
