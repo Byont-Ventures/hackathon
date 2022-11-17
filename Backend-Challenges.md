@@ -71,7 +71,7 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a c
   - The function should return the token URI as a string
 
 <details>
-    <summary>HINT</summary>
+    <summary>HINT:</summary>
     Solidity will not accept string and uint concatenation. You can use the provided Strings library to turn uint into a string.
 </details>
 
@@ -156,7 +156,10 @@ So, now let's improve the mint function to pass these checks. Our function shoul
 - `require()` that the mints do not exceed the max allowed supply
 - `require()` that the user minting is a human and not a contract
 
-**HINT:** For the third `require()`, you can make use of `msg.sender` and `tx.origin`
+<details>
+  <summary>HINT:</summary>
+  For the third <code>require()</code>, you can make use of <code>msg.sender</code> and <code>tx.origin</code>
+</details>
 
 ### Why are all these checks needed?
 
@@ -179,7 +182,10 @@ Take a look at `Challenge_9.t.sol`. Two tests have been added:
 
 So, the goal of this challenge is to add the appropriate modifiers to the contract so that only the owner can perform certain actions. And of course, your contract has to compile.
 
-**HINT:** You can make use of the Ownable library from Openzeppelin
+<details>
+  <summary>HINT:</summary>
+  You can make use of the Ownable library from Openzeppelin
+</details>
 
 ## Challenge 10 - Keeping track of mints using mappings
 
