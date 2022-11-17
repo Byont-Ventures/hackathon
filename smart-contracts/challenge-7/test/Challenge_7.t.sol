@@ -9,10 +9,13 @@ contract Challenge7Test is Test {
   using Strings for uint256;
   Challenge7 c;
   string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
+  address Alice;
+  address Bob;
 
   function setUp() public {
     c = new Challenge7('NFT Example', 'NFTEX', 100);
-
+    Alice = address(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf);
+    Bob = address(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF);
     c.setBaseURI(baseURI);
   }
 
@@ -27,8 +30,8 @@ contract Challenge7Test is Test {
     console.log('Minting from EOA...');
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
-    /// @dev Specify the msg.sender as minter
-    vm.startPrank(msg.sender);
+    /// @dev Specify Alice as minter
+    vm.startPrank(Alice);
     /// @dev We expect c.ownerOf(0) to revert since the token id 0 does not exist yet
     vm.expectRevert();
     c.ownerOf(0);
@@ -38,8 +41,8 @@ contract Challenge7Test is Test {
     c.mint(amount);
     /// @dev Total supply should now equal the amount we minted
     assertEq(c.totalSupply(), amount);
-    /// @dev Use ERC721 ownerOf() to check that the owner of token 0 is the msg.sender
-    assertEq(c.ownerOf(amount - 1), msg.sender);
+    /// @dev Use ERC721 ownerOf() to check that the owner of token 0 is Alice
+    assertEq(c.ownerOf(amount - 1), Alice);
     vm.stopPrank();
   }
 
