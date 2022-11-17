@@ -14,6 +14,7 @@ contract Challenge7Test is Test {
 
   function setUp() public {
     c = new Challenge7('NFT Example', 'NFTEX', 100);
+    /// @dev Initialize two actors Alice and Bob
     Alice = address(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf);
     Bob = address(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF);
     c.setBaseURI(baseURI);
@@ -26,6 +27,9 @@ contract Challenge7Test is Test {
   }
 
   /// @notice Test minting 1 from Externally Owned Account (EOA)
+  /**
+    
+   */
   function testMintEOA() public {
     console.log('Minting from EOA...');
     uint256 initialSupply = c.totalSupply();
