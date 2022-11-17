@@ -114,6 +114,29 @@ Minting is the core of getting tokens out there on the blockchain. NFTs are Non-
 
 As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT.
 
+
+### Msg.sender and tx.origin
+
+You may have come across `msg.sender` a couple of times already. As mentioned in this [Stackoverflow article](https://ethereum.stackexchange.com/questions/113962/what-does-msg-sender-tx-origin-actually-do-why), `msg.sender` is the address of the account of which the current call is coming from, and `tx.origin` is the very first address in the calling chain.
+
+An example:
+
+1. You -> Contract mint
+
+- `tx.origin` == you
+- `msg.sender` == you
+
+2. You -> Contract A (calls contract B mint function) -> Contract B mint
+
+- `tx.origin` == you
+- `msg.sender` == Contract A
+
+So, what can we conclude from this? If a caller is a contract, the `tx.origin` is always different from `msg.sender`!
+
+Keeping track of `msg.sender` and `tx.origin` is a good idea when testing in Foundry. In our tests, for example:
+
+Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.t.sol` (deploys) => Challenge contract `Challenge_7.sol`. 
+
 ## Challenge 8 - Adding some checks
 
 The goal of this challenge is to add a couple of checks to the mint function. Right now, even though we have set a max supply, it doesn't actually do anything; we can easily mint more than the max supply. So let's fix that.
@@ -135,24 +158,6 @@ So, now let's improve the mint function to pass these checks. Our function shoul
 - `require()` that the user minting is a human and not a contract
 
 **HINT:** For the third `require()`, you can make use of `msg.sender` and `tx.origin`
-
-### Msg.sender and tx.origin
-
-We have come across `msg.sender` a couple of times already. As mentioned in this [Stackoverflow article](https://ethereum.stackexchange.com/questions/113962/what-does-msg-sender-tx-origin-actually-do-why), `msg.sender` is the address of the account of which the current call is coming from, and `tx.origin` is the very first address in the calling chain.
-
-An example:
-
-1. You -> Contract mint
-
-- `tx.origin` == you
-- `msg.sender` == you
-
-2. You -> Contract A (calls contract B mint function) -> Contract B mint
-
-- `tx.origin` == you
-- `msg.sender` == Contract A
-
-So, what can we conclude from this? If a caller is a contract, the `tx.origin` is always different from `msg.sender`!
 
 ### Why are all these checks needed?
 
