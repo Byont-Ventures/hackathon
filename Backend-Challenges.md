@@ -1,18 +1,22 @@
 # Backend Challenges
 
-These challenges provide a way to get started with Foundry, Solidity, and NFTs. Usually, the goal is to fix an error / write a new function in a test file, solidity file, or both. Simultaneously, the challenges will be examples of how things work in Solidity, how NFT smart contracts are structured, how to test your files, and how smart contracts are deployed.
+These challenges provide a way to get started with Foundry, Solidity, and NFTs. Usually, the goal is to fix an error / write a new function in a test file, solidity file, or both. Simultaneously, the challenges will be examples of how things work in Solidity, how NFT smart contracts are structured, how to test your files, and how to deploy smart contracts.
 
 ## Challenge 1 - Hello World!
 
-Take a look at the `smart-contracts` folder. Here, the important sub-folders are
+Take a look at the `smart-contracts` folder. Here, you will see a folder for every challenge. Within each folder, you will find two sub-folders:
 
-- `scripts` => Has a file that contains the logic that is called when you run tests with `forge test` (this will run all the files)
 - `src` => Contains all the actual smart contracts.
-- `tests` => In here, you can write your test files.
+- `tests` => Contains the test files for those contracts.
 
-For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message` and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry; this is run before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
+For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message` and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry; this runs before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
 
-Whew, we did a lot of stuff, but yet so little! Take a sip of your coffee. Breathe in, breathe out. When you're ready, go ahead and run your first test by typing `forge test --match-contract Challenge1` (--match-contract is a flag that enables you to run a specific test contract). Sit back, and enjoy the dopamine of that green checkmark.
+Whew, we covered many things already but yet did so little! Take a sip of your coffee. Breathe in, breathe out. When ready, run your first test by putting `FOUNDRY_PROFILE=challenge-1 forge test --match-contract Challenge1` in your terminal. Sit back, and enjoy the dopamine of that green checkmark.
+
+### Foundry flags
+
+`--match-contract` => Flag that enables you to run a spefic test contract
+`FOUNDRY_PROFILE=` => Environment variable you pass on to tell Foundry which profile to run. There is a profile for every test, from `challenge-1` to `challenge-12`.
 
 ## Challenge 2 - Hello???
 
@@ -140,7 +144,7 @@ Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.
 
 The goal of this challenge is to add a couple of checks to the mint function. Right now, even though we have set a max supply, it doesn't actually do anything; we can easily mint more than the max supply. So let's fix that.
 
-A way to do this, is to add an if-statement within the mint function that checks if the total supply + mint amount exceeds the max supply. If so, we revert the transaction and maybe we send out a little message so the user will know why the transaction reverted.
+A way to do this is to add an if-statement within the mint function that checks if the total supply + mint amount exceeds the max supply. If so, we revert the transaction and maybe we send out a little message so the user will know why the transaction reverted.
 
 An easier way to do this though, is by adding a `require()` statement within the function. You can read more about `require()` [here](https://www.alchemy.com/overviews/solidity-require).
 
@@ -163,7 +167,7 @@ So, now let's improve the mint function to pass these checks. Our function shoul
 
 ### Why are all these checks needed?
 
-Besides the obvious ones such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (most of the time, but not always, smart contracts) owned by people with a lot of money to blow (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price, or sell them for a large profit if the NFTs are deemed valuable.
+Besides the obvious ones, such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (most of the time, but not always, smart contracts) owned by people with a lot of money to blow (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price, or sell them for a large profit if the NFTs are deemed valuable.
 
 **Note**: Bots are not always smart contracts, sometimes just an EOA + program.
 
@@ -235,7 +239,7 @@ For more information on how to structure your metadata, check out the [Opensea m
 ### Add images to metadata
 
 1. Before we upload our metadata to IPFS, we need to add the IPFS URIs of the images we uploaded, to the metadata files.
-2. The metadata files are located in the [json](./metadata/json/) folder. In every `.json` file, you can see that the `description` and `image` fields have not been properly set yet. Usually, this is done through a script, but since we have 5 files, it is also doable manually. Go ahead and update the `image` fields in every file to the corresponding IPFS URIs. You could also change the description if you'd like.
+2. The metadata files are located in the [json](./metadata/JSON/) folder. In every `.json` file, you can see that the `description` and `image` fields have not been properly set yet. Usually, this is done through a script, but since we have 5 files, it is also doable manually. Go ahead and update the `image` fields in every file to the corresponding IPFS URIs. You could also change the description if you'd like.
 3. It is a good idea to verify that the images are matching the metadata attributes at this point.
 
 <details>
@@ -245,7 +249,7 @@ For more information on how to structure your metadata, check out the [Opensea m
 
 ### Upload metadata
 
-1. Now that we are pointing to the images on IPFS in our metadata, we are ready to upload the metadata! Go to Pinata, and click on Upload > Upload Folder > select the [json](./metadata/json/) folder.
+1. Now that we are pointing to the images on IPFS in our metadata, we are ready to upload the metadata! Go to Pinata, and click on Upload > Upload Folder > select the [json](./metadata/JSON/) folder.
 2. Give your folder a name
 3. Wait for the upload to finish
 4. Copy the folder CID, construct the IPFS URI, and paste it in your browser. For example: `ipfs://someCID/1`
@@ -317,11 +321,11 @@ Below are the steps to acquire the necessary API keys:
 5. Copy and paste your Etherscan API key into the format
 6. Head over to [Alchemy](https://www.alchemy.com/) and create an account
 7. Login and click on `Create App` (top right)
-8. Give it a name, and select `Goerli` as network. Then, `Create App`
+8. Give it a name, and for network, select `Goerli`. Then, `Create App`
 9. Next to your app, click on `View Key`
 10. Copy and paste your Alchemy API key (HTTPS) into the format
 
-After populating the command with your private key and api keys, you can paste it into the terminal and run it! The smart contract will now be deployed via the wallet of which you have provided the private key, and after some time, also verified!
+After populating the command with your private key and API keys, you can paste it into the terminal and run it! The smart contract will now be deployed via the wallet of which you have provided the private key, and after some time, also verified!
 
 🎉🎉🎉 **Congratulations!!!** 🎉🎉🎉
 You have just built, deployed and verified an NFT smart contract! Take note of the contract address in the terminal output, for example: `Deployed to: 0x.....` , and let's proceed to the next step!
@@ -367,4 +371,4 @@ If you have managed to make it this far, **give yourself a pat on the back, you'
 
 🎉🎉🎉 **You have completed the Backend Coding Challenges!!!** 🎉🎉🎉
 
-**Next up:** Stretch challenges. During the workshop, we will be supplying you with a non-exhaustive list of stretch-challenges that you can work on to refine your skills from here on, or work on an idea of your own.
+**Next up:** Stretch challenges. During the workshop, we will be supplying you with a non-exhaustive list of stretch challenges that you can work on to refine your skills from here on, or work on an idea of your own.
