@@ -1,3 +1,15 @@
 @openzeppelin/=node_modules/@openzeppelin/
 forge-std/=smart-contracts/libs/forge-std/src/
 @smart-contracts=smart-contracts/src/
+@challenge-1=smart-contracts/challenge-1/
+@challenge-2=smart-contracts/challenge-2/
+@challenge-3=smart-contracts/challenge-3/
+@challenge-4=smart-contracts/challenge-4/
+@challenge-5=smart-contracts/challenge-5/
+@challenge-6=smart-contracts/challenge-6/
+@challenge-7=smart-contracts/challenge-7/
+@challenge-8=smart-contracts/challenge-8/
+@challenge-9=smart-contracts/challenge-9/
+@challenge-10=smart-contracts/challenge-10/
+@challenge-11=smart-contracts/challenge-11/
+@challenge-12=smart-contracts/challenge-12/
