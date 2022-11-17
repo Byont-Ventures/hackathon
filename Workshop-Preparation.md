@@ -71,6 +71,15 @@ We recommend (but it is optional) that you try out other faucets as well, [this 
 
 ## 4. Clone this repo and install VSCode extensions
 
+First, install [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage).
+
+To check if you have Git LFS installed:
+
+```zsh
+$ git lfs install
+> Git LFS initialized
+```
+
 `git clone https://github.com/Byont-Ventures/Hackathon.git`
 
 **Note:** We use [VSCode](https://code.visualstudio.com/) for development. There are other free-to-use tools, but we can only provide limited support if you decide to use those.
