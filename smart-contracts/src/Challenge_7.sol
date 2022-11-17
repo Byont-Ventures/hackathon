@@ -1,19 +1,12 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity >=0.6.0 <0.9.0;
 
-/**
- * Reference links (what is openzeppelin, how does erc721 work, ownable)
- * https://docs.openzeppelin.com/contracts/4.x/
- * https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
- * https://docs.openzeppelin.com/contracts/4.x/access-control
- */
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
-import '@openzeppelin/contracts/access/Ownable.sol';
 
-/// @title Challenge 5
+/// @title Challenge 7
 /// @author Byont Labs
 /// @notice A barebones NFT contract example with documentation for learning purposes
-contract Contract is ERC721, Ownable {
+contract Contract is ERC721 {
   /// @dev Library that can convert uint256 to string. (by the way, uint is short for uint256)
   using Strings for uint256;
 
@@ -24,8 +17,10 @@ contract Contract is ERC721, Ownable {
     uint256 _maxSupply
   ) ERC721(_name, _symbol) {
     maxSupply = _maxSupply;
+    owner = msg.sender;
   }
 
+  address public owner;
   /// @notice The base uri for NFT metadata, should become something like ipfs://somestring/
   /// @dev Private strings are NOT hidden for humans, just for other smart contracts
   string private _baseURIextended;
@@ -36,13 +31,9 @@ contract Contract is ERC721, Ownable {
   /// @notice The max amount of allowed NFT mints
   uint256 public maxSupply;
 
-  /// @notice example of a mapping that keeps track of amount of mints a user has made
-  /// @dev https://docs.soliditylang.org/en/v0.8.17/types.html#mapping-types
-  mapping(address => uint256) public userMints;
-
   /// @notice Sets the base URI
   /// @param _uri The base uri
-  function setBaseURI(string memory _uri) external onlyOwner {
+  function setBaseURI(string memory _uri) external {
     _baseURIextended = _uri;
   }
 
@@ -65,19 +56,11 @@ contract Contract is ERC721, Ownable {
 
   /// @notice Mints NFT's. Minting in this case means creating the NFT and assigning the minter as owner
   /// @param _amount The amount of tokens that will be minted
-  /// @dev More about how require() works: https://www.alchemy.com/overviews/solidity-require
-  /// @dev If you call the minting function from another contract, msg.sender will != tx.origin
-  /// @dev More about msg.sender and tx.origin: https://ethereum.stackexchange.com/questions/113962/what-does-msg-sender-tx-origin-actually-do-why
-  function mint(uint256 _amount) public payable {
-    ///@dev usage of tx.origin is fine here but do your own research (dyor) on why tx.origin can be dangerous
-    require(msg.sender == tx.origin, 'No minting from contract allowed');
-    require(totalSupply + _amount <= maxSupply, 'Amount exceeds max supply');
-    require(_amount > 0, 'Amount cannot be zero');
-    uint256 startId = totalSupply;
+  /// TODO: Add mint function here!
+  function mint(uint _amount) public payable {
+    uint startId = totalSupply;
     totalSupply += _amount;
-    /// @dev update the mapping that tracks mint count of user
-    userMints[msg.sender] += _amount;
-    for (uint256 i = 0; i < _amount; i++) {
+    for (uint i = 0; i < _amount; i++) {
       _mint(msg.sender, startId + i);
     }
   }

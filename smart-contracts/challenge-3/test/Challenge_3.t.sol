@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity >=0.6.0 <0.8.12;
+pragma solidity ^0.8.13;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_4.sol';
+import '@challenge-3/src/Challenge_3.sol';
 
-contract Challenge4 is Test {
-  Contract c;
+contract Challenge3Test is Test {
+  Challenge3 c;
 
   function setUp() public {
-    c = new Contract();
+    c = new Challenge3();
   }
 
   /// @notice Tests that a message can be successfully added to the existing message
@@ -20,9 +20,7 @@ contract Challenge4 is Test {
     /// @dev Get the initial message
     string memory initMessage = c.getMessage();
     /// @dev TODO: Initial message should be equal to 'Hello'
-    assertEq(initMessage, 'Hello');
     /// @dev TODO: Add ' World!' to the message
-    // c.addToMessage(' World!');
     /// @dev Get the new message
     string memory newMessage = c.getMessage();
     /// @dev The message should now be 'Hello World!'

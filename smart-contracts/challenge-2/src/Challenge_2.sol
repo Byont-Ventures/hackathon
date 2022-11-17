@@ -12,12 +12,12 @@ pragma solidity ^0.8.13;
  * - The function should be payable => https://docs.alchemy.com/docs/solidity-payable-functions#
  */
 
-contract Contract {
+contract Challenge2 {
   string message;
 
   /// @return message:string; the message stored in the contract.
   function getMessage() public view returns (string memory) {
     return message;
   }
-  // /// @dev TODO: add setMessage() here!
+  /// @dev TODO: add setMessage() here!
 }

@@ -48,6 +48,12 @@ Generally speaking, an NFT consists of following components:
 
 The goal of this challenge is to flesh out the constructor, have it accept the arguments passed in the test, and make it set the max supply inside the constructor to what was passed as an argument.
 
+### Constructors
+
+A constructor is a special function that is used to initialize state variables. An ERC721 contract, for example, requires two constructor parameters called "Name" and "Symbol," i.e., "Ethereum" and "ETH." Also, in this case, we set our max allowed supply of NFTs via the constructor.
+
+When you deploy a smart contract, you will pass these arguments to the constructor.
+
 ## Challenge 6 - BaseURI, TokenURI
 
 Since `_baseURIextended` is private, we have implemented a getter function called `_baseURI()`. The ERC721 standard already has this function implementation, but we want it to behave differently for our use case so we have overridden it. Notice the `override` keyword added to the function.
@@ -71,13 +77,14 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a c
 
 ### Solidity libraries and openzeppelin
 
-In Solidity, you can import libraries that will make life easier. OpenZeppelin is a company that provides free standardized contract libraries to use, such as ERC721. These contracts are firmly audited, meaning they are generally secure to implement in your contracts.
+Solidity offers support to import libraries, both internal and external. More so than other languages, libraries play a key part in the development of smart contracts. This is because upgradability is quite a bit trickier, the environment is unforgiving for bugs, and then there's the all too common time pressure for software development. Put simply, libraries will make your life easier.
+Openzeppelin is a company that provides free, standardized, and thoroughly tested/audited smart contract libraries to use, such as ERC721.
 
 ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its own set of functionalities. For the workshop, ERC721 NFTs will suffice.
 
 - https://eips.ethereum.org/EIPS/eip-721
-- https://docs.openzeppelin.com/contracts/3.x/
-- https://docs.openzeppelin.com/contracts/3.x/api/token/erc721
+- https://docs.openzeppelin.com/contracts/4.x/
+- https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
 
 ### Constructors
 
@@ -87,15 +94,25 @@ When you deploy a smart contract, you will pass these arguments to the construct
 
 ### TokenURI
 
-If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how on earth do they get the NFT images and metadata? Well, often times these images are stored on chain, on IPFS, or even in the cloud. As on-chain storage is expensive, images are more often than not stored off-chain.
+As on-chain storage is expensive, images are more often than not stored off-chain.
+
+If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how do they get the NFT images and metadata?
 
 Your smart contract provides a way to tell Opensea which image belongs to which NFT and where the files are stored through a function called `tokenURI()`. Opensea simply looks for this function in your smart contract and parses the return value.
+
+## Challenge 7 - Minting
+
+The goal of this challenge is to create a minting function in `Challenge_7.sol`, so that the tests in `Challenge_7.t.sol` pass. The mint function should:
+
+- Accept a uint parameter for the mint amount
+- Increase the `totalSupply` by the mint amount
+- Mint the NFTs to `msg.sender` by using ERC721's `_mint()` function.
 
 ### Mint Functions
 
 Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A.
 
-As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the token ID starts at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT.
+As you might have noticed, NFTs have a token id. Most of the time, when you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and is assigned to the minted NFT.
 
 ### IPFS, Opensea, and Metadata
 

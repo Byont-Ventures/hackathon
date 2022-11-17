@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity >=0.6.0 <0.8.12;
+pragma solidity ^0.8.13;
 
-/// @title Challenge 4
+/// @title Challenge 3
 /// @author Byont Labs
 /// @notice addToMessage() should add a string to the message! (concatenation)
-contract Contract {
+contract Challenge3 {
   string message = 'Hello';
 
   /// @return message:string; the message stored in the contract.
@@ -13,5 +13,7 @@ contract Contract {
   }
 
   /// @dev TODO: complete addToMessage() here!
-  function addToMessage() public payable {}
+  function addToMessage() public payable {
+    message = string.concat();
+  }
 }
