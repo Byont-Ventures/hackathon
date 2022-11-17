@@ -3,22 +3,41 @@ pragma solidity >=0.6.0 <0.9.0;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_8.sol';
+import '@challenge-12/src/Challenge_12.sol';
 
-contract Challenge8Test is Test {
+contract Challenge12Test is Test {
   using Strings for uint256;
-  Challenge8 c;
+  Challenge12 c;
   string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
 
   function setUp() public {
-    c = new Challenge8('NFT Example', 'NFTEX', 100);
+    c = new Challenge12('NFT Example', 'NFTEX', 100);
     c.setBaseURI(baseURI);
   }
 
   /// @notice Checks that the tokenURI is properly constructed
   /// @param _id The token id
+  /// TODO: Fix the test!
   function testTokenUri(uint256 _id) public {
-    assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString()));
+    assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString(), '.json'));
+  }
+
+  /// @notice Non-owners should not be able to set base URI
+  /// @dev vm.startPrank() and the like are Foundry cheat codes
+  /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
+  function testFailSetBaseURI() public {
+    vm.startPrank(address(1337));
+    c.setBaseURI('1337');
+    vm.stopPrank();
+  }
+
+  /// @notice Owners should be able to set the base URI
+  /// TODO: Fix the test!
+  function testSetBaseURI() public payable {
+    uint256 id = 69;
+    string memory newURI = '1337';
+    c.setBaseURI(newURI);
+    assertEq(c.tokenURI(id), string.concat(newURI, id.toString(), '.json'));
   }
 
   /// @notice Test minting 1 from Contract Account (CA)
@@ -49,17 +68,21 @@ contract Challenge8Test is Test {
   /// @dev More about fuzz testing: https://book.getfoundry.sh/forge/fuzz-testing?highlight=fuzz%20testing#fuzz-testing
   function testMintMax(uint256 amount) public {
     uint256 maxSupply = c.maxSupply();
+    /// @dev Set the user max mint per wallet to the max allowed for this test
+    c.setUserMaxMint(2 ** 256 - 1);
     vm.assume(amount > 0);
-    vm.assume(amount < maxSupply);
+    vm.assume(amount <= maxSupply);
     vm.startPrank(msg.sender);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
   }
 
-  /// @notice Fuzz test minting over max amount allowed
+  /// @notice Fuzz test minting over max supply
   /// @param amount The amount to mint
   function testMintOverMax(uint256 amount) public {
+    /// @dev Set the user max mint to the max allowed for this test
+    c.setUserMaxMint(2 ** 256 - 1);
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
     vm.startPrank(msg.sender);
@@ -74,5 +97,17 @@ contract Challenge8Test is Test {
     vm.expectRevert('Amount cannot be zero');
     c.mint(0);
     vm.stopPrank();
+  }
+
+  /// @notice Users should not be able to mint more than allowed per wallet
+  function testMintOverAllowed(uint amount, address user) public {
+    uint maxPerUser = c.maxPerUser();
+    uint maxSupply = c.maxSupply();
+    vm.assume(amount > maxPerUser);
+    vm.assume(amount <= maxSupply);
+    /// @dev User mints
+    vm.expectRevert('Not allowed to mint this many');
+    vm.prank(user, user);
+    c.mint(amount);
   }
 }

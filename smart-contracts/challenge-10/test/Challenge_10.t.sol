@@ -3,15 +3,15 @@ pragma solidity >=0.6.0 <0.9.0;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_9.sol';
+import '@challenge-10/src/Challenge_10.sol';
 
-contract Challenge9Test is Test {
+contract Challenge10Test is Test {
   using Strings for uint256;
-  Challenge9 c;
+  Challenge10 c;
   string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
 
   function setUp() public {
-    c = new Challenge9('NFT Example', 'NFTEX', 100);
+    c = new Challenge10('NFT Example', 'NFTEX', 100);
     c.setBaseURI(baseURI);
   }
 
@@ -66,17 +66,21 @@ contract Challenge9Test is Test {
   /// @dev More about fuzz testing: https://book.getfoundry.sh/forge/fuzz-testing?highlight=fuzz%20testing#fuzz-testing
   function testMintMax(uint256 amount) public {
     uint256 maxSupply = c.maxSupply();
+    /// @dev Set the user max mint per wallet to the max allowed for this test
+    c.setUserMaxMint(2 ** 256 - 1);
     vm.assume(amount > 0);
-    vm.assume(amount < maxSupply);
+    vm.assume(amount <= maxSupply);
     vm.startPrank(msg.sender);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
   }
 
-  /// @notice Fuzz test minting over max amount allowed
+  /// @notice Fuzz test minting over max supply
   /// @param amount The amount to mint
   function testMintOverMax(uint256 amount) public {
+    /// @dev Set the user max mint to the max allowed for this test
+    c.setUserMaxMint(2 ** 256 - 1);
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
     vm.startPrank(msg.sender);
@@ -91,5 +95,17 @@ contract Challenge9Test is Test {
     vm.expectRevert('Amount cannot be zero');
     c.mint(0);
     vm.stopPrank();
+  }
+
+  /// @notice Users should not be able to mint more than allowed per wallet
+  function testMintOverAllowed(uint amount, address user) public {
+    uint maxPerUser = c.maxPerUser();
+    uint maxSupply = c.maxSupply();
+    vm.assume(amount > maxPerUser);
+    vm.assume(amount <= maxSupply);
+    /// @dev User mints
+    vm.expectRevert('Not allowed to mint this many');
+    vm.prank(user, user);
+    c.mint(amount);
   }
 }

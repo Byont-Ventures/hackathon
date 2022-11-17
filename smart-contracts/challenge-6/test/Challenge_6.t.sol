@@ -3,7 +3,7 @@ pragma solidity >=0.6.0 <0.9.0;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_6.sol';
+import '@challenge-6/src/Challenge_6.sol';
 
 contract Challenge6Test is Test {
   using Strings for uint256;

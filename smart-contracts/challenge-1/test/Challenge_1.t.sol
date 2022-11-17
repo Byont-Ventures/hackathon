@@ -3,7 +3,7 @@ pragma solidity ^0.8.13;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_1.sol';
+import '@challenge-1/src/Challenge_1.sol';
 
 contract Challenge1Test is Test {
   Challenge1 c;

@@ -3,7 +3,7 @@ pragma solidity >=0.6.0 <0.9.0;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_7.sol';
+import '@challenge-7/src/Challenge_7.sol';
 
 contract Challenge7Test is Test {
   using Strings for uint256;
@@ -12,6 +12,7 @@ contract Challenge7Test is Test {
 
   function setUp() public {
     c = new Challenge7('NFT Example', 'NFTEX', 100);
+
     c.setBaseURI(baseURI);
   }
 

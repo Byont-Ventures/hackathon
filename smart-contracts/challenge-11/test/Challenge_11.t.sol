@@ -3,15 +3,15 @@ pragma solidity >=0.6.0 <0.9.0;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_12.sol';
+import '@challenge-11/src/Challenge_11.sol';
 
-contract Challenge12Test is Test {
+contract Challenge11Test is Test {
   using Strings for uint256;
-  Challenge12 c;
+  Challenge11 c;
   string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
 
   function setUp() public {
-    c = new Challenge12('NFT Example', 'NFTEX', 100);
+    c = new Challenge11('NFT Example', 'NFTEX', 100);
     c.setBaseURI(baseURI);
   }
 
@@ -19,7 +19,7 @@ contract Challenge12Test is Test {
   /// @param _id The token id
   /// TODO: Fix the test!
   function testTokenUri(uint256 _id) public {
-    assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString(), '.json'));
+    assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString()));
   }
 
   /// @notice Non-owners should not be able to set base URI
@@ -37,7 +37,7 @@ contract Challenge12Test is Test {
     uint256 id = 69;
     string memory newURI = '1337';
     c.setBaseURI(newURI);
-    assertEq(c.tokenURI(id), string.concat(newURI, id.toString(), '.json'));
+    assertEq(c.tokenURI(id), string.concat(newURI, id.toString()));
   }
 
   /// @notice Test minting 1 from Contract Account (CA)
