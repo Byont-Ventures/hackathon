@@ -163,7 +163,9 @@ So, now let's improve the mint function to pass these checks. Our function shoul
 
 ### Why are all these checks needed?
 
-Besides the obvious ones such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (smart contracts) owned by people with a lot of money to blow (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price, or sell them for a large profit if the NFTs are deemed valuable.
+Besides the obvious ones such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (most of the time, but not always, smart contracts) owned by people with a lot of money to blow (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price, or sell them for a large profit if the NFTs are deemed valuable.
+
+**Note**: Bots are not always smart contracts, sometimes just an EOA + program.
 
 This is just one of the many use cases, and security in the NFT space and crypto in general is a huge rabbit hole mostly beyond the scope of this workshop.
 
