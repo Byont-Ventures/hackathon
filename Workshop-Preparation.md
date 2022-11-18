@@ -2,7 +2,7 @@
 
 During the workshop, you will start creating your (first) NFT! But before that, we ask you to perform some initial steps so you can start developing straight away as the workshop starts! We will also use Byont's web3 template; this has just about everything you need to get started.
 
-Please note that getting test ETH generally takes more than one day, depending on how much you can claim per day from the faucet if you wish not also to mine it, so you should take that into account. However, we have some test ETH available for you should you need more.
+Please note that [getting enough test ETH](#3-get-some-test-eth) (around 0.3 should be good) generally takes more than one day, depending on how much you can claim per day from the faucet if you wish not also to mine it, so you should take that into account. However, we have some test ETH available for you should you need more, so don't put this as a top priority.
 
 ## 1 View files on IPFS
 
