@@ -53,6 +53,45 @@
     libs = ['smart-contracts/libs', 'node_modules']
     auto_detect_solc = true
 
+[profile.challenge-8]
+    src = 'smart-contracts/challenge-8/src'
+    test = 'smart-contracts/challenge-8/test'
+    out = 'dist/smart-contracts/'
+    cache_path = 'cache/'
+    libs = ['smart-contracts/libs', 'node_modules']
+    auto_detect_solc = true
+
+[profile.challenge-9]
+    src = 'smart-contracts/challenge-9/src'
+    test = 'smart-contracts/challenge-9/test'
+    out = 'dist/smart-contracts/'
+    cache_path = 'cache/'
+    libs = ['smart-contracts/libs', 'node_modules']
+    auto_detect_solc = true
+
+    [profile.challenge-10]
+    src = 'smart-contracts/challenge-10/src'
+    test = 'smart-contracts/challenge-10/test'
+    out = 'dist/smart-contracts/'
+    cache_path = 'cache/'
+    libs = ['smart-contracts/libs', 'node_modules']
+    auto_detect_solc = true
+
+[profile.challenge-11]
+    src = 'smart-contracts/challenge-11/src'
+    test = 'smart-contracts/challenge-11/test'
+    out = 'dist/smart-contracts/'
+    cache_path = 'cache/'
+    libs = ['smart-contracts/libs', 'node_modules']
+    auto_detect_solc = true
+
+[profile.challenge-12]
+    src = 'smart-contracts/challenge-12/src'
+    test = 'smart-contracts/challenge-12/test'
+    out = 'dist/smart-contracts/'
+    cache_path = 'cache/'
+    libs = ['smart-contracts/libs', 'node_modules']
+    auto_detect_solc = true
 
 [profile.default]
     src = 'smart-contracts/src'

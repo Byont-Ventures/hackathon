@@ -3,16 +3,21 @@ pragma solidity >=0.6.0 <0.9.0;
 
 import 'forge-std/Test.sol';
 
-import '@smart-contracts/Challenge_Full.sol';
+import '@challenge-9/src/Challenge_9.sol';
 
-contract ChallengeFull is Test {
+contract Challenge9Test is Test {
   using Strings for uint256;
-  Contract c;
+  Challenge9 c;
   string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
+  address Alice;
+  address Bob;
 
   function setUp() public {
-    c = new Contract('NFT Example', 'NFTEX', 100);
+    c = new Challenge9('NFT Example', 'NFTEX', 100);
     c.setBaseURI(baseURI);
+    /// @dev Initialize two actors Alice and Bob
+    Alice = address(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf);
+    Bob = address(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF);
   }
 
   /// @notice Checks that the tokenURI is properly constructed
@@ -51,13 +56,13 @@ contract ChallengeFull is Test {
     console.log('Minting from EOA...');
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
-    vm.startPrank(msg.sender);
+    vm.startPrank(Alice);
     vm.expectRevert();
     c.ownerOf(0);
     assertEq(initialSupply, 0);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
-    assertEq(c.ownerOf(amount - 1), msg.sender);
+    assertEq(c.ownerOf(amount - 1), Alice);
     vm.stopPrank();
   }
 
@@ -68,7 +73,7 @@ contract ChallengeFull is Test {
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > 0);
     vm.assume(amount < maxSupply);
-    vm.startPrank(msg.sender);
+    vm.startPrank(Alice);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
@@ -79,7 +84,7 @@ contract ChallengeFull is Test {
   function testMintOverMax(uint256 amount) public {
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
-    vm.startPrank(msg.sender);
+    vm.startPrank(Alice);
     vm.expectRevert('Amount exceeds max supply');
     c.mint(amount);
     vm.stopPrank();
@@ -87,27 +92,9 @@ contract ChallengeFull is Test {
 
   /// @notice Test minting 0 NFT's
   function testMintZero() public {
-    vm.startPrank(msg.sender);
+    vm.startPrank(Alice);
     vm.expectRevert('Amount cannot be zero');
     c.mint(0);
     vm.stopPrank();
-  }
-
-  ///@notice Test mint counter of users
-  function testUserMint() public {
-    address user1 = address(69);
-    uint256 user1MintAmount = 10;
-    uint256 user1InitMints = c.userMints(user1);
-    address user2 = address(1337);
-    uint256 user2MintAmount = 6;
-    uint256 user2InitMints = c.userMints(user2);
-    /// @dev user1 mints, tx.origin equal to msg.sender
-    vm.prank(user1, user1);
-    c.mint(user1MintAmount);
-    assertEq(c.userMints(user1), user1InitMints + user1MintAmount);
-    /// @dev user 2 mints, tx.origin equal to msg.sender
-    vm.prank(user2, user2);
-    c.mint(user2MintAmount);
-    assertEq(c.userMints(user2), user2InitMints + user2MintAmount);
   }
 }
