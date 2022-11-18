@@ -2,6 +2,8 @@
 
 During the workshop, you will start creating your (first) NFT! But before that, we ask you to perform some initial steps so you can start developing straight away as the workshop starts! We will also use Byont's web3 template; this has just about everything you need to get started.
 
+Please note that getting test ETH generally takes more than one day, depending on how much you can claim per day from the faucet if you wish not also to mine it, so you should take that into account. However, we have some test ETH available for you should you need more.
+
 ## 1 View files on IPFS
 
 1. Go to [IPFS browser](https://ipfsbrowser.com/)
@@ -15,7 +17,7 @@ If you are using Brave browser, you can paste the IPFS URL directly into the bro
 
 ## 2. Get a test crypto wallet
 
-For the workshop, we recommend using Metamask, a crypto wallet that can you can add as a [browser extension.](https://metamask.io/)
+For the workshop, we recommend using Metamask, a crypto wallet that you can add as a [browser extension.](https://metamask.io/)
 
 You can use this wallet for testing during the workshop. We recommend you keep your development and personal wallet separate; in other words, we recommend you not store real funds on it.
 
@@ -69,8 +71,10 @@ There are generally two ways to get test ETH:
 
 We recommend (but it is optional) that you try out other faucets as well, [this site](https://faucetlink.to/goerli) has plenty of faucets you can try out. Some might be down; others might require some verification method, such as a tweet.
 
-## 4. Clone this repo and install VSCode extensions
+## 4 Clone this repo and install VSCode extensions
 
+**Note:** We use [VSCode](https://code.visualstudio.com/) for development. There are other free-to-use tools, but we can only provide limited support if you decide to use those.
+If you are using `Windows`, please refer to [this section]()
 First, install [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage).
 
 To check if you have Git LFS installed:
@@ -82,9 +86,21 @@ $ git lfs install
 
 `git clone https://github.com/Byont-Ventures/Hackathon.git`
 
-**Note:** We use [VSCode](https://code.visualstudio.com/) for development. There are other free-to-use tools, but we can only provide limited support if you decide to use those.
-
 If you open this repo in VSCode, you should get a suggestion to install a set of extensions; we recommend you do so.
+
+## 4.5 Configuration for Windows users
+
+Please note that if you are a Windows user, you will have to put in a lot more effort configuration-wise, and we will only be able to provide limited support.
+In short, you can use WSL to run the challenges and open them in VSC.
+Nevertheless, we will give you some general instructions on how to get things up and running:
+
+1. Get [Ubuntu with WSL](https://apps.microsoft.com/store/detail/ubuntu-22041-lts/9PN20MSR04DW) from the Microsoft Store
+2. Install [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage) (Optional - if you get stuck, you can skip this step)
+3. Clone this repo `git clone https://github.com/Byont-Ventures/Hackathon.git`
+4. Install [nvm, node.js, and npm](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-nvm-nodejs-and-npm)
+5. You will have to find your solution for opening your favorite IDE in WSL + Ubuntu, for instance. We recommend VSCode because they have good [documentation.](https://code.visualstudio.com/docs/remote/wsl-tutorial) and integration solutions.
+
+Now you should be good to go, and you can continue your installation in [section 5](#5-setting-up-your-development-environment).
 
 ## 5. Setting up your development environment
 
