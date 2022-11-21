@@ -31,7 +31,7 @@ const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
             }
           >
             {children}
-            {`test ${client.provider._network.chainId}`}
+            {`Chain ID: ${client.provider._network.chainId}`}
           </main>
           <footer>
             <Text>Byont Ventures B.V. © {new Date().getFullYear()}</Text>
