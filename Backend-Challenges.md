@@ -25,6 +25,9 @@ The message in the contract `Challenge_2.sol` has not been initialized yet. The 
 Remember, to run the test for challenge 2:
 `FOUNDRY_PROFILE=challenge-2 forge test --match-contract Challenge2`
 
+### What is public, view ...
+You might have noticed some keywords in the function definition such as `public` and `view`. These are [modifiers](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-modifiers) that change how functions behave. In this case, they are related to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), but there are also others such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
+
 ## Challenge 3 - Hello + World
 
 Let's add a tiny bit of spice. This time, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the Foundry books to see how it's done.

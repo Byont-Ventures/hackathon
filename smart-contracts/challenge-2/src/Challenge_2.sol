@@ -9,7 +9,6 @@ pragma solidity ^0.8.13;
  * Hint:
  * - The function should accept a string parameter in memory
  * - The function should be public => https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility
- * - The function should be payable => https://docs.alchemy.com/docs/solidity-payable-functions#
  */
 
 contract Challenge2 {
