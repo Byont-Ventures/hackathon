@@ -35,7 +35,7 @@ contract Challenge7Test is Test {
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
     /// @dev Specify Alice as minter
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     /// @dev We expect c.ownerOf(0) to revert since the token id 0 does not exist yet
     vm.expectRevert();
     c.ownerOf(0);
@@ -57,7 +57,7 @@ contract Challenge7Test is Test {
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > 0);
     vm.assume(amount < maxSupply);
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
