@@ -108,13 +108,15 @@ In this challenge, we will aim to create a minting function in `Challenge_7.sol`
 
 - Accept a `uint` parameter for the mint amount
 - Increase the `totalSupply` by the mint amount
-- Mint the NFTs to `msg.sender` using ERC721's `_mint()` function
+- Mint the NFTs to `msg.sender` using ERC721's `_mint()` function within a for-loop
 
 ### Mint Functions
 
 Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A, ERC721Psi.
 
 As you might have noticed, NFTs have a token id. When you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and gets assigned to the minted NFT.
+
+If you take a look at the [ERC721 documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721), you will see that the `mint()` function takes two arguments; the target address, and the token ID that will be assigned. Because you cannot set an amount of tokens to mint in ERC721's `mint()` function, you will have mint one at a time in a loop.
 
 ### Msg.sender and tx.origin
 

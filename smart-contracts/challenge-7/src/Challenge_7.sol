@@ -54,5 +54,6 @@ contract Challenge7 is ERC721 {
 
   /// @notice Mints NFT's. Minting in this case means creating the NFT and assigning the minter as owner
   /// @param _amount The amount of tokens that will be minted
+  /// @dev ERC721 documentation: https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
   /// TODO: Add mint function here!
 }
