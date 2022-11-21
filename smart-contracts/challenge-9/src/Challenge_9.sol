@@ -63,7 +63,7 @@ contract Challenge9 is ERC721 {
     uint256 startId = totalSupply;
     totalSupply += _amount;
     for (uint256 i = 0; i < _amount; i++) {
-      _mint(msg.sender, startId + i);
+      _safeMint(msg.sender, startId + i);
     }
   }
 

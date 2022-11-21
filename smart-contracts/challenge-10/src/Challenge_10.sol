@@ -72,7 +72,7 @@ contract Challenge10 is ERC721, Ownable {
     /// TODO: Increase mint count of user here!
 
     for (uint256 i = 0; i < _amount; i++) {
-      _mint(msg.sender, startId + i);
+      _safeMint(msg.sender, startId + i);
     }
   }
 

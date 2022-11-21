@@ -72,7 +72,7 @@ contract Challenge12 is ERC721, Ownable {
     totalSupply += _amount;
     userMintCount[msg.sender] += _amount;
     for (uint256 i = 0; i < _amount; i++) {
-      _mint(msg.sender, startId + i);
+      _safeMint(msg.sender, startId + i);
     }
   }
 
