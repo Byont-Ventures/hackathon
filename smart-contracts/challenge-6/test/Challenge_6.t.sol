@@ -17,7 +17,7 @@ contract Challenge6Test is Test {
 
   /// @notice Checks that the tokenURI is properly constructed
   /// @param _id The token id
-  function testTokenUri(uint256 _id) public {
+  function testTokenURI(uint256 _id) public {
     assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString()));
   }
 }

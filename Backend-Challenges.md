@@ -81,12 +81,12 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a s
 
 - Implement a function `setBaseURI()` in `Challenge_6.sol` that sets the base URI given a certain string
   - The function should take a string parameter
-  - The function should set \_baseUriExtended to that string
+  - The function should set `_baseURIExtended` to that string
 - Implement `setBaseURI()` in the `setUp()` function body of `Challenge_6.t.sol`
 - Implement a function `tokenURI()` in `Challenge_6.sol` that constructs a token URI and returns it given a certain token ID
   - The function should take a uint parameter (this is the token ID)
   - The function should `override` the default ERC721 `tokenURI()`
-  - The function should concatenate \_baseUriExtended and the passed token ID parameter
+  - The function should concatenate `_baseUriExtended` and the passed token ID parameter
   - The function should return the token URI as a string
 
 <details>
@@ -209,7 +209,7 @@ In this challenge, we will be uploading images to IPFS. Then, write a test that 
 
 ### IPFS, Opensea, and Metadata
 
-Previously, we pasted an IPFS link to an NFT image of a Bored Ape into our browser as a test. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. We can construct the IPFS token URIs in our smart contracts that point to these images on IPFS. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenUri()`. Usually, the first thing returned is the metadata.
+Previously, we pasted an IPFS link to an NFT image of a Bored Ape into our browser as a test. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. We can construct the IPFS token URIs in our smart contracts that point to these images on IPFS. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenURI()`. Usually, the first thing returned is the metadata.
 
 For example, paste this link into your browser: `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2369`
 
@@ -293,7 +293,7 @@ If you paste a contract address in the top right search bar, you will land on th
 Now, go ahead and click on the `Contract` tab. Below that, you will see three tabs called `Code,` `Read Contract,` and `Write Contract.`
 
 - Code => All the smart contract code. Here, you can also get an idea of how NFTs were made back in the day if you look at old contracts such as Bored Ape Yacht Club.
-- Read Contract => Interact with all the read-only functions of the smart contract, for example, `tokenUri()`.
+- Read Contract => Interact with all the read-only functions of the smart contract, for example, `tokenURI()`.
 - Write Contract => Interact with all the write functions of the smart contract (Requires wallet connection), for example, minting.
 
 ### Deploying the contract

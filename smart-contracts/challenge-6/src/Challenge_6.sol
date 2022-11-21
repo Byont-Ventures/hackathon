@@ -7,7 +7,7 @@ import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 /// @author Byont Labs
 /// @notice A barebones NFT contract example with overkill documentation for learning purposes
 /**
-  TODO: Implement a function called setBaseUri() that sets _baseURIextended. 
+  TODO: Implement a function called setBaseURI() that sets _baseURIextended. 
         The function should take a string.
   TODO: Implement a function called tokenURI() that constructs, then returns a token URI for a given token ID
         The function should take a uint for the token id 
@@ -29,22 +29,22 @@ contract Challenge6 is ERC721 {
   /// @notice The max amount of allowed NFT mints
   uint256 public maxSupply;
 
-  /// @notice The base uri for NFT metadata, should become something like ipfs://somestring/
+  /// @notice The base URI for NFT metadata, should become something like ipfs://somestring/
   /// @dev Private strings are NOT hidden for humans, just for other smart contracts
   string private _baseURIextended;
 
   /// TODO: Write setBaseURI here
 
-  /// @notice Returns the base uri
+  /// @notice Returns the base URI
   /// @dev Overrides the standard _baseURI() functionality of the ERC721 standard to fit our needs
-  /// @return _baseURIextended The base uri
+  /// @return _baseURIextended The base URI
   function _baseURI() internal view virtual override returns (string memory) {
     return _baseURIextended;
   }
 
-  /// @notice Creates the token uri based off of a given token id by concatenation (rings a bell?)
+  /// @notice Creates the token URI based off of a given token id by concatenation (rings a bell?)
   /// @dev Overrides the standard tokenURI() functionality of the ERC721 standard to fit our needs
   /// @param _id The token id
-  /// @return => The token uri
-  /// TODO: Write the tokenUri function here!
+  /// @return => The token URI
+  /// TODO: Write the tokenURI function here!
 }
