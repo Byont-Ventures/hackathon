@@ -140,6 +140,9 @@ Keeping track of `msg.sender` and `tx.origin` is a good idea when testing in Fou
 
 Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.t.sol` (deploys) => Challenge contract `Challenge_7.sol`.
 
+### Vm.startPrank() and others
+`vm.startPrank()` and the like are [Foundry cheat codes](https://book.getfoundry.sh/cheatcodes/), manipulating the virtual machine (vm) for easier testing. For example, `vm.startPrank(sender, origin)` sets the `msg.sender` and `tx.origin`. 
+
 ## Challenge 8 - Adding some checks
 
 This challenge aims to add a couple of checks to the mint function. Because even though we have set a max supply, it doesn't do anything; we can easily mint more than the max supply. So let's fix that.

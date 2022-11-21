@@ -27,9 +27,8 @@ contract Challenge7Test is Test {
   }
 
   /// @notice Test minting 1 from Externally Owned Account (EOA)
-  /**
-    
-   */
+  /// @dev vm.startPrank() and the like are Foundry cheat codes
+  /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
   function testMintEOA() public {
     console.log('Minting from EOA...');
     uint256 initialSupply = c.totalSupply();
