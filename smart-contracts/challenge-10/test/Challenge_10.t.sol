@@ -56,7 +56,7 @@ contract Challenge10Test is Test {
     console.log('Minting from EOA...');
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     vm.expectRevert();
     c.ownerOf(0);
     assertEq(initialSupply, 0);
@@ -75,7 +75,7 @@ contract Challenge10Test is Test {
     c.setUserMaxMint(2 ** 256 - 1);
     vm.assume(amount > 0);
     vm.assume(amount <= maxSupply);
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
@@ -88,7 +88,7 @@ contract Challenge10Test is Test {
     c.setUserMaxMint(2 ** 256 - 1);
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     vm.expectRevert('Amount exceeds max supply');
     c.mint(amount);
     vm.stopPrank();
@@ -96,7 +96,7 @@ contract Challenge10Test is Test {
 
   /// @notice Test minting 0 NFT's
   function testMintZero() public {
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     vm.expectRevert('Amount cannot be zero');
     c.mint(0);
     vm.stopPrank();

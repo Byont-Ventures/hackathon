@@ -35,11 +35,13 @@ contract Challenge8Test is Test {
   }
 
   /// @notice Test minting 1 from Externally Owned Account (EOA)
+  /// @dev vm.startPrank() and the like are Foundry cheat codes
+  /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
   function testMintEOA() public {
     console.log('Minting from EOA...');
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     vm.expectRevert();
     c.ownerOf(0);
     assertEq(initialSupply, 0);
@@ -56,7 +58,7 @@ contract Challenge8Test is Test {
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > 0);
     vm.assume(amount < maxSupply);
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     c.mint(amount);
     assertEq(c.totalSupply(), amount);
     vm.stopPrank();
@@ -67,7 +69,7 @@ contract Challenge8Test is Test {
   function testMintOverMax(uint256 amount) public {
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     vm.expectRevert('Amount exceeds max supply');
     c.mint(amount);
     vm.stopPrank();
@@ -75,7 +77,7 @@ contract Challenge8Test is Test {
 
   /// @notice Test minting 0 NFT's
   function testMintZero() public {
-    vm.startPrank(Alice);
+    vm.startPrank(Alice, Alice);
     vm.expectRevert('Amount cannot be zero');
     c.mint(0);
     vm.stopPrank();

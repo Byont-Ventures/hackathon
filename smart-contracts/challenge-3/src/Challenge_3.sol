@@ -13,7 +13,7 @@ contract Challenge3 {
   }
 
   /// @dev TODO: complete addToMessage() here!
-  function addToMessage() public payable {
+  function addToMessage() public {
     message = string.concat();
   }
 }

@@ -25,6 +25,9 @@ The message in the contract `Challenge_2.sol` has not been initialized yet. The 
 Remember, to run the test for challenge 2:
 `FOUNDRY_PROFILE=challenge-2 forge test --match-contract Challenge2`
 
+### What is public, view ...
+You might have noticed some keywords in the function definition such as `public` and `view`. These are [modifiers](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-modifiers) that change how functions behave. In this case, they are related to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), but there are also others such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
+
 ## Challenge 3 - Hello + World
 
 Let's add a tiny bit of spice. This time, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the Foundry books to see how it's done.
@@ -81,12 +84,12 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a s
 
 - Implement a function `setBaseURI()` in `Challenge_6.sol` that sets the base URI given a certain string
   - The function should take a string parameter
-  - The function should set \_baseUriExtended to that string
+  - The function should set `_baseURIExtended` to that string
 - Implement `setBaseURI()` in the `setUp()` function body of `Challenge_6.t.sol`
 - Implement a function `tokenURI()` in `Challenge_6.sol` that constructs a token URI and returns it given a certain token ID
   - The function should take a uint parameter (this is the token ID)
   - The function should `override` the default ERC721 `tokenURI()`
-  - The function should concatenate \_baseUriExtended and the passed token ID parameter
+  - The function should concatenate `_baseUriExtended` and the passed token ID parameter
   - The function should return the token URI as a string
 
 <details>
@@ -108,13 +111,15 @@ In this challenge, we will aim to create a minting function in `Challenge_7.sol`
 
 - Accept a `uint` parameter for the mint amount
 - Increase the `totalSupply` by the mint amount
-- Mint the NFTs to `msg.sender` using ERC721's `_mint()` function
+- Mint the NFTs to `msg.sender` using ERC721's `_safeMint()` function
 
 ### Mint Functions
 
 Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A, ERC721Psi.
 
 As you might have noticed, NFTs have a token id. When you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and gets assigned to the minted NFT.
+
+If you take a look at the [ERC721 documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721), you will see that the `_safeMint()` function takes two arguments; the target address, and the token ID that will be assigned. Because you cannot set an amount of tokens to mint in ERC721's `_safeMint()` function, it is common practice (but not mandatory) to mint one at a time using a for-loop.
 
 ### Msg.sender and tx.origin
 
@@ -137,6 +142,9 @@ So, what can we conclude from this? If a caller is a contract, the `tx.origin` i
 Keeping track of `msg.sender` and `tx.origin` is a good idea when testing in Foundry. In our tests, for example:
 
 Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.t.sol` (deploys) => Challenge contract `Challenge_7.sol`.
+
+### Vm.startPrank() and others
+`vm.startPrank()` and the like are [Foundry cheat codes](https://book.getfoundry.sh/cheatcodes/), manipulating the virtual machine (vm) for easier testing. For example, `vm.startPrank(sender, origin)` sets the `msg.sender` and `tx.origin`. 
 
 ## Challenge 8 - Adding some checks
 
@@ -209,7 +217,7 @@ In this challenge, we will be uploading images to IPFS. Then, write a test that 
 
 ### IPFS, Opensea, and Metadata
 
-Previously, we pasted an IPFS link to an NFT image of a Bored Ape into our browser as a test. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. We can construct the IPFS token URIs in our smart contracts that point to these images on IPFS. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenUri()`. Usually, the first thing returned is the metadata.
+Previously, we pasted an IPFS link to an NFT image of a Bored Ape into our browser as a test. We know that IPFS is used for decentralized storage and that we can store metadata and images on IPFS. We can construct the IPFS token URIs in our smart contracts that point to these images on IPFS. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenURI()`. Usually, the first thing returned is the metadata.
 
 For example, paste this link into your browser: `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2369`
 
@@ -293,7 +301,7 @@ If you paste a contract address in the top right search bar, you will land on th
 Now, go ahead and click on the `Contract` tab. Below that, you will see three tabs called `Code,` `Read Contract,` and `Write Contract.`
 
 - Code => All the smart contract code. Here, you can also get an idea of how NFTs were made back in the day if you look at old contracts such as Bored Ape Yacht Club.
-- Read Contract => Interact with all the read-only functions of the smart contract, for example, `tokenUri()`.
+- Read Contract => Interact with all the read-only functions of the smart contract, for example, `tokenURI()`.
 - Write Contract => Interact with all the write functions of the smart contract (Requires wallet connection), for example, minting.
 
 ### Deploying the contract
