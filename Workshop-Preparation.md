@@ -90,9 +90,9 @@ If you open this repo in VSCode, you should get a suggestion to install a set of
 
 ## 4.5 Configuration for Windows users
 
-Please note that if you are a Windows user, you will have to put in a lot more effort configuration-wise, and we will only be able to provide limited support.
-In short, you can use WSL to run the challenges and open them in VSC.
-Nevertheless, we will give you some general instructions on how to get things up and running:
+If you are a windows user, we recommend using Windows Subsystem for Linux (WSL) to work with Foundry.
+The support is better, and configuration is (way) easier.
+You can use the steps below to get started:
 
 1. Get [Ubuntu with WSL](https://apps.microsoft.com/store/detail/ubuntu-22041-lts/9PN20MSR04DW) from the Microsoft Store
 2. Install [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage) (Optional - if you get stuck, you can skip this step)
