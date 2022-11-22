@@ -19,7 +19,7 @@ contract Challenge10 is ERC721, Ownable {
     maxSupply = _maxSupply;
   }
 
-  /// @notice The base uri for NFT metadata, should become something like ipfs://somestring/
+  /// @notice The base URI for NFT metadata, should become something like ipfs://somestring/
   /// @dev Private strings are NOT hidden for humans, just for other smart contracts
   string private _baseURIextended;
 
@@ -41,22 +41,22 @@ contract Challenge10 is ERC721, Ownable {
   }
 
   /// @notice Sets the base URI
-  /// @param _uri The base uri
+  /// @param _uri The base URI
   function setBaseURI(string memory _uri) external onlyOwner {
     _baseURIextended = _uri;
   }
 
-  /// @notice Returns the base uri
+  /// @notice Returns the base URI
   /// @dev Overrides the standard _baseURI() functionality of the ERC721 standard to fit our needs
-  /// @return _baseURIextended The base uri
+  /// @return _baseURIextended The base URI
   function _baseURI() internal view virtual override returns (string memory) {
     return _baseURIextended;
   }
 
-  /// @notice Creates the token uri based off of a given token id by concatenation (rings a bell?)
+  /// @notice Creates the token URI based off of a given token id by concatenation (rings a bell?)
   /// @dev Overrides the standard tokenURI() functionality of the ERC721 standard to fit our needs
   /// @param _id The token id
-  /// @return => The token uri
+  /// @return => The token URI
   function tokenURI(
     uint256 _id
   ) public view virtual override returns (string memory) {
@@ -72,7 +72,7 @@ contract Challenge10 is ERC721, Ownable {
     /// TODO: Increase mint count of user here!
 
     for (uint256 i = 0; i < _amount; i++) {
-      _mint(msg.sender, startId + i);
+      _safeMint(msg.sender, startId + i);
     }
   }
 
