@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       >
         <Section>
           <Text variant="headingXl">
-            Welcome to the Byont Labs Web3 Template
+            Welcome to the Workshop!
           </Text>
         </Section>
       </main>
