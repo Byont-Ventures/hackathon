@@ -1,0 +1,31 @@
+# Frontend Challenges
+
+These challenges provide a way to get started with Web3 frontend development. To help you get started, we have included a well-tested Web3 Template in the [src](./src/) folder.
+
+We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [NextJS](https://nextjs.org/). It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library. Wagmi has over 20 hooks that will make connecting your frontend to the blockchain easier. We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) for styling.
+
+The goal is to build a full-fletched NFT minting Dapp! If you don't know what this means, don't worry, it will all become clear.
+
+## Challenge 1 - Running the Dapp
+
+Let's begin with an easy challenge, running the [Dapp](https://ethereum.org/en/developers/docs/dapps/).
+
+`yarn run fe:dev`
+
+You will see a welcome message and a footer. Feel free to edit this Dapp according to your needs in further challenges.
+
+### Wagmi
+
+Wagmi is a collection of React hooks that makes it easier to connect to Ethereum. Under the hood, it uses [Ethers](https://docs.ethers.io/v5/) to connect to the blockchain.
+
+You can make these connections using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node), but using them yourself is not necessary for the scope of this Workshop. There are plenty of RPC node providers, such as Infura and Alchemy. Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already.
+
+For the Workshop, we will be using Alchemy and have already configured the Alchemy provider with an API key in the [Wagmi configuration](./src/libs/wagmi.ts).
+
+In the Wagmi configuration, you can see three networks:
+
+- localhost => Local blockchain. You would create one by running `anvil` if you installed Foundry.
+- Goerli => Goerli test network.
+- Mainnet => The main Ethereum network with the "real" Ethereum.
+
+You can add a network here if you ever need to add it.
