@@ -13,9 +13,7 @@ const Home: NextPage = () => {
         }
       >
         <Section>
-          <Text variant="headingXl">
-            Welcome to the Workshop!
-          </Text>
+          <Text variant="headingXl">Welcome to the Workshop!</Text>
         </Section>
       </main>
       <footer>
