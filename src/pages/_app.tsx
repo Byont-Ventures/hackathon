@@ -21,9 +21,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         canonical={process.env.NEXT_PUBLIC_APP_URL}
       />
       <WagmiConfig client={client}>
-          <div className={inter.className}></div>
-          <SkipToMain />
-          <Component {...pageProps} />
+        <div className={inter.className}></div>
+        <SkipToMain />
+        <Component {...pageProps} />
       </WagmiConfig>
     </>
   )
