@@ -11,7 +11,7 @@ const nextConfig = {
     reactRemoveProperties: true,
   },
   experimental: {
-    appDir: true,
+    appDir: false,
   },
 }
 
