@@ -7,7 +7,6 @@ The first day of the workshop will be about getting your hands dirty in the Web3
 You may choose to start with the stretch challenges straight away if you are working in teams. In this case, we recommend giving the challenges of your respective track a try before the workshop.
 
 - [Workshop Preparation](Workshop-Preparation.md)
-- [Web3 Template Docs](Web3-Template.md)
 - [Frontend Challenges WIP](Frontend-Challenges.md) => Build components around given web3 hooks
 - [Backend Challenges WIP](Backend-Challenges.md) => Solidity, testing with Foundry
 - [Stretch Challenges WIP]() => More advanced
