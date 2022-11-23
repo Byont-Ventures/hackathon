@@ -378,4 +378,4 @@ export const BAYCAbi = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
-]
+] as const
