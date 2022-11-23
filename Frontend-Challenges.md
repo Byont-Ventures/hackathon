@@ -36,5 +36,3 @@ You can add a network here if you ever need to add it.
 - Create wallet connect button
 
 ## Challenge 3
-
-
