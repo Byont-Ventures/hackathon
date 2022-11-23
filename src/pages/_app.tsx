@@ -1,9 +1,12 @@
+import '@rainbow-me/rainbowkit/styles.css'
 import 'src/styles/globals.css'
 
 import type { AppProps } from 'next/app'
 import { WagmiConfig } from 'wagmi'
 
-import { client } from 'src/libs/wagmi'
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+
+import { client, chains } from 'src/libs/wagmi'
 import { SkipToMain } from '@/components/SkipToMain'
 
 import { Inter } from '@next/font/google'
@@ -15,9 +18,11 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
       <WagmiConfig client={client}>
-        <div className={inter.className}></div>
-        <SkipToMain />
-        <Component {...pageProps} />
+        <RainbowKitProvider chains={chains}>
+          <div className={inter.className}></div>
+          <SkipToMain />
+          <Component {...pageProps} />
+        </RainbowKitProvider>
       </WagmiConfig>
     </>
   )

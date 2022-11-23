@@ -26,6 +26,7 @@ Remember, to run the test for challenge 2:
 `FOUNDRY_PROFILE=challenge-2 forge test --match-contract Challenge2`
 
 ### What is public, view ...
+
 You might have noticed some keywords in the function definition such as `public` and `view`. These are [modifiers](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-modifiers) that change how functions behave. In this case, they are related to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), but there are also others such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
 
 ## Challenge 3 - Hello + World
@@ -144,7 +145,8 @@ Keeping track of `msg.sender` and `tx.origin` is a good idea when testing in Fou
 Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.t.sol` (deploys) => Challenge contract `Challenge_7.sol`.
 
 ### Vm.startPrank() and others
-`vm.startPrank()` and the like are [Foundry cheat codes](https://book.getfoundry.sh/cheatcodes/), manipulating the virtual machine (vm) for easier testing. For example, `vm.startPrank(sender, origin)` sets the `msg.sender` and `tx.origin`. 
+
+`vm.startPrank()` and the like are [Foundry cheat codes](https://book.getfoundry.sh/cheatcodes/), manipulating the virtual machine (vm) for easier testing. For example, `vm.startPrank(sender, origin)` sets the `msg.sender` and `tx.origin`.
 
 ## Challenge 8 - Adding some checks
 
