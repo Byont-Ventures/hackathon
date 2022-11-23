@@ -2,10 +2,12 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import type { NextPage } from 'next'
 import { Section } from 'src/components/Section'
 import { Text } from 'src/components/Text'
+import { useIsMounted } from 'src/hooks/useIsMounted'
 import { useAccount } from 'wagmi'
 
 const Home: NextPage = () => {
   const { address } = useAccount()
+  const isMounted = useIsMounted()
 
   return (
     <>
@@ -18,7 +20,9 @@ const Home: NextPage = () => {
       >
         <Section>
           <Text variant="headingXl">Welcome to testpage!</Text>
-          <Text>{address && <p>{`Address: ${address}`}</p>}</Text>
+          <Text>
+            {isMounted && address ? <p>{`Address: ${address}`}</p> : null}
+          </Text>
           <ConnectButton></ConnectButton>
         </Section>
       </main>
