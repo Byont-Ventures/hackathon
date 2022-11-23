@@ -45,4 +45,4 @@ You can add a network here if you ever need to add it.
 ## Challenge 4
 
 - Explain mocketh vs anvil
-- Use mocketh with ABI
+- How to write tests (using mocketh)
