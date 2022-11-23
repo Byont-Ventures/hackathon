@@ -32,7 +32,17 @@ You can add a network here if you ever need to add it.
 
 ## Challenge 2
 
-- Implement Rainbowkit
-- Create wallet connect button
+- Implement Rainbowkit [wallet connect button](https://www.rainbowkit.com/docs/connect-button)
+- If public alchemy doesn't work i.e. can't connect to network error -> get own API key
+- Check they are running anvil if localhost
+- If localhost switch doesn't work using button then switch in wallet
 
 ## Challenge 3
+
+- Explain ABI / where to get it from
+- Implement Wagmi + ABI
+
+## Challenge 4
+
+- Explain mocketh vs anvil
+- Use mocketh with ABI
