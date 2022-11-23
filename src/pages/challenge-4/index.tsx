@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      Welcome to Challenge X!
+      Welcome to Challenge 4!
       <ConnectButton></ConnectButton>
       <div>
         {' '}
