@@ -12,7 +12,7 @@ Let's begin with an easy challenge, running the [Dapp](https://ethereum.org/en/d
 
 `yarn run fe:dev`
 
-You will see a welcome message and a footer. Feel free to edit this Dapp according to your needs in further challenges.
+If you [open the Dapp](http://localhost:3000), You will see a welcome message and links to the respective challenge pages. Feel free to edit this Dapp according to your needs in further challenges.
 
 ### Wagmi
 
@@ -29,3 +29,12 @@ In the Wagmi configuration, you can see three networks:
 - Mainnet => The main Ethereum network with the "real" Ethereum.
 
 You can add a network here if you ever need to add it.
+
+## Challenge 2
+
+- Implement Rainbowkit
+- Create wallet connect button
+
+## Challenge 3
+
+
