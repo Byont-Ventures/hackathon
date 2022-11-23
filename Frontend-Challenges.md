@@ -46,3 +46,13 @@ You can add a network here if you ever need to add it.
 
 - Explain mocketh vs anvil
 - How to write tests (using mocketh)
+
+## Challenge 5
+
+- Display images from NFT smart contract (testnet)
+
+## Challenge 6
+
+- Build minting UI
+- Mint couple of NFTs
+- Display minted NFTs from smart contract (testnet)
