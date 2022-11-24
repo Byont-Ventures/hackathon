@@ -3,21 +3,41 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useBalance } from 'wagmi'
 import { useAccount } from 'wagmi'
 import { useIsMounted } from 'src/hooks/useIsMounted'
-import { useContractRead } from 'wagmi'
+import { useContractReads } from 'wagmi'
 
 import { BAYCAbi } from 'src/abis/BAYCAbi'
-import { ReactNode } from 'react'
+import { BigNumber } from 'ethers'
 
 const Home: NextPage = () => {
+  /*
+   * TODO:
+   * - Display the name of the BAYC contract
+   * - Display the symbol of the BAYC contract
+   * - Display the image of BAYC#42
+   */
   const account = useAccount()
   const isMounted = useIsMounted()
   const balance = useBalance({
     addressOrName: account.address,
   })
-  const { data, isError, isLoading } = useContractRead({
+
+  // Contract config
+  const BAYCContractConfig = {
     address: '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D',
     abi: BAYCAbi,
-    functionName: 'name',
+  }
+
+  // Call contract functions
+  const { data, isError, isLoading } = useContractReads({
+    contracts: [
+      { ...BAYCContractConfig, functionName: 'name' },
+      { ...BAYCContractConfig, functionName: 'symbol' },
+      {
+        ...BAYCContractConfig,
+        functionName: 'tokenURI',
+        args: [BigNumber.from('69')],
+      }, // Get token URI for token ID 69
+    ],
   })
 
   return (
@@ -33,7 +53,10 @@ const Home: NextPage = () => {
       {isMounted && isLoading ? (
         'Loading...'
       ) : (
-        <>{isMounted && <div>{data as ReactNode}</div>}</>
+        <>
+          {isMounted && data && <div>{`Name: ${data[0]}`}</div>}
+          {isMounted && data && <div>{`Symbol: ${data[1]}`}</div>}
+        </>
       )}
       <div> {isError && isMounted && 'Error'}</div>
     </>
