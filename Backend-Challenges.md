@@ -13,6 +13,8 @@ For this challenge, there is a smart contract called `Challenge_1.sol`. This con
 
 Whew, we covered many things already but yet did so little! Take a sip of your coffee. Breathe in, breathe out. When ready, run your first test by putting `FOUNDRY_PROFILE=challenge-1 forge test --match-contract Challenge1` in your terminal. Sit back, and enjoy the dopamine of that green checkmark.
 
+**_Comment:_** (I would suggest mentioning "memory" keyword as this part is kinda essential. If you want to discuss it later storage, memory and calldata (?) then you may just quickly mention that "memory" means that the data is stored during the runtime (or smth) and then say that you will cover the storage/memory management later in the course.)
+
 ### Foundry flags
 
 `--match-contract` => Flag that enables you to run a specific test contract.
@@ -28,9 +30,15 @@ Remember, to run the test for challenge 2:
 ### What is public, view ...
 You might have noticed some keywords in the function definition such as `public` and `view`. These are [modifiers](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-modifiers) that change how functions behave. In this case, they are related to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), but there are also others such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
 
+**_Comment:_** (I would suggest avoiding the word "modifier" here, because it may be very misleading. Moreover, the link leads to actual modifiers, which is not the topic. I would say something like this: "You might have noticed some keywords in the function definition such as `public` and `view`. They specify function types, but whilst `public` refers to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility) `view` shows the function [state mutability](https://docs.soliditylang.org/en/v0.8.17/contracts.html#state-mutability)")
+
 ## Challenge 3 - Hello + World
 
 Let's add a tiny bit of spice. This time, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the Foundry books to see how it's done.
+
+**_Comment:_** (I would suggest adding a link to the api, where it mentions how to use the "concat()" function, because for me it was quiet confusing what to do with it)
+
+**_Comment:_** (First TODO in the test file: I would specify "Make a test to check if it's true". Otherwise, it is unclear what I have to do)
 
 ## Challenge 4 - Solidity versions
 
@@ -38,7 +46,7 @@ The goal of the challenge is the same. But what's going on here? If you run the 
 
 Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says `solc = "=0.8.17"`. Below, we have added a new line that auto-detects the compiler version. Uncomment that and save the file. Foundry will now auto-detect your compiler version whenever you run a test for that profile.
 
-But there is another problem. Why does `string.concat()` not work? It may have something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of varying compiler versions in the wild, and it is, therefore, good to know where to check certain behaviors.**
+But there is another problem. Why does **_not_** `string.concat()` work? It may have something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of varying compiler versions in the wild, and it is, therefore, good to know where to check certain behaviors.**
 
 ## Challenge 5 - NFT Contract
 
@@ -76,16 +84,22 @@ ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 
 - https://docs.openzeppelin.com/contracts/4.x/
 - https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
 
+**_Comment:_** (Would suggest to add a TODO in a test file to create a test that checks the if maxSupply is equal to 100/input)
+
 ## Challenge 6 - BaseURI, TokenURI
 
 Since `_baseURIextended` is private, we have implemented a getter function called `_baseURI()`. The ERC721 standard already has this function implementation, but we want it to behave differently for our use case, so we have overridden it. Notice the `override` keyword added to the function.
+
+**_Comment:_** (I would add a link to the [function overriding](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-overriding))
+
+**_Comment:_** (Maybe you could provide a link in the code that explains what is the purpose of `using Strings for uint256;` and show how to use it)
 
 In `Challenge_6.t.sol`, we want to get the token URI from the contract given a specific token ID. Your job is to:
 
 - Implement a function `setBaseURI()` in `Challenge_6.sol` that sets the base URI given a certain string
   - The function should take a string parameter
   - The function should set `_baseURIExtended` to that string
-- Implement `setBaseURI()` in the `setUp()` function body of `Challenge_6.t.sol`
+- Implement `setBaseURI()` in the `setUp()` function body of `Challenge_6.t.sol` **_Comment:_** (It is already implemented :D)
 - Implement a function `tokenURI()` in `Challenge_6.sol` that constructs a token URI and returns it given a certain token ID
   - The function should take a uint parameter (this is the token ID)
   - The function should `override` the default ERC721 `tokenURI()`
@@ -98,6 +112,8 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a s
 </details>
 
 ### TokenURI
+
+**_Comment:_** (Would suggest leaving this kind of comments in the beginning of the challenge description)
 
 As on-chain storage is expensive, images are often stored off-chain.
 
@@ -173,6 +189,8 @@ So, now let's improve the mint function to pass these checks. Our function shoul
 
 ### Why are all these checks needed?
 
+**_Comment:_** (Would suggest putting that after "An easier way to do ..." line)
+
 Besides the obvious ones, such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (most of the time, but not always, smart contracts) owned by people with a lot of money (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price or sell them for a significant profit if the NFTs are deemed valuable.
 
 **Note**: Bots are not always smart contracts; sometimes, it is just an EOA + program.
@@ -202,6 +220,10 @@ So, the goal of this challenge is to add the appropriate modifiers to the contra
 ## Challenge 10 - Keeping track of mints using mappings
 
 Another method to restrict minting out the entire supply by one person is to limit mint amounts per person. Of course, you could circumvent this mechanism by minting with another wallet once you've reached your maximum mint amount on one wallet. There are ways to semi-prevent this, such as allowlisting, but we won't go into that now.
+
+**_Comment:_** (I would suggest adding a link to the docs about mapping)
+
+**_Comment:_** (I would also suggest adding there (or earlier, where msg.sender is used for the first time) a link and/or explanation of what `address` variable type is and what it represents. It's not much to explain, but I think it is worth doing it) 
 
 The goal of this challenge is to:
 
@@ -248,6 +270,8 @@ For more information on how to structure your metadata, check out the [Opensea m
 2. The metadata files are in the [json](./metadata/JSON/) folder. In every `.json` file, you can see that the `description` and `image` fields have not been properly set yet. Usually, this is done through a script, but since we have five files, it is also doable manually. Go ahead and update the `image` fields in every file to the corresponding IPFS URIs. You could also change the description if you'd like.
 3. At this point, verifying that the images match the metadata attributes is a good idea.
 
+**_Comment:_** (The image and the description fields are not empty. Don't forget to clear them :) )
+
 <details>
   <summary>General tip</summary>
   Make sure everything is clear on the attributes. For example, let's take the trait type <code>Background</code>. In every metadata file, this has the value <code>Black</code>. But in the images, one might argue that the background is actually <code>Purple</code>. It is a good idea to communicate with your artist what the intention was here and if this is correct. Perhaps it was the black shading around the eyes? The artist will often supply you with the layers, though, and you will have to generate the NFT images first so that you can verify them for yourself.
@@ -264,6 +288,10 @@ For more information on how to structure your metadata, check out the [Opensea m
 - The image URIs work
 - The images match the attributes
 - The numeration is correct
+
+**_Comment:_** (I guess there maybe some problem with the pictures, because only 0.img was showing some white square in the middle, but others were just not showing and it lead me to "504 Gateway Time-out". When I uploaded a new photo "img.png" it worked just fine)
+
+**_Comment:_** (Also for me the URL was a bit different, than the one you wrote. It was `https://ipfs.io/ipfs/CID/img.png`)
 
 ### Change token URI
 
@@ -316,7 +344,7 @@ You can copy and paste the following format into your terminal to deploy and ver
 
 **Note:** Make sure you have enough test ETH in your wallet! 0.1 should be enough, but we recommend about 0.3 test ETH to be safe. Smart contract deployment can be expensive sometimes => [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
 
-For a reminder on how to get test ETH, please refer to [this section in the preparation guide(./Workshop-Preparation.md#3-get-some-test-eth).
+For a reminder on how to get test ETH, please refer to [this section in the preparation guide](./Workshop-Preparation.md#3-get-some-test-eth).
 
 Below are the steps to acquire the necessary API keys:
 
@@ -331,7 +359,11 @@ Below are the steps to acquire the necessary API keys:
 9. Next to your app, click on `View Key`.
 10. Copy and paste your Alchemy API key (HTTPS) into the format
 
+**_Comment:_** (Maybe you could also mention there how the guys could get there wallet private keys)
+
 After populating the command with your private key and API keys, you can paste it into the terminal and run it! You are now deploying and verifying the smart contract using your provided wallet. Give the verification some time to complete.
+
+**_Comment:_** (The mentioned script didn't work for me most likely because I'm using wsl and it somehow messes with the paths that you usually use for the Foundry. It worked for me only when I added a flag, specifically `FOUNDRY_PROFILE=challenge-12`, and when I changed the source file according to foundry.toml, specifically to `smart-contracts/challenge-12/src/Challenge_12.sol:Challenge12`)
 
 🎉🎉🎉 **Congratulations!!!** 🎉🎉🎉
 You have just built, deployed, and verified an NFT smart contract! Take note of the contract address in the terminal output, for example: `Deployed to: 0x.....` , and let's proceed to the next step!

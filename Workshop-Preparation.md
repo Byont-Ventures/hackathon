@@ -35,7 +35,9 @@ Metamask holds your private key in the browser's data store. A private key is a 
 
 ## 3. Get some test ETH
 
-This step is recommended but optional because as you develop your NFT contract, it would also be nice to experience the deployment and interact with it on a real (test) network.
+This step is recommended but optional because as you develop your NFT contract, it would also be nice to experience the deployment and interact with it on a real (test) network. 
+
+**_Comment:_** (Maybe, firstly, you should mention that you have to pay to deploy your smart contract and for that experience there are testnets and you can acquire some testnet coins to get the deployment experience. Just it's a bit confusing as the chapter is called "Get some test ETH" and out of nowhere you start talking about the deployment process)
 
 Ethereum has several testing networks where you can get free ETH. This ETH (unfortunately) is not transferable to the mainnet, so it is solely for development purposes. We will use the Goerli test network since, at the time of writing, [Opensea](https://opensea.io/), an NFT marketplace, currently uses that.
 
@@ -46,7 +48,9 @@ There are generally two ways to get test ETH:
 - Regular faucets
 - Mining yourself using POW (proof of work) faucets
 
-**Important: We recommend that you get at least 0.3 test ETH!** The network is congested, which means transaction fees are high now.
+**Important: We recommend that you get at least 0.3 test ETH!** The network is congested, which means transaction fees are high now. 
+
+**_Comment:_** (Mention there that it is recommended for devs to get some test ETH prior to the Hackathon as the website only offers a set amount of ETH per 24h)
 
 ### Regular faucet
 
