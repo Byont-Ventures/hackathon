@@ -83,6 +83,8 @@ The goal of this challenge is to:
 
 - Learn how to implement the Bored Ape Yacht Club (BAYC) ABI
 
+**Note: The contract address for BAYC is `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`**
+
 ### What is an ABI
 
 The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification. The encoding is not self describing and thus requires a schema in order to decode.
@@ -148,11 +150,61 @@ The goal is to interact with the BAYC smart contract, and:
   </details>
 </spoiler>
 
-## Challenge 5
+### TokenURI
 
-- Build minting UI
-- Mint couple of NFTs
-- Display minted NFTs from smart contract (testnet)
+As on-chain storage is expensive, images are often stored off-chain. So the NFT metadata and images we have to retrieve in this challenge, are not actually on the blockchain, but on IPFS instead!
+
+If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how do they get the NFT images and metadata?
+
+Your smart contract provides a way to tell Opensea which image belongs to which NFT and where the metadata files are stored through a function called `tokenURI()`. Opensea looks for this function in your smart contract and parses the return value.
+
+This is also how the library that uses the `useNFT()` hook we implemented works under the hood.
+
+## Challenge 5 - Minting and displaying
+
+Now that we know how to get the NFT data to display, let's mint some NFT's! For that, we have already deployed a smart contract on the Goerli testnet: `0xsomeAddressHere`.
+
+The goal of this challenge is to:
+
+- Build a form that takes on user input for the mint amount
+- Create a mint button
+- Switch to the Goerli testnet
+- `mint` a couple of NFTs
+- Display the current amount minted => `totalSUpply`
+- Display the max amount that can be minted => `maxSupply`
+- Display minted NFTs from smart contract in a grid / gallery
+
+<spoiler>
+  <summary>HINT:</summary>
+  <details>
+    You can take a look <a href="https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-mint-nft">here</a> for an example on how to use Wagmi and RainbowKit to create a minting page!
+  </details>
+</spoiler>
+ 
+### What is minting?
+
+Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A, ERC721Psi.
+
+As you might have noticed, NFTs have a token id. When you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and gets assigned to the minted NFT.
+
+### NFT standards
+
+Depending on your Solidity knowledge, this might not be very useful to you, but it is still a good way to see what functions should be found by default in an NFT smart contract.
+
+Openzeppelin is a company that provides free, standardized, and thoroughly tested/audited smart contract libraries to use, such as ERC721.
+
+ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its functionalities. For the workshop, ERC721 NFTs will suffice.
+
+Some standard functions that can often be found in an ERC721 contract:
+
+- `tokenURI(uint256 _id)` => Get the token URI for a given token ID (number)
+- `totalSupply()` => Get the amount of minted NFTs so far
+
+Documentation on Openzeppelin and the ERC721 standard:
+
+- https://eips.ethereum.org/EIPS/eip-721
+- https://docs.openzeppelin.com/contracts/4.x/
+- https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
 
 ## Challenge 6
 
