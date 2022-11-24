@@ -118,15 +118,17 @@ The goal of this challenge is to:
 
 - Connect wallet to the mainnet through the browser
 - Import the BAYC ABI
-- Get the name of the BAYC smart contract
-- Get the symbol of the BAYC smart contract
+- Get the `name` of the BAYC smart contract
+- Get the `symbol` of the BAYC smart contract
 
 <spoiler><summary>HINT:</summary><details>
 You can make use of the <code>useContractRead()</code> hook from Wagmi. Refer to the docs <a href="https://wagmi.sh/react/hooks/useContractRead">here</a>
 
 </details></spoiler>
 
-## Challenge 4
+## Challenge 4 - Displaying NFTs
+
+Let's display an NFT now! Recall that metadata is often stored on IPFS.
 
 The goal is to interact with the BAYC smart contract, and:
 
