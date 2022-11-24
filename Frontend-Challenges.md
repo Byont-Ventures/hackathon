@@ -2,9 +2,9 @@
 
 These challenges provide a way to get started with Web3 frontend development. To help you get started, we have included a well-tested Web3 Template in the [src](./src/) folder.
 
-We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [NextJS](https://nextjs.org/). It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library. Wagmi has over 20 hooks that will make connecting your frontend to the blockchain easier. We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) for styling.
+We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [NextJS](https://nextjs.org/). It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library. Wagmi has over 20 hooks that will make connecting your frontend to the blockchain easier. We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) and [RainbowKit](https://www.rainbowkit.com/docs/introduction) for styling. RainbowKit also provides easy wallet connection functionality. At last, we have implemented the [useNFT()](https://github.com/spectrexyz/use-nft) hook by Spectre that allows you to quickly retrieve NFT metadata.
 
-The goal is to build a full-fletched NFT minting Dapp! This will drastically improve the user experience (connecting to the blockchain, minting NFTs, viewing NFTs). If you don't know what this means, don't worry, it will all become clear.
+The goal is to build a full-fletched NFT minting Dapp! Such a Dapp will drastically improve the user experience (connecting to the blockchain, minting NFTs, viewing NFTs). If you don't know what this means, don't worry, it will all become clear.
 
 ## Common errors
 
@@ -128,14 +128,19 @@ You can make use of the <code>useContractRead()</code> hook from Wagmi. Refer to
 
 ## Challenge 4
 
-We have deployed an NFT smart contract on Goerli testnet at the following address:
-`addressHere`
-
-The goal is to interact with this smart contract, and:
+The goal is to interact with the BAYC smart contract, and:
 
 - Display the name of the contract
 - Display the symbol of the contract
 - Display the image of the NFT with token ID 42
+
+<spoiler>
+  <summary>HINT:</summary>
+  <details>
+    There are multiple ways to go about this, but one of the easiest ways is one we have included for you:
+    <br><br>The <code>useNft()</code> hook. Refer to the docs <a href="https://github.com/spectrexyz/use-nft">here.</a>
+  </details>
+</spoiler>
 
 ## Challenge 5
 
