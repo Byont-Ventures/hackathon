@@ -9,19 +9,25 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { client, chains } from 'src/libs/wagmi'
 import { SkipToMain } from '@/components/SkipToMain'
 
+import { NftProvider } from 'use-nft'
+import { getDefaultProvider } from 'ethers'
+
 import { Inter } from '@next/font/google'
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter()
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+  const provider = getDefaultProvider('homestead')
   return (
     <>
       <WagmiConfig client={client}>
         <RainbowKitProvider chains={chains}>
-          <div className={inter.className}></div>
-          <SkipToMain />
-          <Component {...pageProps} />
+          <NftProvider fetcher={['ethers', { provider }]}>
+            <div className={inter.className}></div>
+            <SkipToMain />
+            <Component {...pageProps} />
+          </NftProvider>
         </RainbowKitProvider>
       </WagmiConfig>
     </>
