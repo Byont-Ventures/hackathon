@@ -70,10 +70,12 @@ The goal of this challenge is to:
 - Connect your wallet
 - Show your wallets balance
 
-<spoiler><summary>HINT:</summary><details>
-You can make use of the <code>useAccount()</code> <a href="https://wagmi.sh/docs/hooks/useAccount">(docs here)</a> and <code>useBalance()</code> <a href="https://wagmi.sh/react/hooks/useBalance">(docs here)</a>hooks from Wagmi. If you are still stuck, you could always look into the files of the next challenge to see how we have implemented it.
-
-</details></spoiler>
+<spoiler>
+  <summary>HINT:</summary>
+  <details>
+    You can make use of the <code>useAccount()</code> <a href="https://wagmi.sh/docs/hooks/useAccount">(docs here)</a> and <code>useBalance()</code> <a href="https://wagmi.sh/react/hooks/useBalance">(docs here)</a>hooks from Wagmi. If you are still stuck, you could always look into the files of the next challenge to see how we have implemented it.
+  </details>
+</spoiler>
 
 ## Challenge 3.A - Understanding and implementing ABIs
 
@@ -121,10 +123,12 @@ The goal of this challenge is to:
 - Get the `name` of the BAYC smart contract
 - Get the `symbol` of the BAYC smart contract
 
-<spoiler><summary>HINT:</summary><details>
-You can make use of the <code>useContractRead()</code> hook from Wagmi. Refer to the docs <a href="https://wagmi.sh/react/hooks/useContractRead">here</a>
-
-</details></spoiler>
+<spoiler>
+  <summary>HINT:</summary>
+  <details>
+    You can make use of the <code>useContractRead()</code> (docs <a href="https://wagmi.sh/react/hooks/useContractRead">here</a>) or <code>useContractReads()</code> (docs <a href="https://wagmi.sh/react/hooks/useContractReads">here</a>) hooks from Wagmi.
+  </details>
+</spoiler>
 
 ## Challenge 4 - Displaying NFTs
 
@@ -132,8 +136,8 @@ Let's display an NFT now! Recall that metadata is often stored on IPFS.
 
 The goal is to interact with the BAYC smart contract, and:
 
-- Display the name of the contract
-- Display the symbol of the contract
+- Display the `name` of the contract
+- Display the `symbol` of the contract
 - Display the image of the NFT with token ID 42
 
 <spoiler>
