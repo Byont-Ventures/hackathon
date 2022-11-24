@@ -3,22 +3,35 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useBalance } from 'wagmi'
 import { useAccount } from 'wagmi'
 import { useIsMounted } from 'src/hooks/useIsMounted'
-import { useContractRead } from 'wagmi'
-
+import { useContractReads } from 'wagmi'
+import { useNft } from 'use-nft'
 import { BAYCAbi } from 'src/abis/BAYCAbi'
-import { ReactNode } from 'react'
 
 const Home: NextPage = () => {
+  // Account data
   const account = useAccount()
   const isMounted = useIsMounted()
   const balance = useBalance({
     addressOrName: account.address,
   })
-  const { data, isError, isLoading } = useContractRead({
-    address: '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D',
+
+  // Contract config
+  const BAYCAddress = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'
+  const BAYCContractConfig = {
+    address: BAYCAddress,
     abi: BAYCAbi,
-    functionName: 'name',
+  }
+
+  // Call contract functions
+  const { data, isError, isLoading } = useContractReads({
+    contracts: [
+      { ...BAYCContractConfig, functionName: 'name' },
+      { ...BAYCContractConfig, functionName: 'symbol' },
+    ],
   })
+
+  // Get NFT image
+  const { loading, error, nft } = useNft(BAYCAddress, '42')
 
   return (
     <>
@@ -33,7 +46,30 @@ const Home: NextPage = () => {
       {isMounted && isLoading ? (
         'Loading...'
       ) : (
-        <>{isMounted && <div>{data as ReactNode}</div>}</>
+        <>
+          {isMounted && data && <div>{`Name: ${data[0]}`}</div>}
+          {isMounted && data && <div>{`Symbol: ${data[1]}`}</div>}
+          <div className="flex">
+            {/* Images of NFTs */}
+            {loading ? (
+              'Loading...'
+            ) : (
+              <>
+                {error || !nft ? (
+                  <h1>{error.message}</h1>
+                ) : (
+                  <section>
+                    <h1>{nft.name}</h1>
+                    <img src={nft.image} alt="" />
+                    <p>{nft.description}</p>
+                    <p>Owner: {nft.owner}</p>
+                    <p>Metadata URL: {nft.metadataUrl}</p>
+                  </section>
+                )}
+              </>
+            )}
+          </div>
+        </>
       )}
       <div> {isError && isMounted && 'Error'}</div>
     </>
