@@ -177,7 +177,7 @@ This is also how the library that uses the `useNFT()` hook we implemented works 
 
 ## Challenge 5 - Minting and displaying
 
-Now that we know how to get the NFT data to display, let's mint some NFT's! For that, we have already deployed a smart contract on the Goerli testnet: `0xsomeAddressHere`.
+Now that we know how to get the NFT data to display, let's mint some NFT's! For that, we have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x5b0f9a441246ac78d34c70cdd16d5377343d55de`.
 
 The goal of this challenge is to:
 
