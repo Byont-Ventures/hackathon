@@ -20,6 +20,8 @@ If you experience "cannot connect to network" errors, try the following and see 
 
 ### Hydration error
 
+There is an official issue on this error [here](https://github.com/wagmi-dev/wagmi/issues/542#issuecomment-1144178142) that explains why this error occurs.
+
 We have included a hook you can use to mitigate this error.
 `import { useIsMounted } from 'src/hooks/useIsMounted'`
 `const isMounted = useIsMounted()`
@@ -74,6 +76,8 @@ The goal of this challenge is to:
   <summary>HINT:</summary>
   <details>
     You can make use of the <code>useAccount()</code> <a href="https://wagmi.sh/docs/hooks/useAccount">(docs here)</a> and <code>useBalance()</code> <a href="https://wagmi.sh/react/hooks/useBalance">(docs here)</a>hooks from Wagmi. If you are still stuck, you could always look into the files of the next challenge to see how we have implemented it.
+    <br>
+    If you are experiencing the hydration error, please refer to our hydration errors section.
   </details>
 </spoiler>
 
@@ -115,6 +119,17 @@ This is how we got the ABI for the Bored Ape Yacht Club smart contract.
 3. At the `Contract ABI` section below, on the right, click on `Copy ABI to clipboard`
 4. We created a new file called `BAYCAbi.ts`, and pasted the ABI there.
 5. At the very bottom, notice we used constant assertion `as const` to make the ABI readonly. This is so we can infer types from the ABI, and ensure the ABI never changes.
+
+### BigNumbers
+
+Any number you pass to a smart contract, has to be converted to a BigNumber, for example:
+
+```javascript
+import { BigNumber } from 'ethers'
+const aBigNumber = BigNumber.from(42)
+```
+
+If you want more information on Big Numbers, and why we are using the Ethers BigNumber object and not for example BigNumber.js, BN.js, BigDecimal, etc., please refer to the Ethers [documentation](https://docs.ethers.io/v5/api/utils/bignumber/).
 
 ## Challenge 3.B - Display smart contract data
 
@@ -205,8 +220,3 @@ Documentation on Openzeppelin and the ERC721 standard:
 - https://eips.ethereum.org/EIPS/eip-721
 - https://docs.openzeppelin.com/contracts/4.x/
 - https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
-
-## Challenge 6
-
-- How to write tests (using mocketh)
-- Explain that there are multiple ways to test for example mocketh
