@@ -12,7 +12,7 @@ contract Challenge6Test is Test {
 
   function setUp() public {
     c = new Challenge6('NFT Example', 'NFTEX', 100);
-    c.setBaseURI(baseURI);
+    /// TODO: implement setBaseURI() here!
   }
 
   /// @notice Checks that the tokenURI is properly constructed
