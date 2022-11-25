@@ -19,7 +19,7 @@ contract Challenge3Test is Test {
   function testHelloWorld() public {
     /// @dev Get the initial message
     string memory initMessage = c.getMessage();
-    /// @dev TODO: Initial message should be equal to 'Hello'
+    /// @dev TODO: Write a test that checks that the initial message should be equal to 'Hello'
     /// @dev TODO: Add ' World!' to the message
     /// @dev Get the new message
     string memory newMessage = c.getMessage();
