@@ -12,4 +12,6 @@ contract Challenge5Test is Test {
   function setUp() public {
     c = new Challenge5('NFT Example', 'NFTEX', 100);
   }
+
+  /// TODO: Write a test that checks that the maxSupply is equal to 100 (or the input)
 }
