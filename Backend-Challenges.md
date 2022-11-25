@@ -9,7 +9,7 @@ Take a look at the `smart-contracts` folder. Here, you will see a folder for eve
 - `src` => Contains all the actual smart contracts
 - `tests` => Contains the test files for those contracts
 
-For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message` and a function `showMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry; this runs before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
+For this challenge, there is a smart contract called `Challenge_1.sol`. This contract has a `string message` and a function `getMessage()` that returns the message. There is also a test file called `Challenge_1.t.sol` (test files should always have the extension t.sol), and it initiates the `Challenge_1.sol` contract so we can call its functions. It runs the `setUp()` function from Foundry; this runs before every test you write in the file. For more information, check out the [Foundry book](https://book.getfoundry.sh/forge/writing-tests).
 
 Whew, we covered many things already but yet did so little! Take a sip of your coffee. Breathe in, breathe out. When ready, run your first test by putting `FOUNDRY_PROFILE=challenge-1 forge test --match-contract Challenge1` in your terminal. Sit back, and enjoy the dopamine of that green checkmark.
 
@@ -17,6 +17,16 @@ Whew, we covered many things already but yet did so little! Take a sip of your c
 
 `--match-contract` => Flag that enables you to run a specific test contract.
 `FOUNDRY_PROFILE=` => Environment variable you pass on to tell Foundry which profile to run. Every challenge has a profile, from `challenge-1` to `challenge-12`.
+
+In this case, every profile has only one test contract to run. So `FOUNDRY_PROFILE=challenge-1 forge test` would also suffice to run.
+
+### Memory and other data locations
+
+You might have noticed the `memory` keyword in the return statement of `getMessage()`. This `memory` is a keyword that indicates the location of a data type within Solidity. 
+
+For more information on location specifiers, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=location%20specifier#data-location).
+
+For more information on types in Solidity, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html).
 
 ## Challenge 2 - Hello???
 
@@ -26,11 +36,11 @@ Remember, to run the test for challenge 2:
 `FOUNDRY_PROFILE=challenge-2 forge test --match-contract Challenge2`
 
 ### What is public, view ...
-You might have noticed some keywords in the function definition such as `public` and `view`. These are [modifiers](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-modifiers) that change how functions behave. In this case, they are related to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), but there are also others such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
+You might have noticed keywords in the function definition, such as `public` and `view`. They specify function types, but while `public` refers to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), `view` shows the function [state mutability](https://docs.soliditylang.org/en/v0.8.17/contracts.html#state-mutability)") but there are also others, such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
 
 ## Challenge 3 - Hello + World
 
-Let's add a tiny bit of spice. This time, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the Foundry books to see how it's done.
+Let's add a tiny bit of spice. This time, the goal is to write a function that adds a string to the incomplete message. The tests are also incomplete. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look back to other tests or the Foundry books to see how it's done, and refer to concatenation docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=string.concat#the-functions-bytes-concat-and-string-concat).
 
 ## Challenge 4 - Solidity versions
 
@@ -38,7 +48,7 @@ The goal of the challenge is the same. But what's going on here? If you run the 
 
 Luckily, you can tell Foundry which compiler version to use. You can even have it auto-detect the compiler versions. Go ahead and comment out the line where it says `solc = "=0.8.17"`. Below, we have added a new line that auto-detects the compiler version. Uncomment that and save the file. Foundry will now auto-detect your compiler version whenever you run a test for that profile.
 
-But there is another problem. Why does `string.concat()` not work? It may have something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of varying compiler versions in the wild, and it is, therefore, good to know where to check certain behaviors.**
+But there is another problem. Why does **_not_** `string.concat()` work? It may have something to do with the compiler versions used in the contracts. Take a look [here](https://ethereum.stackexchange.com/questions/729/how-to-concatenate-strings-in-solidity) on how you are allowed to concatenate strings in different solidity versions and [here](https://docs.soliditylang.org/en/v0.8.17/080-breaking-changes.html) on how different solidity versions behave in general. **You will encounter a lot of varying compiler versions in the wild, and it is, therefore, good to know where to check certain behaviors.**
 
 ## Challenge 5 - NFT Contract
 
@@ -57,6 +67,7 @@ In this challenge, we will aim to:
 - Make the contract [ERC721](#solidity-libraries-and-openzeppelin)
 - Pass arguments to the constructor (See `Challenge_5.t.sol`)
 - In the constructor body, we need to be able to set the max supply to what we pass as an argument
+- In Challenge_5.t.sol, write a test that checks that the max supply is equal to 100 (or what we put in)
 
 ### Constructors
 
@@ -78,7 +89,21 @@ ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 
 
 ## Challenge 6 - BaseURI, TokenURI
 
+As on-chain storage is expensive, images are often stored off-chain.
+
+If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how do they get the NFT images and metadata?
+
+Your smart contract provides a way to tell Opensea which image belongs to which NFT and where the metadata files are stored through a function called `tokenURI()`. Opensea looks for this function in your smart contract and parses the return value.
+
 Since `_baseURIextended` is private, we have implemented a getter function called `_baseURI()`. The ERC721 standard already has this function implementation, but we want it to behave differently for our use case, so we have overridden it. Notice the `override` keyword added to the function.
+
+Refer to [function overriding](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-overriding) to learn how function overriding works in Solidity.
+
+You may also have noticed the line `using Strings for uint256`: here, we are using the `Strings` library. You do not need to import this library in this file, though, since the ERC721 contract imports it, and we will be importing the ERC721 contract.
+
+You can read how the strings library works [here](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Strings.sol).
+
+For example, uint to string => `someUint.toString()`
 
 In `Challenge_6.t.sol`, we want to get the token URI from the contract given a specific token ID. Your job is to:
 
@@ -97,14 +122,6 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a s
     Solidity will not accept string and uint concatenation. You can use the provided Strings library to turn uint into a string.
 </details>
 
-### TokenURI
-
-As on-chain storage is expensive, images are often stored off-chain.
-
-If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how do they get the NFT images and metadata?
-
-Your smart contract provides a way to tell Opensea which image belongs to which NFT and where the metadata files are stored through a function called `tokenURI()`. Opensea looks for this function in your smart contract and parses the return value.
-
 ## Challenge 7 - Minting
 
 In this challenge, we will aim to create a minting function in `Challenge_7.sol` so that the tests in `Challenge_7.t.sol` pass. The mint function should:
@@ -119,11 +136,13 @@ Minting is the core of getting tokens out there on the blockchain. NFTs are Non-
 
 As you might have noticed, NFTs have a token id. When you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and gets assigned to the minted NFT.
 
-If you take a look at the [ERC721 documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721), you will see that the `_safeMint()` function takes two arguments; the target address, and the token ID that will be assigned. Because you cannot set an amount of tokens to mint in ERC721's `_safeMint()` function, it is common practice (but not mandatory) to mint one at a time using a for-loop.
+If you take a look at the [ERC721 documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721), you will see that the `_safeMint()` function takes two arguments; the target address, and the token ID that we will assign. Because you cannot set an amount of tokens to mint in ERC721's `_safeMint()` function, it is common practice (but not mandatory) to mint one at a time using a for-loop.
 
 ### Msg.sender and tx.origin
 
 You may have come across `msg.sender` a couple of times already. As mentioned in this [Stackoverflow article](https://ethereum.stackexchange.com/questions/113962/what-does-msg-sender-tx-origin-actually-do-why), `msg.sender` is the address of the account of which the current call is coming from, and `tx.origin` is the very first address in the calling chain.
+
+**Note** `msg.sender` and `tx.origin` are addresses. To learn more about the address type, check out the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html#address).
 
 An example:
 
@@ -154,6 +173,14 @@ A way to do this is to add an if-statement within the mint function that checks 
 
 An easier way to do this is by adding a `require()` statement within the function. You can read more about `require()` [here](https://www.alchemy.com/overviews/solidity-require).
 
+So why are all these checks needed?
+
+Besides the obvious ones, such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (most of the time, but not always, smart contracts) owned by people with a lot of money (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price or sell them for a significant profit if the NFTs are deemed valuable.
+
+**Note**: Bots are not always smart contracts; sometimes, it is just an EOA + program.
+
+This complexity is merely the tip of the iceberg. Security in the NFT space and crypto, in general, is a giant rabbit hole, mainly beyond the scope of these challenges.
+
 Take a look at `Challenge_8.t.sol`. As usual, we have added some tests, and we need to pass those tests.
 
 - `testMintOverMax()` => A fuzz test that tries to mint over the max allowed supply
@@ -170,14 +197,6 @@ So, now let's improve the mint function to pass these checks. Our function shoul
   <summary>HINT:</summary>
   For the third <code>require()</code>, you can make use of <code>msg.sender</code> and <code>tx.origin</code>
 </details>
-
-### Why are all these checks needed?
-
-Besides the obvious ones, such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (most of the time, but not always, smart contracts) owned by people with a lot of money (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price or sell them for a significant profit if the NFTs are deemed valuable.
-
-**Note**: Bots are not always smart contracts; sometimes, it is just an EOA + program.
-
-This complexity is merely the tip of the iceberg. Security in the NFT space and crypto, in general, is a giant rabbit hole, mainly beyond the scope of these challenges.
 
 ## Challenge 9 - Modifiers and Ownable
 
@@ -201,7 +220,9 @@ So, the goal of this challenge is to add the appropriate modifiers to the contra
 
 ## Challenge 10 - Keeping track of mints using mappings
 
-Another method to restrict minting out the entire supply by one person is to limit mint amounts per person. Of course, you could circumvent this mechanism by minting with another wallet once you've reached your maximum mint amount on one wallet. There are ways to semi-prevent this, such as allowlisting, but we won't go into that now.
+Another method to restrict minting out the entire supply by one person is to limit mint amounts per person. Of course, you could circumvent this mechanism by minting with another wallet once you've reached your maximum mint amount on one wallet. There are ways to semi-prevent this, such as allowlisting, but we won't go into that now. 
+
+For this challenge, it will be handy to know what a [mapping](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=mapping#mapping-types) is.
 
 The goal of this challenge is to:
 
@@ -258,7 +279,7 @@ For more information on how to structure your metadata, check out the [Opensea m
 1. Now that we are pointing to the images on IPFS in our metadata, we are ready to upload the metadata! Go to Pinata, and click on Upload > Upload Folder > select the [json](./metadata/JSON/) folder.
 2. Give your folder a name
 3. Wait for the upload to finish
-4. Copy the folder CID, construct the IPFS URI, and paste it into your browser. For example: `ipfs://someCID/1`
+4. Copy the folder CID, construct the IPFS URI, and paste it into your browser. For example: `ipfs://someCID/1.png`
 5. Test that the metadata has been uploaded correctly, so for example:
 
 - The image URIs work
@@ -312,11 +333,13 @@ As per the [Foundry documentation](https://book.getfoundry.sh/forge/deploying#de
 
 You can copy and paste the following format into your terminal to deploy and verify the contract:
 
-`forge create --rpc-url <alchemy_api_key> --private-key <wallet_private_key> smart-contracts/src/Challenge_12.sol:Challenge12 --constructor-args "NFT Example" "NFTEX" 100 --etherscan-api-key <etherscan_api_key> --verify`
+`FOUNDRY_PROFILE=challenge-12 forge create --rpc-url <alchemy_api_key> --private-key <wallet_private_key> smart-contracts/challenge-12/src/Challenge_12.sol:Challenge12 --etherscan-api-key <etherscan_api_key> --verify --constructor-args "NFT Example" "NFTEX" 100`
+
+The documentation needs to be more accurate here; the constructor args flag has to be included at the end, or verification might fail.
 
 **Note:** Make sure you have enough test ETH in your wallet! 0.1 should be enough, but we recommend about 0.3 test ETH to be safe. Smart contract deployment can be expensive sometimes => [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
 
-For a reminder on how to get test ETH, please refer to [this section in the preparation guide(./Workshop-Preparation.md#3-get-some-test-eth).
+For a reminder on how to get test ETH, please refer to [this section in the preparation guide](./Workshop-Preparation.md#3-get-some-test-eth).
 
 Below are the steps to acquire the necessary API keys:
 
@@ -331,7 +354,19 @@ Below are the steps to acquire the necessary API keys:
 9. Next to your app, click on `View Key`.
 10. Copy and paste your Alchemy API key (HTTPS) into the format
 
+If you are using Metamask and you need to get your private key:
+
+1. Open Metamask
+2. Click on the three dots
+3. Click on `Account Details`
+4. Click on `Export Private Key`
+5. Enter your password
+6. Copy your private key
+
 After populating the command with your private key and API keys, you can paste it into the terminal and run it! You are now deploying and verifying the smart contract using your provided wallet. Give the verification some time to complete.
+
+**NOTE:** If deployment succeeds but verification fails, please refer to [this section in the Foundry docs](https://book.getfoundry.sh/forge/deploying#verifying-a-pre-existing-contract).
+
 
 🎉🎉🎉 **Congratulations!!!** 🎉🎉🎉
 You have just built, deployed, and verified an NFT smart contract! Take note of the contract address in the terminal output, for example: `Deployed to: 0x.....` , and let's proceed to the next step!

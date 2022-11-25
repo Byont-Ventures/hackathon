@@ -31,11 +31,11 @@ Metamask will generate a seed phrase for you. Please write down this seed phrase
 
 ### Private key
 
-Metamask holds your private key in the browser's data store. A private key is a randomly-generated number that gives a user control over all data and funds linked with the corresponding Ethereum address, which is generated from the Keccak-256 hash of the public key. This includes access to contracts that authorize the address. The private key is used to create signatures proving data or funds' ownership in a transaction. Therefore, never share your private key with anyone, as they will be able to access your account and all the funds!
+Metamask holds your private key in the browser's data store. A private key is a randomly-generated number that gives a user control over all data and funds linked with the corresponding Ethereum address, which is generated from the Keccak-256 hash of the public key. This includes access to contracts that authorize the address. The private key is used to create signatures proving data or funds' ownership in a transaction. Therefore, never share your private key with anyone, as they can access your account and all the funds!
 
 ## 3. Get some test ETH
 
-This step is recommended but optional because as you develop your NFT contract, it would also be nice to experience the deployment and interact with it on a real (test) network.
+This step is recommended but optional because as you develop your NFT contract, it would also be nice to experience the deployment and interact with it on a real (test) network. Note that this will cost ETH, but don't worry - we will not be using real ETH but test ETH since we are deploying to the Goerli test network.
 
 Ethereum has several testing networks where you can get free ETH. This ETH (unfortunately) is not transferable to the mainnet, so it is solely for development purposes. We will use the Goerli test network since, at the time of writing, [Opensea](https://opensea.io/), an NFT marketplace, currently uses that.
 
@@ -46,7 +46,7 @@ There are generally two ways to get test ETH:
 - Regular faucets
 - Mining yourself using POW (proof of work) faucets
 
-**Important: We recommend that you get at least 0.3 test ETH!** The network is congested, which means transaction fees are high now.
+**Important: We recommend that you get at least 0.3 test ETH!** At the time of writing, the network is congested, which means transaction fees are high now. Getting this much ETH generally takes multiple days since the Goerli faucets only supply a limited amount of ETH per 24 hours.
 
 ### Regular faucet
 
@@ -63,7 +63,7 @@ There are generally two ways to get test ETH:
 1. Go to https://goerli-faucet.pk910.de/ (or search for Goerli POW faucet)
 2. Enter your wallet address, and start mining! **Note:** You need to mine for a certain amount of time because there is a minimum claim amount. Make sure you have the minimum claim amount before you claim your funds.
 3. When you've had enough, click "Stop mining and claim rewards."
-4. Verify that you are a human, and then your funds should appear shortly.
+4. Verify that you are a human, and your funds should appear shortly.
 
 **Tip**: If you have the resources, you can mine faster by increasing the number of workers. You can increase this beyond what is initially shown as the max, i.e., if it says 5/5, you can still increase the max workers if your machine allows it.
 
@@ -91,7 +91,7 @@ If you open this repo in VSCode, you should get a suggestion to install a set of
 ## 4.5 Configuration for Windows users
 
 If you are a windows user, we recommend using Windows Subsystem for Linux (WSL) to work with Foundry.
-The support is better, and configuration is (way) easier.
+The support is better, and configuration is (way) more straightforward.
 You can use the steps below to get started:
 
 1. Get [Ubuntu with WSL](https://apps.microsoft.com/store/detail/ubuntu-22041-lts/9PN20MSR04DW) from the Microsoft Store
@@ -110,7 +110,7 @@ NextJS and React are simply by far the most used frameworks used in developing f
 
 ### Why Foundry?
 
-There are other frameworks like Hardhat and Truffle if you wish to use them. The main drawbacks here are that you will have to write your tests in Javascript, and you will have to communicate with your smart contracts using libraries. Using Foundry, you can write tests directly in Solidity. Furthermore, you can easily implement fuzz testing and traces that will give you exact information on what happens during a function call.
+There are other frameworks like Hardhat and Truffle if you wish to use them. The main drawbacks here are that you will have to write your tests in Javascript, and you will have to communicate with your smart contracts using libraries. Using Foundry, you can write tests directly in Solidity. Furthermore, you can quickly implement fuzz testing and traces that will give you exact information on what happens during a function call.
 
 ### Install Foundry
 
