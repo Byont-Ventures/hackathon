@@ -8,6 +8,17 @@ import { useNft } from 'use-nft'
 import { BAYCAbi } from 'src/abis/BAYCAbi'
 
 const Home: NextPage = () => {
+  /*
+   * TODO:
+   * - Build a form that takes on user input for the mint amount
+   * - Create a mint button
+   * - Switch to the Goerli testnet
+   * - Mint a couple of NFTs
+   * - Display the current amount minted
+   * - Display the max amount that can be minted
+   * - Display minted NFTs from smart contract in a grid / gallery
+   */
+
   // Account data
   const account = useAccount()
   const isMounted = useIsMounted()
