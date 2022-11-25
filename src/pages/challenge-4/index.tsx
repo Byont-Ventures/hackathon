@@ -6,7 +6,6 @@ import { useIsMounted } from 'src/hooks/useIsMounted'
 import { useContractReads } from 'wagmi'
 
 import { BAYCAbi } from 'src/abis/BAYCAbi'
-import { BigNumber } from 'ethers'
 
 const Home: NextPage = () => {
   /*
@@ -32,11 +31,6 @@ const Home: NextPage = () => {
     contracts: [
       { ...BAYCContractConfig, functionName: 'name' },
       { ...BAYCContractConfig, functionName: 'symbol' },
-      {
-        ...BAYCContractConfig,
-        functionName: 'tokenURI',
-        args: [BigNumber.from('69')],
-      }, // Get token URI for token ID 69
     ],
   })
 
