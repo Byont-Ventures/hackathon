@@ -1,6 +1,3 @@
-import type { ReactNode } from 'react'
-import type { NftMetadata } from 'use-nft'
-
 import React from 'react'
 import { useNft } from 'use-nft'
 
@@ -16,9 +13,9 @@ function Nft({ contract, tokenId }: NftProps) {
       {loading ? (
         'Loading...'
       ) : (
-        <div style={{ width: 150, height: 150, margin: 5 }}>
+        <div className="w-[100px] h-[100px] m-[10px]">
           {error || !nft ? (
-            'Something went wrong!'
+            JSON.stringify(error.errors)
           ) : (
             <img src={nft.image} alt="" />
           )}
