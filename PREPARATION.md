@@ -1,6 +1,6 @@
 # Workshop Preparation
 
-Before jumping into the challenges, we ask you to follow the installation instructions and read the explanations below.
+Before jumping into the challenges, we ask you to follow the installation instructions and read the explanations below. This will help you set up your development environment and explain the core concepts of web3. If you have any questions, feel free to ask in the [#workshop](https://discord.com/channels/935159951423340625/1045998823392153600) channel on our [Discord server](https://discord.gg/xF5dtjZH73).
 
 - [Workshop Preparation](#workshop-preparation)
   - [Prerequisites](#prerequisites)
@@ -8,13 +8,14 @@ Before jumping into the challenges, we ask you to follow the installation instru
     - [Why NextJS (React)?](#why-nextjs-react)
     - [Why Foundry?](#why-foundry)
   - [Wallets](#wallets)
-  - [Testnets and Test Eth](#testnets-and-test-eth)
+  - [Testnets](#testnets)
     - [Regular Faucet](#regular-faucet)
     - [Proof of Work Faucet](#proof-of-work-faucet)
     - [Other Faucets](#other-faucets)
   - [What are NFTs and how do they work?](#what-are-nfts-and-how-do-they-work)
-  - [What is IPFS?](#what-is-ipfs)
     - [Example](#example)
+  - [What is IPFS?](#what-is-ipfs)
+    - [Example](#example-1)
 
 ## Prerequisites
 
@@ -69,7 +70,7 @@ Whichever wallet you choose, at some point, it will ask you to configure a passw
 
 Metamask holds your private key in the browser's data store. A private key is a randomly-generated number that gives a user control over all data and funds linked with the corresponding Ethereum address, which is generated from the Keccak-256 hash of the public key. This includes access to contracts that authorize the address. The private key is used to create signatures proving data or funds' ownership in a transaction. Therefore, never share your private key with anyone, as they can access your account and all the funds!
 
-## Testnets and Test Eth
+## Testnets
 
 "Testnets" are Ethereum networks that protocol developers use to test smart contracts in a development or staging environment. They are similar to the mainnet but not connected to it. Because of this, you can test smart contracts and applications without spending real money.
 
@@ -124,6 +125,8 @@ NFTs are Non-Fungible Tokens. To understand what this means, let's take a look a
 Now NFTs are non-fungible; the opposite. Every NFT is unique. I can sell you one of my NFTs, but that's different from selling you any other NFT. It's the same as selling an item in a model car collection.
 
 For more information, there is an excellent article [here](https://ethereum.org/en/nft/) that explains what NFTs are, some examples, and how NFTs work under the hood.
+
+### Example
 
 As mentioned in the article, NFTs could, for example, be digital art. A website that displays NFTs is called Opensea, a marketplace for NFTs. Opensea queries the `tokenURI()` function on the [smart contracts](https://ethereum.org/en/smart-contracts/) to retrieve the metadata of that NFT.
 
