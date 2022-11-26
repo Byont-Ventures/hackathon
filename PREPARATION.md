@@ -41,6 +41,10 @@ git clone https://github.com/Byont-Ventures/Hackathon.git
 yarn install
 ```
 
+🎉🎉🎉 **You have completed the preparation! Below you'll find more documentation for when you get stuck..** 🎉🎉🎉
+
+---
+
 ### Why NextJS (React)?
 
 NextJS and React are simply by far the most used frameworks used in developing front-end applications in Web3. React has the largest community and a lot of different web3 frameworks available, with many solutions to any problems you might encounter.
