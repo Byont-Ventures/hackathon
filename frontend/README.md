@@ -8,17 +8,15 @@ The goal is to build a full-fletched NFT minting Dapp! Such a Dapp will drastica
 
 ## Challenge 1 - Let's get started! Running the Dapp
 
-You can run the [Dapp](https://ethereum.org/en/developers/docs/dapps/) locally by running the following command:
+You can run the [Dapp](https://ethereum.org/en/developers/docs/dapps/) locally by running `yarn dev` and navigate to the first challenge by going to [http://localhost:3000/challenge/1](http://localhost:3000/challenge/1).
 
-```sh
-yarn dev
-```
-
-Now, you can navigate to the first challenge by going to [http://localhost:3000/challenge/1](http://localhost:3000/challenge/1). But you'll be immediately greeted with the following error: `Error: could not detect network (event="noNetwork", code=NETWORK_ERROR, version=providers/5.7.2)`. You got this error because the Dapp is trying to connect to the blockchain but still needs to set it up. Let's fix that!
+You'll be immediately greeted with the following error: `❗️ Error: could not detect network (event="noNetwork", code=NETWORK_ERROR, version=providers/5.7.2)`. You got this error because the Dapp is trying to connect to the blockchain but still needs to set it up. Let's fix that!
 
 You can connect to a blockchain node using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node). These use the [JSON-RPC](https://www.jsonrpc.org/specification) protocol to communicate with the blockchain.
 
-There are many public RPC node providers, some cost money, and some are free. We will be using [Alchemy](https://www.alchemy.com/) for this workshop. Alchemy provides a free developer account with 10,000 requests and 100 transactions per day. You can sign up for a free account [here](https://www.alchemy.com/). Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already; we'll get to that later. You can obtain your Alchemy API key from the [Alchemy Dashboard](https://dashboard.alchemyapi.io/). Once you have your API key, you can paste it into the `.env.local` file:
+There are many public RPC node providers, some cost money, and some are free. We will be using [Alchemy](https://www.alchemy.com/) for this workshop. Alchemy provides a free developer account with 10,000 requests and 100 transactions per day. You can sign up for a free account [here](https://www.alchemy.com/). Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already; we'll get to that later.
+
+You can obtain your Alchemy API key from the [Alchemy Dashboard](https://dashboard.alchemyapi.io/). Once you have your API key, you can paste it into the `.env.local` file:
 
 - Create an account/sign in
 - Create a new app
