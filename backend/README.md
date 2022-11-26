@@ -65,9 +65,9 @@ Sit back, and enjoy the dopamine of that green checkmark.
 
 You might have noticed the `memory` keyword in the return statement of `getMessage()`. This `memory` is a keyword that indicates the location of a data type within Solidity.
 
-> **Tip:** For more information on location specifiers, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=location%20specifier#data-location).
+> **Note:** For more information on location specifiers, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=location%20specifier#data-location).
 
-> **Tip:** For more information on types in Solidity, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html).
+> **Note:** For more information on types in Solidity, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html).
 
 ## Challenge 2 - Hello???
 
@@ -150,11 +150,11 @@ Your smart contract provides a way to tell Opensea which image belongs to which 
 
 Since `_baseURIextended` is private, we have implemented a getter function called `_baseURI()`. The ERC721 standard already has this function implementation, but we want it to behave differently for our use case, so we have overridden it. Notice the `override` keyword added to the function.
 
-> **Tip:** Refer to [function overriding](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-overriding) to learn how overriding functions works in Solidity.
+> **Note:** Refer to [function overriding](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-overriding) to learn how overriding functions works in Solidity.
 
 You may also have noticed the line `using Strings for uint256`: here, we are using the `Strings` library. You do not need to import this library in this file, though, since the ERC721 contract imports it, and we will be importing the ERC721 contract.
 
-> **Tip**: You can read how the strings library works [here](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Strings.sol).
+> **Note:** You can read how the strings library works [here](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Strings.sol).
 > For example, uint to string => `someUint.toString()`
 
 In `Challenge_6.t.sol`, we want to get the token URI from the contract given a specific token ID. Your job is to:
@@ -230,7 +230,7 @@ So why are all these checks needed?
 
 Besides the obvious ones, such as not exceeding set mint amounts, these checks have come into place after the absence of these checks has led to abuse. In a lot of NFT contracts, a large chunk of the whole supply has been minted by "bots" (most of the time, but not always, other smart contracts) owned by people with a lot of money (whales). The goal of these people is often to own a large chunk of the NFTs to manipulate the price or sell them for a significant profit if the NFTs are deemed valuable.
 
-> **Note**: Bots are not always smart contracts; sometimes, it is just an [externally owned account + program](https://ethereum.stackexchange.com/questions/94410/why-contract-are-used-for-bot-purpose-instead-of-use-their-eth-address-directly).
+> **Note:** Bots are not always smart contracts; sometimes, it is just an [externally owned account + program](https://ethereum.stackexchange.com/questions/94410/why-contract-are-used-for-bot-purpose-instead-of-use-their-eth-address-directly).
 
 This complexity is merely the Tip of the iceberg. Security in the NFT space and crypto, in general, is a giant rabbit hole, mainly beyond the scope of these challenges.
 
@@ -255,7 +255,7 @@ So, now let's improve the mint function to pass these checks. Our function shoul
 
 You might have noticed that the `require()` statements have been moved below the `mint()` function into a `modifier`. Modifiers are code snippets that you can add to a function. When someone calls the function, these code snippets will run beforehand. Therefore, moving your `require()` statements to a modifier makes sense. It makes your code a bit more reusable, too, since you can now just put the modifier on any function to which you wish to apply the same logic.
 
-> **Note**: Modifiers are not mandatory, but they are a good practice. Read more about modifiers [here](https://medium.com/coinmonks/solidity-tutorial-all-about-modifiers-a86cf81c14cb).
+> **Note:** Modifiers are not mandatory, but they are a good practice. Read more about modifiers [here](https://medium.com/coinmonks/solidity-tutorial-all-about-modifiers-a86cf81c14cb).
 
 An example of modifiers is the [Ownable](https://docs.openzeppelin.com/contracts/4.x/access-control) library by OpenZeppelin. After importing this library, you can access the `onlyOwner` modifier. By default, the deployer of the contract will initially be the owner. Therefore, `onlyOwner` is an excellent modifier for functions that need administrative privileges, such as withdrawing funds or setting essential variables such as base URI.
 
@@ -293,7 +293,7 @@ In this challenge, we will be uploading images to IPFS. Then, write a test that 
 
 In the [Preparation Guide](/PREPARATION.md#what-are-nfts-and-how-do-they-work), we demonstrated how to paste an IPFS link of a Bored Ape NFT into our browser as a test. We also explained that you can use IPFS for decentralized storage and that we can store metadata and images on IPFS.
 
-> **Recollect:** The metadata is not stored on the blockchain. It is stored on IPFS, and the smart contract points to the metadata on IPFS.
+> **Note:** The metadata is not stored on the blockchain. It is stored on IPFS, and the smart contract points to the metadata on IPFS.
 
 We can construct the IPFS token URIs in our smart contracts that point to these images on IPFS. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenURI()`. Usually, the first thing returned is the metadata.
 
@@ -304,7 +304,7 @@ You will see a JSON object with some values, the NFT metadata. It contains:
 - `image` => the IPFS URI to the actual NFT image
 - `attributes` => array containing a list of objects with key-value pairs corresponding to the trait type and the values.
 
-> **Tip:** Feel free to compare it to the [metadata displayed on Opensea](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369).
+> **Note:** Feel free to compare it to the [metadata displayed on Opensea](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369).
 
 > **Note:** For more information on how to structure your metadata, check out the [Opensea metadata standards](https://docs.opensea.io/docs/metadata-standards).
 
@@ -312,7 +312,7 @@ You will see a JSON object with some values, the NFT metadata. It contains:
 
 For convenience, we will use [Pinata](https://www.pinata.cloud/). They will take care of pinning your data on IPFS.
 
-> **Recollect:** if you upload something onto IPFS, it won't stay on there forever unless you pin it with a local or a third-party node such as Pinata.
+> **Note:** if you upload something onto IPFS, it won't stay on there forever unless you pin it with a local or a third-party node such as Pinata.
 
 Now, create a free account on [Pinata](https://app.pinata.cloud/register) and log in.
 
@@ -329,7 +329,7 @@ Now, create a free account on [Pinata](https://app.pinata.cloud/register) and lo
 2. The metadata files are in the [json](./metadata/JSON/) folder. Every `.json` file shows that we have not appropriately set the `description` and `image` fields. Usually, you can do this with a script, but since we have five files, we can do it manually. Go ahead and update the `image` fields in every file to the corresponding IPFS URIs. You could also change the description if you'd like.
 3. At this point, verifying that the images match the metadata attributes is a good idea.
 
-> **Tip:** Make sure everything is clear on the attributes. For example, let's take the trait type `Background`. In every metadata file, this has the value `Black`. But in the images, one might argue that the background is actually `Purple`. It is a good idea to communicate with your artist what the intention was here and if this is correct. Perhaps it was the black shading around the eyes? The artist will often supply you with the layers, though, and you will have to generate the NFT images first so that you can verify them for yourself.
+> **Note:** Make sure everything is clear on the attributes. For example, let's take the trait type `Background`. In every metadata file, this has the value `Black`. But in the images, one might argue that the background is actually `Purple`. It is a good idea to communicate with your artist what the intention was here and if this is correct. Perhaps it was the black shading around the eyes? The artist will often supply you with the layers, though, and you will have to generate the NFT images first so that you can verify them for yourself.
 
 ### Upload metadata
 
@@ -405,7 +405,7 @@ FOUNDRY_PROFILE=challenge-12 forge create \
   --constructor-args "NFT Example" "NFTEX" 100
 ```
 
-> **Tip:** For a reminder on how to get test Eth, please refer to [this section in the preparation guide](/PREPARATION.md#testnets--faucets).
+> **Note:** For a reminder on how to get test Eth, please refer to [this section in the preparation guide](/PREPARATION.md#testnets--faucets).
 
 > **Note:** The documentation needs to be more accurate here; you must include the constructor args flag at the end, or the verification might fail
 

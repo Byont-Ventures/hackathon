@@ -61,7 +61,7 @@ There are other frameworks like [Hardhat](https://hardhat.org/) and [Truffle](ht
 
 To install Foundry, please refer to their excellent [documentation](https://book.getfoundry.sh/getting-started/installation) on how to get started.
 
-> **Tip:** To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
+> **Note:** To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
 
 ---
 
@@ -90,7 +90,7 @@ Metamask holds your private key in the browser's data store. A private key is a 
 
 You can run a local testnet using [Anvil](https://book.getfoundry.sh/anvil/#how-to-use-anvil) or use a public testnet like [Goerli](https://goerli.net/#about). During this workshop, you'll also learn how. to deploy a contract to OpenSea, which only supports public testnets, so you should familiarize yourself with that.
 
-> **Tip:** If you are using Metamask, you can switch between networks by clicking on the network name in the top left corner of the extension.
+> **Note:** If you are using Metamask, you can switch between networks by clicking on the network name in the top left corner of the extension.
 
 To run a local testnet you can run te following command:
 
@@ -126,7 +126,7 @@ There are generally two ways to get test ETH:
 - When you've obtained enough, click "Stop mining and claim rewards."
 - Verify that you are a human, and your funds should appear shortly.
 
-**Tip**: If you have the resources, you can mine faster by increasing the number of workers to the maximum your machine allows.
+**Note:** If you have the resources, you can mine faster by increasing the number of workers to the maximum your machine allows.
 
 ### Other Faucets
 
