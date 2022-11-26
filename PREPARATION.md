@@ -9,6 +9,7 @@ Before jumping into the challenges, we ask you to follow the installation instru
     - [Why NextJS (React)?](#why-nextjs-react)
     - [Why Foundry?](#why-foundry)
   - [Wallets](#wallets)
+    - [Private keys](#private-keys)
   - [Testnets \& Faucets](#testnets--faucets)
     - [Regular Faucet](#regular-faucet)
     - [Proof of Work Faucet](#proof-of-work-faucet)
@@ -73,9 +74,11 @@ You will need a wallet to interact with the smart contracts. We recommend using 
 - [Trust Wallet](https://trustwallet.com/);
 - Any wallet that supports [WalletConnect](https://explorer.walletconnect.com/?type=wallet&chains=eip155%3A1).
 
-Whichever wallet you choose, at some point, it will ask you to configure a password to unlock your wallet. Your password, however, is **not** the real key to your wallet! Instead, they use a [mnemonic phrase](https://www.coinbase.com/learn/crypto-basics/what-is-a-seed-phrase) to generate your wallet. We recommend you write it down and store it somewhere safe.
+Whichever wallet you choose, at some point, it will ask you to configure a password to unlock your wallet. Your password, however, is **not** the real key to your wallet! Instead, they use a [mnemonic/seed phrase](https://www.coinbase.com/learn/crypto-basics/what-is-a-seed-phrase) to generate your wallet. We recommend you write it down and store it somewhere safe.
 
 > **Note:** If someone has access to your seed phrase, they will be able to access your wallet, all the accounts within it, and, therefore, all the funds. Consequently, it is best to get rid of this wallet after the workshop and create a new one in a more secure environment. Only use this one for testing purposes.
+
+### Private keys
 
 Metamask holds your private key in the browser's data store. A private key is a randomly-generated number that gives a user control over all data and funds linked with the corresponding Ethereum address, which is generated from the Keccak-256 hash of the public key. This includes access to contracts that authorize the address. The private key is used to create signatures proving data or funds' ownership in a transaction. Therefore, never share your private key with anyone, as they can access your account and all the funds!
 
