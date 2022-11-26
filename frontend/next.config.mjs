@@ -1,5 +1,3 @@
-import withBundleAnalyzer from '@next/bundle-analyzer'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -10,13 +8,6 @@ const nextConfig = {
     // Removes data-testid for production builds
     reactRemoveProperties: true,
   },
-  experimental: {
-    appDir: false,
-  },
-}
+};
 
-const bundleAnalyzerConfig = withBundleAnalyzer({
-  enabled: process.env.NEXT_ANALYZE_BUNDLE === 'true',
-})
-
-export default bundleAnalyzerConfig(nextConfig)
+export default nextConfig;
