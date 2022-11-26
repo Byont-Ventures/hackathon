@@ -1,18 +1,43 @@
 # Frontend Challenges
 
-These challenges provide a way to get started with web3 frontend development.
+These challenges provide a way to get started with web3 frontend development. The goal is to build an NFT minting Dapp that interacts with the blockchain and IPFS to min and view NFTs.
 
-We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [Next.js](https://nextjs.org/). We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) as a CSS framework. It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library and [RainbowKit](https://www.rainbowkit.com/docs/introduction)](https://www.rainbowkit.com/docs/introduction).
-
-The goal is to build a full-fletched NFT minting Dapp! Such a Dapp will drastically improve the user experience (connecting to the blockchain, minting NFTs, viewing NFTs). If you don't know what this means, don't worry, it will all become clear.
+- [Frontend Challenges](#frontend-challenges)
+  - [Challenge 1 - Let's get started! Running the Dapp](#challenge-1---lets-get-started-running-the-dapp)
+    - [Ethers.js](#ethersjs)
+  - [Challenge 2 - Let's add some abstraction](#challenge-2---lets-add-some-abstraction)
+    - [Wagmi \& RainbowKit](#wagmi--rainbowkit)
+  - [Challenge 2 - Wallet connect button](#challenge-2---wallet-connect-button)
+  - [Challenge 3.A - Understanding and implementing ABIs](#challenge-3a---understanding-and-implementing-abis)
+    - [What is an ABI](#what-is-an-abi)
+    - [Getting the ABI through Etherscan](#getting-the-abi-through-etherscan)
+    - [BigNumbers](#bignumbers)
+  - [Challenge 3.B - Display smart contract data](#challenge-3b---display-smart-contract-data)
+  - [Challenge 4 - Displaying NFTs](#challenge-4---displaying-nfts)
+    - [TokenURI](#tokenuri)
+  - [Challenge 5 - Minting and displaying](#challenge-5---minting-and-displaying)
+    - [What is minting?](#what-is-minting)
+    - [NFT standards](#nft-standards)
+  - [Common errors](#common-errors)
+    - [Cannot connect to network error](#cannot-connect-to-network-error)
+    - [Hydration error](#hydration-error)
 
 ## Challenge 1 - Let's get started! Running the Dapp
 
 You can run the [Dapp](https://ethereum.org/en/developers/docs/dapps/) locally by running `yarn dev` and navigate to the first challenge by going to [http://localhost:3000/challenge/1](http://localhost:3000/challenge/1).
 
-You'll be immediately greeted with the following error: `❗️ Error: could not detect network (event="noNetwork", code=NETWORK_ERROR, version=providers/5.7.2)`. You got this error because the Dapp is trying to connect to the blockchain but still needs to set it up. Let's fix that!
+However, you'll be immediately greeted with the following error: `❗️ Error: could not detect network (event="noNetwork", code=NETWORK_ERROR, version=providers/5.7.2) ❗️ `. You got this error because the Dapp is trying to connect to the blockchain but still needs to set it up. Let's fix that!
 
-You can connect to a blockchain node using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node). These use the [JSON-RPC](https://www.jsonrpc.org/specification) protocol to communicate with the blockchain.
+You can connect to a blockchain node using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node). These use the [JSON-RPC](https://www.jsonrpc.org/specification) protocol to communicate with the blockchain. An RPC call might look something like this:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getBalance",
+  "params": ["0x407d73d8a49eeb85d32cf465507dd71d507100c1", "latest"],
+  "id": 1
+}
+```
 
 There are many public RPC node providers, some cost money, and some are free. We will be using [Alchemy](https://www.alchemy.com/) for this workshop. Alchemy provides a free developer account with 10,000 requests and 100 transactions per day. You can sign up for a free account [here](https://www.alchemy.com/). Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already; we'll get to that later.
 
@@ -36,17 +61,19 @@ If you refresh the page you'll now find the latest block number. Feel free to ed
 
 We can implement all RPCs, errors, hashing, and signing ourselves, but luckily, some libraries do this for us. We are using [ethers.js](https://docs.ethers.io/v5/) for this. Ethers.js is a library that provides a complete Ethereum development environment. It is a collection of packages that allow you to interact with the Ethereum blockchain, including wallets, providers, contracts, and more.
 
+> **Note**: If you're looking for a nice introduction to Ethers.js, check out [this article](https://dev.to/yakult/a-beginers-guide-four-ways-to-play-with-ethersjs-354a).
+
+## Challenge 2 - Let's add some abstraction
+
 ### Wagmi & RainbowKit
 
 RainbowKit provides an abstraction to communicate with different wallets and is built on top of Wagmi. Wagmi is a collection of React hooks that makes it easier to connect to Ethereum. Under the hood, it uses [Ethers](https://docs.ethers.io/v5/) to connect to the blockchain. You can make these connections using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node), but using them yourself is not necessary for this workshop's scope.
-
-There are plenty of RPC node providers, such as [Infura](https://www.infura.io/) and [Alchemy](https://www.alchemy.com/). Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already.
 
 For the Workshop, we will be using Alchemy and have already configured the Alchemy provider with an API key in the [Wagmi configuration](./src/libs/wagmi.ts).
 
 In the Wagmi configuration, you can see three networks:
 
-- `Localhost` => Local blockchain. You would create one by running `anvil` if you installed Foundry; see [Workshop Preparation](/PREPARATION.md#testnets--faucets).
+- `Localhost` => Local blockchain. You can it by running `anvil` if you installed Foundry; see [Workshop Preparation](/PREPARATION.md#testnets--faucets).
 - `Goerli` => Goerli test network.
 - `Mainnet` => The Ethereum network with the "real" Ethereum.
 
