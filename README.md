@@ -25,7 +25,7 @@ Below you'll find the different tracks, but we recommend that all participants f
 - [Workshop Preparation](/PREPARATION.md)
 - [Frontend Challenges](/frontend/README.md)
 - [Backend Challenges](/backend/README.md)
-- [Stretch Challenges]()
+- [Stretch Challenges](/STRETCH.md)
 
 ## About Byont Labs
 
