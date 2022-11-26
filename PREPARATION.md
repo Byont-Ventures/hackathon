@@ -53,7 +53,7 @@ There are other frameworks like [Hardhat]([https://https://hardhat.org/) and [Tr
 
 To install Foundry, please refer to their excellent [documentation](https://book.getfoundry.sh/getting-started/installation) on how to get started.
 
-**Note:** To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
+> **Tip:** To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
 
 ## Wallets
 
