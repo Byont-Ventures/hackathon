@@ -27,10 +27,10 @@ Below you'll find the different tracks, but we recommend that all participants f
 - [Backend Challenges](/backend/README.md)
 - [Stretch Challenges]()
 
-## Feedback
-
-We've prepared this workshop thoroughly, but there will inevitably be some unclear documentation, misbehaving configuration, and others. If you find anything, have any feedback, or want to share your findings, feel free to create [an issue on Github](https://github.com/Byont-Ventures/Hackathon/issues/new) or let us know on [Discord](https://discord.gg/xF5dtjZH73).
-
 ## About Byont Labs
 
 [Byont Labs](https://www.byont.io/) is a blockchain development studio that specializes in building decentralized applications. We are a team of developers, designers, and blockchain enthusiasts passionate about creating the future of the web.
+
+## Feedback
+
+We've prepared and tested this workshop thoroughly, but there will inevitably be some unclear documentation, misbehaving configuration, and others. If you find anything, have any feedback, or want to share your findings, feel free to create [an issue on Github](https://github.com/Byont-Ventures/Hackathon/issues/new) or let us know on [Discord](https://discord.gg/xF5dtjZH73).
