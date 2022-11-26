@@ -150,8 +150,8 @@ It can safely do that because there are standard interfaces for common smart con
 
 Take a look at an example of a BAYC (Bored Ape Yacht Club) [on Opensea](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9872) and look at the `Properties` section, you can see different properties such as `Background`, `Clothes` and `Eyes`). This metadata also includes a link to the image of the ape. For this Bored Ape#9872, the links to the metadata and the image are as such:
 
-- `metadata` => `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/9872`
-- `image` => `ipfs://QmdtEL6yqQgTHLzvxiJk1ojkUzs9NyyK1yd8UCvV6K2xCV`
+- `metadata` => `[ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/9872](ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/9872)`
+- `image` => `[ipfs://QmdtEL6yqQgTHLzvxiJk1ojkUzs9NyyK1yd8UCvV6K2xCV](ipfs://QmdtEL6yqQgTHLzvxiJk1ojkUzs9NyyK1yd8UCvV6K2xCV)`
 
 As you can see, these are special links that will only work in some browsers if you paste them into the URL bar. These links are IPFS (InterPlanetary File System) URIs.
 
@@ -176,6 +176,6 @@ If you want an easy way to open an IPFS link, you can go to [ipfsbrowser](https:
 
 Alternatively, you can follow the [tutorial provided by Cloudflare](https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/)
 
-If you are using Brave browser, you can paste the IPFS URL directly into the browser: `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
+If you are using Brave browser, you can paste the IPFS URL directly into the browser: `[ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq](ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq)`
 
 👾 👾 👾 **Great, you read it all! Don't forget to start coding.** 👾 👾 👾
