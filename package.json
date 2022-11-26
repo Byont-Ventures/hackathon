@@ -1,7 +1,11 @@
 {
-  "name": "byont.io",
+  "name": "byont-web3-workshop",
   "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "backend-track",
+    "frontend-track"
+  ],
   "scripts": {
     "fe:dev": "next dev",
     "fe:build": "next build",

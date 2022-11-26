@@ -1,0 +1,20 @@
+{
+  "name": "backend-track",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "forge build --optimize",
+    "test": "forge test -vvv",
+    "test:watch": "forge test -vvv --watch",
+    "coverage": "forge coverage -vvv",
+    "lint": "solhint ./src/smart-contracts/*.sol"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3",
+    "@openzeppelin/contracts-upgradeable": "^4.7.3",
+    "sol-merger": "^4.1.1"
+  },
+  "devDependencies": {
+    "solhint": "^3.3.7"
+  }
+}
