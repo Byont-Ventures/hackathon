@@ -5,10 +5,11 @@ Before jumping into the challenges, we ask you to follow the installation instru
 - [Workshop Preparation](#workshop-preparation)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+  - [Frameworks](#frameworks)
     - [Why NextJS (React)?](#why-nextjs-react)
     - [Why Foundry?](#why-foundry)
   - [Wallets](#wallets)
-  - [Testnets](#testnets)
+  - [Testnets \& Faucets](#testnets--faucets)
     - [Regular Faucet](#regular-faucet)
     - [Proof of Work Faucet](#proof-of-work-faucet)
     - [Other Faucets](#other-faucets)
@@ -45,6 +46,8 @@ yarn install
 
 ---
 
+## Frameworks
+
 ### Why NextJS (React)?
 
 NextJS and React are simply by far the most used frameworks used in developing front-end applications in Web3. React has the largest community and a lot of different web3 frameworks available, with many solutions to any problems you might encounter.
@@ -58,6 +61,8 @@ There are other frameworks like [Hardhat]([https://https://hardhat.org/) and [Tr
 To install Foundry, please refer to their excellent [documentation](https://book.getfoundry.sh/getting-started/installation) on how to get started.
 
 > **Tip:** To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
+
+---
 
 ## Wallets
 
@@ -74,7 +79,9 @@ Whichever wallet you choose, at some point, it will ask you to configure a passw
 
 Metamask holds your private key in the browser's data store. A private key is a randomly-generated number that gives a user control over all data and funds linked with the corresponding Ethereum address, which is generated from the Keccak-256 hash of the public key. This includes access to contracts that authorize the address. The private key is used to create signatures proving data or funds' ownership in a transaction. Therefore, never share your private key with anyone, as they can access your account and all the funds!
 
-## Testnets
+---
+
+## Testnets & Faucets
 
 "Testnets" are Ethereum networks that protocol developers use to test smart contracts in a development or staging environment. They are similar to the mainnet but not connected to it. Because of this, you can test smart contracts and applications without spending real money.
 
@@ -121,6 +128,8 @@ There are generally two ways to get test ETH:
 ### Other Faucets
 
 We recommend that you try out other faucets as well, [this site](https://faucetlink.to/goerli) has plenty of faucets you can try out. Some might be down; others might require some verification method, such as a tweet.
+
+---
 
 ## What are NFTs and how do they work?
 
