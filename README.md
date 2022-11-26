@@ -34,7 +34,3 @@ We've prepared this workshop thoroughly, but there will inevitably be some uncle
 ## About Byont Labs
 
 [Byont Labs](https://www.byont.io/) is a blockchain development studio that specializes in building decentralized applications. We are a team of developers, designers, and blockchain enthusiasts passionate about creating the future of the web.
-
-We augment existing teams with our engineering and security expertise and help our partners learn and grow. We enjoy operating on the edge of what's possible, eagerly looking to the latest developments in the ecosystem - from Substrate to Cosmos to the EVM.
-
-We spent most of our time architecting, developing, and securing web3 applications with our clients. We also dedicate time to researching, experimenting, and writing about the newest technology to stay up-to-date with the latest advancements in the ecosystem. For example, we have done deep dives into Zero Knowledge Proofs and Formal Verification.
