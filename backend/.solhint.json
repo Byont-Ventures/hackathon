@@ -3,10 +3,9 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "compiler-version": ["error", "^0.8.13"],
+    "compiler-version": ["error", "^0.8.17"],
     "reason-string": ["off", { "maxLength": 32 }],
     "no-empty-blocks": ["off"],
-    "not-rely-on-time": "off",
-    "quotes": ["error", "single"]
+    "not-rely-on-time": "off"
   }
 }

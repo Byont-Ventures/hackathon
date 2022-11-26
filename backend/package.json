@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.7.3",
-    "@openzeppelin/contracts-upgradeable": "^4.7.3",
-    "sol-merger": "^4.1.1"
+    "@openzeppelin/contracts-upgradeable": "^4.7.3"
   },
   "devDependencies": {
-    "solhint": "^3.3.7"
+    "prettier": "^2.7.1",
+    "prettier-plugin-solidity": "^1.0.0",
+    "sol-merger": "^4.1.1",
+    "solhint": "^3.3.7",
+    "solhint-plugin-prettier": "^0.0.5"
   }
 }

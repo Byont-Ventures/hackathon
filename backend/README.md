@@ -4,7 +4,7 @@ These challenges provide a way to get started with Foundry, Solidity, and NFTs. 
 
 ## Challenge 1 - Hello World!
 
-Take a look at the `smart-contracts` folder. Here, you will see a folder for every challenge. Within each folder, you will find two sub-folders:
+Take a look at the `contracts` folder. Here, you will see a folder for every challenge. Within each folder, you will find two sub-folders:
 
 - `src` => Contains all the actual smart contracts
 - `tests` => Contains the test files for those contracts
