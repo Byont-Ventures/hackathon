@@ -1,35 +1,24 @@
 import type { NextPage } from 'next';
-import { useIsMounted } from 'src/hooks/useIsMounted';
+import { useContractRead } from 'wagmi';
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-
-import { useBalance } from 'wagmi';
-import { useAccount } from 'wagmi';
-
-const Home: NextPage = () => {
+export const Challenge3: NextPage = () => {
   /*
    * TODO:
    * - Implement the BAYC ABI
    * - Display the name of the BAYC contract
    * - Display the symbol of the BAYC contract
    */
-  const isMounted = useIsMounted();
-  const account = useAccount();
-  const balance = useBalance({
-    addressOrName: account.address,
+
+  const { data, isError, isLoading } = useContractRead({
+    // Todo: Implement the BAYC ABI
   });
+
   return (
-    <>
-      Welcome to Challenge 3!
-      <ConnectButton></ConnectButton>
-      <div>
-        {' '}
-        {balance && isMounted
-          ? `Account balance: ${balance.data?.value}`
-          : 'No data'}
-      </div>
-    </>
+    <p>
+      The name of the ERC721 token is:{' '}
+      <span className="text-green-400">{data as string}</span>
+    </p>
   );
 };
 
-export default Home;
+export default Challenge3;

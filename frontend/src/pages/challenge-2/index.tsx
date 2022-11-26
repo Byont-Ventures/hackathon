@@ -1,29 +1,48 @@
 import type { NextPage } from 'next';
-import { useBlockNumber } from 'wagmi';
+import { providers } from 'ethers';
 
 const Challenge2: NextPage = () => {
   /*
    * TODO:
-   * - Setup wagmi with the Alchemy provider
-   * - Display the latest blocknumber
+   * - Create a hook for getting the name of the ERC721 token
    */
-  const { data: blockNumber, isLoading, isError } = useBlockNumber();
 
-  if (isLoading) return <div>Loading...</div>;
+  const provider = providers.AlchemyProvider.getWebSocketProvider(
+    'goerli',
+    process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+  );
 
-  if (isError)
+  const { data, isLoading, isError } = useName(provider);
+
+  if (isError) {
     return (
-      <div>
-        Something went wrong while getting the latest blocknumber, did you setup
-        Wagmi correctly?
-      </div>
+      <p>
+        Could not get the name of the contract, is the hook not implemented yet?
+      </p>
     );
+  }
+
+  if (isLoading || !data) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <p>
-      The name is: <span className="text-green-400">#{blockNumber}</span>
+      The name of the ERC721 token is:{' '}
+      <span className="text-green-400">{data}</span>
     </p>
   );
 };
 
 export default Challenge2;
+
+/** Ensures the app compiles, but this is not the place to put it. */
+const useName = (
+  provider: providers.AlchemyWebSocketProvider
+): {
+  data: string;
+  isLoading: boolean;
+  isError: boolean;
+} => {
+  throw new Error('Function not implemented.');
+};

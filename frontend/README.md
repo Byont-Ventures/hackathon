@@ -1,6 +1,6 @@
 # Frontend Challenges
 
-These challenges provide a way to get started with web3 frontend development. The goal is to build an NFT minting Dapp that interacts with the blockchain and IPFS to min and view NFTs.
+These challenges provide a way to get started with web3 frontend development. The goal is to build an NFT minting Dapp that interacts with the blockchain and IPFS to min and view NFTs. Initially, we'll provide some boilerplate code, but you'll quickly be left to build new pages.
 
 - [Frontend Challenges](#frontend-challenges)
   - [Challenge 1 - Let's get started! Running the Dapp](#challenge-1---lets-get-started-running-the-dapp)
@@ -9,7 +9,7 @@ These challenges provide a way to get started with web3 frontend development. Th
   - [Challenge 3 - Using Wagmi](#challenge-3---using-wagmi)
     - [ABIs](#abis)
   - [Challenge 4 - Displaying NFTs](#challenge-4---displaying-nfts)
-    - [BigNumbers](#bignumbers)
+    - [Big Numbers](#big-numbers)
   - [Challenge 5 - Minting](#challenge-5---minting)
     - [What is minting?](#what-is-minting)
     - [NFT standards](#nft-standards)
@@ -95,10 +95,10 @@ Now, it's up to you to implement this hook into the challenge 2 page.
 
 ## Challenge 3 - Using Wagmi
 
-Instead of writing these hooks ourselves for every smart contract call, we can use [Wagmi](https://wagmi.sh). Wagmi is a collection of React hooks that make it easier to perform these actions. Under the hood, it uses Ethers to connect to the blockchain, and React Query for state management. Using Wagmi, the example above can be rewritten as follows:
+Instead of writing these hooks ourselves for every smart contract call, we can use [Wagmi](https://wagmi.sh). Wagmi is a collection of React hooks that make it easier to perform these actions. Under the hood, it uses Ethers to connect to the blockchain and React Query for state management. Using Wagmi, we can rewrite the example above as follows:
 
 ```ts
-const { data, isError, isLoading } = useReadContract({
+const { data, isError, isLoading } = useContractRead({
   address: contractAddress,
   abi: contractAbi,
   functionName: 'name',
@@ -109,7 +109,7 @@ const { data, isError, isLoading } = useReadContract({
 
 ### ABIs
 
-You might have noticed that we had to pass the contract ABI to the `useReadContract` hook. The contract `Application Binary Interface` (`ABI`) is the standard way to interact with contracts in the Ethereum ecosystem from outside the blockchain and for contract-to-contract interaction. Using the ABI, data is encoded to a binary sequence according to its type. The encoding is not self-describing and thus requires a JSON schema to decode, similar to how Protobufs work.
+You might have noticed that we had to pass the contract ABI to the `useContractRead` hook. The contract `Application Binary Interface` (`ABI`) is the standard way to interact with contracts in the Ethereum ecosystem from outside the blockchain and for contract-to-contract interaction. Using the ABI, data is encoded to a binary sequence according to its type. The encoding is not self-describing and thus requires a JSON schema to decode, similar to how Protobufs work.
 
 Nowadays, many tools automatically generate the ABI whenever you compile your smart contract (as a backend engineer). As a frontend engineer, you must import the generated ABI into your code to interact with smart contracts. Developers usually place the ABI in a folder called [`abis`](/frontend/src/abis/).
 
@@ -124,8 +124,8 @@ This is how we got the ABI for the Bored Ape Yacht Club smart contract.
 - Go to [Bored Ape Yacht Club on Etherscan](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d);
 - Click on `Contract`;
 - At the `Contract ABI` section below, on the right, click on `Copy ABI to clipboard`;
-- Create a new file called `BAYCAbi.ts`, and pasted the ABI there;
-- At the very bottom, make sure to use const assertion (`as const`) to make the ABI readonly. This is so we can infer types from the ABI.
+- Create a new file called `BAYCAbi.ts`, and paste the ABI there;
+- At the bottom, use const assertion (`as const`) to make the ABI readonly. This is so we can infer types from the ABI.
 
 Now it's up to you to implement [Wagmi with the Goerli network](https://wagmi.sh/core/getting-started), and update the challenge 3 page.
 
@@ -143,15 +143,29 @@ Your smart contract provides a way to tell Opensea which image belongs to which 
 
 With this knowledge, we can continue with challenge 4: display the NFT image and metadata. The goal is to interact with the BAYC smart contract, and:
 
+- Display the `name` of the contract;
 - Display the `totalSupply` of the contract;
 - Display the name of the NFT with token ID 42;
 - Display the image of the NFT with token ID 42.
 
+You can use the `useContractReads` hook to batch multiple smart contract calls.
+
+```ts
+const { data, isError, isLoading } = useContractReads({
+  contracts: [
+    { ...BAYCContractConfig, functionName: 'name' },
+    { ...BAYCContractConfig, functionName: 'totalSupply' },
+  ],
+});
+```
+
+> **Note**: See the [Wagmi documentation](https://wagmi.sh/core/hooks/useContractReads) for more information.
+
 > **Note**: There are multiple ways to go about this, but one of the easiest ways is by implementing the [`useNFT`](https://github.com/spectrexyz/use-nft). Another way is to parse the `tokenURI()` value and use `fetch` or `axios` to get the metadata.
 
-### BigNumbers
+### Big Numbers
 
-In Solidity, the maximum value of a `uint256` is `2^256 - 1`. Such aa huge number is impossible to represent in JavaScript. To solve this problem, we can use the [BigNumber](https://docs.ethers.io/v5/api/utils/bignumber/) class from Ethers. Ethers use this class to represent arbitrarily large integers and add type annotations automatically when calling the `totalSupply` of the BAYC contract.
+In Solidity, the maximum value of a `uint256` is `2^256 - 1`. Such as huge number is impossible to represent in JavaScript. To solve this problem, we can use the [BigNumber](https://docs.ethers.io/v5/api/utils/bignumber/) class from Ethers. Ethers use this class to represent arbitrarily large integers and add type annotations automatically when calling the `totalSupply` of the BAYC contract.
 
 ```ts
 // Most numbers you pass to a smart contract, need to be converted to a BigNumber, for example:
@@ -162,7 +176,7 @@ const aBiggerNumber = aBignumber.mul(2);
 
 ## Challenge 5 - Minting
 
-Now that we know how to get the NFT data to display let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x5b0f9a441246ac78d34c70cdd16d5377343d55de`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
+Now that we know how to get the NFT data to display, let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x5b0f9a441246ac78d34c70cdd16d5377343d55de`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
 
 The goal of this challenge is to mint an NFT using the `mint()` function of the smart contract. The `mint()` function takes a single parameter: the address of the owner of the NFT. The owner of the NFT is the address that will receive the NFT.
 
