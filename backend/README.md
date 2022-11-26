@@ -479,6 +479,6 @@ Once you have minted your NFTs, you should be able to view them on Opensea!
 
 If you have managed to make it this far, **pat yourself on the back, you've earned it!** Of course, these challenges were just the Tip of the iceberg. You can extend the NFTs with loads of functionalities, create an Opensea account, and edit your collection. You could optimize your smart contracts so that the gas fees are lower. You could take many security measures to make your contract safer, and the list goes on and on.
 
-**Next up:** Stretch challenges. During the workshop, we will supply you with a non-exhaustive list of stretch challenges you can work on to refine your skills from here on or work on an idea of your own.
+**Next up:** Stretch challenges. During the workshop, we will supply you with a non-exhaustive list of stretch challenges you can work on to refine your skills from here on or work on an idea of your own. You can also take a look at the [frontend challenges](/FRONTEND.md) to learn how to build a frontend for your NFTs.
 
 🎉🎉🎉 **You have completed the Backend Coding Challenges!!!** 🎉🎉🎉

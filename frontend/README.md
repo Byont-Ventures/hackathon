@@ -10,9 +10,10 @@ These challenges provide a way to get started with web3 frontend development. Th
     - [ABIs](#abis)
   - [Challenge 4 - Displaying NFTs](#challenge-4---displaying-nfts)
     - [BigNumbers](#bignumbers)
-  - [Challenge 5 - Minting and displaying](#challenge-5---minting-and-displaying)
+  - [Challenge 5 - Minting](#challenge-5---minting)
     - [What is minting?](#what-is-minting)
     - [NFT standards](#nft-standards)
+  - [Challenge 6 - It's up to you...](#challenge-6---its-up-to-you)
   - [Common errors](#common-errors)
     - [Cannot connect to network error](#cannot-connect-to-network-error)
     - [Hydration error](#hydration-error)
@@ -156,73 +157,94 @@ In Solidity, the maximum value of a `uint256` is `2^256 - 1`. Such aa huge numbe
 // Most numbers you pass to a smart contract, need to be converted to a BigNumber, for example:
 import { BigNumber } from 'ethers';
 const aBigNumber = BigNumber.from(42);
+const aBiggerNumber = aBignumber.mul(2);
 ```
 
-## Challenge 5 - Minting and displaying
+## Challenge 5 - Minting
 
-Now that we know how to get the NFT data to display, let's mint some NFT's! For that, we have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x5b0f9a441246ac78d34c70cdd16d5377343d55de`.
+Now that we know how to get the NFT data to display let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x5b0f9a441246ac78d34c70cdd16d5377343d55de`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
 
-The goal of this challenge is to:
+The goal of this challenge is to mint an NFT using the `mint()` function of the smart contract. The `mint()` function takes a single parameter: the address of the owner of the NFT. The owner of the NFT is the address that will receive the NFT.
 
-- Build a form that takes on user input for the mint amount
+Until now, we have only been reading data from the blockchain. Now it's time to write data to the blockchain. To do so, we need to connect our wallet to the application. Using [RainbowKit](https://www.rainbowkit.com/docs/introduction), an [abstraction](https://youtu.be/DKce4wCe2zI) around Wagmi, we can connect almost any wallet we want.
+
+Now it's up to you to:
+
+- Implement RainbowKit in the application;
+- Build a form that takes a user input for the mint amount
 - Create a mint button
 - Switch to the Goerli testnet
 - `mint` a couple of NFTs
 - Display the current amount minted => `totalSUpply`
 - Display the max amount that can be minted => `maxSupply`
-- Display minted NFTs from smart contract in a grid / gallery
 
-<spoiler>
-  <summary>HINT:</summary>
-  <details>
-    You can take a look <a href="https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-mint-nft">here</a> for an example on how to use Wagmi and RainbowKit to create a minting page!
-  </details>
-</spoiler>
- 
+> **Note**: You can take a look [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-mint-nft) for an example on how to use Wagmi and RainbowKit to create a minting page.
+
 ### What is minting?
 
-Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and they have to be minted. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but more and more standards are being developed to make minting cost less ETH, such as ERC721A, ERC721Psi.
+Minting is the core of getting tokens out there on the blockchain. NFTs are Non-Fungible Tokens, and people must mint them. In the past, these functions required a lot of [gas](https://cryptomarketpool.com/gas-in-solidity-smart-contracts), but developers are creating more and more standards to make minting cost less Eth, such as ERC721A, ERC721Psi.
 
-As you might have noticed, NFTs have a token id. When you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time an NFT is minted, the token id increases and gets assigned to the minted NFT.
+As you might have noticed, NFTs have a token id. When you deploy a fresh collection, the convention is to have the token ID start at 0 or 1. Then, every time someone mints an NFT, the token id increases and gets assigned to the minted NFT.
 
 ### NFT standards
 
-Depending on your Solidity knowledge, this might not be very useful to you, but it is still a good way to see what functions should be found by default in an NFT smart contract.
+[OpenZeppelin](https://docs.openzeppelin.com/) provides free, standardized, and thoroughly tested/audited smart contract libraries that implement ERC specifications, such as ERC721.
 
-Openzeppelin is a company that provides free, standardized, and thoroughly tested/audited smart contract libraries to use, such as ERC721.
+> **Note**: OpenZeppelin is a very popular library, and it is used by many smart contract developers. It is also a very good library to use, but it is not the only one. There are many other libraries out there, and you can even write your own.
 
-ERC721 is a standard for NFT smart contracts. There are others, such as ERC1155 by Enjin and ERC721A by Azuki, each with its functionalities. For the workshop, ERC721 NFTs will suffice.
+ERC721 is the primary standard for NFT smart contracts; see [Workshop Preparaton](/PREPARATION.md#what-are-nfts-and-how-do-they-work). There are variants, such as ERC1155 by Enjin and ERC721A by Azuki, each with its functionalities. For the workshop, ERC721 NFTs will suffice.
 
 Some standard functions that can often be found in an ERC721 contract:
 
 - `tokenURI(uint256 _id)` => Get the token URI for a given token ID (number)
 - `totalSupply()` => Get the amount of minted NFTs so far
+- `balanceOf(address _owner)` => Get the amount of NFTs owned by an address
+- `ownerOf(uint256 _id)` => Get the owner of a given token ID
+- `transferFrom(address _from, address _to, uint256 _id)` => Transfer a token from one address to another
+- and more ...
 
-Documentation on Openzeppelin and the ERC721 standard:
+See also:
 
 - https://eips.ethereum.org/EIPS/eip-721
 - https://docs.openzeppelin.com/contracts/4.x/
 - https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
 
-## Common errors
+## Challenge 6 - It's up to you...
 
-Before we begin, we have included some common errors and solutions that you could try. Please refer to this section if you are experiencing these errors.
+Once you have minted your NFTs, you should be able to view them on Opensea!
+
+- Let's head over to the [Testnet Opensea](https://testnets.opensea.io/assets?search[chains][0]=GOERLI&search[query]=0x5b0f9a441246ac78d34c70cdd16d5377343d55de&search[resultModel]=ASSETS);
+- In the search bar, paste the contract address: `0x5b0f9a441246ac78d34c70cdd16d5377343d55de`;
+- Your NFTs should appear in this list!
+
+If you have managed to make it this far, **pat yourself on the back, you've earned it!** Of course, these challenges were just the tip of the iceberg. You can implement more functionality to your NFTs such as a marketplace, a voting system, or even a game!
+
+Now that you have a basic understanding of how to interact with smart contracts, it's up to you to create something cool! You can use the [OpenSea API](https://docs.opensea.io/reference/retrieving-asset-data) to get NFT data, or you can use the [Etherscan API](https://etherscan.io/apis) to get data from the blockchain.
+
+**Next up:** Stretch challenges. During the workshop, we will supply you with a non-exhaustive list of stretch challenges you can work on to refine your skills from here on or work on an idea of your own. You can also take a look at the [backend challenges](/backend/README.md).
+
+🎉🎉🎉 **You have completed the Frontend Coding Challenges!!!** 🎉🎉🎉
+
+## Common errors
 
 ### Cannot connect to network error
 
-If you experience "cannot connect to network" errors, try the following and see if they are resolved:
+If you experience "cannot connect to network" errors, you can try the following steps:
 
-- You might be getting rate limited. In that case, please create an [Alchemy account](https://dashboard.alchemy.com/) or sign up, and create an app (it's free). Select the network that you would like to use, and replace the `NEXT_PUBLIC_ALCHEMY_API_KEY` in [.env.local](.env.local) with your own API key.
+- You might be getting rate limited. In that case, please create an [Alchemy account](https://dashboard.alchemy.com/) or sign up and create an app (it's free). Select the network you want to use, and replace the `NEXT_PUBLIC_ALCHEMY_API_KEY` in [.env.local](.env.local) with your API key.
 - If you are trying to connect to localhost:8545, make sure you are running `anvil` in a second terminal
 - Check that you are on the right network - if you cannot switch from localhost to another network using the connect button, please switch manually inside your wallet
 
 ### Hydration error
 
-There is an official issue on this error [here](https://github.com/wagmi-dev/wagmi/issues/542#issuecomment-1144178142) that explains why this error occurs.
+There is an official issue on this error [here](https://github.com/wagmi-dev/wagmi/issues/542#issuecomment-1144178142) that explains why this error occurs. We have included a hook you can use to mitigate this error.
 
-We have included a hook you can use to mitigate this error.
-`import { useIsMounted } from 'src/hooks/useIsMounted'`
-`const isMounted = useIsMounted()`
+```tsx
+import { useIsMounted } from 'src/hooks/useIsMounted';
 
-Then, in your `JSX`:
-`{isMounted && yourDataHere}`
+// ...
+const balance = useBalance();
+const isMounted = useIsMounted();
+
+return <p>{isMounted && balance ? balance : 'Loading...'}</p>;
+```
