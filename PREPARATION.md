@@ -134,8 +134,8 @@ It can safely do that because there are standard interfaces for common smart con
 
 Take a look at an example of a BAYC (Bored Ape Yacht Club) [on Opensea](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9872) and look at the `Properties` section, you can see different properties such as `Background`, `Clothes` and `Eyes`). This metadata also includes a link to the image of the ape. For this Bored Ape#9872, the links to the metadata and the image are as such:
 
-`metadata` => `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/9872`
-`image` => `ipfs://QmdtEL6yqQgTHLzvxiJk1ojkUzs9NyyK1yd8UCvV6K2xCV`
+- `metadata` => `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/9872`
+- `image` => `ipfs://QmdtEL6yqQgTHLzvxiJk1ojkUzs9NyyK1yd8UCvV6K2xCV`
 
 As you can see, these are special links that will only work in some browsers if you paste them into the URL bar. These links are IPFS (InterPlanetary File System) URIs.
 
