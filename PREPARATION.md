@@ -61,7 +61,7 @@ There are other frameworks like [Hardhat](https://hardhat.org/) and [Truffle](ht
 
 To install Foundry, please refer to their excellent [documentation](https://book.getfoundry.sh/getting-started/installation) on how to get started.
 
-> **Note:** To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
+> **Note**: To see if you installed Foundry correctly, type `forge` in your terminal. If the command is not recognized, try it in a new one.
 
 ---
 
@@ -76,7 +76,7 @@ You will need a wallet to interact with the smart contracts. We recommend using 
 
 Whichever wallet you choose, at some point, it will ask you to configure a password to unlock your wallet. Your password, however, is **not** the real key to your wallet! Instead, they use a [mnemonic/seed phrase](https://www.coinbase.com/learn/crypto-basics/what-is-a-seed-phrase) to generate your wallet. We recommend you write it down and store it somewhere safe.
 
-> **Note:** If someone has access to your seed phrase, they will be able to access your wallet, all the accounts within it, and, therefore, all the funds. Consequently, it is best to get rid of this wallet after the workshop and create a new one in a more secure environment. Only use this one for testing purposes.
+> **Note**: If someone has access to your seed phrase, they will be able to access your wallet, all the accounts within it, and, therefore, all the funds. Consequently, it is best to get rid of this wallet after the workshop and create a new one in a more secure environment. Only use this one for testing purposes.
 
 ### Private keys
 
@@ -90,7 +90,7 @@ Metamask holds your private key in the browser's data store. A private key is a 
 
 You can run a local testnet using [Anvil](https://book.getfoundry.sh/anvil/#how-to-use-anvil) or use a public testnet like [Goerli](https://goerli.net/#about). During this workshop, you'll also learn how. to deploy a contract to OpenSea, which only supports public testnets, so you should familiarize yourself with that.
 
-> **Note:** If you are using Metamask, you can switch between networks by clicking on the network name in the top left corner of the extension.
+> **Note**: If you are using Metamask, you can switch between networks by clicking on the network name in the top left corner of the extension.
 
 To run a local testnet you can run te following command:
 
@@ -103,14 +103,14 @@ When using a public testnet, you will need to get some test Eth. You can get tes
 
 Ethereum has several testnets where you can get free Eth. Of course, this Eth is not transferable to the mainnet, so it is solely for development purposes. We will use the Goerli test network since, at the time of writing, [Opensea](https://opensea.io/), the most used NFT marketplace, uses that.
 
-> **Note:** We recommend that you get at least 0.3 test Eth. At the time of writing, the network is congested, which means transaction fees are high now.
+> **Note**: We recommend that you get at least 0.3 test Eth. At the time of writing, the network is congested, which means transaction fees are high now.
 
 There are generally two ways to get test ETH:
 
 - Regular faucets;
 - Mining yourself using PoW (Proof Oof Work) faucets.
 
-> **Note:** if you're having trouble with the Goerli testnet faucet you can try out other testnets that are [supported by OpenSea](https://testnets.opensea.io/). However, if you're still having trouble we have some backup Eth available.
+> **Note**: if you're having trouble with the Goerli testnet faucet you can try out other testnets that are [supported by OpenSea](https://testnets.opensea.io/). However, if you're still having trouble we have some backup Eth available.
 
 ### Regular Faucet
 
@@ -122,11 +122,11 @@ There are generally two ways to get test ETH:
 ### Proof of Work Faucet
 
 - Go to https://goerli-faucet.pk910.de/ (or search for Goerli POW faucet)
-- Enter your wallet address, and start mining! **Note:** You need to mine for a certain amount of time because there is a minimum claim amount. Make sure you have the minimum claim - amount before you claim your funds.
+- Enter your wallet address, and start mining! **Note**: You need to mine for a certain amount of time because there is a minimum claim amount. Make sure you have the minimum claim - amount before you claim your funds.
 - When you've obtained enough, click "Stop mining and claim rewards."
 - Verify that you are a human, and your funds should appear shortly.
 
-**Note:** If you have the resources, you can mine faster by increasing the number of workers to the maximum your machine allows.
+**Note**: If you have the resources, you can mine faster by increasing the number of workers to the maximum your machine allows.
 
 ### Other Faucets
 
@@ -165,7 +165,7 @@ These pinning services run an IPFS node and make sure the files do not get purge
 
 If you want an easy way to open an IPFS link, you can go to [ipfsbrowser](https://ipfsbrowser.com/) and paste the CID ("Content ID"; the hash after the `ipfs://` part). Then, click on `Open Raw File`.
 
-> **Note:** Sometimes, developers store metadata and images of NFTs in the smart contracts themselves (on-chain). Storing data on-chain is [very expensive](https://www.reddit.com/r/ethereum/comments/p929x8/how_to_store_1kb_of_data_in_an_nft_on_the_actual/), so the images and metadata are usually stored off-chain.
+> **Note**: Sometimes, developers store metadata and images of NFTs in the smart contracts themselves (on-chain). Storing data on-chain is [very expensive](https://www.reddit.com/r/ethereum/comments/p929x8/how_to_store_1kb_of_data_in_an_nft_on_the_actual/), so the images and metadata are usually stored off-chain.
 
 ### Example
 
