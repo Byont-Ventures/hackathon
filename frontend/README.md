@@ -2,7 +2,7 @@
 
 These challenges provide a way to get started with Web3 frontend development. To help you get started, we have included a well-tested Web3 Template in the [src](./src/) folder.
 
-We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [NextJS](https://nextjs.org/). It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library. Wagmi has over 20 hooks that will make connecting your frontend to the blockchain easier. We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) and [RainbowKit](https://www.rainbowkit.com/docs/introduction) for styling. RainbowKit also provides easy wallet connection functionality. At last, we have implemented the [useNFT()](https://github.com/spectrexyz/use-nft) hook by Spectre that allows you to quickly retrieve NFT metadata.
+We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [NextJS](https://nextjs.org/). It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library. Wagmi has over 20 hooks that will make connecting your frontend to the blockchain easier. We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) and [RainbowKit](https://www.rainbowkit.com/docs/introduction) for styling. RainbowKit also provides easy wallet connection functionality. At last, we have implemented the [useNFT()](https://github.com/spectrexyz/use-nft) hook by Spectre that allows you to retrieve NFT metadata quickly.
 
 The goal is to build a full-fletched NFT minting Dapp! Such a Dapp will drastically improve the user experience (connecting to the blockchain, minting NFTs, viewing NFTs). If you don't know what this means, don't worry, it will all become clear.
 
@@ -16,7 +16,7 @@ If you experience "cannot connect to network" errors, try the following and see 
 
 - You might be getting rate limited. In that case, please create an [Alchemy account](https://dashboard.alchemy.com/) or sign up, and create an app (it's free). Select the network that you would like to use, and replace the `NEXT_PUBLIC_ALCHEMY_API_KEY` in [.env.local](.env.local) with your own API key.
 - If you are trying to connect to localhost:8545, make sure you are running `anvil` in a second terminal
-- Check that you are on the right network - if cannot switch from localhost to another network using the connect button, please switch manually inside your wallet
+- Check that you are on the right network - if you cannot switch from localhost to another network using the connect button, please switch manually inside your wallet
 
 ### Hydration error
 
@@ -35,7 +35,7 @@ Let's begin with an easy challenge, running the [Dapp](https://ethereum.org/en/d
 
 - Create `.env.local` in the root folder, copy and paste the contents of `.env.example` in there
 - We recommend you create an [Alchemy account](https://dashboard.alchemy.com/) to prevent rate limiting by replacing the default public API key of this project with your own:
-  1. Create an account / sign in
+  1. Create an account/sign in
   2. Create a new app
   3. Select the `Goerli` network.
   4. Click on `View Key`
@@ -54,9 +54,9 @@ For the Workshop, we will be using Alchemy and have already configured the Alche
 
 In the Wagmi configuration, you can see three networks:
 
-- localhost => Local blockchain. You would create one by running `anvil` if you installed Foundry.
+- Localhost => Local blockchain. You would create one by running `anvil` if you installed Foundry.
 - Goerli => Goerli test network.
-- Mainnet => The main Ethereum network with the "real" Ethereum.
+- Mainnet => The Ethereum network with the "real" Ethereum.
 
 You can add a network here if you ever need to add it.
 
@@ -125,8 +125,8 @@ This is how we got the ABI for the Bored Ape Yacht Club smart contract.
 Any number you pass to a smart contract, has to be converted to a BigNumber, for example:
 
 ```javascript
-import { BigNumber } from 'ethers'
-const aBigNumber = BigNumber.from(42)
+import { BigNumber } from 'ethers';
+const aBigNumber = BigNumber.from(42);
 ```
 
 If you want more information on Big Numbers, and why we are using the Ethers BigNumber object and not for example BigNumber.js, BN.js, BigDecimal, etc., please refer to the Ethers [documentation](https://docs.ethers.io/v5/api/utils/bignumber/).
