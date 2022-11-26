@@ -41,7 +41,7 @@ git clone https://github.com/Byont-Ventures/Hackathon.git
 yarn install
 ```
 
-🎉🎉🎉 **You have completed the preparation! Below you'll find more documentation for when you get stuck..** 🎉🎉🎉
+🎉🎉🎉 **You have completed the preparation! Below you'll find more documentation for when you get stuck.** 🎉🎉🎉
 
 ---
 
@@ -165,3 +165,5 @@ If you want an easy way to open an IPFS link, you can go to [ipfsbrowser](https:
 Alternatively, you can follow the [tutorial provided by Cloudflare](https://developers.cloudflare.com/web3/how-to/use-ipfs-gateway/)
 
 If you are using Brave browser, you can paste the IPFS URL directly into the browser: `ipfs://bafybeiapyyq2r2jb43qdyq3tzfyiqjxlamzlaa4xm7tfty4nzb6ol5e3sq`
+
+👾 👾 👾 **Great, you read it all! Don't forget to start coding.** 👾 👾 👾
