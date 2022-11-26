@@ -10,7 +10,7 @@ import {
   useWaitForTransaction,
 } from 'wagmi';
 import { BAYCAbi } from 'src/abis/BAYCAbi';
-import Nft from '@/components/NFT';
+import Nft from '@/components/Nft';
 import { useEffect, useState } from 'react';
 import { BigNumber } from 'ethers';
 

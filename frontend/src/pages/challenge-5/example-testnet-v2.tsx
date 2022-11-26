@@ -17,7 +17,7 @@ import {
 } from 'wagmi';
 
 import { ContractAbi } from 'src/abis/ContractAbi';
-import TestnetNFT from '@/components/TestnetNFT';
+import TestnetNFT from '@/components/Nft';
 import { useEffect, useState } from 'react';
 import { BigNumber } from 'ethers';
 
