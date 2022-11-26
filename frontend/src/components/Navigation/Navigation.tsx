@@ -3,9 +3,11 @@ import Link from 'next/link';
 import { NavigationItem } from './components/NavigationItem';
 
 export const Navigation: React.FC = () => (
-  <div className="py-4 px-4 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+  <div className="flex items-center justify-between px-4 py-4 border-b border-gray-100 dark:border-gray-700">
     <div className="space-y-2">
-      <h1 className="font-bold text-lg">Web3 Workshop</h1>
+      <h1 className="text-lg font-bold">
+        <Link href="/">Web3 Workshop</Link>
+      </h1>
       <div className="-ml-2">
         <nav className="sticky">
           <ul className="flex">
@@ -20,10 +22,10 @@ export const Navigation: React.FC = () => (
       </div>
     </div>
 
-    <div className="text-white flex">
+    <div className="flex text-white">
       <Link href="https://github.com/Byont-Ventures/Hackathon">
         <svg
-          className="dark:fill-white fill-black opacity-50 hover:opacity-100"
+          className="opacity-50 dark:fill-white fill-black hover:opacity-100"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
           width="32px"
