@@ -1,4 +1,16 @@
 {
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "solidity.remappings": [
+    "@openzeppelin/=node_modules/@openzeppelin/",
+    "@contracts/=apps/contracts/src/",
+    "ds-test/=libs/ds-test/src/",
+    "forge-std/=libs/forge-std/src/"
+  ],
+  "solidity.packageDefaultDependenciesContractsDirectory": "./node_modules",
+  "solidity.formatter": "prettier",
+  "solidity.linter": "solhint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
