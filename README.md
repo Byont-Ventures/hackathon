@@ -8,9 +8,9 @@ The workshop is a collection of coding challenges to familiarize you with web3 d
 
 We've designed each coding challenge to be more complicated than the previous one. Remember that sometimes there are multiple ways to get to a solution. We encourage you to look things up online or ask questions if you are lost. We will be sharing helpful resources with you throughout this course.
 
-We'll also host a [#workshop channel](https://discord.com/channels/935159951423340625/1045998823392153600) on our [Discord server](https://discord.gg/xF5dtjZH73), where you can ask questions and get help from the workshop facilitators and other participants. We will also be sharing resources and links there.
+We'll also host a [#workshop](https://discord.com/channels/935159951423340625/1045998823392153600) channel on our [Discord server](https://discord.gg/xF5dtjZH73), where you can ask questions and get help from the workshop facilitators and other participants. We will also be sharing resources and links there.
 
-You can refer to the accompanying presentation for more information about the workshop in general [here](https://www.canva.com/design/DAFTCVN0tKk/UwUQ3JJdV6_0scOUtneGTQ/view?utm_content=DAFTCVN0tKk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+You can refer to the accompanying presentation for more information about the workshop in general on [Canva](https://www.canva.com/design/DAFTCVN0tKk/UwUQ3JJdV6_0scOUtneGTQ/view?utm_content=DAFTCVN0tKk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink).
 
 ## The different tracks
 
@@ -30,3 +30,11 @@ Below you'll find the different tracks, but we recommend that all participants f
 ## Feedback
 
 We've prepared this workshop thoroughly, but there will inevitably be some unclear documentation, misbehaving configuration, and others. If you find anything, have any feedback, or want to share your findings, feel free to create [an issue on Github](https://github.com/Byont-Ventures/Hackathon/issues/new) or let us know on [Discord](https://discord.gg/xF5dtjZH73).
+
+## About Byont Labs
+
+[Byont Labs](https://www.byont.io/) is a blockchain development studio that specializes in building decentralized applications. We are a team of developers, designers, and blockchain enthusiasts passionate about creating the future of the web.
+
+We augment existing teams with our engineering and security expertise and help our partners learn and grow. We enjoy operating on the edge of what's possible, eagerly looking to the latest developments in the ecosystem - from Substrate to Cosmos to the EVM.
+
+We spent most of our time architecting, developing, and securing web3 applications with our clients. We also dedicate time to researching, experimenting, and writing about the newest technology to stay up-to-date with the latest advancements in the ecosystem. For example, we have done deep dives into Zero Knowledge Proofs and Formal Verification.
