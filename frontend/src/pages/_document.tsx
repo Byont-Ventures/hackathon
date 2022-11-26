@@ -4,7 +4,7 @@ const Document = (): JSX.Element => {
   return (
     <Html className="scroll-smooth" lang="en">
       <Head />
-      <body className="overflow-x-hidden antialiased">
+      <body className="overflow-x-hidden antialiased dark:text-white dark:bg-gray-900">
         <Main />
         <NextScript />
       </body>

@@ -1,62 +1,56 @@
 # Frontend Challenges
 
-These challenges provide a way to get started with Web3 frontend development. To help you get started, we have included a well-tested Web3 Template in the [src](./src/) folder.
+These challenges provide a way to get started with web3 frontend development.
 
-We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [NextJS](https://nextjs.org/). It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library. Wagmi has over 20 hooks that will make connecting your frontend to the blockchain easier. We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) and [RainbowKit](https://www.rainbowkit.com/docs/introduction) for styling. RainbowKit also provides easy wallet connection functionality. At last, we have implemented the [useNFT()](https://github.com/spectrexyz/use-nft) hook by Spectre that allows you to retrieve NFT metadata quickly.
+We built this frontend on [React](https://reactjs.org/docs/getting-started.html) with [Next.js](https://nextjs.org/). We are using [Tailwind CSS](https://tailwindcss.com/docs/installation) as a CSS framework. It also includes the [Wagmi](https://wagmi.sh/docs/getting-started) library and [RainbowKit](https://www.rainbowkit.com/docs/introduction)](https://www.rainbowkit.com/docs/introduction).
 
 The goal is to build a full-fletched NFT minting Dapp! Such a Dapp will drastically improve the user experience (connecting to the blockchain, minting NFTs, viewing NFTs). If you don't know what this means, don't worry, it will all become clear.
 
-## Common errors
-
-Before we begin, we have included some common errors and solutions that you could try. Please refer to this section if you are experiencing these errors.
-
-### Cannot connect to network error
-
-If you experience "cannot connect to network" errors, try the following and see if they are resolved:
-
-- You might be getting rate limited. In that case, please create an [Alchemy account](https://dashboard.alchemy.com/) or sign up, and create an app (it's free). Select the network that you would like to use, and replace the `NEXT_PUBLIC_ALCHEMY_API_KEY` in [.env.local](.env.local) with your own API key.
-- If you are trying to connect to localhost:8545, make sure you are running `anvil` in a second terminal
-- Check that you are on the right network - if you cannot switch from localhost to another network using the connect button, please switch manually inside your wallet
-
-### Hydration error
-
-There is an official issue on this error [here](https://github.com/wagmi-dev/wagmi/issues/542#issuecomment-1144178142) that explains why this error occurs.
-
-We have included a hook you can use to mitigate this error.
-`import { useIsMounted } from 'src/hooks/useIsMounted'`
-`const isMounted = useIsMounted()`
-
-Then, in your `JSX`:
-`{isMounted && yourDataHere}`
-
 ## Challenge 1 - Let's get started! Running the Dapp
 
-Let's begin with an easy challenge, running the [Dapp](https://ethereum.org/en/developers/docs/dapps/).
+You can run the [Dapp](https://ethereum.org/en/developers/docs/dapps/) locally by running the following command:
 
-- Create `.env.local` in the root folder, copy and paste the contents of `.env.example` in there
-- We recommend you create an [Alchemy account](https://dashboard.alchemy.com/) to prevent rate limiting by replacing the default public API key of this project with your own:
-  1. Create an account/sign in
-  2. Create a new app
-  3. Select the `Goerli` network.
-  4. Click on `View Key`
-  5. Replace the `NEXT_PUBLIC_ALCHEMY_API_KEY` in [.env.local](.env.local) with your own API key.
-- `yarn run fe:dev`
+```sh
+yarn dev
+```
 
-If you [open the Dapp](http://localhost:3000), You will see a welcome message and links to the respective challenge pages. Feel free to edit this Dapp according to your needs in further challenges.
+Now, you can navigate to the first challenge by going to [http://localhost:3000/challenge/1](http://localhost:3000/challenge/1). But you'll be immediately greeted with the following error: `Error: could not detect network (event="noNetwork", code=NETWORK_ERROR, version=providers/5.7.2)`. You got this error because the Dapp is trying to connect to the blockchain but still needs to set it up. Let's fix that!
 
-### Wagmi
+You can connect to a blockchain node using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node). These use the [JSON-RPC](https://www.jsonrpc.org/specification) protocol to communicate with the blockchain.
 
-Wagmi is a collection of React hooks that makes it easier to connect to Ethereum. Under the hood, it uses [Ethers](https://docs.ethers.io/v5/) to connect to the blockchain.
+There are many public RPC node providers, some cost money, and some are free. We will be using [Alchemy](https://www.alchemy.com/) for this workshop. Alchemy provides a free developer account with 10,000 requests and 100 transactions per day. You can sign up for a free account [here](https://www.alchemy.com/). Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already; we'll get to that later. You can obtain your Alchemy API key from the [Alchemy Dashboard](https://dashboard.alchemyapi.io/). Once you have your API key, you can paste it into the `.env.local` file:
 
-You can make these connections using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node), but using them yourself is not necessary for the scope of this Workshop. There are plenty of RPC node providers, such as Infura and Alchemy. Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already.
+- Create an account/sign in
+- Create a new app
+- Select the `Goerli` network.
+- Click on `View Key`
+- Replace the `NEXT_PUBLIC_ALCHEMY_API_KEY` in [.env.local](.env.local) with your API key.
+
+```sh
+cp .env.example .env.local
+```
+
+If you refresh the page you'll now find the latest block number. Feel free to edit this Dapp according to your needs in further challenges.
+
+🎉🎉🎉 **Congratulations! You've successfully connected to the blockchain!** 🎉🎉🎉
+
+### Ethers.js
+
+We can implement all RPCs, errors, hashing, and signing ourselves, but luckily, some libraries do this for us. We are using [ethers.js](https://docs.ethers.io/v5/) for this. Ethers.js is a library that provides a complete Ethereum development environment. It is a collection of packages that allow you to interact with the Ethereum blockchain, including wallets, providers, contracts, and more.
+
+### Wagmi & RainbowKit
+
+RainbowKit provides an abstraction to communicate with different wallets and is built on top of Wagmi. Wagmi is a collection of React hooks that makes it easier to connect to Ethereum. Under the hood, it uses [Ethers](https://docs.ethers.io/v5/) to connect to the blockchain. You can make these connections using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node), but using them yourself is not necessary for this workshop's scope.
+
+There are plenty of RPC node providers, such as [Infura](https://www.infura.io/) and [Alchemy](https://www.alchemy.com/). Crypto wallets such as Metamask also have a provider you can use, although that requires the user's wallet to be connected to your Dapp already.
 
 For the Workshop, we will be using Alchemy and have already configured the Alchemy provider with an API key in the [Wagmi configuration](./src/libs/wagmi.ts).
 
 In the Wagmi configuration, you can see three networks:
 
-- Localhost => Local blockchain. You would create one by running `anvil` if you installed Foundry.
-- Goerli => Goerli test network.
-- Mainnet => The Ethereum network with the "real" Ethereum.
+- `Localhost` => Local blockchain. You would create one by running `anvil` if you installed Foundry; see [Workshop Preparation](/PREPARATION.md#testnets--faucets).
+- `Goerli` => Goerli test network.
+- `Mainnet` => The Ethereum network with the "real" Ethereum.
 
 You can add a network here if you ever need to add it.
 
@@ -220,3 +214,26 @@ Documentation on Openzeppelin and the ERC721 standard:
 - https://eips.ethereum.org/EIPS/eip-721
 - https://docs.openzeppelin.com/contracts/4.x/
 - https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
+
+## Common errors
+
+Before we begin, we have included some common errors and solutions that you could try. Please refer to this section if you are experiencing these errors.
+
+### Cannot connect to network error
+
+If you experience "cannot connect to network" errors, try the following and see if they are resolved:
+
+- You might be getting rate limited. In that case, please create an [Alchemy account](https://dashboard.alchemy.com/) or sign up, and create an app (it's free). Select the network that you would like to use, and replace the `NEXT_PUBLIC_ALCHEMY_API_KEY` in [.env.local](.env.local) with your own API key.
+- If you are trying to connect to localhost:8545, make sure you are running `anvil` in a second terminal
+- Check that you are on the right network - if you cannot switch from localhost to another network using the connect button, please switch manually inside your wallet
+
+### Hydration error
+
+There is an official issue on this error [here](https://github.com/wagmi-dev/wagmi/issues/542#issuecomment-1144178142) that explains why this error occurs.
+
+We have included a hook you can use to mitigate this error.
+`import { useIsMounted } from 'src/hooks/useIsMounted'`
+`const isMounted = useIsMounted()`
+
+Then, in your `JSX`:
+`{isMounted && yourDataHere}`
