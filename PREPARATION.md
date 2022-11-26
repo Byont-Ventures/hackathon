@@ -2,6 +2,20 @@
 
 Before jumping into the challenges, we ask you to follow the installation instructions and read the explanations below.
 
+- [Workshop Preparation](#workshop-preparation)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+    - [Why NextJS (React)?](#why-nextjs-react)
+    - [Why Foundry?](#why-foundry)
+  - [Wallets](#wallets)
+  - [Testnets and Test Eth](#testnets-and-test-eth)
+    - [Regular Faucet](#regular-faucet)
+    - [Proof of Work Faucet](#proof-of-work-faucet)
+    - [Other Faucets](#other-faucets)
+  - [What are NFTs and how do they work?](#what-are-nfts-and-how-do-they-work)
+  - [What is IPFS?](#what-is-ipfs)
+    - [Example](#example)
+
 ## Prerequisites
 
 - A unix-like environment (Linux, macOS, [WSL](https://apps.microsoft.com/store/detail/ubuntu-22041-lts/9PN20MSR04DW), etc.);
