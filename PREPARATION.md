@@ -56,7 +56,7 @@ NextJS and React are simply by far the most used frameworks used in developing f
 
 Foundry is a smart contract development toolchain. Foundry manages your dependencies, compiles your project, runs tests, deploys, and lets you interact with the chain from the command line and via Solidity scripts.
 
-There are other frameworks like [Hardhat]([https://https://hardhat.org/) and [Truffle](https://trufflesuite.com/) if you wish to use them. The main drawbacks here are that you will have to write your tests in Javascript, and you will have to communicate with your smart contracts using libraries. Using Foundry, you can write tests directly in Solidity. Furthermore, you can quickly implement fuzz testing and traces that will give you exact information on what happens during a function call.
+There are other frameworks like [Hardhat](https://hardhat.org/) and [Truffle](https://trufflesuite.com/) if you wish to use them. The main drawbacks here are that you will have to write your tests in Javascript, and you will have to communicate with your smart contracts using libraries. Using Foundry, you can write tests directly in Solidity. Furthermore, you can quickly implement fuzz testing and traces that will give you exact information on what happens during a function call.
 
 To install Foundry, please refer to their excellent [documentation](https://book.getfoundry.sh/getting-started/installation) on how to get started.
 
