@@ -43,7 +43,7 @@ git clone https://github.com/Byont-Ventures/Hackathon.git
 yarn install
 ```
 
-🎉🎉🎉 **You have completed the preparation! Below you'll find more documentation for when you get stuck.** 🎉🎉🎉
+🎉🎉🎉 **Ready. Set. Go! You can continue with the challenges and refer to the information below when you get stuck.** 🎉🎉🎉
 
 ---
 
