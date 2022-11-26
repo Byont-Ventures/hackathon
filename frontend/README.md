@@ -5,12 +5,9 @@ These challenges provide a way to get started with web3 frontend development. Th
 - [Frontend Challenges](#frontend-challenges)
   - [Challenge 1 - Let's get started! Running the Dapp](#challenge-1---lets-get-started-running-the-dapp)
     - [Ethers.js](#ethersjs)
-  - [Challenge 2 - Let's add some abstraction](#challenge-2---lets-add-some-abstraction)
-    - [Wagmi \& RainbowKit](#wagmi--rainbowkit)
-  - [Challenge 2 - Wallet connect button](#challenge-2---wallet-connect-button)
-  - [Challenge 3.A - Understanding and implementing ABIs](#challenge-3a---understanding-and-implementing-abis)
-    - [What is an ABI](#what-is-an-abi)
-    - [Getting the ABI through Etherscan](#getting-the-abi-through-etherscan)
+  - [Challenge 2 - Adding abstractions](#challenge-2---adding-abstractions)
+  - [Challenge 3 - Using Wagmi](#challenge-3---using-wagmi)
+    - [ABIs](#abis)
     - [BigNumbers](#bignumbers)
   - [Challenge 3.B - Display smart contract data](#challenge-3b---display-smart-contract-data)
   - [Challenge 4 - Displaying NFTs](#challenge-4---displaying-nfts)
@@ -63,112 +60,77 @@ We can implement all RPCs, errors, hashing, and signing ourselves, but luckily, 
 
 > **Note**: If you're looking for a nice introduction to Ethers.js, check out [this article](https://dev.to/yakult/a-beginers-guide-four-ways-to-play-with-ethersjs-354a).
 
-## Challenge 2 - Let's add some abstraction
+## Challenge 2 - Adding abstractions
 
-Nowadays, React developers have switched to [Tanstack Query](https://tanstack.com/query/v4/docs/adapters/react-query)/[SWR](https://swr.vercel.app/) for fetching and caching data in combination with React's Context API. Using those tools, developers no longer need more complex state management solutions like [Redux](https://redux.js.org/) and [Zustand](https://github.com/pmndrs/zustand), for the most part.
+Nowadays, React developers have switched to [React Query](https://tanstack.com/query/v4/docs/adapters/react-query)/[SWR](https://swr.vercel.app/) for fetching and caching data in combination with React's Context API. Using those tools, developers no longer need more complex state management solutions like [Redux](https://redux.js.org/) and [Zustand](https://github.com/pmndrs/zustand), for the most part.
+
+> **Note**: Read the full documentation of [React Query](https://react-query.tanstack.com/overview) and [SWR](https://swr.vercel.app/docs/getting-started) to learn more about how to use them.
 
 Using one of these tools, we can abstract away the complexity of fetching data. It will also make our code more readable and easier to maintain, and it will also make it easier to add new features. For example:
 
 ```ts
-// A custom hook that fetches ERC20 balance from the blockchain
-const useERC20Balance = (
-  userAddress: string,
-  contractAddress: string,
-  contractAbi: unknown[], // We'll get to this in the next challenge
+// A custom hook that fetches the name of an ERC721 token from the blockchain
+const useName = (
   provider: ethers.providers.BaseProvider // You got this working in the previous challenge
 ) => {
-  // We chose to use Tanstack Query here, but you can also use SWR
-  return useQuery([userAddress, contractAddress], async () => {
+  // Future challenges will use React Query
+  return useQuery(['useName', contractAddress], async () => {
     const contract = new ethers.Contract(
-      contractAddress,
-      contractABI,
+      '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', // This is the contract address for BAYC
+      ['function name() view returns (string)'], // This is the ABI, we'll get to that later
       provider
     );
 
-    // This is how you call a function on a smart contract using ethers.js
-    return await contract.balanceOf(userAddress);
+    // This is how you call a function on a smart contract using ethers.js, find out more here: https://docs.ethers.io/v5/api/contract/contract/#Contract-call.
+    return await contract.name();
   });
 };
 
 // Example usage
-const { data, isError, isLoading } = useERC20Balance(...args);
+const { data, isError, isLoading } = useName(...args);
 ```
 
-> **Note**: Read the full documentation of [React Query](https://react-query.tanstack.com/overview) and [SWR](https://swr.vercel.app/docs/getting-started) to learn more about how to use them.
+> **Note**: If you don't know what ERC721 is, read the section in the [Preparaion Guide](/PREPARATION.md#what-are-nfts-and-how-do-they-work).
 
-### Wagmi & RainbowKit
+Now, it's up to you to implement this hook into the challenge 2 page.
 
-RainbowKit provides an abstraction to communicate with different wallets and is built on top of Wagmi. Wagmi is a collection of React hooks that makes it easier to connect to Ethereum. Under the hood, it uses [Ethers](https://docs.ethers.io/v5/) to connect to the blockchain. You can make these connections using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node), but using them yourself is not necessary for this workshop's scope.
+## Challenge 3 - Using Wagmi
 
-For the Workshop, we will be using Alchemy and have already configured the Alchemy provider with an API key in the [Wagmi configuration](./src/libs/wagmi.ts).
+Instead of writing these hooks ourselves for every smart contract call, we can use [Wagmi](https://wagmi.sh). Wagmi is a collection of React hooks that make it easier to perform these actions. Under the hood, it uses Ethers to connect to the blockchain, and React Query for state management. Using Wagmi, the example above can be rewritten as follows:
 
-In the Wagmi configuration, you can see three networks:
+```ts
+const { data, isError, isLoading } = useReadContract({
+  address: contractAddress,
+  abi: contractAbi,
+  functionName: 'name',
+});
+```
 
-- `Localhost` => Local blockchain. You can it by running `anvil` if you installed Foundry; see [Workshop Preparation](/PREPARATION.md#testnets--faucets).
-- `Goerli` => Goerli test network.
-- `Mainnet` => The Ethereum network with the "real" Ethereum.
+> **Note**: As you can see we don't have to take care of the provider, and on top of this Wagmi generates supports end-to-end type safety for all smart contract calls.
 
-You can add a network here if you ever need to add it.
+### ABIs
 
-## Challenge 2 - Wallet connect button
+You might have noticed that we had to pass the contract ABI to the `useReadContract` hook. The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem from outside the blockchain and for contract-to-contract interaction. Data is encoded to a binary (string) according to its type, as described in this specification. The encoding is not self-describing and thus requires a JSON schema to decode, similar to how Protobufs work.
 
-As mentioned earlier, users can connect their wallets to your Dapp. They can then interact with the blockchain through the Dapp, using their wallet.
+Nowadays, many tools automatically generate the ABI whenever you compile your smart contract (as a backend engineer). As a frontend engineer, you must import the generated ABI into your code to interact with smart contracts. Developers usually place the ABI in a folder called [`abis`](/frontend/src/abis/).
 
-We have already configured [RainbowKit](https://www.rainbowkit.com/docs/introduction), a nice library, in [\_app.tsx](./src/pages/_app.tsx).
+You can find the ABI of a smart contract on [Etherscan](https://etherscan.io/). For example, you can find the ABI of the [WETH](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2#code) contract [here](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2#code). If you are interacting with a smart contract that you didn't compile - for example, someone else's smart contract on the blockchain - you can (usually) still get the ABI by going to [Etherscan](https://etherscan.io/).
 
-The goal of this challenge is to:
-
-- Include a [wallet connect button](https://www.rainbowkit.com/docs/connect-button) using RainbowKit
-- Connect your wallet
-- Show your wallets balance
-
-<spoiler>
-  <summary>HINT:</summary>
-  <details>
-    You can make use of the <code>useAccount()</code> <a href="https://wagmi.sh/docs/hooks/useAccount">(docs here)</a> and <code>useBalance()</code> <a href="https://wagmi.sh/react/hooks/useBalance">(docs here)</a>hooks from Wagmi. If you are still stuck, you could always look into the files of the next challenge to see how we have implemented it.
-    <br>
-    If you are experiencing the hydration error, please refer to our hydration errors section.
-  </details>
-</spoiler>
-
-## Challenge 3.A - Understanding and implementing ABIs
-
-The goal of this challenge is to:
-
-- Learn how to implement the Bored Ape Yacht Club (BAYC) ABI
-
-**Note: The contract address for BAYC is `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`**
-
-### What is an ABI
-
-The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification. The encoding is not self describing and thus requires a schema in order to decode.
-
-We assume that the interface functions of a contract are strongly typed, known at compilation time and static. We assume that all contracts will have the interface definitions of any contracts they call available at compile-time.
-
-In other words, the ABI shows us which functions are in the contract to which that ABI belongs, and what kind of parameters they take in for example.
-
-Nowadays, the ABI is automatically generated by many tools whenever you compile your smart contract (as a backender). As a frontender, you will have to import the generated ABI in your code, in order to be able to interact with smart contracts. The ABI is usually located in a folder called `abi`, or, in this case, [abis](./src/abis/)
-
-### Getting the ABI through Etherscan
-
-If you are interacting with a smart contract that you didn't compile - for example, a smart contract that is already deployed on the blockchain - you can still get the ABI by going to [Etherscan](https://etherscan.io/).
-
-Etherscan is a block explorer for the Ethereum blockchain. It allows users to search and browse transactions and blocks easily. It also provides information about each transaction and block, such as the hash and timestamp.
-
-The average person doesn't have the time to read through an entire blockchain to find out what's going on.
-A block explorer solves this problem by making it easy for people to search and browse the blockchain. They can see all the transactions that have taken place and how much crypto is owned by specific wallet addresses.
-
-You can think of Etherscan as the Google of Ethereum. Just as you would use Google to search the internet, you can use Etherscan to search the Ethereum blockchain.
+> **Note**: If you want to learn more about ABIs, check out [this article](https://medium.com/coinmonks/what-is-an-abi-and-why-do-you-need-it-9f6b8b8b0b7).
 
 If you paste a contract address in the top right search bar, you will land on the smart contract page, and you will be able to see all kinds of data and even interact with the smart contract by connecting your wallet.
 
 This is how we got the ABI for the Bored Ape Yacht Club smart contract.
 
-1. Go to [Bored Ape Yacht Club on Etherscan](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d)
-2. Click on `Contract`
-3. At the `Contract ABI` section below, on the right, click on `Copy ABI to clipboard`
-4. We created a new file called `BAYCAbi.ts`, and pasted the ABI there.
-5. At the very bottom, notice we used constant assertion `as const` to make the ABI readonly. This is so we can infer types from the ABI, and ensure the ABI never changes.
+- Go to [Bored Ape Yacht Club on Etherscan](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d);
+- Click on `Contract`;
+- At the `Contract ABI` section below, on the right, click on `Copy ABI to clipboard`;
+- Create a new file called `BAYCAbi.ts`, and pasted the ABI there;
+- At the very bottom, make sure to use const assertion (`as const`) to make the ABI readonly. This is so we can infer types from the ABI.
+
+Now it's up to you to implement [Wagmi with the Goerli network](https://wagmi.sh/core/getting-started), and update the challenge 3 page.
+
+> **Note**: The contract address for BAYC is `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`
 
 ### BigNumbers
 
