@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from 'react'
-import NextLink, { LinkProps as NextLinkProps } from 'next/link'
-import classNames from 'classnames'
+import React, { PropsWithChildren } from 'react';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+import classNames from 'classnames';
 
 export interface LinkProps {
-  className?: string
+  className?: string;
 }
 
 export const Link: React.FC<PropsWithChildren<NextLinkProps & LinkProps>> = ({
@@ -21,5 +21,5 @@ export const Link: React.FC<PropsWithChildren<NextLinkProps & LinkProps>> = ({
       )}
       {...props}
     />
-  )
-}
+  );
+};

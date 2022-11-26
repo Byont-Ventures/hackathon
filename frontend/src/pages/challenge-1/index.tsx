@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
-  return <>Welcome to Challenge 1!</>
-}
+  return <>Welcome to Challenge 1!</>;
+};
 
-export default Home
+export default Home;

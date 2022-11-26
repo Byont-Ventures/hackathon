@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity >=0.6.0 <0.9.0;
 
-import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
-import '@openzeppelin/contracts/access/Ownable.sol';
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title Challenge 12
 /// @author Byont Labs
@@ -61,7 +61,7 @@ contract Challenge12 is ERC721, Ownable {
   function tokenURI(
     uint256 _id
   ) public view virtual override returns (string memory) {
-    return string.concat(_baseURI(), _id.toString(), '.json');
+    return string.concat(_baseURI(), _id.toString(), ".json");
   }
 
   /// @notice Mints NFT's. Minting in this case means creating the NFT and assigning the minter as owner
@@ -78,12 +78,12 @@ contract Challenge12 is ERC721, Ownable {
 
   /// @notice Modifier that adds minting requirements
   modifier mintCompliance(uint _amount) {
-    require(msg.sender == tx.origin, 'No minting from contract allowed');
-    require(totalSupply + _amount <= maxSupply, 'Amount exceeds max supply');
-    require(_amount > 0, 'Amount cannot be zero');
+    require(msg.sender == tx.origin, "No minting from contract allowed");
+    require(totalSupply + _amount <= maxSupply, "Amount exceeds max supply");
+    require(_amount > 0, "Amount cannot be zero");
     require(
       userMintCount[msg.sender] + _amount <= maxPerUser,
-      'Not allowed to mint this many'
+      "Not allowed to mint this many"
     );
     _;
   }

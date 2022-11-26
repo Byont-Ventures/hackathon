@@ -1,8 +1,8 @@
-import { accounts } from './constants'
-import { EthersProviderWrapper } from './providers'
+import { accounts } from './constants';
+import { EthersProviderWrapper } from './providers';
 
-import { Wallet, providers } from 'ethers'
-import { Provider } from '@wagmi/core'
+import { Wallet, providers } from 'ethers';
+import { Provider } from '@wagmi/core';
 
 /**
  * Implements uncheck connection based on [Wagmi's
@@ -12,8 +12,8 @@ export class WalletSigner extends Wallet {
   connectUnchecked(): providers.JsonRpcSigner {
     const uncheckedSigner = (<EthersProviderWrapper>(
       this.provider
-    )).getUncheckedSigner(this.address)
-    return uncheckedSigner
+    )).getUncheckedSigner(this.address);
+    return uncheckedSigner;
   }
 }
 
@@ -27,5 +27,5 @@ export class WalletSigner extends Wallet {
  *   signer list
  */
 export function getSigners(provider: Provider) {
-  return accounts.map((x) => new WalletSigner(x.privateKey, provider))
+  return accounts.map((x) => new WalletSigner(x.privateKey, provider));
 }

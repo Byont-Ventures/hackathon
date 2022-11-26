@@ -1,13 +1,13 @@
-import React from 'react'
-import { useNft } from 'use-nft'
+import React from 'react';
+import { useNft } from 'use-nft';
 
 type NftProps = {
-  contract: string
-  tokenId: string
-}
+  contract: string;
+  tokenId: string;
+};
 
 function Nft({ contract, tokenId }: NftProps) {
-  const { nft, loading, error } = useNft(contract, tokenId)
+  const { nft, loading, error } = useNft(contract, tokenId);
   return (
     <>
       {loading ? (
@@ -22,7 +22,7 @@ function Nft({ contract, tokenId }: NftProps) {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default Nft
+export default Nft;

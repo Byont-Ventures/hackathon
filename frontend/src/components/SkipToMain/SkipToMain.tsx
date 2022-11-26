@@ -1,4 +1,4 @@
-import { Link } from '../Link'
+import { Link } from '../Link';
 
 export const SkipToMain: React.FC = () => {
   return (
@@ -9,5 +9,5 @@ export const SkipToMain: React.FC = () => {
     >
       Skip to main
     </Link>
-  )
-}
+  );
+};

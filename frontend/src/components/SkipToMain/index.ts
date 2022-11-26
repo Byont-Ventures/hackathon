@@ -1,1 +1,1 @@
-export * from './SkipToMain'
+export * from './SkipToMain';

@@ -1,24 +1,24 @@
-import '@rainbow-me/rainbowkit/styles.css'
-import 'src/styles/globals.css'
+import '@rainbow-me/rainbowkit/styles.css';
+import 'src/styles/globals.css';
 
-import type { AppProps } from 'next/app'
-import { WagmiConfig } from 'wagmi'
+import type { AppProps } from 'next/app';
+import { WagmiConfig } from 'wagmi';
 
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
-import { client, chains } from 'src/libs/wagmi'
-import { SkipToMain } from '@/components/SkipToMain'
+import { client, chains } from 'src/libs/wagmi';
+import { SkipToMain } from '@/components/SkipToMain';
 
-import { NftProvider } from 'use-nft'
-import { getDefaultProvider } from 'ethers'
+import { NftProvider } from 'use-nft';
+import { getDefaultProvider } from 'ethers';
 
-import { Inter } from '@next/font/google'
+import { Inter } from '@next/font/google';
 
 // If loading a variable font, you don't need to specify the font weight
-const inter = Inter()
+const inter = Inter();
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
-  const provider = getDefaultProvider('homestead')
+  const provider = getDefaultProvider('homestead');
   return (
     <>
       <WagmiConfig client={client}>
@@ -31,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         </RainbowKitProvider>
       </WagmiConfig>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

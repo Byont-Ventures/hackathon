@@ -1,8 +1,8 @@
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
-} from '@fortawesome/react-fontawesome'
-import classNames from 'classnames'
+} from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 
 export const Icon: React.FC<FontAwesomeIconProps> = ({
   className,
@@ -15,5 +15,5 @@ export const Icon: React.FC<FontAwesomeIconProps> = ({
       className={classNames('w-4 h-4', className)}
       {...props}
     />
-  )
-}
+  );
+};

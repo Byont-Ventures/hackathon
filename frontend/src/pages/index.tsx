@@ -1,12 +1,12 @@
-import type { NextPage } from 'next'
-import Link from 'next/link'
+import type { NextPage } from 'next';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
-  const CHALLENGE_AMOUNT = 5
+  const CHALLENGE_AMOUNT = 5;
   const links: string[] = Array.from(
     { length: CHALLENGE_AMOUNT },
     (_, idx) => `challenge-${idx + 1}`
-  )
+  );
 
   return (
     <div className="flex flex-col">
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </div>
       <div>By Byont Ventures B.V. © {new Date().getFullYear()}</div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

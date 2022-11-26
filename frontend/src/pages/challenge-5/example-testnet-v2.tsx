@@ -5,33 +5,33 @@
  * - No error handling for cancelling mint
  * - Upload more metadata + images to IPFS
  */
-import type { NextPage } from 'next'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { useAccount } from 'wagmi'
-import { useIsMounted } from 'src/hooks/useIsMounted'
+import type { NextPage } from 'next';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
+import { useIsMounted } from 'src/hooks/useIsMounted';
 import {
   useContractReads,
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
-} from 'wagmi'
+} from 'wagmi';
 
-import { ContractAbi } from 'src/abis/ContractAbi'
-import TestnetNFT from '@/components/TestnetNFT'
-import { useEffect, useState } from 'react'
-import { BigNumber } from 'ethers'
+import { ContractAbi } from 'src/abis/ContractAbi';
+import TestnetNFT from '@/components/TestnetNFT';
+import { useEffect, useState } from 'react';
+import { BigNumber } from 'ethers';
 
 const Home: NextPage = () => {
   // Account data
-  const account = useAccount()
-  const isMounted = useIsMounted()
+  const account = useAccount();
+  const isMounted = useIsMounted();
 
   // Contract config
-  const contractAddress = '0xb977F55E1D888D740523d512c00B440A8c7C84DC'
+  const contractAddress = '0xb977F55E1D888D740523d512c00B440A8c7C84DC';
   const ContractConfig = {
     address: contractAddress,
     abi: ContractAbi,
-  }
+  };
 
   // Call contract functions
   const { data, isError } = useContractReads({
@@ -44,25 +44,25 @@ const Home: NextPage = () => {
         functionName: 'totalSupply',
       },
     ],
-  })
+  });
 
   // Total supply
-  const [totalSupply, setTotalSupply] = useState(0)
+  const [totalSupply, setTotalSupply] = useState(0);
 
   // Trigger get set totalSupply once we have retrieved totalSupply from the contract
   useEffect(() => {
     if (data != (null || undefined)) {
-      const totalSupply = data[3]
+      const totalSupply = data[3];
       if (!totalSupply) {
-        return
+        return;
       }
-      setTotalSupply(totalSupply.toNumber())
+      setTotalSupply(totalSupply.toNumber());
     }
-  }, [data])
+  }, [data]);
 
   // Get list of NFTS
   const getNFTList = () => {
-    const nfts = []
+    const nfts = [];
     for (let i = 0; i < totalSupply; i++) {
       nfts.push(
         <TestnetNFT
@@ -71,59 +71,59 @@ const Home: NextPage = () => {
           address={contractAddress}
           tokenId={i.toString()}
         ></TestnetNFT>
-      )
+      );
     }
-    return nfts
-  }
+    return nfts;
+  };
 
   // Mint
-  const [amount, setAmount] = useState('0')
+  const [amount, setAmount] = useState('0');
   const { config } = usePrepareContractWrite({
     address: contractAddress,
     abi: ContractAbi,
     functionName: 'mint',
     args: [BigNumber.from(amount)],
-  })
+  });
 
   const {
     data: mintData,
     writeAsync: mint,
     isLoading: isMintLoading,
     isSuccess: isMintStarted,
-  } = useContractWrite(config)
+  } = useContractWrite(config);
 
-  const [mintError, setMintError] = useState('')
-  const [mintSuccess, setMintSuccess] = useState(false)
+  const [mintError, setMintError] = useState('');
+  const [mintSuccess, setMintSuccess] = useState(false);
 
   const onMintClick = async () => {
     try {
-      setMintError('')
-      setMintSuccess(false)
+      setMintError('');
+      setMintSuccess(false);
       if (!mint) {
-        return
+        return;
       }
-      const tx = await mint()
-      const receipt = await tx.wait()
-      console.log(receipt)
+      const tx = await mint();
+      const receipt = await tx.wait();
+      console.log(receipt);
     } catch (error) {
-      console.log(error)
-      setMintError(error as string)
+      console.log(error);
+      setMintError(error as string);
     } finally {
       if (mintError === '') {
-        setMintSuccess(true)
+        setMintSuccess(true);
       }
     }
-  }
+  };
 
   const { isSuccess: txSuccess } = useWaitForTransaction({
     hash: mintData?.hash,
-  })
+  });
 
   // const isMinted = txSuccess
 
   useEffect(() => {
-    console.log('Success!')
-  }, [txSuccess])
+    console.log('Success!');
+  }, [txSuccess]);
   return (
     <>
       <div className="flex flex-col flex-wrap items-center">
@@ -181,7 +181,7 @@ const Home: NextPage = () => {
               min={1}
               max={5}
               onChange={(e) => {
-                e.target.value != '' && setAmount(e.target.value)
+                e.target.value != '' && setAmount(e.target.value);
               }}
               className="mr-[20px] text-center border border-black rounded-lg w-[100px] h-[50px]"
             ></input>
@@ -211,7 +211,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

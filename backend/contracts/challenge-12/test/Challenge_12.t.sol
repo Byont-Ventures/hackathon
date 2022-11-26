@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity >=0.6.0 <0.9.0;
 
-import 'forge-std/Test.sol';
+import "forge-std/Test.sol";
 
-import '@challenge-12/src/Challenge_12.sol';
+import "@challenge-12/src/Challenge_12.sol";
 
 contract Challenge12Test is Test {
   using Strings for uint256;
   Challenge12 c;
-  string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
+  string baseURI = "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/";
   address Alice;
   address Bob;
 
   function setUp() public {
-    c = new Challenge12('NFT Example', 'NFTEX', 100);
+    c = new Challenge12("NFT Example", "NFTEX", 100);
     c.setBaseURI(baseURI);
     /// @dev Initialize two actors Alice and Bob
     Alice = address(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf);
@@ -24,7 +24,7 @@ contract Challenge12Test is Test {
   /// @param _id The token id
   /// TODO: Fix the test!
   function testTokenUri(uint256 _id) public {
-    assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString(), '.json'));
+    assertEq(c.tokenURI(_id), string.concat(baseURI, _id.toString(), ".json"));
   }
 
   /// @notice Non-owners should not be able to set base URI
@@ -32,7 +32,7 @@ contract Challenge12Test is Test {
   /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
   function testFailSetBaseURI() public {
     vm.startPrank(address(1337));
-    c.setBaseURI('1337');
+    c.setBaseURI("1337");
     vm.stopPrank();
   }
 
@@ -40,22 +40,22 @@ contract Challenge12Test is Test {
   /// TODO: Fix the test!
   function testSetBaseURI() public payable {
     uint256 id = 69;
-    string memory newURI = '1337';
+    string memory newURI = "1337";
     c.setBaseURI(newURI);
-    assertEq(c.tokenURI(id), string.concat(newURI, id.toString(), '.json'));
+    assertEq(c.tokenURI(id), string.concat(newURI, id.toString(), ".json"));
   }
 
   /// @notice Test minting 1 from Contract Account (CA)
   /// @dev vm.expectRevert() expects the line below to revert with the message params
   function testMintCA() public {
-    console.log('Minting from contract...');
-    vm.expectRevert('No minting from contract allowed');
+    console.log("Minting from contract...");
+    vm.expectRevert("No minting from contract allowed");
     c.mint(1);
   }
 
   //// @notice Test minting 1 from Externally Owned Account (EOA)
   function testMintEOA() public {
-    console.log('Minting from EOA...');
+    console.log("Minting from EOA...");
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
     vm.startPrank(Alice, Alice);
@@ -91,7 +91,7 @@ contract Challenge12Test is Test {
     uint256 maxSupply = c.maxSupply();
     vm.assume(amount > maxSupply);
     vm.startPrank(Alice, Alice);
-    vm.expectRevert('Amount exceeds max supply');
+    vm.expectRevert("Amount exceeds max supply");
     c.mint(amount);
     vm.stopPrank();
   }
@@ -99,7 +99,7 @@ contract Challenge12Test is Test {
   /// @notice Test minting 0 NFT's
   function testMintZero() public {
     vm.startPrank(Alice, Alice);
-    vm.expectRevert('Amount cannot be zero');
+    vm.expectRevert("Amount cannot be zero");
     c.mint(0);
     vm.stopPrank();
   }
@@ -111,7 +111,7 @@ contract Challenge12Test is Test {
     vm.assume(amount > maxPerUser);
     vm.assume(amount <= maxSupply);
     /// @dev User mints
-    vm.expectRevert('Not allowed to mint this many');
+    vm.expectRevert("Not allowed to mint this many");
     vm.prank(user, user);
     c.mint(amount);
   }

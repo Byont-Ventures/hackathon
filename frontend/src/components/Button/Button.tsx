@@ -1,7 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Icon } from '../Icon'
-import classNames from 'classnames'
-import Link from 'next/link'
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Icon } from '../Icon';
+import classNames from 'classnames';
+import Link from 'next/link';
 
 export interface ButtonProps {
   /**
@@ -9,17 +9,17 @@ export interface ButtonProps {
    *
    * @default 'primary'
    */
-  variant?: 'primary'
+  variant?: 'primary';
 
-  icon?: IconProp
+  icon?: IconProp;
 }
 
 const isAnchor = (
   props: (JSX.IntrinsicElements['button'] | JSX.IntrinsicElements['a']) &
     ButtonProps
 ): props is JSX.IntrinsicElements['a'] => {
-  return 'href' in props && props.href !== undefined && props.href !== null
-}
+  return 'href' in props && props.href !== undefined && props.href !== null;
+};
 
 export const Button: React.FC<
   (JSX.IntrinsicElements['button'] | JSX.IntrinsicElements['a']) & ButtonProps
@@ -31,10 +31,10 @@ export const Button: React.FC<
         variant === 'primary',
     },
     className
-  )
+  );
 
   if (isAnchor(props)) {
-    const { href, ...anchorProps } = props
+    const { href, ...anchorProps } = props;
     return (
       <Link data-testid="Anchor" href={href ?? '/'}>
         <a className={classList} {...anchorProps}>
@@ -48,7 +48,7 @@ export const Button: React.FC<
           )}
         </a>
       </Link>
-    )
+    );
   }
 
   return (
@@ -66,5 +66,5 @@ export const Button: React.FC<
         children
       )}
     </button>
-  )
-}
+  );
+};

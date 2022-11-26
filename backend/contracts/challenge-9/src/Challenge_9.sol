@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity >=0.6.0 <0.9.0;
 
-import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 /// TODO: import Ownable, add onlyOwner according to the tests
 
@@ -69,9 +69,9 @@ contract Challenge9 is ERC721 {
 
   /// @notice Modifier that adds minting requirements
   modifier mintCompliance(uint _amount) {
-    require(msg.sender == tx.origin, 'No minting from contract allowed');
-    require(totalSupply + _amount <= maxSupply, 'Amount exceeds max supply');
-    require(_amount > 0, 'Amount cannot be zero');
+    require(msg.sender == tx.origin, "No minting from contract allowed");
+    require(totalSupply + _amount <= maxSupply, "Amount exceeds max supply");
+    require(_amount > 0, "Amount cannot be zero");
     _;
   }
 }

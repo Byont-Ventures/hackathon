@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   /*
@@ -6,7 +6,7 @@ const Home: NextPage = () => {
    * - Implement wallet connect button
    * - Show account balance
    */
-  return <>Welcome to Challenge 2!</>
-}
+  return <>Welcome to Challenge 2!</>;
+};
 
-export default Home
+export default Home;

@@ -1,12 +1,12 @@
-import { Abi } from 'abitype'
-import { BigNumber } from 'ethers'
-import React, { useEffect, useState } from 'react'
-import { useContractRead } from 'wagmi'
+import { Abi } from 'abitype';
+import { BigNumber } from 'ethers';
+import React, { useEffect, useState } from 'react';
+import { useContractRead } from 'wagmi';
 type TestNftProps = {
-  abi: Abi
-  address: string
-  tokenId: string
-}
+  abi: Abi;
+  address: string;
+  tokenId: string;
+};
 
 function Nft({ abi, address, tokenId }: TestNftProps) {
   // Get NFT token URI
@@ -15,31 +15,31 @@ function Nft({ abi, address, tokenId }: TestNftProps) {
     abi: abi,
     functionName: 'tokenURI',
     args: [BigNumber.from(tokenId)],
-  })
+  });
 
   // When we have retrieved the token URI we can trigger the fetch function
   useEffect(() => {
     if (!data) {
-      return
+      return;
     }
-    getImgFromTokenURI(data as string)
-  }, [data])
+    getImgFromTokenURI(data as string);
+  }, [data]);
 
   // Use an IPFS gateway to fetch token data
   const getImgFromTokenURI = async (data: string) => {
-    console.log()
-    const cid = data?.split('ipfs://')[1]
-    const response = await fetch(`https://gateway.pinata.cloud/ipfs/${cid}`)
-    const metadata = await response.json()
-    const imgUri = metadata['image']
+    console.log();
+    const cid = data?.split('ipfs://')[1];
+    const response = await fetch(`https://gateway.pinata.cloud/ipfs/${cid}`);
+    const metadata = await response.json();
+    const imgUri = metadata['image'];
     if (imgUri) {
-      const imgCid = imgUri.split('ipfs://')[1]
-      setImg(`https://gateway.pinata.cloud/ipfs/${imgCid}`)
+      const imgCid = imgUri.split('ipfs://')[1];
+      setImg(`https://gateway.pinata.cloud/ipfs/${imgCid}`);
     }
-  }
+  };
 
   // Image
-  const [img, setImg] = useState('')
+  const [img, setImg] = useState('');
 
   return (
     <>
@@ -51,7 +51,7 @@ function Nft({ abi, address, tokenId }: TestNftProps) {
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default Nft
+export default Nft;

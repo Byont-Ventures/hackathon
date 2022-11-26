@@ -7,7 +7,7 @@ pragma solidity >=0.6.0 <0.9.0;
  * https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
  * https://eips.ethereum.org/EIPS/eip-721
  */
-import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 /// @title Challenge 5
 /// @author Byont Labs

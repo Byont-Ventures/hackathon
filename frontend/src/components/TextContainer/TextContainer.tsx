@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 export const TextContainer: React.FC<JSX.IntrinsicElements['div']> = ({
   children,
@@ -13,5 +13,5 @@ export const TextContainer: React.FC<JSX.IntrinsicElements['div']> = ({
     >
       {children}
     </div>
-  )
-}
+  );
+};

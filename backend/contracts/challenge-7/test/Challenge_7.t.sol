@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity >=0.6.0 <0.9.0;
 
-import 'forge-std/Test.sol';
+import "forge-std/Test.sol";
 
-import '@challenge-7/src/Challenge_7.sol';
+import "@challenge-7/src/Challenge_7.sol";
 
 contract Challenge7Test is Test {
   using Strings for uint256;
   Challenge7 c;
-  string baseURI = 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/';
+  string baseURI = "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/";
   address Alice;
   address Bob;
 
   function setUp() public {
-    c = new Challenge7('NFT Example', 'NFTEX', 100);
+    c = new Challenge7("NFT Example", "NFTEX", 100);
     /// @dev Initialize two actors Alice and Bob
     Alice = address(0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf);
     Bob = address(0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF);
@@ -30,7 +30,7 @@ contract Challenge7Test is Test {
   /// @dev vm.startPrank() and the like are Foundry cheat codes
   /// @dev More info amount cheat codes: https://book.getfoundry.sh/cheatcodes/
   function testMintEOA() public {
-    console.log('Minting from EOA...');
+    console.log("Minting from EOA...");
     uint256 initialSupply = c.totalSupply();
     uint256 amount = 1;
     /// @dev Specify Alice as minter

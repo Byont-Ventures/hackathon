@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 /** Typography variants */
 type Variant =
@@ -9,9 +9,9 @@ type Variant =
   | 'headingMd'
   | 'headingLg'
   | 'headingXl'
-  | 'heading2Xl'
+  | 'heading2Xl';
 
-type ElementTag = 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4'
+type ElementTag = 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4';
 
 export interface TextProps {
   /**
@@ -19,14 +19,14 @@ export interface TextProps {
    *
    * @default 'bodyMd'
    */
-  variant?: Variant
+  variant?: Variant;
 
   /**
    * The element type
    *
    * @default 'p'
    */
-  as?: keyof Pick<JSX.IntrinsicElements, ElementTag>
+  as?: keyof Pick<JSX.IntrinsicElements, ElementTag>;
 }
 
 /** Typography variants styling */
@@ -39,13 +39,13 @@ export const VariantStyles: { [V in Variant]: string } = {
   headingLg: 'text-xl md:text-2xl xl:text-3xl',
   headingXl: 'text-2xl md:text-3xl xl:text-4xl max-w-4xl',
   heading2Xl: 'text-3xl md:text-4xl xl:text-5xl max-w-5xl',
-}
+};
 
 export const Text: React.FC<
   TextProps & PickAndFlatten<JSX.IntrinsicElements, ElementTag>
 > = ({ as = 'p', variant = 'bodyMd', className, ...props }) => {
-  const Tag = as
-  const elementClassname = classNames(VariantStyles[variant], className)
+  const Tag = as;
+  const elementClassname = classNames(VariantStyles[variant], className);
 
   return (
     <Tag
@@ -53,5 +53,5 @@ export const Text: React.FC<
       className={elementClassname !== '' ? elementClassname : undefined}
       {...props}
     />
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import type { NextPage } from 'next'
-import { useIsMounted } from 'src/hooks/useIsMounted'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
+import type { NextPage } from 'next';
+import { useIsMounted } from 'src/hooks/useIsMounted';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import {
   useAccount,
   useContractRead,
@@ -8,28 +8,28 @@ import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
-} from 'wagmi'
+} from 'wagmi';
 // import { BAYCAbi } from 'src/abis/BAYCAbi'
-import { ContractAbi } from 'src/abis/ContractAbi'
-import Nft from '@/components/NFT'
-import { useEffect, useState } from 'react'
-import { BigNumber } from 'ethers'
+import { ContractAbi } from 'src/abis/ContractAbi';
+import Nft from '@/components/NFT';
+import { useEffect, useState } from 'react';
+import { BigNumber } from 'ethers';
 
 const Home: NextPage = () => {
   // Mint state
-  const [totalMinted, setTotalMinted] = useState(0)
-  const [amount, setAmount] = useState('0')
+  const [totalMinted, setTotalMinted] = useState(0);
+  const [amount, setAmount] = useState('0');
 
   // Account data
-  const account = useAccount()
-  const isMounted = useIsMounted()
+  const account = useAccount();
+  const isMounted = useIsMounted();
 
   // Contract config
-  const ContractAddress = '0xb977F55E1D888D740523d512c00B440A8c7C84DC'
+  const ContractAddress = '0xb977F55E1D888D740523d512c00B440A8c7C84DC';
   const ContractConfig = {
     address: ContractAddress,
     abi: ContractAbi,
-  }
+  };
 
   // Read contract
   const { data, isError } = useContractReads({
@@ -38,21 +38,21 @@ const Home: NextPage = () => {
       { ...ContractConfig, functionName: 'symbol' },
       { ...ContractConfig, functionName: 'maxSupply' },
     ],
-  })
+  });
   const { data: totalSupplyData } = useContractRead({
     ...ContractConfig,
     functionName: 'totalSupply',
     watch: true,
-  })
+  });
 
   // Get list of NFTS
   const getNFTList = () => {
-    const nfts = []
+    const nfts = [];
     for (let i = 0; i < totalMinted; i++) {
-      nfts.push(<Nft contract={ContractAddress} tokenId={i.toString()}></Nft>)
+      nfts.push(<Nft contract={ContractAddress} tokenId={i.toString()}></Nft>);
     }
-    return nfts
-  }
+    return nfts;
+  };
 
   // Mint
   const { config } = usePrepareContractWrite({
@@ -60,26 +60,26 @@ const Home: NextPage = () => {
     abi: ContractAbi,
     functionName: 'mint',
     args: [BigNumber.from(amount)],
-  })
+  });
 
   const {
     data: mintData,
     write: mint,
     isLoading: isMintLoading,
     isSuccess: isMintStarted,
-  } = useContractWrite(config)
+  } = useContractWrite(config);
 
   const { isSuccess: txSuccess } = useWaitForTransaction({
     hash: mintData?.hash,
-  })
+  });
 
-  const isMinted = txSuccess
+  const isMinted = txSuccess;
 
   useEffect(() => {
     if (totalSupplyData) {
-      setTotalMinted(totalSupplyData.toNumber())
+      setTotalMinted(totalSupplyData.toNumber());
     }
-  }, [totalSupplyData])
+  }, [totalSupplyData]);
 
   return (
     <div className="flex flex-col flex-wrap items-center">
@@ -147,7 +147,7 @@ const Home: NextPage = () => {
             min={1}
             max={5}
             onChange={(e) => {
-              e.target.value != '' && setAmount(e.target.value)
+              e.target.value != '' && setAmount(e.target.value);
             }}
             style={{
               border: '1px solid black',
@@ -191,7 +191,7 @@ const Home: NextPage = () => {
         {isMounted && getNFTList()}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

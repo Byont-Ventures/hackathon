@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 export interface SectionProps {
   /**
@@ -6,7 +6,7 @@ export interface SectionProps {
    *
    * @default false
    */
-  fullWidth?: boolean
+  fullWidth?: boolean;
 }
 
 export const Section: React.FC<
@@ -33,5 +33,5 @@ export const Section: React.FC<
         children
       )}
     </section>
-  )
-}
+  );
+};

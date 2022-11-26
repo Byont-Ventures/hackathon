@@ -1,13 +1,13 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit'
-import type { NextPage } from 'next'
-import { Section } from 'src/components/Section'
-import { Text } from 'src/components/Text'
-import { useIsMounted } from 'src/hooks/useIsMounted'
-import { useAccount } from 'wagmi'
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import type { NextPage } from 'next';
+import { Section } from 'src/components/Section';
+import { Text } from 'src/components/Text';
+import { useIsMounted } from 'src/hooks/useIsMounted';
+import { useAccount } from 'wagmi';
 
 const Home: NextPage = () => {
-  const { address } = useAccount()
-  const isMounted = useIsMounted()
+  const { address } = useAccount();
+  const isMounted = useIsMounted();
 
   return (
     <>
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
         <Text>Byont Ventures B.V. © {new Date().getFullYear()}</Text>
       </footer>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

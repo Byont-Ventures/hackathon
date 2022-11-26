@@ -7,8 +7,8 @@
     "frontend"
   ],
   "scripts": {
-    "format": "prettier --loglevel warn --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore ."
+    "format": "prettier --loglevel warn --check .",
+    "format:fix": "prettier --write ."
   },
   "devDependencies": {
     "prettier": "^2.7.1",
