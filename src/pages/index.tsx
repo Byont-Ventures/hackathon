@@ -1,25 +1,27 @@
 import type { NextPage } from 'next'
-import { Section } from 'src/components/Section'
-import { Text } from 'src/components/Text'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
+  const CHALLENGE_AMOUNT = 5
+  const links: string[] = Array.from(
+    { length: CHALLENGE_AMOUNT },
+    (_, idx) => `challenge-${idx + 1}`
+  )
+
   return (
-    <>
-      <main
-        data-testid="Layout"
-        id="maincontent"
-        className={
-          'relative flex flex-col flex-grow mt-4 mb-8 space-y-8 md:space-y-16 md:mt-8 md:mb-16'
-        }
-      >
-        <Section>
-          <Text variant="headingXl">Welcome to the Workshop!</Text>
-        </Section>
-      </main>
-      <footer>
-        <Text>Byont Ventures B.V. © {new Date().getFullYear()}</Text>
-      </footer>
-    </>
+    <div className="flex flex-col">
+      <div>Welcome to the Workshop!</div>
+      <div className="w-auto px-8 my-1">
+        <ol>
+          {links.map((link: string) => (
+            <Link key={link} href={`/${link}`}>
+              <li>{link}</li>
+            </Link>
+          ))}
+        </ol>
+      </div>
+      <div>By Byont Ventures B.V. © {new Date().getFullYear()}</div>
+    </div>
   )
 }
 

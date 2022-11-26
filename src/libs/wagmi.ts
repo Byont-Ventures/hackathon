@@ -1,3 +1,4 @@
+import { getDefaultWallets } from '@rainbow-me/rainbowkit'
 import { chain, configureChains, createClient } from 'wagmi'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
@@ -15,8 +16,14 @@ const { provider, webSocketProvider } = configureChains(defaultChains, [
   publicProvider(),
 ])
 
+const { connectors } = getDefaultWallets({
+  appName: 'Frontend Workshop',
+  chains: defaultChains,
+})
+
 export const client = createClient({
   autoConnect: true,
+  connectors,
   provider,
   webSocketProvider,
 })

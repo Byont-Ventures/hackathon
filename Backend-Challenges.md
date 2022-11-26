@@ -22,7 +22,7 @@ In this case, every profile has only one test contract to run. So `FOUNDRY_PROFI
 
 ### Memory and other data locations
 
-You might have noticed the `memory` keyword in the return statement of `getMessage()`. This `memory` is a keyword that indicates the location of a data type within Solidity. 
+You might have noticed the `memory` keyword in the return statement of `getMessage()`. This `memory` is a keyword that indicates the location of a data type within Solidity.
 
 For more information on location specifiers, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=location%20specifier#data-location).
 
@@ -36,6 +36,7 @@ Remember, to run the test for challenge 2:
 `FOUNDRY_PROFILE=challenge-2 forge test --match-contract Challenge2`
 
 ### What is public, view ...
+
 You might have noticed keywords in the function definition, such as `public` and `view`. They specify function types, but while `public` refers to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), `view` shows the function [state mutability](https://docs.soliditylang.org/en/v0.8.17/contracts.html#state-mutability)") but there are also others, such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
 
 ## Challenge 3 - Hello + World
@@ -163,7 +164,8 @@ Keeping track of `msg.sender` and `tx.origin` is a good idea when testing in Fou
 Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.t.sol` (deploys) => Challenge contract `Challenge_7.sol`.
 
 ### Vm.startPrank() and others
-`vm.startPrank()` and the like are [Foundry cheat codes](https://book.getfoundry.sh/cheatcodes/), manipulating the virtual machine (vm) for easier testing. For example, `vm.startPrank(sender, origin)` sets the `msg.sender` and `tx.origin`. 
+
+`vm.startPrank()` and the like are [Foundry cheat codes](https://book.getfoundry.sh/cheatcodes/), manipulating the virtual machine (vm) for easier testing. For example, `vm.startPrank(sender, origin)` sets the `msg.sender` and `tx.origin`.
 
 ## Challenge 8 - Adding some checks
 
@@ -220,7 +222,7 @@ So, the goal of this challenge is to add the appropriate modifiers to the contra
 
 ## Challenge 10 - Keeping track of mints using mappings
 
-Another method to restrict minting out the entire supply by one person is to limit mint amounts per person. Of course, you could circumvent this mechanism by minting with another wallet once you've reached your maximum mint amount on one wallet. There are ways to semi-prevent this, such as allowlisting, but we won't go into that now. 
+Another method to restrict minting out the entire supply by one person is to limit mint amounts per person. Of course, you could circumvent this mechanism by minting with another wallet once you've reached your maximum mint amount on one wallet. There are ways to semi-prevent this, such as allowlisting, but we won't go into that now.
 
 For this challenge, it will be handy to know what a [mapping](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=mapping#mapping-types) is.
 
@@ -366,7 +368,6 @@ If you are using Metamask and you need to get your private key:
 After populating the command with your private key and API keys, you can paste it into the terminal and run it! You are now deploying and verifying the smart contract using your provided wallet. Give the verification some time to complete.
 
 **NOTE:** If deployment succeeds but verification fails, please refer to [this section in the Foundry docs](https://book.getfoundry.sh/forge/deploying#verifying-a-pre-existing-contract).
-
 
 🎉🎉🎉 **Congratulations!!!** 🎉🎉🎉
 You have just built, deployed, and verified an NFT smart contract! Take note of the contract address in the terminal output, for example: `Deployed to: 0x.....` , and let's proceed to the next step!

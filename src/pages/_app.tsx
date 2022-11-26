@@ -1,10 +1,16 @@
+import '@rainbow-me/rainbowkit/styles.css'
 import 'src/styles/globals.css'
 
 import type { AppProps } from 'next/app'
 import { WagmiConfig } from 'wagmi'
 
-import { client } from 'src/libs/wagmi'
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+
+import { client, chains } from 'src/libs/wagmi'
 import { SkipToMain } from '@/components/SkipToMain'
+
+import { NftProvider } from 'use-nft'
+import { getDefaultProvider } from 'ethers'
 
 import { Inter } from '@next/font/google'
 
@@ -12,12 +18,17 @@ import { Inter } from '@next/font/google'
 const inter = Inter()
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
+  const provider = getDefaultProvider('homestead')
   return (
     <>
       <WagmiConfig client={client}>
-        <div className={inter.className}></div>
-        <SkipToMain />
-        <Component {...pageProps} />
+        <RainbowKitProvider chains={chains}>
+          <NftProvider fetcher={['ethers', { provider }]}>
+            <div className={inter.className}></div>
+            <SkipToMain />
+            <Component {...pageProps} />
+          </NftProvider>
+        </RainbowKitProvider>
       </WagmiConfig>
     </>
   )
