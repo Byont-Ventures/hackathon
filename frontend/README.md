@@ -65,6 +65,37 @@ We can implement all RPCs, errors, hashing, and signing ourselves, but luckily, 
 
 ## Challenge 2 - Let's add some abstraction
 
+Nowadays, React developers have switched to [Tanstack Query](https://tanstack.com/query/v4/docs/adapters/react-query)/[SWR](https://swr.vercel.app/) for fetching and caching data in combination with React's Context API. Using those tools, developers no longer need more complex state management solutions like [Redux](https://redux.js.org/) and [Zustand](https://github.com/pmndrs/zustand), for the most part.
+
+Using one of these tools, we can abstract away the complexity of fetching data. It will also make our code more readable and easier to maintain, and it will also make it easier to add new features. For example:
+
+```ts
+// A custom hook that fetches ERC20 balance from the blockchain
+const useERC20Balance = (
+  userAddress: string,
+  contractAddress: string,
+  contractAbi: unknown[], // We'll get to this in the next challenge
+  provider: ethers.providers.BaseProvider // You got this working in the previous challenge
+) => {
+  // We chose to use Tanstack Query here, but you can also use SWR
+  return useQuery([userAddress, contractAddress], async () => {
+    const contract = new ethers.Contract(
+      contractAddress,
+      contractABI,
+      provider
+    );
+
+    // This is how you call a function on a smart contract using ethers.js
+    return await contract.balanceOf(userAddress);
+  });
+};
+
+// Example usage
+const { data, isError, isLoading } = useERC20Balance(...args);
+```
+
+> **Note**: Read the full documentation of [React Query](https://react-query.tanstack.com/overview) and [SWR](https://swr.vercel.app/docs/getting-started) to learn more about how to use them.
+
 ### Wagmi & RainbowKit
 
 RainbowKit provides an abstraction to communicate with different wallets and is built on top of Wagmi. Wagmi is a collection of React hooks that makes it easier to connect to Ethereum. Under the hood, it uses [Ethers](https://docs.ethers.io/v5/) to connect to the blockchain. You can make these connections using [Ethereum RPC Nodes](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/rpc-node), but using them yourself is not necessary for this workshop's scope.
