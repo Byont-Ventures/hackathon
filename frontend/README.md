@@ -8,10 +8,8 @@ These challenges provide a way to get started with web3 frontend development. Th
   - [Challenge 2 - Adding abstractions](#challenge-2---adding-abstractions)
   - [Challenge 3 - Using Wagmi](#challenge-3---using-wagmi)
     - [ABIs](#abis)
-    - [BigNumbers](#bignumbers)
-  - [Challenge 3.B - Display smart contract data](#challenge-3b---display-smart-contract-data)
   - [Challenge 4 - Displaying NFTs](#challenge-4---displaying-nfts)
-    - [TokenURI](#tokenuri)
+    - [BigNumbers](#bignumbers)
   - [Challenge 5 - Minting and displaying](#challenge-5---minting-and-displaying)
     - [What is minting?](#what-is-minting)
     - [NFT standards](#nft-standards)
@@ -106,11 +104,11 @@ const { data, isError, isLoading } = useReadContract({
 });
 ```
 
-> **Note**: As you can see we don't have to take care of the provider, and on top of this Wagmi generates supports end-to-end type safety for all smart contract calls.
+> **Note**: As you can see we don't have to take care of the provider, and on top of this Wagmi provides supports end-to-end type safety for all smart contract calls.
 
 ### ABIs
 
-You might have noticed that we had to pass the contract ABI to the `useReadContract` hook. The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem from outside the blockchain and for contract-to-contract interaction. Data is encoded to a binary (string) according to its type, as described in this specification. The encoding is not self-describing and thus requires a JSON schema to decode, similar to how Protobufs work.
+You might have noticed that we had to pass the contract ABI to the `useReadContract` hook. The contract `Application Binary Interface` (`ABI`) is the standard way to interact with contracts in the Ethereum ecosystem from outside the blockchain and for contract-to-contract interaction. Using the ABI, data is encoded to a binary sequence according to its type. The encoding is not self-describing and thus requires a JSON schema to decode, similar to how Protobufs work.
 
 Nowadays, many tools automatically generate the ABI whenever you compile your smart contract (as a backend engineer). As a frontend engineer, you must import the generated ABI into your code to interact with smart contracts. Developers usually place the ABI in a folder called [`abis`](/frontend/src/abis/).
 
@@ -118,7 +116,7 @@ You can find the ABI of a smart contract on [Etherscan](https://etherscan.io/). 
 
 > **Note**: If you want to learn more about ABIs, check out [this article](https://medium.com/coinmonks/what-is-an-abi-and-why-do-you-need-it-9f6b8b8b0b7).
 
-If you paste a contract address in the top right search bar, you will land on the smart contract page, and you will be able to see all kinds of data and even interact with the smart contract by connecting your wallet.
+If you paste a contract address in the top right search bar on Etherscan, you will land on the smart contract page, and you will be able to see all kinds of data and even interact with the smart contract by connecting your wallet.
 
 This is how we got the ABI for the Bored Ape Yacht Club smart contract.
 
@@ -132,60 +130,33 @@ Now it's up to you to implement [Wagmi with the Goerli network](https://wagmi.sh
 
 > **Note**: The contract address for BAYC is `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`
 
-### BigNumbers
-
-Any number you pass to a smart contract, has to be converted to a BigNumber, for example:
-
-```javascript
-import { BigNumber } from 'ethers';
-const aBigNumber = BigNumber.from(42);
-```
-
-If you want more information on Big Numbers, and why we are using the Ethers BigNumber object and not for example BigNumber.js, BN.js, BigDecimal, etc., please refer to the Ethers [documentation](https://docs.ethers.io/v5/api/utils/bignumber/).
-
-## Challenge 3.B - Display smart contract data
-
-The goal of this challenge is to:
-
-- Connect wallet to the mainnet through the browser
-- Import the BAYC ABI
-- Get the `name` of the BAYC smart contract
-- Get the `symbol` of the BAYC smart contract
-
-<spoiler>
-  <summary>HINT:</summary>
-  <details>
-    You can make use of the <code>useContractRead()</code> (docs <a href="https://wagmi.sh/react/hooks/useContractRead">here</a>) or <code>useContractReads()</code> (docs <a href="https://wagmi.sh/react/hooks/useContractReads">here</a>) hooks from Wagmi.
-  </details>
-</spoiler>
-
 ## Challenge 4 - Displaying NFTs
 
-Let's display an NFT now! Recall that metadata is often stored on IPFS.
-
-The goal is to interact with the BAYC smart contract, and:
-
-- Display the `name` of the contract
-- Display the `symbol` of the contract
-- Display the image of the NFT with token ID 42
-
-<spoiler>
-  <summary>HINT:</summary>
-  <details>
-    There are multiple ways to go about this, but one of the easiest ways is one we have included for you:
-    <br><br>The <code>useNft()</code> hook. Refer to the docs <a href="https://github.com/spectrexyz/use-nft">here.</a>
-  </details>
-</spoiler>
-
-### TokenURI
-
-As on-chain storage is expensive, images are often stored off-chain. So the NFT metadata and images we have to retrieve in this challenge, are not actually on the blockchain, but on IPFS instead!
+As on-chain storage is expensive, images are often stored off-chain. So the NFT metadata and images we have to retrieve in this challenge are not on the blockchain but on IPFS.
 
 If you are familiar with [Opensea](https://opensea.io/), you might be wondering: how do they get the NFT images and metadata?
 
-Your smart contract provides a way to tell Opensea which image belongs to which NFT and where the metadata files are stored through a function called `tokenURI()`. Opensea looks for this function in your smart contract and parses the return value.
+Your smart contract provides a way to tell Opensea which image belongs to which NFT and where it stored the metadata files through a function called `tokenURI()`. Opensea looks for this function in your smart contract and parses the return value.
 
-This is also how the library that uses the `useNFT()` hook we implemented works under the hood.
+> **Note**: If you want to learn more about `IPFS`, read the section in the [Preparation Guide](/PREPARATION.md#what-is-ipfs).
+
+With this knowledge, we can continue with challenge 4: display the NFT image and metadata. The goal is to interact with the BAYC smart contract, and:
+
+- Display the `totalSupply` of the contract;
+- Display the name of the NFT with token ID 42;
+- Display the image of the NFT with token ID 42.
+
+> **Note**: There are multiple ways to go about this, but one of the easiest ways is by implementing the [`useNFT`](https://github.com/spectrexyz/use-nft). Another way is to parse the `tokenURI()` value and use `fetch` or `axios` to get the metadata.
+
+### BigNumbers
+
+In Solidity, the maximum value of a `uint256` is `2^256 - 1`. Such aa huge number is impossible to represent in JavaScript. To solve this problem, we can use the [BigNumber](https://docs.ethers.io/v5/api/utils/bignumber/) class from Ethers. Ethers use this class to represent arbitrarily large integers and add type annotations automatically when calling the `totalSupply` of the BAYC contract.
+
+```ts
+// Most numbers you pass to a smart contract, need to be converted to a BigNumber, for example:
+import { BigNumber } from 'ethers';
+const aBigNumber = BigNumber.from(42);
+```
 
 ## Challenge 5 - Minting and displaying
 
