@@ -251,14 +251,22 @@ If you experience "cannot connect to network" errors, you can try the following 
 
 ### Hydration error
 
-There is an official issue on this error [here](https://github.com/wagmi-dev/wagmi/issues/542#issuecomment-1144178142) that explains why this error occurs. We have included a hook you can use to mitigate this error.
+There is an official issue on this error [here](https://github.com/wagmi-dev/wagmi/issues/542#issuecomment-1144178142) that explains why this error occurs. We have included a hook you can use to mitigate this error. There is also a more in-depth article on Medium [here](https://codingwithmanny.medium.com/understanding-hydration-errors-in-nextjs-13-with-a-web3-wallet-connection-8155c340fbd5).
 
 ```tsx
-import { useIsMounted } from 'src/hooks/useIsMounted';
+import { useIsMounted } from '@/app/hooks/useIsMounted';
 
 // ...
 const balance = useBalance();
 const isMounted = useIsMounted();
 
 return <p>{isMounted && balance ? balance : 'Loading...'}</p>;
+```
+
+Or you can use the `ClientOnly` component:
+
+```tsx
+import { ClientOnly } from '@/components/ClientOnly';
+
+return <ClientOnly>{balance ? balance : 'Loading...'}</ClientOnly>;
 ```
