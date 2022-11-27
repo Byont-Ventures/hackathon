@@ -1,9 +1,15 @@
 {
-  "semi": false,
-  "trailingComma": "es5",
   "singleQuote": true,
   "tabWidth": 2,
   "useTabs": false,
   "printWidth": 80,
-  "plugins": ["prettier-plugin-jsdoc"]
+  "plugins": ["prettier-plugin-jsdoc", "prettier-plugin-solidity"],
+  "overrides": [
+    {
+      "files": "*.sol",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
 }

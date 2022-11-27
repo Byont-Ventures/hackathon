@@ -1,4 +1,27 @@
 {
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "solidity.remappings": [
+    "@openzeppelin/=../node_modules/@openzeppelin/",
+    "forge-std/=backend/libs/forge-std/src/",
+    "ds-test/=backend/libs/ds-test/src/",
+    "@challenge-1=backend/contracts/challenge-1/",
+    "@challenge-2=backend/contracts/challenge-2/",
+    "@challenge-3=backend/contracts/challenge-3/",
+    "@challenge-4=backend/contracts/challenge-4/",
+    "@challenge-5=backend/contracts/challenge-5/",
+    "@challenge-6=backend/contracts/challenge-6/",
+    "@challenge-7=backend/contracts/challenge-7/",
+    "@challenge-8=backend/contracts/challenge-8/",
+    "@challenge-9=backend/contracts/challenge-9/",
+    "@challenge-10=backend/contracts/challenge-10/",
+    "@challenge-11=backend/contracts/challenge-11/",
+    "@challenge-12=backend/contracts/challenge-12/"
+  ],
+  "solidity.packageDefaultDependenciesContractsDirectory": "./node_modules",
+  "solidity.formatter": "prettier",
+  "solidity.linter": "solhint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }

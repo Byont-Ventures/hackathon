@@ -1,0 +1,105 @@
+[profile.challenge-1]
+src = 'contracts/challenge-1/src/'
+test = 'contracts/challenge-1/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+solc = "0.8.17"
+
+[profile.challenge-2]
+src = 'contracts/challenge-2/src/'
+test = 'contracts/challenge-2/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+solc = "0.8.17"
+
+[profile.challenge-3]
+src = 'contracts/challenge-3/src/'
+test = 'contracts/challenge-3/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+solc = "0.8.17"
+
+[profile.challenge-4]
+src = 'contracts/challenge-4/src/'
+test = 'contracts/challenge-4/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+solc = "0.8.17"
+# auto_detect_solc = true
+
+[profile.challenge-5]
+src = 'contracts/challenge-5/src/'
+test = 'contracts/challenge-5/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.challenge-6]
+src = 'contracts/challenge-6/src/'
+test = 'contracts/challenge-6/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.challenge-7]
+src = 'contracts/challenge-7/src/'
+test = 'contracts/challenge-7/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.challenge-8]
+src = 'contracts/challenge-8/src/'
+test = 'contracts/challenge-8/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.challenge-9]
+src = 'contracts/challenge-9/src/'
+test = 'contracts/challenge-9/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.challenge-10]
+src = 'contracts/challenge-10/src/'
+test = 'contracts/challenge-10/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.challenge-11]
+src = 'contracts/challenge-11/src/'
+test = 'contracts/challenge-11/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.challenge-12]
+src = 'contracts/challenge-12/src/'
+test = 'contracts/challenge-12/test/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+auto_detect_solc = true
+
+[profile.default]
+src = 'contracts/src/'
+test = 'contracts/tests/'
+out = 'dist/'
+cache_path = 'cache/'
+libs = ['libs', '../node_modules']
+# solc = ">=0.8.17"
+auto_detect_solc = true
