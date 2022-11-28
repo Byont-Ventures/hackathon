@@ -387,7 +387,7 @@ Now, go ahead and click on the `Contract` tab. Below that, you will see three ta
 
 ### Deploying the contract
 
-Now that you know Etherscan, it is time to deploy and verify our smart contract. If a smart contract is not verified, you cannot click on the functions to interact with them or see them directly—an unverified smart contract [will look like this](https://etherscan.io/address/0x6c830acd0b1610f547f568abd9500012cffd5208#code).
+Now that you know Etherscan, it is time to deploy and verify our smart contract. If a smart contract is not verified, you cannot click on the functions to interact with them or see them directly — an unverified smart contract [will look like this](https://etherscan.io/address/0x6c830acd0b1610f547f568abd9500012cffd5208#code).
 
 As per the [Foundry documentation](https://book.getfoundry.sh/forge/deploying#deploying), we can verify and deploy our contracts simultaneously!
 
