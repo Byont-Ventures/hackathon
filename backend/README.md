@@ -3,32 +3,32 @@
 These challenges provide a way to start with Foundry, Solidity, and NFTs. Usually, the goal is to fix an error / write a new function in a test file, solidity file, or both. Simultaneously, the challenges will be examples of how things work in Solidity, how to structure NFT smart contracts, test your files, and deploy smart contracts.
 
 - [Backend Challenges](#backend-challenges)
-  - [Challenge 1 - Hello World!](#challenge-1---hello-world)
+  - [Challenge 1 - Hello World! 👋](#challenge-1---hello-world-)
     - [Foundry flags](#foundry-flags)
     - [Memory and other data locations](#memory-and-other-data-locations)
-  - [Challenge 2 - Hello???](#challenge-2---hello)
+  - [Challenge 2 - Hello??? 🧐](#challenge-2---hello-)
     - [What do `public`, `view`, etc. mean](#what-do-public-view-etc-mean)
-  - [Challenge 3 - Hello + World](#challenge-3---hello--world)
-  - [Challenge 4 - Solidity versions](#challenge-4---solidity-versions)
-  - [Challenge 5 - NFT Contract](#challenge-5---nft-contract)
+  - [Challenge 3 - Hello + World 💻](#challenge-3---hello--world-)
+  - [Challenge 4 - Solidity versions ✅](#challenge-4---solidity-versions-)
+  - [Challenge 5 - NFT Contract 🔥](#challenge-5---nft-contract-)
     - [Constructors](#constructors)
     - [Solidity libraries and openzeppelin](#solidity-libraries-and-openzeppelin)
-  - [Challenge 6 - BaseURI, TokenURI](#challenge-6---baseuri-tokenuri)
-  - [Challenge 7 - Minting](#challenge-7---minting)
+  - [Challenge 6 - BaseURI, TokenURI 🔗](#challenge-6---baseuri-tokenuri-)
+  - [Challenge 7 - Minting 🪙](#challenge-7---minting-)
     - [Mint Functions](#mint-functions)
     - [`msg.sender` and `tx.origin`](#msgsender-and-txorigin)
     - [Vm.startPrank() and others](#vmstartprank-and-others)
-  - [Challenge 8 - Adding some checks](#challenge-8---adding-some-checks)
-  - [Challenge 9 - Modifiers and Ownable](#challenge-9---modifiers-and-ownable)
-  - [Challenge 10 - Keeping track of mints using mappings](#challenge-10---keeping-track-of-mints-using-mappings)
-  - [Challenge 11 - Upload data to IPFS](#challenge-11---upload-data-to-ipfs)
+  - [Challenge 8 - Adding some checks 👷‍♀️](#challenge-8---adding-some-checks-️)
+  - [Challenge 9 - Modifiers and Ownable 🪄](#challenge-9---modifiers-and-ownable-)
+  - [Challenge 10 - Keeping track of mints using mappings 🧙‍♂️](#challenge-10---keeping-track-of-mints-using-mappings-️)
+  - [Challenge 11 - Upload data to IPFS ⬆️](#challenge-11---upload-data-to-ipfs-️)
     - [IPFS, Opensea, and Metadata](#ipfs-opensea-and-metadata)
     - [Create a Pinata account](#create-a-pinata-account)
     - [Upload images to IPFS](#upload-images-to-ipfs)
     - [Add images to metadata](#add-images-to-metadata)
     - [Upload metadata](#upload-metadata)
     - [Change token URI](#change-token-uri)
-  - [Challenge 12 - Deploying and verifying smart contracts and Etherscan](#challenge-12---deploying-and-verifying-smart-contracts-and-etherscan)
+  - [Challenge 12 - Deploying and verifying smart contracts and Etherscan 😼](#challenge-12---deploying-and-verifying-smart-contracts-and-etherscan-)
     - [Getting the Token URI](#getting-the-token-uri)
     - [Etherscan](#etherscan)
     - [Deploying the contract](#deploying-the-contract)
@@ -37,7 +37,7 @@ These challenges provide a way to start with Foundry, Solidity, and NFTs. Usuall
     - [Minting on Etherscan](#minting-on-etherscan)
     - [Viewing your NFTs on Opensea](#viewing-your-nfts-on-opensea)
 
-## Challenge 1 - Hello World!
+## Challenge 1 - Hello World! 👋
 
 Take a look at the `contracts` folder. Here, you will see a folder for every challenge. Within each folder, you will find two sub-folders:
 
@@ -69,7 +69,7 @@ You might have noticed the `memory` keyword in the return statement of `getMessa
 
 > **Note**: For more information on types in Solidity, refer to the docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html).
 
-## Challenge 2 - Hello???
+## Challenge 2 - Hello??? 🧐
 
 The message in the contract `Challenge_2.sol` has not been initialized yet. The goal is to give it the value 'Hello World' using a setter function. The function needs to be built, but don't worry; there are some valuable hints in the contract and test files to help you.
 
@@ -83,11 +83,11 @@ FOUNDRY_PROFILE=challenge-2 forge test --match-contract Challenge2
 
 You might have noticed keywords in the function definition, such as `public` and `view`. They specify function types, but while `public` refers to [visibility](https://docs.soliditylang.org/en/v0.8.17/contracts.html#function-visibility), `view` shows the function [state mutability](https://docs.soliditylang.org/en/v0.8.17/contracts.html#state-mutability)") but there are also others, such as `payable`. If you do not include `payable`, the function will reject all ether sent with it.
 
-## Challenge 3 - Hello + World
+## Challenge 3 - Hello + World 💻
 
 Let's increase the complexity. This time, the goal is to write a function that adds a string to the incomplete message. The tests also need to be improved. Eventually, you should be able to add something to the message so that it becomes 'Hello World!'. Feel free to look at other tests or the Foundry books, and refer to the concatenation docs [here](https://docs.soliditylang.org/en/v0.8.17/types.html?highlight=string.concat#the-functions-bytes-concat-and-string-concat).
 
-## Challenge 4 - Solidity versions
+## Challenge 4 - Solidity versions ✅
 
 The goal of the challenge is the same. But what's going on here? If you run the test, Foundry will complain about compiler versions. Take a look at `foundry.toml` in the root folder. In the `profile.challenge-4` section, you will see that the solidity compiler is specified to be 0.8.17 - but the contracts in this challenge require a different compiler version!
 
@@ -99,7 +99,7 @@ But there is another problem. Why does **_not_** `string.concat()` work? It may 
 
 > **Note**: You will encounter a lot of varying compiler versions in the wild, and it is, therefore, good to know where to check certain behaviors.
 
-## Challenge 5 - NFT Contract
+## Challenge 5 - NFT Contract 🔥
 
 From here on out, we will build the NFT contract by adding functionality during every challenge!
 
@@ -140,7 +140,7 @@ ERC721 is the primary standard for NFT smart contracts; see [Workshop Preparaton
 - https://docs.openzeppelin.com/contracts/4.x/
 - https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
 
-## Challenge 6 - BaseURI, TokenURI
+## Challenge 6 - BaseURI, TokenURI 🔗
 
 As on-chain storage is expensive, images are often stored off-chain.
 
@@ -174,7 +174,7 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a s
     Solidity will not accept `string` and `uint` concatenation. You can use the provided `Strings` library to turn `uint` into a `string`.
 </details>
 
-## Challenge 7 - Minting
+## Challenge 7 - Minting 🪙
 
 In this challenge, we will aim to create a minting function in `Challenge_7.sol` so that the tests in `Challenge_7.t.sol` pass. The mint function should:
 
@@ -218,7 +218,7 @@ Internal Foundry address `tx.origin` (deploys) => Testing contract `Challenge_7.
 
 `vm.startPrank()` and the like are [Foundry cheat codes](https://book.getfoundry.sh/cheatcodes/), manipulating the virtual machine (`vm`) for easier testing. For example, `vm.startPrank(sender, origin)` sets the `msg.sender` and `tx.origin`.
 
-## Challenge 8 - Adding some checks
+## Challenge 8 - Adding some checks 👷‍♀️
 
 This challenge aims to add a couple of checks to the mint function. Because even though we have set a max supply, it doesn't do anything; we can easily mint more than the max supply. So let's fix that.
 
@@ -251,7 +251,7 @@ So, now let's improve the mint function to pass these checks. Our function shoul
   For the third `require()`, you can make use of `msg.sender` and `tx.origin`
 </details>
 
-## Challenge 9 - Modifiers and Ownable
+## Challenge 9 - Modifiers and Ownable 🪄
 
 You might have noticed that the `require()` statements have been moved below the `mint()` function into a `modifier`. Modifiers are code snippets that you can add to a function. When someone calls the function, these code snippets will run beforehand. Therefore, moving your `require()` statements to a modifier makes sense. It makes your code a bit more reusable, too, since you can now just put the modifier on any function to which you wish to apply the same logic.
 
@@ -271,7 +271,7 @@ So, the goal of this challenge is to add the appropriate modifiers to the contra
   You can make use of the Ownable library from Openzeppelin
 </details>
 
-## Challenge 10 - Keeping track of mints using mappings
+## Challenge 10 - Keeping track of mints using mappings 🧙‍♂️
 
 Another method to restrict minting out the entire supply by one person is to limit mint amounts per person. Of course, you could circumvent this mechanism by minting with another wallet once you've reached your maximum mint amount on one wallet. There are ways to semi-prevent this, such as maintaining an allowlist, but we won't go into that now.
 
@@ -285,7 +285,7 @@ The goal of this challenge is to:
 
 In `Challenge_10.t.sol`, we have set up scenarios where users will eventually try to mint more than they are allowed.
 
-## Challenge 11 - Upload data to IPFS
+## Challenge 11 - Upload data to IPFS ⬆️
 
 In this challenge, we will be uploading images to IPFS. Then, write a test that updates your `baseURI` to point to the image folder on IPFS.
 
@@ -352,7 +352,7 @@ It's now up to you to update the smart contract to point to the correct token UR
 - Update `tokenURI()` in `Challenge_11.sol` so that it returns the correct token URI corresponding to the images you uploaded to IPFS
 - Now, some tests won't pass anymore. Update the tests in `Challenge_11.t.sol` so that they now pass.
 
-## Challenge 12 - Deploying and verifying smart contracts and Etherscan
+## Challenge 12 - Deploying and verifying smart contracts and Etherscan 😼
 
 We have done many things so far! We have created our primary NFT contract with a dynamic token URI based on a token ID generated when users mint NFTs! We have also uploaded metadata and images to IPFS. All that is left is to deploy our contract and set things up through Etherscan, and we will be able to view our NFT collection on Opensea! Let's get started.
 
