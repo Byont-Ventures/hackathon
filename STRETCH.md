@@ -5,14 +5,14 @@ Stretch challenges are for those who are already familiar with web3 development 
 - [Stretch Challenges](#stretch-challenges)
   - [Stretch Challenge 1: Reentrancy Attacks 👾](#stretch-challenge-1-reentrancy-attacks-)
   - [Stretch Challenge 2: Testing the Frontend 👷‍♂️](#stretch-challenge-2-testing-the-frontend-️)
-  - [Stretch Challenge 3: Minting Dapp without Wagmi / RainbowKit 🤓](#stretch-challenge-3-minting-dapp-without-wagmi--rainbowkit-)
+  - [Stretch Challenge 3: Minting Dapp Without Wagmi / RainbowKit 🤓](#stretch-challenge-3-minting-dapp-without-wagmi--rainbowkit-)
   - [Stretch Challenge 4: NFT Pokemon Clone 😼](#stretch-challenge-4-nft-pokemon-clone-)
   - [Stretch Challenge 5: Dice Game 🎲](#stretch-challenge-5-dice-game-)
   - [Stretch Challenge 6: Blockchain Tic-Tac-Toe ❎](#stretch-challenge-6-blockchain-tic-tac-toe-)
-  - [Stretch Challenge 7: Payable mint, royalties, and withdrawing 💸](#stretch-challenge-7-payable-mint-royalties-and-withdrawing-)
+  - [Stretch Challenge 7: Payable Mint, Royalties, and Withdrawing 💸](#stretch-challenge-7-payable-mint-royalties-and-withdrawing-)
   - [Stretch Challenge 8: Staking 💰](#stretch-challenge-8-staking-)
   - [Stretch Challenge 9: Gas Optimization 🤖](#stretch-challenge-9-gas-optimization-)
-  - [Stretch Challenge 10: Allowlisting with Merkle Trees ✅](#stretch-challenge-10-allowlisting-with-merkle-trees-)
+  - [Stretch Challenge 10: Allowlisting With Merkle Trees ✅](#stretch-challenge-10-allowlisting-with-merkle-trees-)
   - [Stretch Challenge 11: Meta Transactions 🧾](#stretch-challenge-11-meta-transactions-)
   - [Stretch Challenge 12: Rentable NFTs 🫴](#stretch-challenge-12-rentable-nfts-)
   - [Stretch Challenge 13: NFT Gated Access 👮‍♀️](#stretch-challenge-13-nft-gated-access-️)
@@ -33,7 +33,7 @@ How you test smart contracts using frameworks such as Foundry, you should also t
 
 > **NOTE**: If you are looking to mock ethers.js behavior, have a look at [Mocketh](https://github.com/Byont-Ventures/mocketh), a typed ethers.js mocking library for mocking Ethereum calls. It works by implementing a custom provider that intercepts and impersonates Ethereum calls.
 
-## Stretch Challenge 3: Minting Dapp without Wagmi / RainbowKit 🤓
+## Stretch Challenge 3: Minting Dapp Without Wagmi / RainbowKit 🤓
 
 Wagmi and RainbowKit are excellent if you want to create a Dapp quickly, but it is also good to understand what is happening under the hood. So, let's make the minting Dapp from the [Frontend Challenges](/frontend/README.md), but without libraries such as Wagmi or RainbowKit! You are only allowed to use EthersJS or Web3JS.
 
@@ -72,7 +72,7 @@ For example:
 
 > **NOTE**: Of course, these are just guidelines. Feel free to expand upon these rules, such as a custom grid size, custom symbols, or additional rules, such as playing for Eth.
 
-## Stretch Challenge 7: Payable mint, royalties, and withdrawing 💸
+## Stretch Challenge 7: Payable Mint, Royalties, and Withdrawing 💸
 
 Often, NFT projects would like to make a little money themselves. So, they introduce minting costs and royalties to their project. This challenge aims to create an NFT smart contract that includes both!
 
@@ -104,7 +104,7 @@ There are a lot of techniques and applications, however, that you can use to opt
 
 - You should at least use the [ERC1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/), [ERC721A](https://www.erc721a.org/) or [ERC721Psi](https://github.com/estarriolvetch/ERC721Psi) standard.
 
-## Stretch Challenge 10: Allowlisting with Merkle Trees ✅
+## Stretch Challenge 10: Allowlisting With Merkle Trees ✅
 
 Sometimes, the demand for the NFTs within a project outweighs the supply. In this case, users need a guarantee to mint such NFTs. If a project wants to reward the most supportive and early community members, they may opt to put them on a allowlist. Users included in the allowlist are guaranteed to mint x amount of NFTs, usually in a private mint phase during which only allow-listed members can mint. After that, the mint goes public, and the public is also allowed to mint.
 
