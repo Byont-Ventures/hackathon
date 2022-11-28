@@ -165,7 +165,7 @@ const { data, isError, isLoading } = useContractReads({
 
 ### Big Numbers
 
-In Solidity, the maximum value of a `uint256` is `2^256 - 1`. Such as huge number is impossible to represent in JavaScript. To solve this problem, we can use the [BigNumber](https://docs.ethers.io/v5/api/utils/bignumber/) class from Ethers. Ethers use this class to represent arbitrarily large integers and add type annotations automatically when calling the `totalSupply` of the BAYC contract.
+In Solidity, the maximum value of a `uint256` is `2^256 - 1`. Such a large number is impossible to represent in JavaScript. To solve this problem, we can use the [BigNumber](https://docs.ethers.io/v5/api/utils/bignumber/) class from Ethers. Ethers use this class to represent arbitrarily large integers and add type annotations automatically when calling the `totalSupply` of the BAYC contract.
 
 ```ts
 // Most numbers you pass to a smart contract, need to be converted to a BigNumber, for example:

@@ -88,7 +88,7 @@ Metamask holds your private key in the browser's data store. A private key is a 
 
 "Testnets" are Ethereum networks that protocol developers use to test smart contracts in a development or staging environment. They are similar to the mainnet but not connected to it. Because of this, you can test smart contracts and applications without spending real money.
 
-You can run a local testnet using [Anvil](https://book.getfoundry.sh/anvil/#how-to-use-anvil) or use a public testnet like [Goerli](https://goerli.net/#about). During this workshop, you'll also learn how. to deploy a contract to OpenSea, which only supports public testnets, so you should familiarize yourself with that.
+You can run a local testnet using [Anvil](https://book.getfoundry.sh/anvil/#how-to-use-anvil) or use a public testnet like [Goerli](https://goerli.net/#about). During this workshop, you'll also learn how to deploy a contract to OpenSea, which only supports public testnets, so you should familiarize yourself with that.
 
 > **Note**: If you are using Metamask, you can switch between networks by clicking on the network name in the top left corner of the extension.
 
