@@ -16,6 +16,7 @@ Stretch challenges are for those who are already familiar with web3 development 
   - [Stretch Challenge 11: Meta Transactions 🧾](#stretch-challenge-11-meta-transactions-)
   - [Stretch Challenge 12: Rentable NFTs 🫴](#stretch-challenge-12-rentable-nfts-)
   - [Stretch Challenge 13: NFT Gated Access 👮‍♀️](#stretch-challenge-13-nft-gated-access-️)
+  - [Stretch Challenge 14: Using The Graph 👨‍🚀](#stretch-challenge-14-using-the-graph-)
 
 ## Stretch Challenge 1: Reentrancy Attacks 👾
 
@@ -136,3 +137,24 @@ The goal of this challenge is to create a rentable NFT collection! Of course, fe
 ## Stretch Challenge 13: NFT Gated Access 👮‍♀️
 
 The goal of this challenge is relatively straightforward; create a Dapp that only allows users to use it if they own a certain NFT!
+
+## Stretch Challenge 14: Using The Graph 👨‍🚀
+
+The Graph is an indexing protocol for querying networks like Ethereum and IPFS. Using GraphQL, anyone can build and publish open APIs, called subgraphs, making data easily accessible. You can learn more about The Graph [here](https://thegraph.com/docs/en/).
+
+This challenge aims to use The Graph to filter specific data from a smart contract, for example, the [Bored Ape Yacht Club](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d#code).
+
+Let's say we want to:
+
+- Query for apes owned by a specific address
+- Be able to filter by one of its characteristics
+
+Usually, to get this data, you would have to process every single transfer event ever emitted, read the metadata from IPFS using the Token ID and IPFS hash, and then aggregate it. This process could take a long time per request and is quite resource-intensive. But by using The Graph, the process is simplified. As always, you will be granted freedom in the development process as long as you satisfy the following requirements:
+
+- Setup The Graph
+- Deploy a subgraph to the Subgraph Studio that tracks an NFT collection
+  - We should be able to query NFTs from this collection owned by a specific address
+  - We should be able to filter NFTs for at least one trait
+- Verify that the subgraph works using the explorer
+
+> **NOTE**: If you want to use your subgraph in a Dapp, you must deploy it to a network first, which requires ETH. You do not need to do this for the challenge.
