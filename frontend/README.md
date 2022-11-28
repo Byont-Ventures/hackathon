@@ -3,22 +3,22 @@
 These challenges provide a way to get started with web3 frontend development. The goal is to build an NFT minting Dapp that interacts with the blockchain and IPFS to min and view NFTs. Initially, we'll provide some boilerplate code, but you'll quickly be left to build new pages.
 
 - [Frontend Challenges](#frontend-challenges)
-  - [Challenge 1 - Let's get started! Running the Dapp](#challenge-1---lets-get-started-running-the-dapp)
+  - [Challenge 1 - Let's get started! Running the Dapp 🔥](#challenge-1---lets-get-started-running-the-dapp-)
     - [Ethers.js](#ethersjs)
-  - [Challenge 2 - Adding abstractions](#challenge-2---adding-abstractions)
-  - [Challenge 3 - Using Wagmi](#challenge-3---using-wagmi)
+  - [Challenge 2 - Adding abstractions 🪄](#challenge-2---adding-abstractions-)
+  - [Challenge 3 - Using Wagmi 📚](#challenge-3---using-wagmi-)
     - [ABIs](#abis)
-  - [Challenge 4 - Displaying NFTs](#challenge-4---displaying-nfts)
+  - [Challenge 4 - Displaying NFTs 🎨](#challenge-4---displaying-nfts-)
     - [Big Numbers](#big-numbers)
-  - [Challenge 5 - Minting](#challenge-5---minting)
+  - [Challenge 5 - Minting 🪙](#challenge-5---minting-)
     - [What is minting?](#what-is-minting)
     - [NFT standards](#nft-standards)
-  - [Challenge 6 - It's up to you...](#challenge-6---its-up-to-you)
+  - [Challenge 6 - It's up to you... 😼](#challenge-6---its-up-to-you-)
   - [Common errors](#common-errors)
     - [Cannot connect to network error](#cannot-connect-to-network-error)
     - [Hydration error](#hydration-error)
 
-## Challenge 1 - Let's get started! Running the Dapp
+## Challenge 1 - Let's get started! Running the Dapp 🔥
 
 You can run the [Dapp](https://ethereum.org/en/developers/docs/dapps/) locally by running `yarn dev` and navigate to the first challenge by going to [http://localhost:3000/challenge/1](http://localhost:3000/challenge/1).
 
@@ -59,7 +59,7 @@ We can implement all RPCs, errors, hashing, and signing ourselves, but luckily, 
 
 > **Note**: If you're looking for a nice introduction to Ethers.js, check out [this article](https://dev.to/yakult/a-beginers-guide-four-ways-to-play-with-ethersjs-354a).
 
-## Challenge 2 - Adding abstractions
+## Challenge 2 - Adding abstractions 🪄
 
 Nowadays, React developers have switched to [React Query](https://tanstack.com/query/v4/docs/adapters/react-query)/[SWR](https://swr.vercel.app/) for fetching and caching data in combination with React's Context API. Using those tools, developers no longer need more complex state management solutions like [Redux](https://redux.js.org/) and [Zustand](https://github.com/pmndrs/zustand), for the most part.
 
@@ -93,7 +93,7 @@ const { data, isError, isLoading } = useName(...args);
 
 Now, it's up to you to implement this hook into the challenge 2 page.
 
-## Challenge 3 - Using Wagmi
+## Challenge 3 - Using Wagmi 📚
 
 Instead of writing these hooks ourselves for every smart contract call, we can use [Wagmi](https://wagmi.sh). Wagmi is a collection of React hooks that make it easier to perform these actions. Under the hood, it uses Ethers to connect to the blockchain and React Query for state management. Using Wagmi, we can rewrite the example above as follows:
 
@@ -131,7 +131,7 @@ Now it's up to you to implement [Wagmi with the Goerli network](https://wagmi.sh
 
 > **Note**: The contract address for BAYC is `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`
 
-## Challenge 4 - Displaying NFTs
+## Challenge 4 - Displaying NFTs 🎨
 
 As on-chain storage is expensive, images are often stored off-chain. So the NFT metadata and images we have to retrieve in this challenge are not on the blockchain but on IPFS.
 
@@ -174,9 +174,9 @@ const aBigNumber = BigNumber.from(42);
 const aBiggerNumber = aBignumber.mul(2);
 ```
 
-## Challenge 5 - Minting
+## Challenge 5 - Minting 🪙
 
-Now that we know how to get the NFT data to display, let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x5b0f9a441246ac78d34c70cdd16d5377343d55de`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
+Now that we know how to get the NFT data to display, let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
 
 The goal of this challenge is to mint an NFT using the `mint()` function of the smart contract. The `mint()` function takes a single parameter: the address of the owner of the NFT. The owner of the NFT is the address that will receive the NFT.
 
@@ -223,7 +223,7 @@ See also:
 - https://docs.openzeppelin.com/contracts/4.x/
 - https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
 
-## Challenge 6 - It's up to you...
+## Challenge 6 - It's up to you... 😼
 
 Once you have minted your NFTs, you should be able to view them on Opensea!
 
