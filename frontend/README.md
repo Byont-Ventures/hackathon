@@ -176,7 +176,7 @@ const aBiggerNumber = aBignumber.mul(2);
 
 ## Challenge 5 - Minting
 
-Now that we know how to get the NFT data to display, let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x5b0f9a441246ac78d34c70cdd16d5377343d55de`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
+Now that we know how to get the NFT data to display, let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
 
 The goal of this challenge is to mint an NFT using the `mint()` function of the smart contract. The `mint()` function takes a single parameter: the address of the owner of the NFT. The owner of the NFT is the address that will receive the NFT.
 
