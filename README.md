@@ -1,3 +1,5 @@
+![Web3 Workshop by Byont Labs](images/banner.png)
+
 # Web3 Workshop
 
 This workshop will be about getting your hands dirty in the web3 space by creating your first NFT project! This project will be initially divided into three tracks - frontend, backend, and stretch challenges.
