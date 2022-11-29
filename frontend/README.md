@@ -75,7 +75,7 @@ const useName = (
   // Future challenges will use React Query
   return useQuery(['useName', contractAddress], async () => {
     const contract = new ethers.Contract(
-      '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', // This is the contract address for BAYC
+      '0xb4595c3f0844cb566c0Df9fea7462A4C413c57FC', // This is the contract address for Fake Bored Ape Yacht Club 
       ['function name() view returns (string)'], // This is the ABI, we'll get to that later
       provider
     );
