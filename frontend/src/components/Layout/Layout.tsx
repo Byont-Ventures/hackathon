@@ -18,7 +18,8 @@ export const Layout: React.FC<PropsWithChildren<LayoutProps>> = ({
     'challenge-2': 'Challenge 3 - Using Wagmi:/challenge-3',
     'challenge-3': 'Challenge 4 - Displaying NFTs:/challenge-4',
     'challenge-4': 'Challenge 5 - Minting:/challenge-5',
-    'challenge-5': 'Back home:/',
+    'challenge-5': `Challenge 6 - It's up to you!:/challenge-6`,
+    'challenge-6': 'Back home:/',
   };
 
   const pathName = useRouter().pathname.split('/').pop();
