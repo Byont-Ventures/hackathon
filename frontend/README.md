@@ -20,7 +20,7 @@ These challenges provide a way to get started with web3 frontend development. Th
 
 ## Challenge 1 - Let's get started! Running the Dapp 🔥
 
-You can run the [Dapp](https://ethereum.org/en/developers/docs/dapps/) locally by running `yarn dev` and navigate to the first challenge by going to [http://localhost:3000/challenge/1](http://localhost:3000/challenge/1).
+You can run the [Dapp](https://ethereum.org/en/developers/docs/dapps/) locally by running `yarn dev` and navigate to the first challenge by going to [http://localhost:3000/challenge-1](http://localhost:3000/challenge-1).
 
 However, you'll be immediately greeted with the following error: `❗️ Error: could not detect network (event="noNetwork", code=NETWORK_ERROR, version=providers/5.7.2) ❗️ `. You got this error because the Dapp is trying to connect to the blockchain but still needs to set it up. Let's fix that!
 
