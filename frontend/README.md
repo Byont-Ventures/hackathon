@@ -49,7 +49,7 @@ You can obtain your Alchemy API key from the [Alchemy Dashboard](https://dashboa
 cp .env.example .env.local
 ```
 
-If you refresh the page you'll now find the latest block number. Feel free to edit this Dapp according to your needs in further challenges.
+If you refresh the page, you'll now find the latest block number. Feel free to edit this Dapp according to your needs in further challenges.
 
 🎉🎉🎉 **Congratulations! You've successfully connected to the blockchain!** 🎉🎉🎉
 
@@ -57,7 +57,7 @@ If you refresh the page you'll now find the latest block number. Feel free to ed
 
 We can implement all RPCs, errors, hashing, and signing ourselves, but luckily, some libraries do this for us. We are using [ethers.js](https://docs.ethers.io/v5/) for this. Ethers.js is a library that provides a complete Ethereum development environment. It is a collection of packages that allow you to interact with the Ethereum blockchain, including wallets, providers, contracts, and more.
 
-> **Note**: If you're looking for a nice introduction to Ethers.js, check out [this article](https://dev.to/yakult/a-beginers-guide-four-ways-to-play-with-ethersjs-354a).
+> **Note**: If you're looking for an excellent introduction to Ethers.js, check out [this article](https://dev.to/yakult/a-beginers-guide-four-ways-to-play-with-ethersjs-354a).
 
 ## Challenge 2 - Adding abstractions 🪄
 
@@ -75,8 +75,8 @@ const useName = (
   // Future challenges will use React Query
   return useQuery(['useName', contractAddress], async () => {
     const contract = new ethers.Contract(
-      '0xb4595c3f0844cb566c0Df9fea7462A4C413c57FC', // This is the contract address for Fake Bored Ape Yacht Club 
-      ['function name() view returns (string)'], // This is the ABI, we'll get to that later
+      '0xb4595c3f0844cb566c0Df9fea7462A4C413c57FC', // This is the contract address for Fake Bored Ape Yacht Club
+      ['function name() view returns (string)'], // This is the ABI - we'll get to that later
       provider
     );
 
@@ -95,7 +95,7 @@ Now, it's up to you to implement this hook into the challenge 2 page.
 
 ## Challenge 3 - Using Wagmi 📚
 
-Instead of writing these hooks ourselves for every smart contract call, we can use [Wagmi](https://wagmi.sh). Wagmi is a collection of React hooks that make it easier to perform these actions. Under the hood, it uses Ethers to connect to the blockchain and React Query for state management. Using Wagmi, we can rewrite the example above as follows:
+Instead of writing these hooks for every smart contract call, we can use [Wagmi](https://wagmi.sh). Wagmi is a collection of React hooks that make it easier to perform these actions. Under the hood, it uses Ethers to connect to the blockchain and React Query for state management. Using Wagmi, we can rewrite the example above as follows:
 
 ```ts
 const { data, isError, isLoading } = useContractRead({
@@ -105,7 +105,7 @@ const { data, isError, isLoading } = useContractRead({
 });
 ```
 
-> **Note**: As you can see we don't have to take care of the provider, and on top of this Wagmi provides supports end-to-end type safety for all smart contract calls.
+> **Note**: As you can see, we don't have to take care of the provider, and on top of this, Wagmi provides end-to-end type safety for all smart contract calls.
 
 ### ABIs
 
@@ -119,17 +119,17 @@ You can find the ABI of a smart contract on [Etherscan](https://etherscan.io/). 
 
 If you paste a contract address in the top right search bar on Etherscan, you will land on the smart contract page, and you will be able to see all kinds of data and even interact with the smart contract by connecting your wallet.
 
-This is how we got the ABI for the Bored Ape Yacht Club smart contract.
+Below, we will show how we got the ABI for the Bored Ape Yacht Club smart contract.
 
 - Go to [Bored Ape Yacht Club on Etherscan](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d);
 - Click on `Contract`;
 - At the `Contract ABI` section below, on the right, click on `Copy ABI to clipboard`;
 - Create a new file called `BAYCAbi.ts`, and paste the ABI there;
-- At the bottom, use const assertion (`as const`) to make the ABI readonly. This is so we can infer types from the ABI.
+- At the bottom, use const assertion (`as const`) to make the ABI read-only so we can infer types from the ABI.
 
-Now it's up to you to implement [Wagmi with the Goerli network](https://wagmi.sh/core/getting-started), and update the challenge 3 page.
+Now it's up to you to implement [Wagmi with the Goerli network](https://wagmi.sh/core/getting-started) and update the challenge 3 page.
 
-> **Note**: The contract address for BAYC is `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`
+> **Note**: The contract address for BAYC is `0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`.
 
 ## Challenge 4 - Displaying NFTs 🎨
 
@@ -141,7 +141,7 @@ Your smart contract provides a way to tell Opensea which image belongs to which 
 
 > **Note**: If you want to learn more about `IPFS`, read the section in the [Preparation Guide](/PREPARATION.md#what-is-ipfs).
 
-With this knowledge, we can continue with challenge 4: display the NFT image and metadata. The goal is to interact with the BAYC smart contract, and:
+With this knowledge, we can continue with challenge 4: display the NFT image and metadata. The goal is to interact with the BAYC smart contract and:
 
 - Display the `name` of the contract;
 - Display the `totalSupply` of the contract;
@@ -168,7 +168,7 @@ const { data, isError, isLoading } = useContractReads({
 In Solidity, the maximum value of a `uint256` is `2^256 - 1`. Such a large number is impossible to represent in JavaScript. To solve this problem, we can use the [BigNumber](https://docs.ethers.io/v5/api/utils/bignumber/) class from Ethers. Ethers use this class to represent arbitrarily large integers and add type annotations automatically when calling the `totalSupply` of the BAYC contract.
 
 ```ts
-// Most numbers you pass to a smart contract, need to be converted to a BigNumber, for example:
+// You will need to convert most numbers you pass to a smart contract to a BigNumber, for example:
 import { BigNumber } from 'ethers';
 const aBigNumber = BigNumber.from(42);
 const aBiggerNumber = aBignumber.mul(2);
@@ -176,23 +176,23 @@ const aBiggerNumber = aBignumber.mul(2);
 
 ## Challenge 5 - Minting 🪙
 
-Now that we know how to get the NFT data to display, let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
+Now that we know how to get the NFT data to display let's mint some NFTs! We have already deployed a smart contract on the Goerli testnet: `https://goerli.etherscan.io/address/0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd`. This contract is a simple ERC721 contract that allows anyone to mint an NFT.
 
-The goal of this challenge is to mint an NFT using the `mint()` function of the smart contract. The `mint()` function takes a single parameter: the address of the owner of the NFT. The owner of the NFT is the address that will receive the NFT.
+This challenge aims to mint an NFT using the `mint()` function of the smart contract. The `mint()` function takes a single parameter: the address of the owner of the NFT. The owner of the NFT is the address that will receive the NFT.
 
 Until now, we have only been reading data from the blockchain. Now it's time to write data to the blockchain. To do so, we need to connect our wallet to the application. Using [RainbowKit](https://www.rainbowkit.com/docs/introduction), an [abstraction](https://youtu.be/DKce4wCe2zI) around Wagmi, we can connect almost any wallet we want.
 
 Now it's up to you to:
 
 - Implement RainbowKit in the application;
-- Build a form that takes a user input for the mint amount
-- Create a mint button
-- Switch to the Goerli testnet
-- `mint` a couple of NFTs
-- Display the current amount minted => `totalSUpply`
-- Display the max amount that can be minted => `maxSupply`
+- Build a form that takes user input for the mint amount;
+- Create a mint button;
+- Switch to the Goerli testnet;
+- `mint` a couple of NFTs;
+- Display the current amount minted => `totalSupply`;
+- Display the max amount of NFTs for the entire collection => `maxSupply`.
 
-> **Note**: You can take a look [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-mint-nft) for an example on how to use Wagmi and RainbowKit to create a minting page.
+> **Note**: You can take a look [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-mint-nft) for an example of how to use Wagmi and RainbowKit to create a minting page.
 
 ### What is minting?
 
@@ -204,11 +204,11 @@ As you might have noticed, NFTs have a token id. When you deploy a fresh collect
 
 [OpenZeppelin](https://docs.openzeppelin.com/) provides free, standardized, and thoroughly tested/audited smart contract libraries that implement ERC specifications, such as ERC721.
 
-> **Note**: OpenZeppelin is a very popular library, and it is used by many smart contract developers. It is also a very good library to use, but it is not the only one. There are many other libraries out there, and you can even write your own.
+> **Note**: OpenZeppelin is a very popular library, and many smart contract developers use it. It is also an excellent library, but there are many other libraries. You can even write your own.
 
 ERC721 is the primary standard for NFT smart contracts; see [Workshop Preparaton](/PREPARATION.md#what-are-nfts-and-how-do-they-work). There are variants, such as ERC1155 by Enjin and ERC721A by Azuki, each with its functionalities. For the workshop, ERC721 NFTs will suffice.
 
-Some standard functions that can often be found in an ERC721 contract:
+Some standard functions that you can often find in an ERC721 contract:
 
 - `tokenURI(uint256 _id)` => Get the token URI for a given token ID (number)
 - `totalSupply()` => Get the amount of minted NFTs so far
@@ -227,15 +227,15 @@ See also:
 
 Once you have minted your NFTs, you should be able to view them on Opensea!
 
-- Let's head over to the [Testnet Opensea](https://testnets.opensea.io/assets?search[chains][0]=GOERLI&search[query]=0x5b0f9a441246ac78d34c70cdd16d5377343d55de&search[resultModel]=ASSETS);
-- In the search bar, paste the contract address: `0x5b0f9a441246ac78d34c70cdd16d5377343d55de`;
+- Let's head over to the [Testnet Opensea](https://testnets.opensea.io/assets?search[chains][0]=GOERLI&search[query]=0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd&search[resultModel]=ASSETS);
+- In the search bar, paste the contract address: `0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd`;
 - Your NFTs should appear in this list!
 
-If you have managed to make it this far, **pat yourself on the back, you've earned it!** Of course, these challenges were just the tip of the iceberg. You can implement more functionality to your NFTs such as a marketplace, a voting system, or even a game!
+If you have managed to make it this far, **pat yourself on the back, you've earned it!** Of course, these challenges were just the tip of the iceberg. You can implement more functionality to your NFTs, such as a marketplace, a voting system, or even a game!
 
 Now that you have a basic understanding of how to interact with smart contracts, it's up to you to create something cool! You can use the [OpenSea API](https://docs.opensea.io/reference/retrieving-asset-data) to get NFT data, or you can use the [Etherscan API](https://etherscan.io/apis) to get data from the blockchain.
 
-**Next up:** Stretch challenges. During the workshop, we will supply you with a non-exhaustive list of stretch challenges you can work on to refine your skills from here on or work on an idea of your own. You can also take a look at the [backend challenges](/backend/README.md).
+**Next up:** Stretch challenges. During the workshop, we will supply you with a non-exhaustive list of stretch challenges you can work on to refine your skills from here on or work on an idea of your own. You can also look at the [backend challenges](/backend/README.md).
 
 🎉🎉🎉 **You have completed the Frontend Coding Challenges!!!** 🎉🎉🎉
 
