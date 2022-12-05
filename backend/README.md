@@ -31,7 +31,8 @@ These challenges provide a way to start with Foundry, Solidity, and NFTs. Usuall
   - [Challenge 12 - Deploying and verifying smart contracts and Etherscan 😼](#challenge-12---deploying-and-verifying-smart-contracts-and-etherscan-)
     - [Getting the Token URI](#getting-the-token-uri)
     - [Etherscan](#etherscan)
-    - [Deploying the contract](#deploying-the-contract)
+    - [Deploying the contract (Using Hardhat)](#deploying-the-contract-using-hardhat)
+    - [Deploying the contract (Using Foundry)](#deploying-the-contract-using-foundry)
     - [Obtaining the required keys](#obtaining-the-required-keys)
     - [Smart contract initialization through Etherscan](#smart-contract-initialization-through-etherscan)
     - [Minting on Etherscan](#minting-on-etherscan)
@@ -59,7 +60,7 @@ Sit back, and enjoy the dopamine of that green checkmark.
 ### Foundry flags
 
 - `--match-contract` => enables you to run a specific test contract.
-- `FOUNDRY_PROFILE=` => tells Foundry which profiles to run. Every challenge has a profile, from `challenge-1` to `challenge-12`, defined in the [Foundry.toml](/baackend/foundry.toml).
+- `FOUNDRY_PROFILE=` => tells Foundry which profiles to run. Every challenge has a profile, from `challenge-1` to `challenge-12`, defined in the [Foundry.toml](/backend/foundry.toml).
 
 ### Memory and other data locations
 
@@ -132,7 +133,7 @@ Solidity offers support to import libraries, both internal and external. More so
 
 [OpenZeppelin](https://docs.openzeppelin.com/) provides free, standardized, and thoroughly tested/audited smart contract libraries that implement ERC specifications, such as ERC721.
 
-> **Note**: OpenZeppelin is a very popular library, and it is used by many smart contract developers. It is also a very good library to use, but it is not the only one. There are many other libraries out there, and you can even write your own.
+> **Note**: OpenZeppelin is a very popular library, and many smart contract developers use it. It is also an excellent library, but many others exist. You can even write your own.
 
 ERC721 is the primary standard for NFT smart contracts; see [Workshop Preparaton](/PREPARATION.md#what-are-nfts-and-how-do-they-work). There are variants, such as ERC1155 by Enjin and ERC721A by Azuki, each with its functionalities. For the workshop, ERC721 NFTs will suffice.
 
@@ -178,9 +179,9 @@ In `Challenge_6.t.sol`, we want to get the token URI from the contract given a s
 
 In this challenge, we will aim to create a minting function in `Challenge_7.sol` so that the tests in `Challenge_7.t.sol` pass. The mint function should:
 
-- Accept a `uint` parameter for the mint amount
-- Increase the `totalSupply` by the mint amount
-- Mint the NFTs to `msg.sender` using ERC721's `_safeMint()` function
+- Accept a `uint` parameter for the mint amount;
+- Increase the `totalSupply` by the mint amount;
+- Mint the NFTs to `msg.sender` using ERC721's `_safeMint()` function.
 
 ### Mint Functions
 
@@ -255,7 +256,7 @@ So, now let's improve the mint function to pass these checks. Our function shoul
 
 You might have noticed that the `require()` statements have been moved below the `mint()` function into a `modifier`. Modifiers are code snippets that you can add to a function. When someone calls the function, these code snippets will run beforehand. Therefore, moving your `require()` statements to a modifier makes sense. It makes your code a bit more reusable, too, since you can now just put the modifier on any function to which you wish to apply the same logic.
 
-> **Note**: Modifiers are not mandatory, but they are a good practice. Read more about modifiers [here](https://medium.com/coinmonks/solidity-tutorial-all-about-modifiers-a86cf81c14cb).
+> **Note**: Modifiers are not mandatory but are a good practice. Read more about modifiers [here](https://medium.com/coinmonks/solidity-tutorial-all-about-modifiers-a86cf81c14cb).
 
 An example of modifiers is the [Ownable](https://docs.openzeppelin.com/contracts/4.x/access-control) library by OpenZeppelin. After importing this library, you can access the `onlyOwner` modifier. By default, the deployer of the contract will initially be the owner. Therefore, `onlyOwner` is an excellent modifier for functions that need administrative privileges, such as withdrawing funds or setting essential variables such as base URI.
 
@@ -293,7 +294,7 @@ In this challenge, we will be uploading images to IPFS. Then, write a test that 
 
 In the [Preparation Guide](/PREPARATION.md#what-are-nfts-and-how-do-they-work), we demonstrated how to paste an IPFS link of a Bored Ape NFT into our browser as a test. We also explained that you can use IPFS for decentralized storage and that we can store metadata and images on IPFS.
 
-> **Note**: The metadata is not stored on the blockchain. It is stored on IPFS, and the smart contract points to the metadata on IPFS.
+> **Note**: The developers have not stored the metadata on the blockchain. They have uploaded it to IPFS, and the smart contract points to the metadata on IPFS.
 
 We can construct the IPFS token URIs in our smart contracts that point to these images on IPFS. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenURI()`. Usually, the first thing returned is the metadata.
 
@@ -301,7 +302,7 @@ For example, paste this link into your browser: `ipfs://QmeSjSinHpPnmXmspMjwiXyN
 
 You will see a JSON object with some values, the NFT metadata. It contains:
 
-- `image` => the IPFS URI to the actual NFT image
+- `image` => the IPFS URI to the actual NFT image;
 - `attributes` => array containing a list of objects with key-value pairs corresponding to the trait type and the values.
 
 > **Note**: Feel free to compare it to the [metadata displayed on Opensea](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369).
@@ -312,36 +313,36 @@ You will see a JSON object with some values, the NFT metadata. It contains:
 
 For convenience, we will use [Pinata](https://www.pinata.cloud/). They will take care of pinning your data on IPFS.
 
-> **Note**: if you upload something onto IPFS, it won't stay on there forever unless you pin it with a local or a third-party node such as Pinata.
+> **Note**: if you upload something onto IPFS, it won't stay there forever unless you pin it with a local or a third-party node such as Pinata.
 
 Now, create a free account on [Pinata](https://app.pinata.cloud/register) and log in.
 
 ### Upload images to IPFS
 
-1. When logged in, select Upload > Upload Folder, and select the [images](./metadata/images/) folder. We generated the metadata and images here using the [Hashlips Art Engine](https://github.com/HashLips/hashlips_art_engine).
-2. Give your folder a name
-3. Wait for the upload to finish
+1. When logged in, select Upload > Upload Folder, and select the [images](./metadata/images/) folder. We generated the metadata and images here using the [Hashlips Art Engine](https://github.com/HashLips/hashlips_art_engine);
+2. Give your folder a name;
+3. Wait for the upload to finish;
 4. Copy the folder CID. To manually construct a token URI, prepend `ipfs://` and append the filename like so: `ipfs://someCID/1.png`.
 
 ### Add images to metadata
 
-1. Before we upload our metadata to IPFS, we need to add the IPFS URIs of the images we uploaded to the metadata files.
-2. The metadata files are in the [json](./metadata/JSON/) folder. Every `.json` file shows that we have not appropriately set the `description` and `image` fields. Usually, you can do this with a script, but since we have five files, we can do it manually. Go ahead and update the `image` fields in every file to the corresponding IPFS URIs. You could also change the description if you'd like.
+1. Before we upload our metadata to IPFS, we need to add the IPFS URIs of the images we uploaded to the metadata files;
+2. The metadata files are in the [json](./metadata/JSON/) folder. Every `.json` file shows that we have not appropriately set the `description` and `image` fields. Usually, you can do this with a script, but since we have five files, we can do it manually. Go ahead and update the `image` fields in every file to the corresponding IPFS URIs. You could also change the description if you'd like;
 3. At this point, verifying that the images match the metadata attributes is a good idea.
 
 > **Note**: Make sure everything is clear on the attributes. For example, let's take the trait type `Background`. In every metadata file, this has the value `Black`. But in the images, one might argue that the background is actually `Purple`. It is a good idea to communicate with your artist what the intention was here and if this is correct. Perhaps it was the black shading around the eyes? The artist will often supply you with the layers, though, and you will have to generate the NFT images first so that you can verify them for yourself.
 
 ### Upload metadata
 
-1. Now that we are pointing to the images on IPFS in our metadata, we are ready to upload the metadata! Go to Pinata, and click on "Upload" > "Upload Folder" > select the [JSON](./metadata/JSON/) folder.
-2. Give your folder a name
-3. Wait for the upload to finish
-4. Copy the folder CID, construct the IPFS URI, and paste it into your browser. For example, `ipfs://someCID/1.png`
+1. Now that we are pointing to the images on IPFS in our metadata, we are ready to upload the metadata! Go to Pinata, and click on "Upload" > "Upload Folder" > select the [JSON](./metadata/JSON/) folder;
+2. Give your folder a name;
+3. Wait for the upload to finish;
+4. Copy the folder CID, construct the IPFS URI, and paste it into your browser. For example, `ipfs://someCID/1.png`;
 5. Test that the metadata has been uploaded correctly, so for example:
 
-- The image URIs work
-- The images match the attributes
-- The enumeration is correct
+- The image URIs work;
+- The images match the attributes;
+- The enumeration is correct.
 
 ### Change token URI
 
@@ -349,20 +350,20 @@ Now that we have uploaded our metadata to IPFS, we can change the `baseURI` in o
 
 It's now up to you to update the smart contract to point to the correct token URI!
 
-- Update `tokenURI()` in `Challenge_11.sol` so that it returns the correct token URI corresponding to the images you uploaded to IPFS
+- Update `tokenURI()` in `Challenge_11.sol` so that it returns the correct token URI corresponding to the images you uploaded to IPFS;
 - Now, some tests won't pass anymore. Update the tests in `Challenge_11.t.sol` so that they now pass.
 
 ## Challenge 12 - Deploying and verifying smart contracts and Etherscan 😼
 
 We have done many things so far! We have created our primary NFT contract with a dynamic token URI based on a token ID generated when users mint NFTs! We have also uploaded metadata and images to IPFS. All that is left is to deploy our contract and set things up through Etherscan, and we will be able to view our NFT collection on Opensea! Let's get started.
 
-For a complete reference on how to deploy and verify smart contracts on Foundry, go [here](https://book.getfoundry.sh/forge/deploying)
+For a complete reference on deploying and verifying smart contracts on Foundry, go [here](https://book.getfoundry.sh/forge/deploying).
 
 ### Getting the Token URI
 
 You might recall that, earlier on, we supplied you with the metadata link of a Bored Ape. But how did we get this metadata link? We could, just like Opensea, call the `tokenURI()` function on the contract. But then, how do we know the contract address of an NFT? There are multiple ways to go about this. Let's try to get the contract address of [Bored Ape Yacht Club](https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2369) first. There are two ways to get the contract address:
 
-- Through the URL => `opensea.io/{ethereum}/{contractAddress}/{tokenId}`.
+- Through the URL => `opensea.io/{ethereum}/{contractAddress}/{tokenId}`;
 - Through "Details" (dropdown on the left side, below the metadata and "About Bored Ape Yacht Club" sections).
 
 Let's click on the [contract address](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d).
@@ -385,15 +386,230 @@ Now, go ahead and click on the `Contract` tab. Below that, you will see three ta
 - `Read Contract` => Interact with all the read-only functions of the smart contract, for example, `tokenURI()`;
 - `Write Contract` => Interact with all the write functions of the smart contract, for example, when minting.
 
-### Deploying the contract
+### Deploying the contract (Using Hardhat)
 
-Now that you know Etherscan, it is time to deploy and verify our smart contract. If a smart contract is not verified, you cannot click on the functions to interact with them or see them directly — an unverified smart contract [will look like this](https://etherscan.io/address/0x6c830acd0b1610f547f568abd9500012cffd5208#code).
+We currently recommend using Hardhat to deploy and verify your contracts, as you may encounter some [verification issues](https://github.com/Byont-Ventures/Hackathon/issues/30).
+
+Hardhat is an alternative to Foundry. Hardhat is a bit slower than Foundry, but it is more mature and established. You can learn more about Hardhat [here](https://hardhat.org/docs).
+
+Using Hardhat, we will need to do some more setup compared to Foundry, and we will have to deploy and verify in separate steps. We will also require some API keys and your private key - refer to [this section](#obtaining-the-required-keys) on how to obtain all of them.
+
+If a smart contract is not verified, you cannot click on the functions to interact with them or see them directly — an unverified smart contract [will look like this](https://etherscan.io/address/0x6c830acd0b1610f547f568abd9500012cffd5208#code).
+
+A verified smart contract [will look like this](https://goerli.etherscan.io/address/0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd).
+
+> **Note:** Make sure you have enough test Eth in your wallet. 0.1 should be enough, but we recommend about 0.3 test Eth to be safe. Smart contract deployment can be expensive sometimes, e.g., [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
+
+Hardhat is currently not configured in the Hackathon, so first, let's install the needed packages:
+
+```bash
+$ cd backend
+$ yarn add --dev \
+    hardhat@2.12.2 \
+    ts-node \
+    @typechain/hardhat \
+    @nomiclabs/hardhat-etherscan \
+    @nomiclabs/hardhat-waffle \
+    @nomiclabs/hardhat-ethers \
+    typechain \
+    @typechain/ethers-v5
+```
+
+Then, create the following files. We have put the location of the files in the commented line at the top.
+
+```json
+// ./backend/scripts/deploymentDataChallenge12.json
+
+{
+  "deploymentConfig": {
+    "contractToDeploy": "Challenge12",
+    "args": {
+      "name": "NFT Example",
+      "symbol": "NFTEX",
+      "maxSupply": 100
+    }
+  },
+  "deploymentOutput": {
+    "deployedTo": "<will be filled after deployment>"
+  }
+}
+```
+
+```typescript
+// ./backend/scripts/deployChallenge12.ts
+
+import * as fs from 'fs';
+import { ethers } from 'hardhat';
+
+async function main() {
+  const deploymentDataPath = './scripts/deploymentDataChallenge12.json';
+  const rawdata = fs.readFileSync(deploymentDataPath);
+  const deployData = JSON.parse(rawdata.toString());
+
+  console.log(
+    'Deploying contract',
+    deployData.deploymentConfig.contractToDeploy
+  );
+
+  const factory = await ethers.getContractFactory(
+    deployData.deploymentConfig.contractToDeploy
+  );
+  const instance = await factory.deploy(
+    deployData.deploymentConfig.args.name,
+    deployData.deploymentConfig.args.symbol,
+    deployData.deploymentConfig.args.maxSupply
+  );
+  await instance.deployed();
+
+  console.log(
+    deployData.deploymentConfig.contractToDeploy,
+    'deployed to:',
+    instance.address
+  );
+
+  deployData.deploymentOutput.deployedTo = instance.address;
+  const stringifiedData = JSON.stringify(deployData, null, '\t');
+  fs.writeFileSync(deploymentDataPath, stringifiedData);
+
+  console.log(`Wrote data to ${deploymentDataPath}`);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+```typescript
+// ./backend/scripts/verifyChallenge12.ts
+
+import * as fs from 'fs';
+import * as hre from 'hardhat';
+
+async function main() {
+  const deploymentDataPath = './scripts/deploymentDataChallenge12.json';
+  const rawdata = fs.readFileSync(deploymentDataPath);
+  const deployData = JSON.parse(rawdata.toString());
+
+  console.log('Verifying');
+
+  await hre.run('verify:verify', {
+    address: deployData.deploymentOutput.deployedTo,
+    constructorArguments: [
+      deployData.deploymentConfig.args.name,
+      deployData.deploymentConfig.args.symbol,
+      deployData.deploymentConfig.args.maxSupply,
+    ],
+  });
+
+  console.log('Verified');
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+> Note: be careful not to push this file to git, for example, as this file contains sensitive information such as your private key.
+
+```json
+// ./backend/secrets.json
+
+{
+  "rpcApiKey": "123",
+  "etherscanApiKey": "123",
+  "privateKey": "0x1234123412341234123412341234123412341234123412341234123412341234",
+  "project": "challenge-12"
+}
+```
+
+```typescript
+// ./backend/hardhat.config.ts
+
+import { HardhatUserConfig } from 'hardhat/config';
+import '@nomiclabs/hardhat-waffle';
+import '@typechain/hardhat';
+import '@nomiclabs/hardhat-etherscan';
+import '@nomiclabs/hardhat-ethers';
+import * as fs from 'fs';
+
+import {
+  rpcApiKey,
+  privateKey,
+  etherscanApiKey,
+  project,
+} from './secrets.json';
+
+function getRemappings() {
+  return fs
+    .readFileSync('remappings.txt', 'utf8')
+    .split('\n')
+    .filter(Boolean) // remove empty lines
+    .map((line) => line.trim().split('='));
+}
+
+const config: HardhatUserConfig = {
+  solidity: {
+    version: '0.8.17',
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 999999,
+      },
+    },
+  },
+  paths: {
+    sources: `./contracts/${project}/src`,
+    cache: `./contracts/${project}/cache_hardhat`,
+  },
+  defaultNetwork: 'hardhat',
+  networks: {
+    goerli: {
+      url: `https://eth-goerli.alchemyapi.io/v2/${rpcApiKey}`,
+      accounts: [privateKey],
+    },
+  },
+  etherscan: {
+    apiKey: etherscanApiKey,
+  },
+};
+
+export default config;
+```
+
+Then run:
+
+```bash
+$ cd backend
+$ npx hardhat run --network goerli ./scripts/deployChallenge12.ts
+$ npx hardhat run --network goerli ./scripts/verifyChallenge12.ts
+```
+
+These commands will deploy the contract using your provided wallet and verify it through Etherscan. Give the deployment and verification some time to complete.
+
+🎉🎉🎉 **Congratulations!!!** 🎉🎉🎉
+You have just built, deployed, and verified an NFT smart contract! Take note of the contract address at the `deployedTo` field in `scripts/deploymentDataChallenge12.json`, and let's proceed to the [next step](#smart-contract-initialization-through-etherscan)!
+
+### Deploying the contract (Using Foundry)
+
+Now that you know Etherscan, it is time to deploy and verify our smart contract. In this section, we are using Foundry. We will also require some API keys and your private key - refer to [this section](#obtaining-the-required-keys) on how to obtain all of them.
+
+> **Note:** If you are experiencing any issues, please refer to [this section in the Foundry docs](https://book.getfoundry.sh/forge/deploying#verifying-a-pre-existing-contract) or [deploy using Hardhat](#deploying-the-contract-using-hardhat).
+
+If a smart contract is not verified, you cannot click on the functions to interact with them or see them directly — an unverified smart contract [will look like this](https://etherscan.io/address/0x6c830acd0b1610f547f568abd9500012cffd5208#code).
+
+A verified smart contract [will look like this](https://goerli.etherscan.io/address/0x7e7cfcfe861ea8bc27afa0018fa2f3c3140393cd).
 
 As per the [Foundry documentation](https://book.getfoundry.sh/forge/deploying#deploying), we can verify and deploy our contracts simultaneously!
 
 You can copy and paste the following format into your terminal to deploy and verify the contract:
 
-> **Nodt:** Make sure you have enough test Eth in your wallet. 0.1 should be enough, but we recommend about 0.3 test Eth to be safe. Smart contract deployment can be expensive sometimes, e.g., [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
+> **Note:** Make sure you have enough test Eth in your wallet. 0.1 should be enough, but we recommend about 0.3 test Eth to be safe. Smart contract deployment can be expensive sometimes, e.g., [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
 
 ```sh
 FOUNDRY_PROFILE=challenge-12 forge create \
@@ -407,14 +623,21 @@ FOUNDRY_PROFILE=challenge-12 forge create \
 
 > **Note**: For a reminder on how to get test Eth, please refer to [this section in the preparation guide](/PREPARATION.md#testnets--faucets).
 
-> **Note**: The documentation needs to be more accurate here; you must include the constructor args flag at the end, or the verification might fail
+> **Note**: The documentation needs to be more accurate here; you must include the constructor args flag at the end, or the verification might fail.
+
+After populating the command with your private and API keys, you can paste it into the terminal and run it. You are now deploying and verifying the smart contract using your provided wallet. Give the verification some time to complete.
+
+🎉🎉🎉 **Congratulations!!!** 🎉🎉🎉
+You have just built, deployed, and verified an NFT smart contract! Take note of the contract address in the terminal output, e.g., `Deployed to: 0x.....`, and let's proceed to the [next step](#smart-contract-initialization-through-etherscan)!
 
 ### Obtaining the required keys
+
+> **Note**: If you have already deployed and verified your contract, you can skip this step.
 
 Below are the steps to acquire the necessary API keys:
 
 - Head over to [Etherscan](https://etherscan.io/register) and create an account;
-- Login and go to `API keys`;
+- Log in and go to `API keys`;
 - Click `Add`;
 - Give your app a name;
 - Copy and paste your Etherscan API key into the format;
@@ -432,13 +655,6 @@ If you are using Metamask and you need to get your private key:
 - Click on `Export Private Key`;
 - Enter your password;
 - Copy your private key.
-
-After populating the command with your private and API keys, you can paste it into the terminal and run it. You are now deploying and verifying the smart contract using your provided wallet. Give the verification some time to complete.
-
-> **Note**: If deployment succeeds but verification fails, please refer to [this section in the Foundry docs](https://book.getfoundry.sh/forge/deploying#verifying-a-pre-existing-contract).
-
-🎉🎉🎉 **Congratulations!!!** 🎉🎉🎉
-You have just built, deployed, and verified an NFT smart contract! Take note of the contract address in the terminal output, e.g., `Deployed to: 0x.....`, and let's proceed to the next step!
 
 ### Smart contract initialization through Etherscan
 
@@ -479,6 +695,6 @@ Once you have minted your NFTs, you should be able to view them on Opensea!
 
 If you have managed to make it this far, **pat yourself on the back, you've earned it!** Of course, these challenges were just the Tip of the iceberg. You can extend the NFTs with loads of functionalities, create an Opensea account, and edit your collection. You could optimize your smart contracts so that the gas fees are lower. You could take many security measures to make your contract safer, and the list goes on and on.
 
-**Next up:** Stretch challenges. During the workshop, we will supply you with a non-exhaustive list of stretch challenges you can work on to refine your skills from here on or work on an idea of your own. You can also take a look at the [frontend challenges](/FRONTEND.md) to learn how to build a frontend for your NFTs.
+**Next up:** Stretch challenges. During the workshop, we will supply you with a non-exhaustive list of stretch challenges you can work on to refine your skills from here on or work on an idea of your own. You can also look at the [frontend challenges](/FRONTEND.md) to learn how to build a frontend for your NFTs.
 
 🎉🎉🎉 **You have completed the Backend Coding Challenges!!!** 🎉🎉🎉
