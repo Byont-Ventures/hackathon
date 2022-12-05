@@ -289,6 +289,8 @@ In `Challenge_10.t.sol`, we have set up scenarios where users will eventually tr
 
 In this challenge, we will be uploading images to IPFS. Then, write a test that updates your `baseURI` to point to the image folder on IPFS.
 
+> **Note:** Recall that if you want an easy way to view files on IPFS in your browser, you can go to [https://ipfsbrowser.com/](https://ipfsbrowser.com/)
+
 ### IPFS, Opensea, and Metadata
 
 In the [Preparation Guide](/PREPARATION.md#what-are-nfts-and-how-do-they-work), we demonstrated how to paste an IPFS link of a Bored Ape NFT into our browser as a test. We also explained that you can use IPFS for decentralized storage and that we can store metadata and images on IPFS.
@@ -298,6 +300,8 @@ In the [Preparation Guide](/PREPARATION.md#what-are-nfts-and-how-do-they-work), 
 We can construct the IPFS token URIs in our smart contracts that point to these images on IPFS. When Opensea looks at your NFT smart contract, it will retrieve the data using `tokenURI()`. Usually, the first thing returned is the metadata.
 
 For example, paste this link into your browser: `ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/2369`
+
+> **Note:** Recall that if you want an easy way to view files on IPFS in your browser, you can go to [https://ipfsbrowser.com/](https://ipfsbrowser.com/)
 
 You will see a JSON object with some values, the NFT metadata. It contains:
 
