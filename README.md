@@ -14,6 +14,8 @@ We'll also host a [#workshop](https://discord.com/channels/935159951423340625/10
 
 You can refer to the accompanying presentation for more information about the workshop in general on [Canva](https://www.canva.com/design/DAFTCVN0tKk/UwUQ3JJdV6_0scOUtneGTQ/view?utm_content=DAFTCVN0tKk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink).
 
+We have also included a [glossary](./GLOSSARY.md) that includes terms that are often used in the crypto-space, along with their explanations.
+
 ## The different tracks
 
 In the backend (or smart contract) track, you will learn how to create an NFT smart contract using a new programming language and development framework. The frontend track builds on your existing knowledge and shows you how to view, interact, and mint NFTs using Next.js (13).
@@ -28,6 +30,7 @@ Below you'll find the different tracks, but we recommend that all participants f
 - [Frontend Challenges](/frontend/README.md)
 - [Backend Challenges](/backend/README.md)
 - [Stretch Challenges](/STRETCH.md)
+- [Glossary](./GLOSSARY.md)
 
 ## About Byont Labs
 
