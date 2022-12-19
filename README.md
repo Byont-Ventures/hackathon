@@ -30,7 +30,7 @@ Below you'll find the different tracks, but we recommend that all participants f
 - [Frontend Challenges](/frontend/README.md)
 - [Backend Challenges](/backend/README.md)
 - [Stretch Challenges](/STRETCH.md)
-- [Glossary](./GLOSSARY.md)
+- [Glossary](/GLOSSARY.md)
 
 ## About Byont Labs
 
