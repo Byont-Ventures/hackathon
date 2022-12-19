@@ -393,7 +393,7 @@ As per the [Foundry documentation](https://book.getfoundry.sh/forge/deploying#de
 
 You can copy and paste the following format into your terminal to deploy and verify the contract:
 
-> **Nodt:** Make sure you have enough test Eth in your wallet. 0.1 should be enough, but we recommend about 0.3 test Eth to be safe. Smart contract deployment can be expensive sometimes, e.g., [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
+> **Note:** Make sure you have enough test Eth in your wallet. 0.1 should be enough, but we recommend about 0.3 test Eth to be safe. Smart contract deployment can be expensive sometimes, e.g., [Bored Ape Yacht Club contract deployment](https://etherscan.io/tx/0x22199329b0aa1aa68902a78e3b32ca327c872fab166c7a2838273de6ad383eba).
 
 ```sh
 FOUNDRY_PROFILE=challenge-12 forge create \

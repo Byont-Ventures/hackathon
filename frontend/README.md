@@ -89,7 +89,7 @@ const useName = (
 const { data, isError, isLoading } = useName(...args);
 ```
 
-> **Note**: If you don't know what ERC721 is, read the section in the [Preparaion Guide](/PREPARATION.md#what-are-nfts-and-how-do-they-work).
+> **Note**: If you don't know what ERC721 is, read the section in the [Preparation Guide](/PREPARATION.md#what-are-nfts-and-how-do-they-work).
 
 Now, it's up to you to implement this hook into the challenge 2 page.
 
